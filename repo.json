@@ -1,0 +1,26 @@
+{
+	"version": "2.2.24",
+	"change": ["hitbutt", "slap"],
+	"modules": {
+		"commands": {
+			"adduser": "2.4.1",
+			"alime": "1.1.2",
+			"covid": "2.1.1",
+			"fbuser": "2.0.0",
+			"filter": "2.0.1",
+			"hitbutt": "2.2.5",
+			"img": "3.1.2",
+			"linkword": "2.0.9",
+			"meewmeew": "2.2.7",
+			"sim": "4.3.7",
+			"slap": "2.2.5",
+			"sortword": "1.1.2",
+			"surprise": "3.1.0",
+			"teach": "2.0.6",
+			"xsmb": "2.0.1"
+		},
+		"events": {
+			"antiout": "1.0.1"
+		}
+	}
+}
