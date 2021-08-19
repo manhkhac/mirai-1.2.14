@@ -31,7 +31,8 @@ module.exports.run = async ({ api, event, args, Users }) => {
     let n = d[e].name
     let b = d[e].gender
     let url = d[e].profileUrl;
-    let getAvatar = (await axios.get(`https://4boxvn.com/api/avt?s=${e}`, { responseType: 'arraybuffer' })).data;
+    
+    let getAvatar = (await axios.get(`https://graph.facebook.com/${e}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
     fs.writeFileSync(__dirname + "/cache/avt.png", Buffer.from(getAvatar, 'utf-8'));
     api.sendMessage({
       body: `Tìm Kiếm Nửa Kia Của Bạn\nTên: ${n}\nGiới Tính: ${(b == 2) ? "Nam" : (b == 1) ? "Nữ" : "Gay"}\nMối Quan Hệ: Độc Thân (có thể)\nĐộ Phù Hợp: ${a.toFixed(2)}%\nInbox: m.me/${e}\nProfile: ${url}`,
@@ -65,7 +66,7 @@ module.exports.run = async ({ api, event, args, Users }) => {
     let n = d[e].name
     let b = d[e].gender
     let url = d[e].profileUrl;
-    let getAvatar = (await axios.get(`https://4boxvn.com/api/avt?s=${e}`, { responseType: 'arraybuffer' })).data;
+    let getAvatar = (await axios.get(`https://graph.facebook.com/${e}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
     fs.writeFileSync(__dirname + "/cache/avt.png", Buffer.from(getAvatar, 'utf-8'));
     api.sendMessage({
       body: `Tìm Kiếm Nửa Kia Của Bạn\nTên: ${n}\nGiới Tính: ${(b == 2) ? "Nam" : (b == 1) ? "Nữ" : "Gay"}\nMối Quan Hệ: Độc Thân (có thể)\nĐộ Phù Hợp: ${a.toFixed(2)}%\nInbox: m.me/${e}\nProfile: ${url}`,
