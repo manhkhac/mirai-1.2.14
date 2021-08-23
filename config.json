@@ -5,9 +5,7 @@
     "autoCreateDB": true,
     "allowInbox": true,
     "autoClean": true,
-    "commandDisabled": [
-        "goibot.js"
-    ],
+    "commandDisabled": [],
     "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
@@ -15,7 +13,7 @@
     "BOTNAME": "",
     "PREFIX": "!",
     "ADMINBOT": [
-        "100038379006171"
+        "ID-ADMIN"
     ],
     "DATABASE": {
         "sqlite": {
@@ -31,82 +29,6 @@
         "selfListen": false,
         "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36"
     },
-    "version": "1.2.14",
-    "caesar": {
-        "caeserPassword": "266303"
-    },
-    "checktt": {
-        "maxColumn": 10
-    },
-    "daily": {
-        "cooldownTime": 43200000,
-        "rewardCoin": 200
-    },
-    "math": {
-        "WOLFRAM": "T8J8YV-H265UQ762K"
-    },
-    "rankup": {
-        "autoUnsend": true,
-        "unsendMessageAfter": 5
-    },
-    "rname": {
-        "APIKEY": "mi451266190"
-    },
-    "surprise": {
-        "log": true,
-        "out": "",
-        "kickAll": "",
-        "delThread": ""
-    },
-    "weather": {
-        "OPEN_WEATHER": "081c82065cfee62cb7988ddf90914bdd"
-    },
-    "work": {
-        "cooldownTime": 1200000
-    },
-    "adminUpdate": {
-        "autoUnsend": true,
-        "sendNoti": true,
-        "timeToUnsend": 10
-    },
-    "menu": {
-        "autoUnsend": true,
-        "delayUnsend": 10
-    },
-    "sauce": {
-        "SAUCENAO_API": "61e802b1478f8e85198f28ed6ac2de6efe5d0a41"
-    },
-    "shortlink": {
-        "bitlyAPI": "150ef1bc3af86500796d645c86f56766e4802566"
-    },
-    "sing": {
-        "YOUTUBE_API": "AIzaSyB6pTkV2PM7yLVayhnjDSIM0cE_MbEtuvo"
-    },
-    "video": {
-        "YOUTUBE_API": "AIzaSyB6pTkV2PM7yLVayhnjDSIM0cE_MbEtuvo"
-    },
-    "covid": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "hitbutt": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "img": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "linkword": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "sim": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "slap": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "sortword": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    },
-    "teach": {
-        "APIKEY": "MEWbmd1eWVubWFuaDtuZ3V5ZW5tYW5oaWN0QGdtYWlsLmNvbQ"
-    }
+    "version": "1.2.14"
+
 }
