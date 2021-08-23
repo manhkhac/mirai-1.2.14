@@ -1,0 +1,18 @@
+{
+	"version": "2.2.24",
+	"change": ["sim", "img"],
+	"modules": {
+		"commands": {
+			"img": "3.1.2",
+			"linkword": "2.0.9",
+			"meewmeew": "2.2.7",
+			"sim": "4.3.7",
+			"sortword": "1.1.2",
+			"linkword": "2.0.9",
+			"teach": "2.0.6"
+		},
+		"events": {
+			"antiout": "1.1.2"
+		}
+	}
+}
