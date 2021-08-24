@@ -20,11 +20,11 @@ mirai.finishLoadModule=Đã tải thành công %1 module commands và %2 module 
 mirai.foundPathAppstate=Đã tìm thấy file appstate
 mirai.notFoundPathAppstate=Không tìm thấy file appstate
 mirai.checkListGban=Đang kiểm tra danh sách global ban...
-mirai.banDevice=Hiện tại thiết bị của bạn đã bị ban khỏi miraiproject, liên hệ tới facebook https://fb.me/catalizcs để biết thêm thông tin chi tiết hoặc xin key unban, nếu bạn đã có key unban hãy điền vào bên dưới!
+mirai.banDevice=Hiện tại thiết bị của bạn đã bị ban khỏi miraiproject, liên hệ tới facebook https://fb.me/manhict để biết thêm thông tin chi tiết hoặc xin key unban, nếu bạn đã có key unban hãy điền vào bên dưới!
 mirai.keyNotSameFormat=Dữ liệu bạn nhập phải là một dãy số bao gồm 6 chữ số!
 mirai.codeInputExpired=Code bạn nhập không trùng khớp hoặc đã hết hạn!
 mirai.unbanDeviceSuccess=Thiết bị của bạn đã được gỡ ban, hãy khởi động lại để có thể tiếp tục sử dụng
-mirai.userBanned=Bạn đã bị ban khỏi miraiproject vào lúc %1 với lý do: %2. Liên hệ tới facebook https://fb.me/catalizCS để biết thêm chi tiết!
+mirai.userBanned=Bạn đã bị ban khỏi miraiproject vào lúc %1 với lý do: %2. Liên hệ tới facebook https://fb.me/manhict để biết thêm chi tiết!
 mirai.finishCheckListGban=Đã kiểm tra xong danh sách global ban
 mirai.handleListenError=handleListener đã xảy ra một số lỗi không mong muốn, lỗi: %1
 mirai.warningSourceCode=PHÁT HIỆN SOURCE CODE ĐÃ BỊ THAY ĐỔI CẤU TRÚC, HÃY DỪNG LẠI NGAY!
@@ -60,9 +60,8 @@ users.needObject=Phải là một Object
 
 handleCommand.userBanned=Hiện tại bạn đang bị cấm sử dụng bot!\n%1\n%2
 handleCommand.threadBanned=Hiện tại nhóm của bạn đang bị cấm sử dụng bot!\n%1\n%2
-handleCommand.commandNotExist=( \_/)
-( •_•)
-// >🧠  nè lắp vào mà dùng cho bớt óc chó rồi hãy sài bot nha con gà 😏.
+handleCommand.commandNotExist=( \_/)                                                                            ( •_•)                                                                            // >🧠  nè lắp vào mà dùng cho bớt óc chó rồi hãy sài bot nha con gà 😏.                                                         Có phải bạn muốn dùng lệnh "%1" hay không?
+
 # Lệnh bạn sử dụng không tồn tại, có phải là lệnh "%1" hay không?
 handleCommand.commandThreadBanned=Nhóm bạn đã bị cấm sử dụng lệnh "%1"
 handleCommand.commandUserBanned=Bạn đã bị cấm sử dụng lệnh "%1"

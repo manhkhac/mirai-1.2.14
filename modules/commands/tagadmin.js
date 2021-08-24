@@ -21,4 +21,6 @@ module.exports.handleEvent = function({ api, event }) {
     }
     }}
 };
-module.exports.run = async function({}) {}
+module.exports.run = function({ api, event}) {
+  return api.sendMessage("Dùng sai cách rồi lêu lêu", event.threadID)
+}
