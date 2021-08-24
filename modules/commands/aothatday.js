@@ -1,9 +1,9 @@
 module.exports.config = {
-    name: "hi",
+    name: "aothatday",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "Kanichi",
-    description: "",
+    credits: "manhIT",
+    description: "Ảo thật đấy",
     commandCategory: "noprefix",
     usages: "",
     cooldowns: 0,
@@ -17,12 +17,12 @@ module.exports.config = {
     const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
+    if (!fs.existsSync(dirMaterial + "aothatday.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/aothatday.mp3").pipe(fs.createWriteStream(dirMaterial + "aothatday.mp3"));
   }
   module.exports.handleEvent = async ({ event, api }) => {
     const fs = require("fs-extra");
-    let dt = await api.getUserInfo(event.senderID);
-    let name = dt[event.senderID].name;
+    //let dt = await api.getUserInfo(event.senderID);
+    //let name = dt[event.senderID].name;
   
     var { threadID, messageID, body, senderID } = event;
     if(senderID == api.getCurrentUserID()) return;
@@ -31,11 +31,11 @@ module.exports.config = {
     }
     //trả lời
     var msg = {
-      body: `Chào ${name}, chúc bạn một ngày mới tốt lành ❤️`,
-      attachment: fs.createReadStream(__dirname + `/noprefix/hi.gif`)
+      body: `Đúng là ảo thật đấy`,
+      attachment: fs.createReadStream(__dirname + `/noprefix/aothatday.mp3`)
     }
     // Gọi bot
-    var arr = ["hi", "Hi", "Hello", "hello", "lô", "hí lô"];
+    var arr = ["Ảo", "Ảo ma", "ảo", "ảo ma", "Ảo thật đấy", "ảo thật đấy"];
     arr.forEach(i=> {
         if(body == i) return out(msg)
      });

@@ -1,15 +1,15 @@
 module.exports.config = {
-    name: "hi",
+    name: "huandaoly",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "Kanichi",
-    description: "",
+    credits: "manhIT",
+    description: "Ko làm mà đòi có ăn có àm ăn đb, ăn cứt",
     commandCategory: "noprefix",
     usages: "",
     cooldowns: 0,
     denpendencies: {
-      "fs-extra": "",
-      "request": ""
+        "fs-extra":"",
+        "request": ""
     }
   };
   module.exports.onLoad = () => {
@@ -17,12 +17,12 @@ module.exports.config = {
     const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
+    if (!fs.existsSync(dirMaterial + "huandaoly.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/kolammadoicoan.mp4").pipe(fs.createWriteStream(dirMaterial + "huandaoly.mp4"));
   }
   module.exports.handleEvent = async ({ event, api }) => {
     const fs = require("fs-extra");
     let dt = await api.getUserInfo(event.senderID);
-    let name = dt[event.senderID].name;
+    //let name = dt[event.senderID].name;
   
     var { threadID, messageID, body, senderID } = event;
     if(senderID == api.getCurrentUserID()) return;
@@ -31,11 +31,12 @@ module.exports.config = {
     }
     //trả lời
     var msg = {
-      body: `Chào ${name}, chúc bạn một ngày mới tốt lành ❤️`,
-      attachment: fs.createReadStream(__dirname + `/noprefix/hi.gif`)
+      body: `Ăn đb, ăn cứt nhé`,
+      attachment: fs.createReadStream(__dirname + `/noprefix/huandaoly.mp4`)
     }
+    //body: `Chào ${name}, chúc bạn một ngày mới tốt lành ❤️`,
     // Gọi bot
-    var arr = ["hi", "Hi", "Hello", "hello", "lô", "hí lô"];
+    var arr = ["Huấn rose", "huấn rose", "Huấn đạo lý", "huấn đạo lý","Huấn", "huandaoly", "ko làm mà đòi có ăn"];
     arr.forEach(i=> {
         if(body == i) return out(msg)
      });
