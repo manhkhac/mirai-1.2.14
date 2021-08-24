@@ -18,7 +18,7 @@ module.exports.onLoad = function () {
     const { resolve } = global.nodemodule["path"];
     const path = resolve(__dirname, "cache", "shortcutglobal.json");
     const pathGif = resolve(__dirname, "cache", "shortcutGif");
-    const pathMp3 = resolve(__dirname, 'cache', 'shortcutMp3');
+    //const pathMp3 = resolve(__dirname, 'cache', 'shortcutMp3');
     const pathMp4 = resolve(__dirname, 'cache', 'shortcutMp4');
    // const pathJPEG = resolve(__dirname, 'cache', 'shortcutJPEG');
 
@@ -26,7 +26,7 @@ module.exports.onLoad = function () {
 
     if (!existsSync(path)) writeFileSync(path, JSON.stringify([]), "utf-8");
     if (!existsSync(pathGif)) mkdirSync(pathGif, { recursive: true });
-    if (!existsSync(pathMp3)) mkdirSync(pathMp3, { recursive: true });
+    //if (!existsSync(pathMp3)) mkdirSync(pathMp3, { recursive: true });
     if (!existsSync(pathMp4)) mkdirSync(pathMp4, { recursive: true });
     //if (!existsSync(pathJPEG)) mkdirSync(pathJPEG, { recursive: true });
     
@@ -47,9 +47,10 @@ module.exports.handleEvent = async function ({ event, api, Users }) {
         const { resolve } = global.nodemodule["path"];
         const { existsSync, createReadStream } = global.nodemodule["fs-extra"];
         const dataThread = data.find(item => item.input == body);
-        const path = resolve(__dirname, "cache", "shortcutGif", `${dataThread.id}.gif`) || resolve(__dirname, "cache", "shortcutMp3", `${dataThread.id}.mp3`) ||
+        const path = resolve(__dirname, "cache", "shortcutGif", `${dataThread.id}.gif`)  ||
         resolve(__dirname, "cache", "shortcutMp4", `${dataThread.id}.mp4`) || resolve(__dirname, "cache", "shortcutJPEG", `${dataThread.id}.jpeg`);
-        
+        // resolve(__dirname, "cache", "shortcutMp3", `${dataThread.id}.mp3`)
+
         var object, output;
         var output = dataThread.output;
         if (/\{name}/g.test(output)) {
@@ -106,14 +107,15 @@ module.exports.handleReply = async function ({ event, api, handleReply }) {
         }
         case "requireGif": {
             const id = global.utils.randomString(10);
-            if (body.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:gif|GIF|mp4|MP4|mp3|MP3|j?peg|png|jpg)/g)) {
+            if (body.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:gif|GIF|mp4|MP4)/g)) {
                 const pathGif = resolve(__dirname, "cache", "shortcutGif", `${id}.gif`);
-                const pathMp3 = resolve(__dirname, "cache", "shortcutMp3", `${id}.mp3`);
+                //const pathMp3 = resolve(__dirname, "cache", "shortcutMp3", `${id}.mp3`);
                 const pathMp4 = resolve(__dirname, "cache", "shortcutMp4", `${id}.mp4`);
                // const pathJPEG = resolve(__dirname, "cache", "shortcutJPEG", `${id}.jpeg`);
                 try {
-                    await global.utils.downloadFile(body, pathGif) || await global.utils.downloadFile(body, pathMp3) ||  await global.utils.downloadFile(body, pathMp4); 
+                    await global.utils.downloadFile(body, pathGif)  ||  await global.utils.downloadFile(body, pathMp4); 
                     // || await global.utils.downloadFile(body, pathJPEG);
+                    // || await global.utils.downloadFile(body, pathMp3)
                 } catch (e) { return api.sendMessage("「Shortcut」Không thể tải file vì url không tồn tại hoặc bot đã xảy ra vấn đề về mạng!", threadID, messageID); }
             }
             
@@ -169,13 +171,14 @@ module.exports.run = function ({ event, api, args }) {
             else {
                 var n = 1;
                 for (const single of data) {
-                    const path = resolve(__dirname, "cache", "shortcutGif", `${single.id}.gif`) || resolve(__dirname, "cache", "shortcutMp3", `${single.id}.mp3`) || resolve(__dirname, "cache", "shortcutMp4", `${single.id}.mp4`);
+                    const path = resolve(__dirname, "cache", "shortcutGif", `${single.id}.gif`)  || resolve(__dirname, "cache", "shortcutMp4", `${single.id}.mp4`);
                      //|| resolve(__dirname, "cache", "shortcutJPEG", `${single.id}.jpeg`);
+                     //|| resolve(__dirname, "cache", "shortcutMp3", `${single.id}.mp3`)
                     var existPath = false;
                     if (existsSync(path)) existPath = true;
                     array.push(`${n++}/ ${single.input} => ${single.output} (${(existPath) ? "YES" : "NO"})`);
                 }
-                return api.sendMessage(`「Shortcut」Dưới đây là toàn bộ shortcut có:\n[stt]/ [Input] => [Output] (exist gif/mp3/mp4)\n\n${array.join("\n")}`, threadID, messageID);
+                return api.sendMessage(`「Shortcut」Dưới đây là toàn bộ shortcut có:\n[stt]/ [Input] => [Output] (exist gif/mp4)\n\n${array.join("\n")}`, threadID, messageID);
             }
         }
 
