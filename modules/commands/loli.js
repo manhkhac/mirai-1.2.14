@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "HTHB",
   description: "FBI =))",
-  commandCategory: "img",
+  commandCategory: "random-img",
   usages: "",
   cooldowns: 3
 };
