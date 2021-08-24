@@ -1,3 +1,4 @@
+
 module.exports.config = {
 	name: "tikvideo",
 	version: "1.0.0",
