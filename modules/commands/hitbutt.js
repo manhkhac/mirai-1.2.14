@@ -5,12 +5,12 @@
 
 module.exports.config = {
     name: "hitbutt",
-    version: "2.2.2",
+    version: "2.0.0",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
     commandCategory: "general",
-    usages: "[@tag]",
+    usages: "[tag]",
     cooldowns: 5,
     dependencies: {
         "axios": "",
@@ -38,16 +38,26 @@ async function makeImage({ one, two }) {
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let hit_butt_img = await jimp.read(__root + "/hit_butt.png");
-    let pathImg = __root + `/hit_butt_${one}_${two}.png`;   
-    let avatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`)).data;    
-    let avatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`)).data;   
-    let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
-    let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
+    let pathImg = __root + `/hit_butt_${one}_${two}.png`;
+    let avatarOne = __root + `/avt_${one}.png`;
+    let avatarTwo = __root + `/avt_${two}.png`;
+    
+    let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
+    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
+    
+    let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
+    fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
+    
+    let circleOne = await jimp.read(await circle(avatarOne));
+    let circleTwo = await jimp.read(await circle(avatarTwo));
     hit_butt_img.resize(500, 500).composite(circleOne.resize(130, 130), 225, 5).composite(circleTwo.resize(120, 120), 352, 220);
     
     let raw = await hit_butt_img.getBufferAsync("image/png");
     
     fs.writeFileSync(pathImg, raw);
+    fs.unlinkSync(avatarOne);
+    fs.unlinkSync(avatarTwo);
+    
     return pathImg;
 }
 async function circle(image) {
@@ -61,9 +71,9 @@ module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);
-    if (!mention[0]) return api.sendMessage("Vui lòng tag 1 người.", threadID, messageID);
+    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
         const one = senderID, two = mention[0];
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Hư nè.. ", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Hư nè.. " + event.mentions[mention[0]].replace(/@/g, ""), attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }
