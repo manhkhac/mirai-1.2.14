@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "osu2",
+	name: "osu!",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "lãnh hàn seo la",
