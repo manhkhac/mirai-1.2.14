@@ -12,7 +12,7 @@ module.exports.config = {
     }
 };
 module.exports.run = async function ({ api, args, event }) {
-  const lyricsFinder = reqglobal.nodemoduleuire['lyrics-finder'];
+  const lyricsFinder = global.module['lyrics-finder'];
     let lyrics = await lyricsFinder(args.join(" ")) || "Not Found!";
     console.log(lyrics);
 api.sendMessage(`${lyrics}`, event.threadID, event.messageID);
