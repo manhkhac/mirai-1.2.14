@@ -1,4 +1,3 @@
-const fs = global.nodemodule["fs-extra"];
 module.exports.config = {
   name: "goibot",
   version: "1.0.1",
@@ -10,8 +9,6 @@ module.exports.config = {
   cooldowns: 5,
 };
 module.exports.handleEvent = function({ api, event }) {
-  
-
   var { threadID, messageID, body, senderID } = event;
   if(senderID == api.getCurrentUserID()) return;
   function out(data){
@@ -25,7 +22,6 @@ module.exports.handleEvent = function({ api, event }) {
   ar.forEach(i=> {
   	if(body == i) return out(rand)
    });
-
 }
 
 module.exports.run = function({ api, event}) { 

@@ -5,7 +5,7 @@ module.exports.config = {
 	credits: "CatalizCS",
 	description: "lấy ảnh gif",
 	commandCategory: "Media",
-	usages: "gif bomman",
+	usages: "[text]",
 	cooldowns: 5,
 	dependencies: {"request":""},
 	envConfig: {
@@ -13,12 +13,13 @@ module.exports.config = {
 	}
 };
 
-module.exports.run = function({ api, event, args }) {
+module.exports.run = function({ api, event, args}) {
     const request = global.nodemodule["request"];
      const fs = global.nodemodule["fs-extra"];
-	var { threadID, messageID } = event
+	var { threadID, messageID } = event;
+	var key = global.configModule.gif.TENOR;
 	if (!args[0]) return api.sendMessage("Không tìm thấy tag bạn nhập", threadID, messageID);
-	return request(`https://api.tenor.com/v1/random?key=${__GLOBAL.gif.TENOR}&q=${args[0]}&limit=1`, (err, response, body) => {
+	return request(`https://api.tenor.com/v1/random?key=${key}&q=${args[0]}&limit=1`, (err, response, body) => {
 		if (err) throw err;
 		var string = JSON.parse(body);
 		var stringURL = string.results[0].media[0].tinygif.url;

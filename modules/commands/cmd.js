@@ -81,12 +81,14 @@ module.exports.run = function ({ event, args, api, getText }) {
 
     switch (args[0]) {
         case "load":
-            case "-l": {
+            case "-l":
+             case "l": {
             if (moduleList.length == 0) return api.sendMessage(getText("missingInput"), threadID, messageID);
             else return this.loadCommand({ moduleList, threadID, messageID, getText });
         }
         case "unload":
-            case "-ul": {
+            case "-ul":
+             case "ul": {
             if (moduleList.length == 0) return api.sendMessage(getText("missingInput"), threadID, messageID);
             else return this.unloadModule({ moduleList, threadID, messageID, getText });
         }
