@@ -1,6 +1,6 @@
 module.exports.config = {
 	name: "globalshort",
-	version: "1.0.0",
+	version: "1.0.1",
 	hasPermssion: 2,
 	credits: "CatalizCS",
 	description: "Phiên bản xịn hơn của short",
@@ -47,9 +47,7 @@ module.exports.handleEvent = async function ({ event, api, Users }) {
         const { resolve } = global.nodemodule["path"];
         const { existsSync, createReadStream } = global.nodemodule["fs-extra"];
         const dataThread = data.find(item => item.input == body);
-        const path = resolve(__dirname, "cache", "shortcutGif", `${dataThread.id}.gif`)  ||
-        resolve(__dirname, "cache", "shortcutMp4", `${dataThread.id}.mp4`) || resolve(__dirname, "cache", "shortcutJPEG", `${dataThread.id}.jpeg`);
-        // resolve(__dirname, "cache", "shortcutMp3", `${dataThread.id}.mp3`)
+        const path = resolve(__dirname, "cache", "shortcutGif", `${dataThread.id}.gif`)  || resolve(__dirname, "cache", "shortcutMp4", `${dataThread.id}.mp4`) 
 
         var object, output;
         var output = dataThread.output;

@@ -33,8 +33,8 @@ async function makeImage({ one, two }) {
 
     let hiepdam_image = await jimp.read(__root + "/hiepdam.png");
     let pathImg = __root + `/hiepdam_${one}_${two}.png`;
-    let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}`)).data;    
-    let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}`)).data;    
+    let avatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).data;    
+    let avatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).data;    
     let circleOne = await jimp.read(await circle(Buffer.from(avatarOne, 'utf-8')));
     let circleTwo = await jimp.read(await circle(Buffer.from(avatarTwo, 'utf-8')));
     damdit_image.composite(circleOne.resize(250, 250), 171, 187).composite(circleTwo.resize(0, 0), 0, 0);
