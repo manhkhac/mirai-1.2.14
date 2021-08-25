@@ -21,8 +21,7 @@ module.exports.config = {
   }
   module.exports.handleEvent = async ({ event, api }) => {
     const fs = require("fs-extra");
-    //let dt = await api.getUserInfo(event.senderID);
-    //let name = dt[event.senderID].name;
+    //let name = await Users.getNameUser(event.senderID);
   
     var { threadID, messageID, body, senderID } = event;
     if(senderID == api.getCurrentUserID()) return;
