@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
-	commandCategory: "other",
+	commandCategory: "news",
 	cooldowns: 5,
 	dependencies: {
 		"axios": ""

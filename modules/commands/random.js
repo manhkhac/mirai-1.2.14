@@ -39,6 +39,6 @@ module.exports.run = function({ api, event, args, client, __GLOBAL }) {
     var x = args[0];
     var y = args[args.length-1];
 	var rd = Math.floor(Math.random() * Number(y)) + Number(x)
-return api.sendMessage(String(rd), event.threadID, event.messageID)
+	return api.sendMessage(String(rd), event.threadID, event.messageID)
 
-    }
+}

@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "meme",
-	version: "1.0.0",
+	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Mirai Team",
+	credits: "manhIT",
 	description: "Random ảnh chế :D",
 	commandCategory: "random-img",
 	cooldowns: 1,
