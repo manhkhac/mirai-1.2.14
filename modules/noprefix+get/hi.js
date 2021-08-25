@@ -20,9 +20,11 @@ module.exports.onLoad = () => {
   if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
 }
 module.exports.handleEvent = async ({ event, api }) => {
-  const fs = require("fs-extra");
-  let dt = await api.getUserInfo(event.senderID);
-  let name = dt[event.senderID].name;
+  const fs = global.nodemodule["fs-extra"];
+  //let dt = await api.getUserInfo(event.senderID);
+  //let name = dt[event.senderID].name;
+  
+  let name = await Users.getNameUser(event.senderID)
 
   var { threadID, messageID, senderID } = event;
   if (senderID == api.getCurrentUserID()) return;
