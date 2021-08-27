@@ -13,12 +13,14 @@ module.exports.config = {
 module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
   var tl = ['21%', '67%', '19%', '37%', '17%', '96%', '52%', '62%', '76%', '83%', '100%', '99%', "0%", "48%", `1%`, `10%`, `99,9%`];
   var tle = tl[Math.floor(Math.random() * tl.length)];
-  let data = await api.getUserInfo(event.senderID);
-  let name = await data[event.senderID].name;
+  //let data = await api.getUserInfo(event.senderID);
+  //let name = await data[event.senderID].name;
+
+  let name = await Users.getNameUser(event.senderID);
+
   var msg = {
     body: `Chúc mừng bạn ${name}. Bot đã dự đoán tỉ lệ có người yêu của bạn trong năm nay là ${tle} ❤❤`
     
   }
   api.sendMessage(msg, event.threadID, event.messageID);
 }
-//attachment: fs.createReadStream(__dirname + `/cache/chucmung.gif`)

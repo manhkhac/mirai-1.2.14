@@ -1,8 +1,8 @@
 module.exports.config = {
   name: "adbot",
-  version: "1.0.0",
+  version: "1.0.3",
   hasPermssion: 0,
-  credits: "HelyT",
+  credits: "manhIT",
   description: "Kiểm tra thông tin ngơời dùng.",
   commandCategory: "Info",
   usages: "",

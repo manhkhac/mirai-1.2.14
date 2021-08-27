@@ -10,9 +10,9 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-  const axios = require('axios');
-  const request = require('request');
-  const fs = require("fs");
+  const request = global.nodemodule["request"];
+	const fs = global.nodemodule["fs-extra"];
+	const axios = global.nodemodule["axios"];
   const { threadID, messageID } = event;
   var type;
   switch (args[0]) {
@@ -32,14 +32,15 @@ module.exports.run = async function({ api, event, args }) {
       type = "marine";
       break;
     default:
-      return api.sendMessage(`Sai định dạng!`, threadID, messageID);
+      return api.sendMessage(`Wrong format! Use: hololive [rushia/pekora/coco/gura/marine]`, threadID, messageID);
       break;
   }
   axios.get(`https://img-hololive-api.up.railway.app/${type}`).then(res => {
     let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
     let callback = function() {
       api.sendMessage({
-        body: "Bảo gà;))",
+        body: "Holo ;))",
+        
         attachment: fs.createReadStream(__dirname + `/cache/${type}.${ext}`)
       }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${type}.${ext}`), event.messageID);
     };

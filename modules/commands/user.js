@@ -134,6 +134,7 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 	const type = args[0];
 	var targetID = String(args[1]);
 	var reason = (args.slice(2, args.length)).join(" ") || null;
+  let content = args.slice(1, args.length);
 
 	if (isNaN(targetID)) {
 		const mention = Object.keys(event.mentions);
@@ -185,8 +186,8 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 
 		case "search":
 		case "-s": {
-			const contentJoin = reason || "";
-			const getUsers = (await Users.getAll(['userID', 'name'])).filter(item => !!item.name);
+			const contentJoin = content.join(" ");
+			const getUsers = (await Users.getAllData(['userID', 'name'])).filter(item => !!item.name);
 			var matchUsers = [], a = '', b = 0;
 			getUsers.forEach(i => {
 				if (i.name.toLowerCase().includes(contentJoin.toLowerCase())) {

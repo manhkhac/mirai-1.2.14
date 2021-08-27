@@ -17,10 +17,11 @@ module.exports.run = async ({ api, event, args }) => {
 
     case "stop":
     case "off":
-      return api.sendMessage(`Goodbye...`, event.threadID, () => api.listenMqtt().stopListening());
+      return api.sendMessage(`Goodbye...\nHẹn gặp lại bạn sau 10 phút nữa!`, event.threadID, () => api.listenMqtt().stopListening());
 
     case "start":
     case "on":
+     return api.sendMessage(`Successful start...\nBạn có thể dùng bot ngay bây giờ`, event.threadID,
       console.log(event);
       break;
 

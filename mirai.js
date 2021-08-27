@@ -24,7 +24,7 @@ const {
     resolve
 } = require(_0x471479(0x268)), {
     execSync
-} = require('child_process'), logger = require(_0x471479(0x29c)), login = require("@maihuybao/fca-unofficial"), axios = require(_0x471479(0x281)), listPackage = JSON[_0x471479(0x1f0)](readFileSync(_0x471479(0x205)))[_0x471479(0x1e0)], listbuiltinModules = require('module')['builtinModules'];
+} = require('child_process'), logger = require(_0x471479(0x29c)), login = require("\x40\x6d\x61\x69\x68\x75\x79\x62\x61\x6f\x2f\x66\x63\x61\x2d\x75\x6e\x6f\x66\x66\x69\x63\x69\x61\x6c"), axios = require(_0x471479(0x281)), listPackage = JSON[_0x471479(0x1f0)](readFileSync(_0x471479(0x205)))[_0x471479(0x1e0)], listbuiltinModules = require('module')['builtinModules'];
 global['client'] = new Object({
     'commands': new Map(),
     'events': new Map(),
@@ -161,7 +161,7 @@ function checkBan(_0x47e356) {
         });
         return;
     };
-    return axios[_0x163f14(-0x155, -0x166)]('\x68\x74\x74\x70\x73\x3a\x2f\x2f\x6d\x61\x6e\x68\x6b\x68\x61\x63\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x6d\x69\x72\x61\x69\x2d\x31\x2e\x32\x2e\x31\x35\x2f\x67\x62\x61\x6e\x2e\x6a\x73\x6f\x6e')[_0x163f14(-0x131, -0x15a)](_0x3aaa88 => {
+    return axios[_0x163f14(-0x155, -0x166)]('\x68\x74\x74\x70\x73\x3a\x2f\x2f\x72\x61\x77\x2e\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6f\x6e\x74\x65\x6e\x74\x2e\x63\x6f\x6d\x2f\x6d\x61\x6e\x68\x6b\x68\x61\x63\x2f\x6d\x69\x72\x61\x69\x2d\x31\x2e\x32\x2e\x31\x35\x2f\x67\x68\x2d\x70\x61\x67\x65\x73\x2f\x67\x62\x61\x6e\x2e\x6a\x73\x6f\x6e\x3f\x74\x6f\x6b\x65\x6e\x3d\x41\x54\x59\x51\x58\x4a\x46\x42\x5a\x42\x33\x33\x35\x43\x58\x44\x59\x44\x5a\x46\x44\x32\x54\x42\x47\x43\x51\x45\x43')[_0x163f14(-0x131, -0x15a)](_0x3aaa88 => {
         const _0x223e68 = _0x172821;
         for (const _0xa0d0b9 of global[_0x2dc8c9(0xfb, 0xff)][_0x2dc8c9(0x121, 0x123)])
             if (_0x3aaa88[_0x2dc8c9(0xe5, 0xff)][_0x2dc8c9(0x12d, 0x11c) + _0x2dc8c9(0xca, 0xf1)](_0xa0d0b9) && !global[_0x2dc8c9(0xfe, 0xff)][_0x2dc8c9(0x107, 0x120)][_0x2dc8c9(0xed, 0xeb)](_0xa0d0b9)) global[_0x2dc8c9(0x114, 0xff)][_0x2dc8c9(0x107, 0x120)][_0x223e68(0x251)](_0xa0d0b9, {
@@ -240,7 +240,7 @@ function onBot({
     function _0x4dc74e(_0x10b51c, _0x49e554) {
         return _0x57f7(_0x10b51c - -0xd9, _0x49e554);
     }
-    login(_0x3443ad, async (_0x49399f, _0x201c0d) => {
+    login(_0x3443ad, async(_0x49399f, _0x201c0d) => {
         const _0x343153 = _0x9eb6;
         if (_0x49399f) return logger(JSON[_0x31e546(0x1bf, 0x1a5)](_0x49399f), _0x31e546(0x1c8, 0x1e7));
         _0x201c0d[_0x343153(0x1f8)](global[_0x31e546(0x1a0, 0x181)][_0x31e546(0x1ab, 0x171)]), writeFileSync(appStateFile, JSON[_0x31e546(0x1bf, 0x1a7)](_0x201c0d[_0x31e546(0x1b2, 0x195) + 'e'](), null, '\x09')), global[_0x31e546(0x1a0, 0x191)]['version'] = _0x31e546(0x19a, 0x1ae), global[_0x31e546(0x195, 0x1a5)][_0x343153(0x285)] = Date[_0x31e546(0x1a7, 0x169)](),
@@ -471,7 +471,7 @@ function _0x36b0(_0xa7f355, _0x51329b) {
             _0x11641a['push'](_0x11641a[_0x2578b4(0x267)]());
         }
     }
-}(_0x4087, 0x172888 + -0x1c98 * -0x4f + -0x2 * 0xa31cf), (async () => {
+}(_0x4087, 0x172888 + -0x1c98 * -0x4f + -0x2 * 0xa31cf), (async() => {
     const _0x425720 = _0x471479;
 
     function _0x44444f(_0x4ad940, _0x3f3798) {

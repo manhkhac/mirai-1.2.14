@@ -60,7 +60,7 @@ users.needObject=Phải là một Object
 
 handleCommand.userBanned=Hiện tại bạn đang bị cấm sử dụng bot!\n%1\n%2
 handleCommand.threadBanned=Hiện tại nhóm của bạn đang bị cấm sử dụng bot!\n%1\n%2
-handleCommand.commandNotExist=( \_/)                                                                            ( •_•)                                                                            // >🧠  nè lắp vào mà dùng cho bớt óc chó rồi hãy sài bot nha con gà 😏.                                                         Có phải bạn muốn dùng lệnh "%1" hay không?
+handleCommand.commandNotExist=( \_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.                                                         Lệnh bạn sử dụng không tồn tại, có phải là lệnh "%1" hay không?
 
 # Lệnh bạn sử dụng không tồn tại, có phải là lệnh "%1" hay không?
 handleCommand.commandThreadBanned=Nhóm bạn đã bị cấm sử dụng lệnh "%1"

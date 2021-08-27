@@ -47,7 +47,7 @@ async function clone() {
 	console.log('-> Đang tải bản cập nhật mới');
 	const response = await axios({
 		method: 'GET',
-		url: "https://github.com/miraiPr0ject/miraiv2/archive/refs/heads/main.zip",
+		url: "https://github.com/manhkhac/miraiv2/archive/refs/heads/main.zip",
 		responseType: "stream"
 	});
 
@@ -72,7 +72,7 @@ function unzip() {
 
 function install () {
     console.log('-> Đang cài đặt bản cập nhật mới');
-    copySync(process.cwd() + '/tmp/main/miraiv2-main/', './');
+    copySync(process.cwd() + '/tmp/main/mirai-1.2.15-main/', './');
     return;
 }
 

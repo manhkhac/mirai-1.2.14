@@ -19,6 +19,13 @@ module.exports.run = async ({ api, event, args }) => {
   if (args.length == 0) return api.sendMessage(`Bạn có thể dùng:\nbox emoji [icon]\n\nbox name [tên box cần đổi]\n\nbox image [rep một ảnh bất kì cần đặt thành ảnh box]\n\nbox admin [tag] => nó sẽ đưa qtv cho người được tag\n\nbox info => Toàn bộ thông tin của nhóm !
 `, event.threadID, event.messageID);
 
+  if (args[0] == "id") {
+      return api.sendMessage(`${event.threadID}`, event.threadID, event.messageID);
+  }
+
+  if (args[0] == "box") {
+      return api.sendMessage(`${event.threadName}`, event.threadID, event.messageID);
+  }
 
   if (args[0] == "name") {
     var content = args.join(" ");

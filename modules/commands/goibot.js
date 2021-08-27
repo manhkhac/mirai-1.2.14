@@ -15,10 +15,10 @@ module.exports.handleEvent = function({ api, event }) {
   	api.sendMessage(data, threadID, messageID)
   }
   //trả lời
-  var tl = ["chào bạn tôi là bot", "bạn gọi tôi có việc gì?", "tôi yêu bạn vai lon", "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?", "Sử dụng callad để liên lạc với admin!","Dạ, có em đây, yêu em không mà gọi <3. hmm..."];
+  var tl = ["chào bạn tôi là bot", "bạn gọi tôi có việc gì?", "tôi yêu bạn vai lon", "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?", "Sử dụng callad để liên lạc với admin!","Dạ, có em đây, yêu em không mà gọi <3. hmm...","[Góc Donate] Bạn có thể donate cho tôi chứ?","Bot yêu em ❤"];
   var rand = tl[Math.floor(Math.random() * tl.length)];
   // Gọi bot
-  var ar = ["bot","Bot","Bot ơi", "bot ơi"];
+  var ar = ["bot","Bot","bot ơi","Bot ơi","yêu bot","Yêu bot"];
   ar.forEach(i=> {
   	if(body == i) return out(rand)
    });
