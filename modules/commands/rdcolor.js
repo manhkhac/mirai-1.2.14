@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "rdcolor",
-	version: "1.0.0",
+	version: "1.0.7",
 	hasPermssion: 0,
-	credits: "manhIT",
+	credits: "ManhG",
 	description: "Đổi chủ đề box chat ngẫu nhiên",
 	commandCategory: "Group",
 	usages: "",

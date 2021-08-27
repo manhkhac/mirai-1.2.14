@@ -1,11 +1,11 @@
 module.exports.config = {
   name: "box",
-  version: "1.0.0",
+  version: "1.0.3",
   hasPermssion: 0,
   credits: "HungCho (Khánh Milo Fix)",
   description: "Các cài đặt của nhóm chat.",
   commandCategory: "group",
-  usages: "[name/emoji/admin/image/info]",
+  usages: "[id/name/emoji/admin/image/info]",
   cooldowns: 1,
   dependencies: {
     "request": "",
@@ -23,11 +23,11 @@ module.exports.run = async ({ api, event, args }) => {
       return api.sendMessage(`${event.threadID}`, event.threadID, event.messageID);
   }
 
-  if (args[0] == "box") {
-      return api.sendMessage(`${event.threadName}`, event.threadID, event.messageID);
+  if (args[0] == "name") {
+      return api.sendMessage(`${threadInfo.threadName}`, event.threadID, event.messageID);
   }
 
-  if (args[0] == "name") {
+  if (args[0] == "setname") {
     var content = args.join(" ");
     var c = content.slice(4, 99) || event.messageReply.body;
     api.setTitle(`${c} `, event.threadID);

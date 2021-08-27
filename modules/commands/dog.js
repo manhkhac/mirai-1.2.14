@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "dog",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "manhIT",
+	credits: "manhNK",
 	description: "Xem Boss",
 	commandCategory: "random-img",
 	usages: "[Text]",

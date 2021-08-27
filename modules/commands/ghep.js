@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "ghep",
-    version: "1.0.1",
+    version: "1.0.2",
     hasPermssion: 0,
-    credits: "CatalizCS",
+    credits: "CatalizCS fix by ManhNK",
     description: "Ghép đôi với những người trong nhóm",
     commandCategory: "roleplay",
     cooldowns: 5,

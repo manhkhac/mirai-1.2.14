@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "setexp",
-	version: "1.0.0",
+	version: "1.0.5",
 	hasPermssion: 2,
-	credits: "manhIT",
+	credits: "manhG",
 	description: "Điều chỉnh thông tin của người dùng",
 	commandCategory: "system",
 	usages: "[add/set/clean] [Số exp] [Tag người dùng]",

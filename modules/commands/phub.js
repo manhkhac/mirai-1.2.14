@@ -54,10 +54,10 @@ module.exports.run = async function({ api, event, args, Users }) {
     //let name = (await api.getUserInfo(senderID))[senderID].name;
     let name = await Users.getNameUser(event.senderID);
     if (!text) return api.sendMessage("Nhập nội dung comment trên pỏnhub", threadID, messageID);
-    //let avatarUser = __root + `/avt${mention}.png`;
+    let avatarUser = __root + `/avt_${avatar}.png`;
     let getAvatar = (await axios.get(`https://graph.facebook.com/${avatar}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
     let getPorn = (await axios.get(`https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/img/phub.png`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatar, Buffer.from(getAvatar, 'utf-8'));
+    fs.writeFileSync(avatarUser, Buffer.from(getAvatar, 'utf-8'));
     fs.writeFileSync(pathImg, Buffer.from(getPorn, 'utf-8'));
     let image = await loadImage(avatar);
     let baseImage = await loadImage(pathImg);

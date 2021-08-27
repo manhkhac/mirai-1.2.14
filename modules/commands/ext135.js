@@ -1,33 +1,24 @@
-/**
- * @author ProCoderMew
- * @warn Do not edit code or edit credits
- */
-
 module.exports.config = {
-    name: "hitbutt",
-    version: "2.0.1",
+    name: "tromcho",
+    version: "1.0.5",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "HungCatMoi (ManhG fix)",
     description: "",
-    commandCategory: "general",
+    commandCategory: "Game",
     usages: "[tag]",
-    cooldowns: 5,
     dependencies: {
-        "axios": "",
-        "fs-extra": "",
         "path": "",
         "jimp": ""
-    }
+    },
+    cooldowns: 10
 };
 
-module.exports.onLoad = async() => {
-    const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { downloadFile } = global.utils;
+module.exports.onLoad = () => {
+    const fs = global.nodemodule["fs-extra"];
+    const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'hit_butt.png');
-    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/img/hitbutt.png", path);
+    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
+    if (!fs.existsSync(dirMaterial + "tromcho.png")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/img/ext135.png").pipe(fs.createWriteStream(dirMaterial + "tromcho.png"));
 }
 
 async function makeImage({ one, two }) {
@@ -37,8 +28,8 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let hit_butt_img = await jimp.read(__root + "/hit_butt.png");
-    let pathImg = __root + `/hit_butt_${one}_${two}.png`;
+    let tromcho_image = await jimp.read(__root + "/tromcho.png");
+    let pathImg = __root + `/tromcho${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
 
@@ -50,9 +41,9 @@ async function makeImage({ one, two }) {
 
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    hit_butt_img.resize(500, 500).composite(circleOne.resize(130, 130), 225, 5).composite(circleTwo.resize(120, 120), 352, 220);
+    tromcho_image.composite(circleOne.resize(50, 50), 234, 38).composite(circleTwo.resize(90, 90), 50, 234);
 
-    let raw = await hit_butt_img.getBufferAsync("image/png");
+    let raw = await tromcho_image.getBufferAsync("image/png");
 
     fs.writeFileSync(pathImg, raw);
     fs.unlinkSync(avatarOne);
@@ -75,6 +66,9 @@ module.exports.run = async function({ event, api, args }) {
         two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Hư nè.. ", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({
+            body: "M coi chừng t xích m lại nhé sủa cl! 😈😈 ",
+            attachment: fs.createReadStream(path)
+        }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "nguquahtrua",
-    version: "1.0.8",
+    version: "1.1.1",
     hasPermssion: 0,
-    credits: "manhIT",
+    credits: "ManhG",
     description: "cái loại ngủ quá giờ trưa đéo bao giờ khá lên được",
     commandCategory: "noprefix",
     usages: "[ngủ quá giờ trưa/huấn rose]",
@@ -34,7 +34,7 @@ module.exports.handleEvent = async({ event, api, Users }) => {
             attachment: fs.createReadStream(__dirname + `/noprefix/nguquagiotrua.mp3`)
         }
         // Gọi bot
-    var arr = ["huấn rose", "Huấn rose", "ngủ quá giờ trưa", "Ngủ quá giờ trưa","nguquagiotrua","Huanrose","huanrose","nguquahtrua","nguquagiotrua","Nguquagiotrua","Nguquahtrua"];
+    var arr = ["huấn rose", "Huấn rose", "ngủ quá giờ trưa", "Ngủ quá giờ trưa", "nguquagiotrua", "Huanrose", "huanrose", "nguquahtrua", "nguquagiotrua", "Nguquagiotrua", "Nguquahtrua"];
     arr.forEach(i => {
         if (body == i) return out(msg)
     });

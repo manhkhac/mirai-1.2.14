@@ -10,12 +10,7 @@ module.exports.config = {
 	dependencies: {
 		"amlich":"",
 		"node-fetch":""
-		} //Liệt kê các package module ở ngoài tại đây để khi load lệnh nó sẽ tự động cài!
-	// Info là phần chi tiết thêm của cách sử dụng lệnh
-	// Key: Từ khoá thuộc trong usages
-	// prompt: Chi tiết dữ liệu đầu vào của key
-	// type: Định dạng dữ liệu đầu vào của key
-	// example: Ví dụ ¯\_(ツ)_/¯ 
+		}
 };
 
 module.exports.run = async({ api, event, args }) =>{

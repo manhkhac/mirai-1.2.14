@@ -1,8 +1,8 @@
 module.exports.config = {
   name: "banned",
-  version: "1.0.0",
+  version: "1.0.3",
   hasPermssion: 2,
-  credits: "CatalizCS",
+  credits: "CatalizCS (ManhNK mod)",
   description: "Xem danh sách ban của nhóm hoặc của người dùng",
   commandCategory: "admin",
   usages: "[thread/user]",
@@ -11,8 +11,8 @@ module.exports.config = {
 module.exports.handleReply = async function({ api, args, Users, handleReply, event, Threads }) {
 
   const { threadID, messageID } = event;
-  const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
+  //const moment = require("moment-timezone");
+ // const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
   if (parseInt(event.senderID) !== parseInt(handleReply.author)) return;
   var myString = handleReply.listBanned[event.body - 1];
   var uidx = myString.replace(/\D/g, '');

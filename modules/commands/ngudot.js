@@ -2,7 +2,7 @@ module.exports.config = {
     name: "ngudot",
     version: "1.0.3",
     hasPermssion: 0,
-    credits: "manhIT",
+    credits: "ManhG",
     description: "ngu dot (Tiến bịp)",
     commandCategory: "noprefix",
     usages: "[ngudot/dốt/ngu dốt]",
@@ -34,7 +34,7 @@ module.exports.handleEvent = async({ event, api }) => {
             attachment: fs.createReadStream(__dirname + `/noprefix/ngudot.mp4`)
         }
         // Gọi bot
-    var arr = ["ngu dot","Ngu dot","ngu dốt","Ngu dốt", "ngu ngốc","Ngu ngốc", "dốt","Dốt", "ngudot", "ngu dốt vcl","Ngudot"];
+    var arr = ["ngu dot", "Ngu dot", "ngu dốt", "Ngu dốt", "ngu ngốc", "Ngu ngốc", "dốt", "Dốt", "ngudot", "ngu dốt vcl", "Ngudot"];
     arr.forEach(i => {
         if (body == i) return out(msg)
     });

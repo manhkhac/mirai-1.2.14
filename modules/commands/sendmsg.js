@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "sendmsg",
-	version: "1.0.0",
+	version: "1.0.7",
 	hasPermssion: 2,
-	credits: "manhIT",
+	credits: "manhG",
 	description: "Gửi tin hắn đến người dùng(user)/nhóm(thread) bằng ID!",
 	commandCategory: "Admin",
 	usages: "ID [Text]",

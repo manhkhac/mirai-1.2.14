@@ -2,7 +2,7 @@
     name: "resetexp",
     version: "1.0.0",
     hasPermssion: 1,
-    credits: "manhIT",
+    credits: "manhG",
     description: "Reset số exp của cả nhóm về 0",
     commandCategory: "group",
     usages: "[cc], [del], [all]",

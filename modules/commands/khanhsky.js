@@ -1,7 +1,5 @@
 module.exports.config = {
-
 	name: "khanhsky",
-
 	version: "1.0.1",
 	hasPermssion: 0,
 	credits: "MewMew mod By hungdz30cm",

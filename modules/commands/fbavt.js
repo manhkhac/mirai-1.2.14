@@ -2,7 +2,7 @@ module.exports.config = {
   name: "fbavt",
   version: "1.0.2",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "Convert by ManhG",
   description: "Xem ảnh avt của user/thread",
   commandCategory: "info",
   usages: "[user/box]",

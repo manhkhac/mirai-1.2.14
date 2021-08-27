@@ -7,7 +7,7 @@ module.exports.config = {
     name: "alime",
     version: "1.1.2",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "ProCoderMew fix by ManhNK",
     description: "alime sfw và cả alime nsfw :)",
     commandCategory: "nsfw",
     usages: "[tag]",
@@ -17,7 +17,7 @@ module.exports.config = {
         "fs-extra": "",
         "path": ""
     }
-};
+}
 
 module.exports.onLoad = async function () {
     const { resolve } = global.nodemodule["path"];

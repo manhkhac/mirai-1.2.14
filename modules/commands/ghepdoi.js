@@ -2,7 +2,7 @@ module.exports.config = {
   name: "ghepdoi",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "NTKhang fix by ManhNK",
   description: "Ghep doi ngau nhien",
   commandCategory: "roleplay",
   usages: "ghepdoi",

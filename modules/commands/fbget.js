@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "fbget",
 	version: "0.0.1",
 	hasPermssion: 0,
-	credits: "Lợi",
+	credits: "Lợi fix by ManhNK",
 	description: "fbget mp4 --- fbget mp3",
 	commandCategory: "media",
 	usages: "fbget mp3/mp4 [link]",

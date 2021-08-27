@@ -1,8 +1,8 @@
 module.exports.config = {
   name: "aothatday",
-  version: "1.0.1",
+  version: "1.0.2",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "manhG",
   description: "Ảo thật đấy",
   commandCategory: "noprefix",
   usages: "",

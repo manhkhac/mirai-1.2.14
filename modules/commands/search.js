@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "search",
-    version: "1.0.0",
+    version: "1.0.5",
     hasPermssion: 0,
-    credits: "CatalizCS",
+    credits: "CatalizCS (ManhG-fix) ",
     description: "Tìm kiếm kết quả trên google!",
     commandCategory: "info",
     usages: "search [Text]",

@@ -3,7 +3,7 @@ module.exports.config = {
   name: "trandan",
   version: "1.0.2",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "manhG",
   description: "Đạo phật của Trần dần",
   commandCategory: "Noprefix",
   usages: "[trandan/amen]",

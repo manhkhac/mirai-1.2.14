@@ -1,35 +1,35 @@
 module.exports.config = {
-    name: "hiepdam",
-    version: "2.2.2",
+    name: "choigai",
+    version: "1.0.0",
     hasPermssion: 0,
-    credits: "MiraiTeam fix by ManhNK",
-    description: "",
-    commandCategory: "game",
-    usages: "[@tag]",
-    cooldowns: 10,
+    credits: "DungUwU",
+    description: "Chơi gái với 1 ai đó",
+    commandCategory: "Game",
+    usages: "[tag]",
     dependencies: {
         "path": "",
         "jimp": ""
-    }
+    },
+    cooldowns: 10
 };
 
-module.exports.onLoad = async() => {
+module.exports.onLoad = () => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/cache/canvas/`;
     if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "hiepdam.png")) request("https://i.imgur.com/VrkcjC7.jpg").pipe(fs.createWriteStream(dirMaterial + "hiepdam.png"));
+    if (!fs.existsSync(dirMaterial + "choigai.png")) request("https://i.imgur.com/A7T04KJ.jpg").pipe(fs.createWriteStream(dirMaterial + "choigai.png"));
 }
 
 async function makeImage({ one, two }) {
     const fs = global.nodemodule["fs-extra"];
-    const path = global.nodemodule["path"];
     const axios = global.nodemodule["axios"];
+    const path = global.nodemodule["path"];
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let hiepdam_image = await jimp.read(__root + "/hiepdam.png");
-    let pathImg = __root + `/hiepdam_${one}_${two}.png`;
+    let choigai_image = await jimp.read(__root + "/choigai.png");
+    let pathImg = __root + `/choigai_${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
 
@@ -41,10 +41,10 @@ async function makeImage({ one, two }) {
 
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
+    choigai_image.composite(circleOne.resize(150, 150), 56, 164).composite(circleTwo.resize(150, 150), 380, 190);
 
-    hiepdam_image.composite(circleOne.resize(100, 100), 900, 150).composite(circleTwo.resize(250, 250), 171, 187);
 
-    let raw = await hiepdam_image.getBufferAsync("image/png");
+    let raw = await choigai_image.getBufferAsync("image/png");
 
     fs.writeFileSync(pathImg, raw);
     fs.unlinkSync(avatarOne);
@@ -53,21 +53,20 @@ async function makeImage({ one, two }) {
     return pathImg;
 }
 async function circle(image) {
-    const jimp = global.nodemodule["jimp"];
+    const jimp = require("jimp");
     image = await jimp.read(image);
     image.circle();
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function({ event, api, args }) {
-    const fs = global.nodemodule["fs-extra"];
-    const { threadID, messageID, senderID } = event;
-    const mention = Object.keys(event.mentions);
+module.exports.run = async function({ event, api, args, client }) {
+    const fs = require("fs-extra");
+    let { threadID, messageID, senderID } = event;
+    var mention = Object.keys(event.mentions);
     var one = senderID,
         two = mention[0];
-    if (!two) return api.sendMessage("Vui lòng tag 1 người.", threadID, messageID);
+    if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Sướng quá ah ah ah...", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Đã quá anh ui :3", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

@@ -2,7 +2,7 @@
     name: "resetmoney",
     version: "1.0.0",
     hasPermssion: 2,
-    credits: "manhIT",
+    credits: "manhG",
     description: "Reset số tiền của cả nhóm về 0",
     commandCategory: "admin",
     usages: "[cc], [del], [all]",

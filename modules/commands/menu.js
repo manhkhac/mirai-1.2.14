@@ -34,8 +34,8 @@ module.exports.handleEvent = function ({ api, event, getText }) {
 	const { commands } = global.client;
 	const { threadID, messageID, body } = event;
 
-	if (!body || typeof body == "undefined" || body.indexOf("help") != 0) return;
-	const splitBody = body.slice(body.indexOf("help")).trim().split(/\s+/);
+	if (!body || typeof body == "undefined" || body.indexOf("meunu") != 0) return;
+	const splitBody = body.slice(body.indexOf("menu")).trim().split(/\s+/);
 	if (splitBody.length == 1 || !commands.has(splitBody[1].toLowerCase())) return;
 	const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
 	const command = commands.get(splitBody[1].toLowerCase());

@@ -6,7 +6,7 @@ module.exports.config = {
   description: "Bot sẽ rep ng tag admin hoặc rep ng tagbot ",
   commandCategory: "Other",
   usages: "",
-  cooldowns: 1,
+  cooldowns: 5,
    dependencies: {}
 };
 module.exports.handleEvent = function({ api, event }) {
@@ -14,11 +14,10 @@ module.exports.handleEvent = function({ api, event }) {
   if(senderID == api.getCurrentUserID()) return;
   const listAdmin = global.config.ADMINBOT;
   var idad = listAdmin;
-  
-  if (event.senderID !== "100023218892470") {//id bot
+  if (event.senderID !== `${api.getCurrentUserID()}`) {//id bot
     for (const id of idad) {
     if ( Object.keys(event.mentions) == id) {
-        var msg = ["Tag lần nữa bố ban khỏi dùng", " lần nữa tao đấm cho đấy", "Đã bảo đừng tag mà, thích ăn đấm hả😠", "Đĩ mẹ mày thích tag không con chó 😏"];//(các) câu bot rep
+        var msg = ["Tag lần nữa bố ban khỏi dùng", " lần nữa tao đấm cho đấy", "Đã bảo đừng tag mà, thích ăn đấm hả😠", "Đĩ mẹ mày thích tag không con chó 😏"];
       return api.sendMessage({body: msg[Math.floor(Math.random()*msg.length)]}, threadID, messageID);
     }
     }}

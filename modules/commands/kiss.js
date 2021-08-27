@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "kiss",
-    version: "1.0.0",
+    version: "1.0.2",
     hasPermssion: 0,
-    credits: "manhIT",
+    credits: "CataliCS &F ManhG",
     description: "Hôn ai đó",
     commandCategory: "roleplay",
     usages: "kiss [tag]",

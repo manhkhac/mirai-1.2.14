@@ -2,22 +2,22 @@ module.exports.config = {
     name: "capdoi",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "ManhIT",
+    credits: "You fix by manhNK",
     description: "Ảnh Gái Xinh",
     commandCategory: "random-img",
     usages: "",
     cooldowns: 5,
     dependencies: {
-        "request":"",
-        "fs":""
-        }
-    };
+        "request": "",
+        "fs": ""
+    }
+};
 
-  module.exports.run = async({api,event}) => {
+module.exports.run = async({ api, event, Currencies }) => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
 
-   var link = [
+    var link = [
         "https://i.imgur.com/9w7x2Cw.jpg",
         "https://i.imgur.com/H9MgP90.jpg",
         "https://i.imgur.com/eY2MzuE.jpg",
@@ -58,7 +58,17 @@ module.exports.config = {
         "https://i.imgur.com/Cwl2Gt9.jpg",
         "https://i.imgur.com/XgOH5gt.jpg",
         "https://i.imgur.com/eQ1yBMP.jpg",
-      ];
-var callback = () => api.sendMessage({body:`Ảnh Cặp Đôi\nSố Ảnh: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/capdoi.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/capdoi.jpg"));
-    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/capdoi.jpg")).on("close",() => callback());
+    ];
+
+    var max = Math.floor(Math.random() * 6);
+    var min = Math.floor(Math.random() * 2);
+    var data = await Currencies.getData(event.senderID);
+    var exp = data.exp;
+    var money = data.money
+    if (money < 1000) api.sendMessage("Bạn cần 1000 đô để xem ảnh ?", event.threadID, event.messageID)
+    else {
+        Currencies.setData(event.senderID, options = { money: money - 1000 })
+        var callback = () => api.sendMessage({ body: `Ảnh cặp đôi\nSố Ảnh: ${link.length}\n-1000 đô !`, attachment: fs.createReadStream(__dirname + "/cache/capdoi.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/capdoi.jpg"), event.messageID);
+        return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname + "/cache/capdoi.jpg")).on("close", () => callback());
+    }
 };

@@ -1,11 +1,11 @@
 module.exports.config = {
-    name: "thamlam",
+    name: "acv",
     version: "1.0.2",
     hasPermssion: 0,
-    credits: "manhIT",
-    description: "Tham lam",
+    credits: "manhG",
+    description: "ACV",
     commandCategory: "noprefix",
-    usages: "[tham/thamlam/tiến]",
+    usages: "[ACV]",
     cooldowns: 5,
     denpendencies: {
         "fs-extra": "",
@@ -17,7 +17,7 @@ module.exports.onLoad = () => {
     const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "thamlam.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/thamlam.mp4").pipe(fs.createWriteStream(dirMaterial + "thamlam.mp4"));
+    if (!fs.existsSync(dirMaterial + "acv.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/acv.mp4").pipe(fs.createWriteStream(dirMaterial + "acv.mp4"));
 }
 module.exports.handleEvent = async({ event, api }) => {
     const fs = global.nodemodule["fs-extra"];
@@ -30,11 +30,11 @@ module.exports.handleEvent = async({ event, api }) => {
     }
     //trả lời
     var msg = {
-            body: `Tham lammm`,
-            attachment: fs.createReadStream(__dirname + `/noprefix/thamlam.mp4`)
+            body: `Mất em rồi anh mới biết bình yên là đâu 😥 `,
+            attachment: fs.createReadStream(__dirname + `/noprefix/acv.mp4`)
         }
         // Gọi bot
-    var arr = ["tham lam", "Tham lam", "tham", "Tham", "tiến", "Tiến", "thamlam", "Thamlam", "tham lam vcl"];
+    var arr = ["Acv", "acv"];
     arr.forEach(i => {
         if (body == i) return out(msg)
     });

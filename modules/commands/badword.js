@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "badword",
-    version: "1.0.9",
+    version: "1.1.1",
     hasPermssion: 2,
-    credits: "ManhIT",
+    credits: "Zyros fix by manhG",
     description: "",
     commandCategory: "Admin",
     usages: "[add/del/list] [từ ngữ]",
@@ -59,7 +59,7 @@ module.exports.run = async function({ api, args, event }) {
     var content = args.splice(1, args.length)
     if (!content) return api.sendMessage(`Thiếu du kien!`, event.threadID, event.messageID)
     var data = JSON.parse(fs.readFileSync(path.join(__dirname, "./cache/badwords.json"), { encoding: "utf8" }))
-    if (!args[0]) return api.sendMessage(`Dùng: \nbadword add [từ ngữ]\n\nAuthor: Zyros Fix get ManhIT!`, event.threadID, event.messageID)
+    if (!args[0]) return api.sendMessage(`Dùng: \nbadword add [từ ngữ]\n\nAuthor: Zyros Fix get ManhNK!`, event.threadID, event.messageID)
     if (args[0] == `add`) {
         if (!content) return api.sendMessage(`Thiếu từ cần thêm!`, event.threadID, event.messageID)
         if (data[content]) return api.sendMessage(`Đã có sẵn từ ${content}`, event.threadID, event.messageID)

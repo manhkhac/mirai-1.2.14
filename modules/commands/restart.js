@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "restart",
 	version: "1.0.0",
 	hasPermssion: 2,
-	credits: "manhIT",
+	credits: "manhG",
 	description: "Khởi động lại Bot",
 	commandCategory: "system",
 	usages: "",

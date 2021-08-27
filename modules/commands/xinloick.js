@@ -2,7 +2,7 @@ module.exports.config = {
     name: "xinloick",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "NTKhang",
+    credits: "NTKhang mod ManhG",
     description: "Xin lỗi ck yêu 😢🥺",
     commandCategory: "group",
     usages: " @tag hoặc noprefix: xin lỗi ck iu @tag",

@@ -1,8 +1,8 @@
 module.exports.config = {
     name: "bruh",
-    version: "1.0.4",
+    version: "1.0.5",
     hasPermssion: 0,
-    credits: "manhIT",
+    credits: "manhG",
     description: "Ảo thật đấy",
     commandCategory: "noprefix",
     usages: "[bủh/bruh]",
@@ -34,7 +34,7 @@ module.exports.handleEvent = async({ event, api, Users }) => {
             attachment: fs.createReadStream(__dirname + `/noprefix/bruh.mp3`)
         }
         // Gọi bot
-    var arr = ["brủh", "bủh", "bruh", "buh","Bruh","Bủh","Buh"];
+    var arr = ["brủh", "bủh", "bruh", "buh", "Bruh", "Bủh", "Buh"];
     arr.forEach(i => {
         if (body == i) return out(msg)
     });

@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "ad",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "manhIT",
+	credits: "manhNK",
 	description: "Thông tin về admin",
 	commandCategory: "Admin",
 	cooldowns: 0

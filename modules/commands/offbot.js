@@ -2,7 +2,7 @@ module.exports.config = {
   name: "bot",
   version: "1.0.0",
   hasPermssion: 2,
-  credits: "manhIT",
+  credits: "ManhG",
   description: "sửa chữa bot ...",
   commandCategory: "system",
   usages: "",
@@ -21,9 +21,7 @@ module.exports.run = async ({ api, event, args }) => {
 
     case "start":
     case "on":
-     return api.sendMessage(`Successful start...\nBạn có thể dùng bot ngay bây giờ`, event.threadID,
-      console.log(event);
-      break;
+     return api.sendMessage(`Successful start...\nBạn có thể dùng bot ngay bây giờ`, event.threadID);
 
     default:
       return api.sendMessage("Syntax error, use : bot  [fixdup/stop/start]", event.threadID);
