@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "kick",
-	version: "1.0.1", 
+	version: "1.0.3", 
 	hasPermssion: 1,
-	credits: "Mirai Team",
+	credits: "Mirai Team (ManhNK fix)",
 	description: "Xoá người bạn cần xoá khỏi nhóm bằng cách tag",
 	commandCategory: "other", 
 	usages: "[tag]", 
@@ -22,18 +22,18 @@ module.exports.languages = {
 	}
 }
 
-module.exports.run = async function({ api, event, getText, Threads }) {
+module.exports.run = function({ api, event, getText }) {
 	var mention = Object.keys(event.mentions);
-	try {
-		let dataThread = (await Threads.getData(event.threadID)).threadInfo;
-		if (!dataThread.adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(getText("needPermssion"), event.threadID, event.messageID);
-		if(!mention[0]) return api.sendMessage("Bạn phải tag người cần kick",event.threadID);
-		if (dataThread.adminIDs.some(item => item.id == event.senderID)) {
-			for (const o in mention) {
+	return api.getThreadInfo(event.threadID, (err, info) => {
+		if (err) return api.sendMessage(getText("error"),event.threadID);
+		if (!info.adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(getText("needPermssion"), event.threadID, event.messageID);
+		if(!mention[0]) return api.sendMessage(getText("missingTag"),event.threadID,event.threadID);
+		if (info.adminIDs.some(item => item.id == event.senderID)) {
+			for (let o in mention) {
 				setTimeout(() => {
 					api.removeUserFromGroup(mention[o],event.threadID) 
 				},3000)
 			}
 		}
-	} catch { return api.sendMessage(getText("error"),event.threadID) }
+	})
 }

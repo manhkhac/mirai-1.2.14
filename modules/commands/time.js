@@ -6,8 +6,8 @@ module.exports.config = {
   description: "Xem bây giờ là mấy giờ",
   commandCategory: "Other",
   usages: "",
-  cooldowns: 0,
-  dependencies: []
+  cooldowns: 5,
+  dependencies: {}
 };
 
 module.exports.run = async function ({ api, event, args, Currencies, Users }) {

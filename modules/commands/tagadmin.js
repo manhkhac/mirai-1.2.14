@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event }) {
   if(senderID == api.getCurrentUserID()) return;
   const listAdmin = global.config.ADMINBOT;
   var idad = listAdmin;
-  if (event.senderID !== `${api.getCurrentUserID()}`) {//id bot
+  if (senderID !== `${api.getCurrentUserID()}`) {//id bot
     for (const id of idad) {
     if ( Object.keys(event.mentions) == id) {
         var msg = ["Tag lần nữa bố ban khỏi dùng", " lần nữa tao đấm cho đấy", "Đã bảo đừng tag mà, thích ăn đấm hả😠", "Đĩ mẹ mày thích tag không con chó 😏"];

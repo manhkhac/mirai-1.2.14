@@ -6,7 +6,7 @@ module.exports.config = {
     description: "Ko làm mà đòi có ăn có àm ăn đb, ăn cứt",
     commandCategory: "noprefix",
     usages: "huandaoly",
-    cooldowns: 0,
+    cooldowns: 5,
     denpendencies: {
         "fs-extra": "",
         "request": ""

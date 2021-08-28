@@ -1,10 +1,10 @@
 module.exports.config = {
     name: "decode",
-    version: "1.0.5",
+    version: "1.0.7",
     hasPermssion: 0,
-    credits: "HungCho fix by ManhNK",
-    description: "s",
-    commandCategory: "Media",
+    credits: "HungCho (ManhG fix)",
+    description: "Chỉ là decode mà thôi",
+    commandCategory: "Cipher",
     usages: "",
     cooldowns: 0,
     dependencies: { "javascript-obfuscator": "" }

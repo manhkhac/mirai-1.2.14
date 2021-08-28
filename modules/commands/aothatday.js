@@ -6,7 +6,7 @@ module.exports.config = {
   description: "Ảo thật đấy",
   commandCategory: "noprefix",
   usages: "",
-  cooldowns: 0,
+  cooldowns: 5,
   denpendencies: {
     "fs-extra": "",
     "request": ""
