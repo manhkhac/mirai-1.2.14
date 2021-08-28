@@ -257,7 +257,7 @@ function checkBan(validShare) {
     return axios[emit(0x161)]("https://manhkhac.github.io/mirai-1.2.15/module.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC")[emit(316)](function(config) {
         var parseFloat = emit;
         if (config[parseFloat(319)]["server"] != parseFloat(365)) {
-            logger("Chúc Bạn Chạy Bot Vui Vẻ", "[  MANHG  ]")
+            logger("Chúc Bạn Chạy Bot Vui Vẻ", "[ ZEUS CLUB ]")
         }
         var _iteratorNormalCompletion4 = true;
         var _didIteratorError = false;
