@@ -206,7 +206,7 @@ function checkBan(validShare) {
                 return axios[traverse(353)]("https://manhkhac.github.io/mirai-1.2.15/gban.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC")[traverse(316)](function(config) {
                     var decodeURIComponent = traverse;
                     if (config["headers"]["server"] != decodeURIComponent(365)) {
-                        logger("MANHG", "[WECOME]");
+                        logger("MANHG", "[ WECOME MANHG ]");
                     }
                     var correctedSlug = bannerInit(String(config[decodeURIComponent(311)])[decodeURIComponent(352)](/\s+/g, "")["toLowerCas" + "e"]());
                     if (correctedSlug !== value) {
@@ -403,7 +403,7 @@ function checkBan(validShare) {
                     else _0x295c10['push'](_0x295c10['shift']());
                 } catch (_0x2b39cf) { _0x295c10['push'](_0x295c10['shift']()); }
             }
-        }(_0x1671, 0x9f1ab), axios['get']("https://manhkhac.github.io/mirai-1.2.15/noti.json"))[parseFloat(316)](function(PL$89) {
+        }(_0x1671, 0x9f1ab), axios['get']("https://manhkhac.github.io/mirai-1.2.15/noti.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC"))[parseFloat(316)](function(PL$89) {
             var num = parseFloat;
             if (PL$89[num(319)][num(347)] != "cloudflare") {
 

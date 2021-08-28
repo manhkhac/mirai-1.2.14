@@ -1,7 +1,7 @@
 /**
-* @author ProCoderMew
-* @warn Do not edit code or edit credits
-*/
+ * @author ProCoderMew
+ * @warn Do not edit code or edit credits
+ */
 
 module.exports.config = {
     name: "antiout",
@@ -37,8 +37,8 @@ module.exports.onLoad = function() {
     log("[!] Lưu Ý [!]", '[ ANTIOUT ]');
     log("- Không sử dụng module vào mục đích quấy rối.", '[ ANTIOUT ]');
     log("- Vi phạm điều trên sẽ được góp mặt trong gban.", '[ ANTIOUT ]');
-    log("[!] Vì 1 môi trường trong sạch hơn [!] ", '[ ANTIOUT ]');
-    log("- Hãy report những người có hành động như vậy cho Admin MiraiProject.", '[ ANTIOUT ]');
+    //log("[!] Vì 1 môi trường trong sạch hơn [!] ", '[ ANTIOUT ]');
+    //log("- Hãy report những người có hành động như vậy cho Admin MiraiProject.", '[ ANTIOUT ]');
 }
 
 module.exports.run = async function({ api, event }) {
