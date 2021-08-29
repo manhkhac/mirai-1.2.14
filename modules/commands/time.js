@@ -6,13 +6,13 @@ module.exports.config = {
   description: "Xem bây giờ là mấy giờ",
   commandCategory: "Other",
   usages: "",
-  cooldowns: 5,
-  dependencies: {}
+  cooldowns: 0,
+  dependencies: []
 };
 
 module.exports.run = async function ({ api, event, args, Currencies, Users }) {
   const moment = require("moment-timezone");
   var time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
   let name = await Users.getNameUser(event.senderID);
-  return api.sendMessage(`👋 Hi ${name} Chúc bạn 1 ngày tốt lành\nBây giờ là: ${time} 🖕`, event.threadID, event.messageID)
+  return api.sendMessage(`👋 Hi, ${name}. Chúc bạn 1 ngày tốt lành\nBây giờ là: ${time} 🖕`, event.threadID, event.messageID)
 }

@@ -1,7 +1,7 @@
 /**
- * @author ProCoderMew
- * @warn Do not edit code or edit credits
- */
+* @author ProCoderMew
+* @warn Do not edit code or edit credits
+*/
 
 module.exports.config = {
     name: "antiout",

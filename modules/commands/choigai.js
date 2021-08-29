@@ -10,7 +10,7 @@ module.exports.config = {
         "path": "",
         "jimp": ""
     },
-    cooldowns: 10
+    cooldowns: 5
 };
 
 module.exports.onLoad = () => {
@@ -53,18 +53,17 @@ async function makeImage({ one, two }) {
     return pathImg;
 }
 async function circle(image) {
-    const jimp = require("jimp");
+    const jimp = global.nodemodule["jimp"];
     image = await jimp.read(image);
     image.circle();
     return await image.getBufferAsync("image/png");
 }
 
 module.exports.run = async function({ event, api, args, client }) {
-    const fs = require("fs-extra");
+    const fs = global.nodemodule["fs-extra"];
     let { threadID, messageID, senderID } = event;
     var mention = Object.keys(event.mentions);
-    var one = senderID,
-        two = mention[0];
+    var one = senderID, two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "Đã quá anh ui :3", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));

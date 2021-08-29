@@ -5,8 +5,8 @@ module.exports.config = {
     credits: "Thanh (ManhG fix)",
     description: "Random ảnh trai xinh nhất Việt Nam :))",
     commandCategory: "random-img",
-    usages: "trai",
-    cooldowns: 5
+    usages: "",
+    cooldowns: 30
 };
 
 module.exports.run = async({ api, event }) => {

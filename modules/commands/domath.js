@@ -14,7 +14,7 @@ module.exports.handleReply = async function({ api, args, Users, handleReply, eve
     if (!event.userID == handleReply.author) return;
     //let response = "";
     if (event.target == handleReply.fetch) api.sendMessage("ye, bạn trả lời đúng rồi đấy xD", event.threadID);
-    else api.sendMessage("oops, bạn trả lời sai rồi :X", event.);
+    else api.sendMessage("oops, bạn trả lời sai rồi :X", event.threadID);
 
 };
 

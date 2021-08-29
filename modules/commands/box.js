@@ -13,18 +13,21 @@ module.exports.config = {
   }
 };
 
-module.exports.run = async ({ api, event, args }) => {
+module.exports.run = async ({ api, event, args, Threads }) => {
   const fs = global.nodemodule["fs-extra"];
   const request = global.nodemodule["request"];
   if (args.length == 0) return api.sendMessage(`Bạn có thể dùng:\nbox emoji [icon]\n\nbox name [tên box cần đổi]\n\nbox image [rep một ảnh bất kì cần đặt thành ảnh box]\n\nbox admin [tag] => nó sẽ đưa qtv cho người được tag\n\nbox info => Toàn bộ thông tin của nhóm !
 `, event.threadID, event.messageID);
 
   if (args[0] == "id") {
-      return api.sendMessage(`${event.threadID}`, event.threadID, event.messageID);
+    return api.sendMessage(`${event.threadID}`, event.threadID, event.messageID);
   }
 
   if (args[0] == "name") {
-      return api.sendMessage(`${threadInfo.threadName}`, event.threadID, event.messageID);
+    let data = await Threads.getData(event.threadID);
+    let threadInfo = data.threadInfo;
+    let nameT = threadInfo.threadName;
+    return api.sendMessage(nameT, event.threadID, event.messageID);
   }
 
   if (args[0] == "setname") {
@@ -32,11 +35,13 @@ module.exports.run = async ({ api, event, args }) => {
     var c = content.slice(4, 99) || event.messageReply.body;
     api.setTitle(`${c} `, event.threadID);
   }
+
   if (args[0] == "emoji") {
     const name = args[1] || event.messageReply.body;
     api.changeThreadEmoji(name, event.threadID)
 
   }
+
   if (args[0] == "me") {
     if (args[1] == "admin") {
       const threadInfo = await api.getThreadInfo(event.threadID)
@@ -46,6 +51,7 @@ module.exports.run = async ({ api, event, args }) => {
       else api.changeAdminStatus(event.threadID, event.senderID, true);
     }
   }
+
   if (args[0] == "admin") {
 
     if (args.join().indexOf('@') !== -1) {
@@ -66,13 +72,13 @@ module.exports.run = async ({ api, event, args }) => {
   }
 
   if (args[0] == "image") {
-
     if (event.type !== "message_reply") return api.sendMessage("❌ Bạn phải reply một audio, video, ảnh nào đó", event.threadID, event.messageID);
     if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage("❌ Bạn phải reply một audio, video, ảnh nào đó", event.threadID, event.messageID);
     if (event.messageReply.attachments.length > 1) return api.sendMessage(`Vui lòng reply chỉ một audio, video, ảnh!`, event.threadID, event.messageID);
     var callback = () => api.changeGroupImage(fs.createReadStream(__dirname + "/cache/1.png"), event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"));
     return request(encodeURI(event.messageReply.attachments[0].url)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
   };
+  
   if (args[0] == "info") {
     var threadInfo = await api.getThreadInfo(event.threadID);
     let threadMem = threadInfo.participantIDs.length;

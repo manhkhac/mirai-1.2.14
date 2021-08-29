@@ -10,7 +10,7 @@ module.exports.config = {
         "path": "",
         "jimp": ""
     },
-    cooldowns: 10
+    cooldowns: 5
 };
 
 module.exports.onLoad = () => {

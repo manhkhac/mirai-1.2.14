@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "img",
-    version: "3.1.0",
+    version: "3.1.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Kho Ảnh",
@@ -15,10 +15,14 @@ module.exports.config = {
     dependencies: {
         "axios": "",
         "fs-extra": ""
+    },
+    envConfig: {
+        APIKEY: ""
     }
 };
 
 module.exports.run = async function({ api, event, args }) {
+    const { APIKEY } = global.configModule.img;
     const { createReadStream, unlinkSync, writeFileSync } = global.nodemodule["fs-extra"];
     const axios = global.nodemodule["axios"];
     const { threadID, messageID } = event;
@@ -50,7 +54,7 @@ module.exports.run = async function({ api, event, args }) {
         break;
     }
     
-    var { data } = await axios.get(`https://meewmeew.info/image/${type}`);
+    var { data } = await axios.get(`https://meewmeew.info/image/${type}?apikey=${APIKEY}`);
     var path = __dirname + `/cache/${type}.png`;
     if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
     else {

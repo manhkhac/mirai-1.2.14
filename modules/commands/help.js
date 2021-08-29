@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "help",
 	version: "1.1.3",
 	hasPermssion: 0,
-	credits: "SkyST fix by ManhG",
+	credits: "zeus",
 	description: "Help giống Spermbot :3",
 	commandCategory: "group",
 	usages: "[lệnh]",

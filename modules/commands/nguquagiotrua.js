@@ -15,7 +15,7 @@ module.exports.config = {
 module.exports.onLoad = () => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const dirMaterial = __dirname + `/noprefix/`;
+    const dirMaterial = __dirname + `/cache/Noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
     if (!fs.existsSync(dirMaterial + "nguquagiotrua.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/nguquagiotrua.mp3").pipe(fs.createWriteStream(dirMaterial + "nguquagiotrua.mp3"));
 }
@@ -31,7 +31,7 @@ module.exports.handleEvent = async({ event, api, Users }) => {
     //trả lời
     var msg = {
             body: `cái loại ngủ quá giờ trưa đéo bao giờ khá lên được`,
-            attachment: fs.createReadStream(__dirname + `/noprefix/nguquagiotrua.mp3`)
+            attachment: fs.createReadStream(__dirname + `/cache/Noprefix/nguquagiotrua.mp3`)
         }
         // Gọi bot
     var arr = ["huấn rose", "Huấn rose", "ngủ quá giờ trưa", "Ngủ quá giờ trưa", "nguquagiotrua", "Huanrose", "huanrose", "nguquahtrua", "nguquagiotrua", "Nguquagiotrua", "Nguquahtrua"];
@@ -41,5 +41,5 @@ module.exports.handleEvent = async({ event, api, Users }) => {
 
 };
 module.exports.run = async({ event, api }) => {
-    return api.sendMessage("Dùng sai cách rồi lêu lêu", event.threadID)
+    return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
 }

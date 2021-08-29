@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "kick",
-	version: "1.0.3", 
+	version: "1.0.1", 
 	hasPermssion: 1,
-	credits: "Mirai Team (ManhNK fix)",
+	credits: "Mirai Team",
 	description: "Xoá người bạn cần xoá khỏi nhóm bằng cách tag",
 	commandCategory: "other", 
 	usages: "[tag]", 

@@ -2,7 +2,7 @@ module.exports.config = {
   name: "banned",
   version: "1.0.3",
   hasPermssion: 2,
-  credits: "CatalizCS (ManhNK mod)",
+  credits: "CatalizCS (ManhNK MOD)",
   description: "Xem danh sách ban của nhóm hoặc của người dùng",
   commandCategory: "admin",
   usages: "[thread/user]",
@@ -87,7 +87,7 @@ module.exports.run = async function({ event, api, Users, args }) {
         return api.sendMessage(listBanned.length != 0 ? api.sendMessage(`❎Hiện tại đang có ${listBanned.length} người dùng bị ban\n${listBanned.join("\n")}` +
           "\nReply tin nhắn này + số thứ tự để unban user tương ứng",
           threadID, (error, info) => {
-            client.handleReply.push({
+            global.client.handleReply.push({
               name: this.config.name,
               messageID: info.messageID,
               author: event.senderID,

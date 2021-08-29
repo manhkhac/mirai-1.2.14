@@ -9,13 +9,14 @@ module.exports.config = {
     cooldowns: 5,
     dependencies: {
         "request": "",
-        "fs-extra": ""
+        "fs-extra": "",
+        "axios": ""
     }
 
 };
 
 module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => {
-    //const axios = global.nodemodule["axios"];
+    const axios = global.nodemodule["axios"];
     const request = global.nodemodule["request"];
     const fs = global.nodemodule["fs-extra"];
     var link = [

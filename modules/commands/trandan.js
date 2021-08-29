@@ -28,6 +28,6 @@ module.exports.handleEvent = function ({ api, event }) {
   });
 }
 
-module.exports.run = function ({ api, event }) {
-  return api.sendMessage("Dùng sai cách rồi lêu lêu", event.threadID)
+module.exports.run = async({ event, api }) => {
+    return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
 }

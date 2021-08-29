@@ -41,7 +41,6 @@ async function makeImage({ one, two }) {
 
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-
     choiless_image.composite(circleOne.resize(50, 50), 220, 50).composite(circleTwo.resize(50, 50), 350, 320);
 
     let raw = await choiless_image.getBufferAsync("image/png");
@@ -63,7 +62,7 @@ module.exports.run = async function({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);
-    var one = senderID,
+     var one = senderID,
         two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
