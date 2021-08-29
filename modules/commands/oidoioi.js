@@ -3,7 +3,7 @@ module.exports.config = {
     version: "1.0.5",
     hasPermssion: 0,
     credits: "ManhG",
-    description: "Ko làm mà đòi có ăn có àm ăn đb, ăn cứt",
+    description: "Ối dồi ôi",
     commandCategory: "noprefix",
     usages: "",
     cooldowns: 5,
@@ -15,7 +15,7 @@ module.exports.config = {
 module.exports.onLoad = () => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const dirMaterial = __dirname + `/cache/Noprefix/`;
+    const dirMaterial = __dirname + `/Noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
     if (!fs.existsSync(dirMaterial + "oidoioi.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/oidoioi.mp4").pipe(fs.createWriteStream(dirMaterial + "oidoioi.mp4"));
 }
@@ -27,8 +27,8 @@ module.exports.handleEvent = async({ event, api }) => {
 
     //trả lời
     var msg = {
-            body: `Ăn đb, ăn cứt nhé`,
-            attachment: fs.createReadStream(__dirname + `/cache/Noprefix/oidoioi.mp4`)
+            body: `Ối dồi ôi`,
+            attachment: fs.createReadStream(__dirname + `/Noprefix/oidoioi.mp4`)
         }
         // Gọi bot
     let arr = ["oidoioi", "Oidoioi","Ối dồi ôi","ối dồi ôi"];

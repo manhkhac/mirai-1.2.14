@@ -15,7 +15,7 @@ module.exports.config = {
   module.exports.onLoad = () => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const dirMaterial = __dirname + `/cache/Noprefix/`;
+    const dirMaterial = __dirname + `/Noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
     if (!fs.existsSync(dirMaterial + "banlanhat.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/banlanhat.mp4").pipe(fs.createWriteStream(dirMaterial + "banlanhat.mp4"));
   }
@@ -30,7 +30,7 @@ module.exports.config = {
     //trả lời
     var msg = {
       body: `Bạn là nhất, bạn là siêu nhân`,
-      attachment: fs.createReadStream(__dirname + `/cache/Noprefix/banlanhat.mp4`)
+      attachment: fs.createReadStream(__dirname + `/Noprefix/banlanhat.mp4`)
     }
     // Gọi bot
     var arr = ["bạn là nhất","Bạn là nhất", "bạn là siêu nhân", "lê bảo", "banlanhat","Banlanhat", "nhất bạn","nhất bạn nhá"];

@@ -15,7 +15,7 @@ module.exports.config = {
 module.exports.onLoad = () => {
   const fs = global.nodemodule["fs-extra"];
   const request = global.nodemodule["request"];
-  const dirMaterial = __dirname + `/cache/Noprefix/`;
+  const dirMaterial = __dirname + `/Noprefix/`;
   if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
   if (!fs.existsSync(dirMaterial + "goodnight.gif")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/goodnight.gif").pipe(fs.createWriteStream(dirMaterial + "goodnight.gif"));
 }
@@ -33,7 +33,7 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     body: `${name}, cậu ngủ ngon đi nhé.
       I miss you so much!
       Hẹn gặp lại cậu vào sáng mai nha ❤`,
-    attachment: fs.createReadStream(__dirname + `/cache/Noprefix/goodnight.gif`)
+    attachment: fs.createReadStream(__dirname + `/Noprefix/goodnight.gif`)
   }
   // Gọi bot
   var arr = ["ngủ","Ngủ", "ngủ đi ae", "ngủ thôi","Ngủ thôi", "bye","Bye", "good night","nn","Nn","nngon"];
@@ -42,6 +42,6 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   });
 
 };
-module.exports.run = async ({ event, api }) => {
-  return api.sendMessage("Dùng sai cách rồi lêu lêu", event.threadID)
+module.exports.run = async({ event, api }) => {
+  return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
 }

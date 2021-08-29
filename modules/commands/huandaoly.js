@@ -15,7 +15,7 @@ module.exports.config = {
 module.exports.onLoad = () => {
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const dirMaterial = __dirname + `/noprefix/`;
+    const dirMaterial = __dirname + `/Noprefix/`;
     if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
     if (!fs.existsSync(dirMaterial + "huandaoly.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/kolammadoicoan.mp4").pipe(fs.createWriteStream(dirMaterial + "huandaoly.mp4"));
 }
@@ -28,10 +28,10 @@ module.exports.handleEvent = async({ event, api }) => {
     //trả lời
     var msg = {
             body: `Ăn đb, ăn cứt nhé`,
-            attachment: fs.createReadStream(__dirname + `/noprefix/huandaoly.mp4`)
+            attachment: fs.createReadStream(__dirname + `/Noprefix/huandaoly.mp4`)
         }
         // Gọi bot
-    let arr = ["ăn cứt", "ăn cut", "huấn đạo lý", "huandaoly", "ko làm mà đòi có ăn", "ăn db", "ăn đb", "Ăn db", "Ăn đb", "Ăn cut", "Huandaoly"];
+    let arr = ["ăn cứt", "ăn cut", "huấn đạo lý", "huandaoly", "ko làm mà đòi có ăn", "ăn db", "ăn đb", "Ăn db", "Ăn đb", "Ăn cut", "Huandaoly","andb","Andb","ancut","ancut"];
     for (const i of arr) {
         if (body == i && body.length == i.length) {
             return api.sendMessage(msg, threadID, messageID);
@@ -39,5 +39,5 @@ module.exports.handleEvent = async({ event, api }) => {
     }
 };
 module.exports.run = async({ event, api }) => {
-    return api.sendMessage("Dùng sai cách rồi lêu lêu", event.threadID)
+    return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
 }
