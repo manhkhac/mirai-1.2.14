@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Hoàng 🥀",
     description: "Địt người bạn tag",
-    commandCategory: "random-img",
+    commandCategory: "game",
     usages: "[tag người bạn cần địt]",
     cooldowns: 5,
     dependencies: {
