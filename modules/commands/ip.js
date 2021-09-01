@@ -2,7 +2,7 @@ module.exports.config = {
     name: "ip",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "manhIT",
+    credits: "Hung cho",
     description: "Check thông tin địa chỉ ip mạng",
     commandCategory: "Info",
     usages: "Check thông tin địa chỉ ip mạng",

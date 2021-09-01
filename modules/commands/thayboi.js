@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "CatalizCS",
     description: "Bói tình yêu, sự ngiệp, cuộc đời",
-    commandCategory: "other",
+    commandCategory: "Horoscope",
     cooldowns: 5
 };
 

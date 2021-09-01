@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "CatalizCS",
 	description: "Đếm ngược tới kì thi trung học phổ thông quốc gia",
-	commandCategory: "other",
+	commandCategory: "countdown",
 	cooldowns: 5
 }
 

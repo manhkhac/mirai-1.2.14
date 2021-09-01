@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "manhNK",
 	description: "Xem Boss",
-	commandCategory: "random-img",
+	commandCategory: "Animals",
 	usages: "[Text]",
 	cooldowns: 1,
 	

@@ -33,7 +33,7 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/aothatday.mp3`)
   }
   // Gọi bot
-  var arr = ["ảo", "ảo ma", "ảo ma canada", "ảo thật", "ảo thật đấy", "dmm","aothatday","Aothatday","Dmm"];
+  var arr = ["ảo", "ảo ma", "ảo ma canada", "ảo thật", "ảo thật đấy", "dmm","aothatday","Aothatday","Dmm","ảo thật đấy","Ảo thật đấy"];
   arr.forEach(i => {
     if (body== i) return out(msg)
   });

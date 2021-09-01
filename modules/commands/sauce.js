@@ -11,7 +11,7 @@ module.exports.config = {
 		"axios": ""
 	},
 	envConfig: {
-		"SAUCENAO_API": "61e802b1478f8e85198f28ed6ac2de6efe5d0a41"
+		"SAUCENAO_API": "29be078b8f5239a1202742869f92c25955bdcab3"
 	}
 };
 

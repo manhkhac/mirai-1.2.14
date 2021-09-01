@@ -17,7 +17,7 @@ module.exports.onLoad = () => {
   const request = global.nodemodule["request"];
   const dirMaterial = __dirname + `/Noprefix/`;
   if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "goodnight.gif")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/goodnight.gif").pipe(fs.createWriteStream(dirMaterial + "goodnight.gif"));
+  if (!fs.existsSync(dirMaterial + "goodnight.gif")) request("https://genk.mediacdn.vn/2018/9/5/original-1536118979702307632507.gif").pipe(fs.createWriteStream(dirMaterial + "goodnight.gif"));
 }
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];

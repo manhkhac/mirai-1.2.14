@@ -29,7 +29,7 @@ module.exports.handleEvent = async ({ event, api }) => {
   }
   //trả lời
   var msg = {
-    body: `Tham lammm`,
+    body: `Đúng! nó tham lắm`,
     attachment: fs.createReadStream(__dirname + `/Noprefix/thamlam.mp4`)
   }
   // Gọi bot

@@ -2,13 +2,13 @@ module.exports.config = {
     name: "decode",
     version: "1.0.7",
     hasPermssion: 0,
-    credits: "HungCho (ManhG fix)",
+    credits: "HungCho",
     description: "Chỉ là decode mà thôi",
     commandCategory: "Cipher",
     usages: "",
     cooldowns: 0,
     dependencies: { "javascript-obfuscator": "" }
-};
+}
 
 module.exports.run = async function({ api, event, args, Currencies }) {
     var JavaScriptObfuscator = global.nodemodule["javascript-obfuscator"];

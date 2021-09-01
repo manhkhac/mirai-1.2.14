@@ -11,17 +11,6 @@ module.exports = function({ models, api }) {
         };
     }
 
-    async function getNameThread(threadID) {
-        try {
-            if (global.data.threadName.has(threadID)) return global.data.threadName.get(threadID);
-            else if (global.data.allthreadID.includes(threadID)) {
-                const threadName = (await this.getData(threadID)).name;
-                if (threadName) return threadName;
-                else return "NUll";
-            } else return "null";
-        } catch { return "null" }
-    }
-
     async function getAll(...data) {
         var where, attributes;
         for (const i of data) {
@@ -85,7 +74,6 @@ module.exports = function({ models, api }) {
     }
 
     return {
-        getNameThread,
         getInfo,
         getAll,
         getData,

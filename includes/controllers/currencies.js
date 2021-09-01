@@ -67,6 +67,7 @@ module.exports = function ({ models }) {
 		try {
 			let balance = (await getData(userID)).money;
 			await setData(userID, { money: balance + money });
+      await setData(userID, { money: balance - money });
 			return true;
 		}
 		catch (error) {

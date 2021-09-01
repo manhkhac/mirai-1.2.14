@@ -2,7 +2,7 @@ module.exports.config = {
   name: "info",
   version: "1.0.1",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "Hung cho",
   description: "Xem thông tin của nhóm/người dùng",
   commandCategory: "info",
   usages: "[box/user] @tag hoặc [ID]",

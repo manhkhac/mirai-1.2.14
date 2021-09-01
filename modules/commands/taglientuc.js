@@ -6,7 +6,7 @@ module.exports.config = {
     description: "Tag liên tục người bạn tag trong 5 lần\nCó thể gọi là gọi hồn người đó",
     commandCategory: "group",
     usages: "taglientuc @mention",
-    cooldowns: 5,
+    cooldowns: 120,
     dependencies: {
         "fs-extra": "",
         "axios": ""

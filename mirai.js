@@ -1,6 +1,3 @@
-// 0 đâm 0 chém, đời 0 nể
-// t im r thì để im đi thách thức làm cc gì
-
 const { readdirSync, readFileSync, writeFileSync, existsSync, unlinkSync, rm } = require("fs-extra");
 const { join, resolve } = require("path");
 const { execSync } = require('child_process');

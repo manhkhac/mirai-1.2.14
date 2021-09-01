@@ -11,7 +11,7 @@ module.exports.config = {
     description: "Chat c\xF9ng con sim m\u1EA5t d\u1EA1y nh\u1EA5t",
     commandCategory: "General",
     usages: "[args]",
-    cooldowns: 30,
+    cooldowns: 10,
     dependencies: {
         axios: ""
     },
