@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "help",
 	version: "1.1.3",
 	hasPermssion: 0,
-	credits: "zeus",
+	credits: "Mirai Team",
 	description: "Help giống Spermbot :3",
 	commandCategory: "group",
 	usages: "[lệnh]",

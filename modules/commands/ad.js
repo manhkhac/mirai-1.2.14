@@ -1,10 +1,10 @@
 module.exports.config = {
-	name: "ad",
+	name: "adm",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "manhNK",
+	credits: "ManhG",
 	description: "Thông tin về admin",
-	commandCategory: "Admin",
+	commandCategory: "information",
 	cooldowns: 0
 };
 

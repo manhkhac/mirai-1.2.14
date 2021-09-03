@@ -26,7 +26,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
             //////////////////////////////////////////////
             //===== Lấy toàn bộ nhóm và số message =====//
             try {
-                data = await api.getThreadList(option + 10, null, ["INBOX"]);
+                data = await api.getThreadList(option + 15, null, ["INBOX"]);
             } catch (e) {
                 console.log(e);
             }

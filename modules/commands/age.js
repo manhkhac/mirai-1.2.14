@@ -24,5 +24,3 @@ else {
 	});
 }
 }
-age.js
-Đang hiển thị age.js.

@@ -38,7 +38,6 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   arr.forEach(i => {
     if (body == i) return out(msg)
   });
-
 };
 module.exports.run = async({ event, api }) => {
   return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)

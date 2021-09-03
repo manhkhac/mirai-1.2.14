@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "ăn đb",
+    name: "andb",
     version: "1.0.5",
     hasPermssion: 0,
     credits: "ManhG",

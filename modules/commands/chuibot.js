@@ -83,8 +83,6 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   let threadInfo = dataThread.threadInfo;
   const listAdmin = global.config.ADMINBOT;
   
-    
-
   //Random câu trả lời
   var tl = [`${name}` + " Bạn đã chửi bot vào " + `${time}` + ".\n- Tin nhắn này đã được gửi về cho admin.\n- Thêm lần nữa ăn ban bạn nhé :)))", `${name}` + ", mày thích chửi bố mày không, ăn ban nhé con trai :)))", `${name}` + " mày đã ngu, lại còn óc chó, đéo biết dùng bot chửi cc :)))", `${name}` + ", óc lồn, mày tuổi lồn dùng bot của bố mày nhé. \nÀ đéo phải mày tuổi cặc nhé :)))"];
   var rand = tl[Math.floor(Math.random() * tl.length)];
@@ -119,6 +117,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
                 name: this.config.name,
                 author: senderID,
                 messageID: info.messageID,
+                
                 messID: messageID,
                 id: idbox,
                 type: "chuithe"

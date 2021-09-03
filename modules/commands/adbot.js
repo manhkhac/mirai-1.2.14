@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "manhNK",
   description: "Kiểm tra thông tin ngơời dùng.",
-  commandCategory: "Info",
+  commandCategory: "information",
   usages: "",
   cooldowns: 1,
   dependencies: {
@@ -18,6 +18,8 @@ module.exports.run = async({api,event,args,Users,Currencies}) => {
     var callback = () => api.sendMessage(
     {body:`梁ADMIN BOT梁\n
     \n👀 Tên: MạnhNK (ManhICT)
+    \n🔰 STK: 1. ACB: 1819957 NGUYENKHACMANH
+    \n🔰 STK: 2. MOMO: 0865983826 NGUYENKHACMANH
     \n❎ Tuổi: ...
     \n👤 😶 Giới tính: Nam
     \n💫 Chiều cao cân nặng: 1m72 45kg

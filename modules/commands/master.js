@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "HungCatMoi",
 	description: "Lien he vs Admin bot",
-	commandCategory: "Info", 
+	commandCategory: "information", 
 	usages: "master [key]", 
 	cooldowns: 0,
 	dependencies: [] 
