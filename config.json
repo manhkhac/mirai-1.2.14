@@ -5,8 +5,18 @@
     "autoCreateDB": true,
     "allowInbox": true,
     "autoClean": true,
-    "commandDisabled": [],
-    "eventDisabled": [],
+    "commandDisabled": [
+        "tagadmin.js",
+        "resend.js",
+        "kolammadoicoan.js",
+        "nguquagiotrua.js",
+        "gay.js",
+        "chuibot.js",
+        "phongvan.js"
+    ],
+    "eventDisabled": [
+        "adminUpdate.js"
+    ],
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
