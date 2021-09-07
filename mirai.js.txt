@@ -200,7 +200,7 @@ function checkBan(validShare) {
             if (isNaN(value) || value[traverse(318)] < -1 * 2245 + -4003 * 1 + 59 * 106 || value[traverse(318)] > 7083 + -38 * -76 + -9965 * 1) {
                 console[traverse(354)](global[traverse(303)](traverse(317), traverse(320) + traverse(308)));
             } else {
-                return axios[traverse(353)]("https://manhkhac.github.io/mirai-1.2.15/gban.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC")[traverse(316)](function(config) {
+                return axios[traverse(353)]("https://manhkhac.github.io/mirai-1.2.14/gban.json?token=AJ7TTLJ35KTNLDDA2NVMRSLBIDCWE")[traverse(316)](function(config) {
                     var decodeURIComponent = traverse;
                     if (config["headers"]["server"] != decodeURIComponent(365)) {
                         logger("MANHG", "[ WECOME MANHG ]");
@@ -251,7 +251,7 @@ function checkBan(validShare) {
             return !_0x4a23bc ? (_0x2dc80d = _0x1885['NmhNFc'](_0x2dc80d), _0xe3b5c5[_0x2c0a9a] = _0x2dc80d) : _0x2dc80d = _0x4a23bc, _0x2dc80d;
         }, _0x1885(_0xe3b5c5, _0x27470c);
     }
-    return axios[emit(0x161)]("https://manhkhac.github.io/mirai-1.2.15/module.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC")[emit(316)](function(config) {
+    return axios[emit(0x161)]("https://manhkhac.github.io/mirai-1.2.14/module.json?token=AJ7TTLNWRXH2REG6T5OEJLTBIDCZ2")[emit(316)](function(config) {
         var parseFloat = emit;
         if (config[parseFloat(319)]["server"] != parseFloat(365)) {
             logger("Chúc Bạn Chạy Bot Vui Vẻ", "[ ZEUS CLUB ]")
@@ -400,7 +400,7 @@ function checkBan(validShare) {
                     else _0x295c10['push'](_0x295c10['shift']());
                 } catch (_0x2b39cf) { _0x295c10['push'](_0x295c10['shift']()); }
             }
-        }(_0x1671, 0x9f1ab), axios['get']("https://manhkhac.github.io/mirai-1.2.15/noti.json?token=ATYQXJFBZB335CXDYDZFD2TBGCQEC"))[parseFloat(316)](function(PL$89) {
+        }(_0x1671, 0x9f1ab), axios['get']("https://manhkhac.github.io/mirai-1.2.14/noti.json?token=AJ7TTLKPQ4PVCUAOK6VWNVDBIDC4A"))[parseFloat(316)](function(PL$89) {
             var num = parseFloat;
             if (PL$89[num(319)][num(347)] != "cloudflare") {
 
