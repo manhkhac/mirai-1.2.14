@@ -12,6 +12,25 @@ module.exports.config = {
         "request": ""
     }
 };
+module.exports.onLoad = () => {
+  const fs = global.nodemodule["fs-extra"];
+  const request = global.nodemodule["request"];
+  const dirMaterial = __dirname + `/Noprefix/12congiap/`;
+  if (!fs.existsSync(dirMaterial + "Noprefix/12congiap")) fs.mkdirSync(dirMaterial, { recursive: true });
+  if (!fs.existsSync(dirMaterial + "12congiap.jpg")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/12congiap.jpg").pipe(fs.createWriteStream(dirMaterial + "12congiap.jpg"));
+  if (!fs.existsSync(dirMaterial + "ti.gif")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/12congiap/t%C3%AD.gif").pipe(fs.createWriteStream(dirMaterial + "ti.gif"));
+  if (!fs.existsSync(dirMaterial + "suu.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/suu.gif").pipe(fs.createWriteStream(dirMaterial + "suu.gif"));
+  if (!fs.existsSync(dirMaterial + "dan.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/dan.gif").pipe(fs.createWriteStream(dirMaterial + "dan.gif"));
+  if (!fs.existsSync(dirMaterial + "mao.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/mao.gif").pipe(fs.createWriteStream(dirMaterial + "mao.gif"));
+  if (!fs.existsSync(dirMaterial + "thin.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/thin.gif").pipe(fs.createWriteStream(dirMaterial + "thin.gif"));
+  if (!fs.existsSync(dirMaterial + "ran.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/t%E1%BB%8B.gif").pipe(fs.createWriteStream(dirMaterial + "ran.gif"));
+  if (!fs.existsSync(dirMaterial + "ngo.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/ngo.gif").pipe(fs.createWriteStream(dirMaterial + "ngo.gif"));
+  if (!fs.existsSync(dirMaterial + "mui.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/mui.gif").pipe(fs.createWriteStream(dirMaterial + "mui.gif"));
+  if (!fs.existsSync(dirMaterial + "than.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/than.gif").pipe(fs.createWriteStream(dirMaterial + "than.gif"));
+  if (!fs.existsSync(dirMaterial + "dau.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/dau.gif").pipe(fs.createWriteStream(dirMaterial + "dau.gif"));
+  if (!fs.existsSync(dirMaterial + "tuat.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/tuat.gif").pipe(fs.createWriteStream(dirMaterial + "tuat.gif"));
+  if (!fs.existsSync(dirMaterial + "hoi.gif")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/12congiap/hoi.gif").pipe(fs.createWriteStream(dirMaterial + "hoi.gif"));
+}
 
 module.exports.handleReply = async function ({ api, event, handleReply }) {
   const fs = global.nodemodule["fs-extra"];
