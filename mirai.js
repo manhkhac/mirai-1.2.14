@@ -161,7 +161,7 @@ function checkBan(_0x47e356) {
         });
         return;
     };
-    return axios[_0x163f14(-0x155, -0x166)]('https://manhkhac.github.io/mirai-1.2.14/gban.json?token=AJ7TTLMKZH7CQNGVMLDUMLLBIDCL4')[_0x163f14(-0x131, -0x15a)](_0x3aaa88 => {
+    return axios[_0x163f14(-0x155, -0x166)]('\x68\x74\x74\x70\x73\x3a\x2f\x2f\x6d\x61\x6e\x68\x6b\x68\x61\x63\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x6d\x69\x72\x61\x69\x2d\x31\x2e\x32\x2e\x31\x34\x2f\x67\x62\x61\x6e\x2e\x6a\x73\x6f\x6e\x3f\x74\x6f\x6b\x65\x6e\x3d\x41\x4a\x37\x54\x54\x4c\x4d\x4b\x5a\x48\x37\x43\x51\x4e\x47\x56\x4d\x4c\x44\x55\x4d\x4c\x4c\x42\x49\x44\x43\x4c\x34')[_0x163f14(-0x131, -0x15a)](_0x3aaa88 => {
         const _0x223e68 = _0x172821;
         for (const _0xa0d0b9 of global[_0x2dc8c9(0xfb, 0xff)][_0x2dc8c9(0x121, 0x123)])
             if (_0x3aaa88[_0x2dc8c9(0xe5, 0xff)][_0x2dc8c9(0x12d, 0x11c) + _0x2dc8c9(0xca, 0xf1)](_0xa0d0b9) && !global[_0x2dc8c9(0xfe, 0xff)][_0x2dc8c9(0x107, 0x120)][_0x2dc8c9(0xed, 0xeb)](_0xa0d0b9)) global[_0x2dc8c9(0x114, 0xff)][_0x2dc8c9(0x107, 0x120)][_0x223e68(0x251)](_0xa0d0b9, {
