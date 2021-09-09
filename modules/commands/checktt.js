@@ -8,7 +8,7 @@ module.exports.config = {
     usages: "[page/all/tag]",
     cooldowns: 5,
     envConfig: {
-        "maxColumn": 500
+        "maxColumn": 10
     }
 };
 
@@ -71,7 +71,7 @@ module.exports.run = async function({ args, api, event, Currencies, getText }) {
                         msg += `${i+1}. ${infoUser.name}: ${infoUser.exp} tin nhắn\n`
                     }
 
-                    msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt + số trang/all`
+                    msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt  số trang`
                     return api.sendMessage(msg, event.threadID);
                 } else if (mention[0]) {
                     var storage = [],
