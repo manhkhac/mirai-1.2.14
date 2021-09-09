@@ -26,7 +26,7 @@ module.exports.run = async function({ api, event, Threads }) {
         case "log:thread-name": {
             const oldName =  nameT = threadInfo.threadName || "Tên không tồn tại",
                   newName = event.logMessageData.name || "Tên không tồn tại";
-            task = "Người dùng thay đổi tên nhóm từ: '" + nameT + "' thành '" + newName + "'";
+            task = "Người dùng thay đổi tên nhóm từ: '" + oldName + "' thành '" + newName + "'";
             await Threads.setData(event.threadID, {name: newName});
             break;
         }
