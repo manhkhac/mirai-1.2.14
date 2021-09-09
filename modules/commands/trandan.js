@@ -36,7 +36,8 @@ module.exports.handleEvent = function ({ api, event }) {
   // Gọi bot
   var arr = ["trandan","Trandan","Trần dần","trần dần","tran dan","Amen","amen"];
   arr.forEach(i => {
-    if (body == i) return out(msg)
+    let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
 }
 

@@ -20,14 +20,14 @@ module.exports.onLoad = async function() {
     if (!existsSync(path)) mkdirSync(path, { recursive: true });
     //Hàm dowload file có sẵn (có thể thay)
     //Jpg nhé
-    if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe1.jpg'))) await downloadFile("https://haingoaiphiemdam.com/images/file/7OIQ0R1h1ggBAKUH/concac-dep.jpg", resolve(__dirname, 'cache/CHUIBOT', 'chuithe1.jpg'));
-    if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe2.jpg'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/img/amen.jpg", resolve(__dirname, 'cache/CHUIBOT', 'chuithe2.jpg'));
+    //if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe1.jpg'))) await downloadFile("https://haingoaiphiemdam.com/images/file/7OIQ0R1h1ggBAKUH/concac-dep.jpg", resolve(__dirname, 'cache/CHUIBOT', 'chuithe1.jpg'));
+    //if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe2.jpg'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/img/amen.jpg", resolve(__dirname, 'cache/CHUIBOT', 'chuithe2.jpg'));
     //GIF nhé
     if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe3.gif'))) await downloadFile("https://c.tenor.com/p0so-KaD03cAAAAC/bunny-girl-senpai-slap.gifhttps://c.tenor.com/p0so-KaD03cAAAAC/bunny-girl-senpai-slap.gif", resolve(__dirname, 'cache/CHUIBOT', 'chuithe3.gif'));
     //MP4 nhé
-    if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe.mp4'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/chuitheconcac.mp4", resolve(__dirname, 'cache/CHUIBOT', 'chuithe.mp4'));
+    //if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'chuithe.mp4'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/chuitheconcac.mp4", resolve(__dirname, 'cache/CHUIBOT', 'chuithe.mp4'));
     //MP3 nhé
-    if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'domixi.mp3'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp3/domixichubay1p.mp3", resolve(__dirname, 'cache/CHUIBOT', 'domixi.mp3'));
+    //if (!existsSync(resolve(__dirname, 'cache/CHUIBOT', 'domixi.mp3'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp3/domixichubay1p.mp3", resolve(__dirname, 'cache/CHUIBOT', 'domixi.mp3'));
 }
 
 module.exports.handleReply = async function({ api, args, Users, event, handleReply }) {
@@ -118,11 +118,11 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
     var rand = tl[Math.floor(Math.random() * tl.length)];
     //Random ảnh 
     var images = [
-        fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe1.jpg`),
-        fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe2.jpg`),
-        fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe3.gif`),
-        fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe.mp4`),
-        fs.createReadStream(__dirname + `/cache/CHUIBOT/domixi.mp3`)
+        //fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe1.jpg`),
+       // fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe2.jpg`),
+        fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe3.gif`)
+        //fs.createReadStream(__dirname + `/cache/CHUIBOT/chuithe.mp4`),
+        //fs.createReadStream(__dirname + `/cache/CHUIBOT/domixi.mp3`)
     ];
     var randAtt = images[Math.floor(Math.random() * images.length)];
     //trả lời
@@ -133,7 +133,8 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
         //Những câu bot bị chửi. tips: bạn có thể dùng toUplowCase nhé.
     const arr = ["botngu","Botngu","Bot ngu", "bot ngu","con bot lol","Con bot lol","Bot ngu lol","bot ngu lol","Bot chó","bot chó","dm bot", "Dm bot", "Đm bot", "đm bot", "dmm bot", "Dmm bot", "dmm bot", "Dmm bot", "Đmm bot", "đmm bot", "đb bot", , "Đb bot", "bot điên", "Bot điên", "bot dở", "Bot dở", "Bot khùng", "bot khùng", "đĩ bot", "Đĩ bot", "Bot paylac rồi", "con bot lòn", "Con bot lòn", "cmm bot", "Cmm bot", "clap bot", "Clap bot", "bot ncc", "Bot ncc", "bot oc", "Bot oc", "bot óc", "Bot óc", "bot óc chó", "Bot óc chó", "cc bot", "Cc bot", "bot tiki", "Bot tiki", "Lozz bottt", "lol bot", "Lol bot", "Loz bot", "loz bot", "lồn bot", "Lồn bot", "bot lồn", "Bot lồn", "bot lon", "Bot lon", "Bot cac", "bot cac", "bot nhu lon", "Bot nhu lon", "bot như cc", "Bot như cc", "bot như bìu", "Bot như bìu", "Bot sida", "bot sida", "bot fake", "Bot fake", "mạnh ngu", "Mạnh ngu"];
     arr.forEach(value => {
-        if (body == value) {
+         let str = value[0].toUpperCase() + value.slice(1);
+    if (body === value.toUpperCase() | body === value | str === body) {
             let nameT = threadInfo.threadName;
             modules = "Chửi bot:";
             console.log(modules, value + "|", nameT);

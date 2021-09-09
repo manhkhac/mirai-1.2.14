@@ -1,6 +1,6 @@
 //const fs = global.nodemodule["fs-extra"]; //để thêm attachment nếu muốn
 module.exports.config = {
-    name: "fixspam",
+    name: "tag-fixspam",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "ManhG",

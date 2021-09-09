@@ -77,10 +77,11 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
     ];
     var rand = tl[Math.floor(Math.random() * tl.length)];
     // Gọi bot
-    var arr = ["bot", "Bot", "bot ơi", "Bot ơi", "yêu bot", "Yêu bot", "bot đâu", "Bot đâu"];
+    var arr = ["bot", "bot ơi","bot oi",  "yêu bot", "bot đâu"];
     //&& event.body.length == value.length
     arr.forEach(value => {
-        if (body == value) {
+        let str = value[0].toUpperCase() + value.slice(1);
+    if (body === value.toUpperCase() | body === value | str === body) {
             let nameT = threadInfo.threadName;
             modules = "Gọi bot:";
             console.log(modules, value + "|", nameT);

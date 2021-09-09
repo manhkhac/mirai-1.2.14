@@ -21,7 +21,7 @@ module.exports.onLoad = () => {
 }
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
-  
+
   var { threadID, messageID, body, senderID } = event;
   if (senderID == api.getCurrentUserID()) return;
   function out(data) {
@@ -33,12 +33,14 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/aothatday.mp3`)
   }
   // Gọi bot
-  var arr = ["ảo", "ảo ma", "ảo ma canada", "ảo thật", "ảo thật đấy", "dmm","aothatday","Aothatday","Dmm","ảo thật đấy","Ảo thật đấy"];
+  var arr = ["ảo", "ảo ma", "ảo ma canada", "ảo thật", "ảo thật đấy", "dmm", "aothatday"];
   arr.forEach(i => {
-    if (body== i) return out(msg)
+
+    let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
 
 };
-module.exports.run = async({ event, api }) => {
-    return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
+module.exports.run = async ({ event, api }) => {
+  return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
 }

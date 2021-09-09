@@ -31,9 +31,9 @@ module.exports.handleEvent = async({ event, api }) => {
             attachment: fs.createReadStream(__dirname + `/Noprefix/oidoioi.mp4`)
         }
         // Gọi bot
-    let arr = ["oidoioi", "Oidoioi","Ối dồi ôi","ối dồi ôi"];
+    let arr = ["oidoioi","ối dồi ôi"];
     for (const i of arr) {
-        if (body == i && body.length == i.length) {
+        if (body === i.toUpperCase() | body === i) {
             return api.sendMessage(msg, threadID, messageID);
         }
     }

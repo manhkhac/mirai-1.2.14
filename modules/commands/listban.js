@@ -2,7 +2,7 @@ module.exports.config = {
   name: "listban",
   version: "1.0.3",
   hasPermssion: 2,
-  credits: "CatalizCS (ManhG mod)",
+  credits: "ManhG)",
   description: "Xem danh sách ban của nhóm hoặc của người dùng",
   commandCategory: "admin",
   usages: "[thread/user]",
@@ -13,7 +13,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
   let name = await Users.getNameUser(event.senderID);
   if (parseInt(event.senderID) !== parseInt(handleReply.author)) return;
   var myString = handleReply.listBanned[event.body - 1];
-  let str = myString.slice( 2 );
+  let str = myString.slice( 3 );
   var uidx = myString.replace(/\D/g, '');
   var uid = uidx.slice(1);
   switch (handleReply.type) {

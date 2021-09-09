@@ -34,9 +34,10 @@ module.exports.handleEvent = async({ event, api, Users }) => {
             attachment: fs.createReadStream(__dirname + `/Noprefix/nguquagiotrua.mp3`)
         }
         // Gọi bot
-    var arr = ["huấn rose", "Huấn rose", "ngủ quá giờ trưa", "Ngủ quá giờ trưa", "nguquagiotrua", "Huanrose", "huanrose", "nguquahtrua", "nguquagiotrua", "Nguquagiotrua", "Nguquahtrua"];
+    var arr = ["huấn rose", "ngủ quá giờ trưa", "nguquagiotrua", "huanrose", "nguquahtrua", "nguquagiotrua", "nguquahtrua"];
     arr.forEach(i => {
-        if (body == i) return out(msg)
+       let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
     });
 
 };

@@ -51,7 +51,7 @@ module.exports.run = async function({ api, event, args }) {
 	let pathImg = __dirname + '/cache/khanhsky.png';
 	var text = args.join(" ");
 	if (!text) return api.sendMessage("Nhập nội dung comment trên bảng", threadID, messageID);
-	let getPorn = (await axios.get(`https://web-api-teammucode.ga/tu.png`, { responseType: 'arraybuffer' })).data;
+	let getPorn = (await axios.get(`https://github.com/manhkhac/mirai-1.2.8/raw/data/img/khanhsky.png`, { responseType: 'arraybuffer' })).data;
 	fs.writeFileSync(pathImg, Buffer.from(getPorn, 'utf-8'));
 	let baseImage = await loadImage(pathImg);
 	let canvas = createCanvas(baseImage.width, baseImage.height);

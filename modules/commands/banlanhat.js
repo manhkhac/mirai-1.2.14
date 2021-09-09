@@ -33,9 +33,10 @@ module.exports.config = {
       attachment: fs.createReadStream(__dirname + `/Noprefix/banlanhat.mp4`)
     }
     // Gọi bot
-    var arr = ["bạn là nhất","Bạn là nhất", "bạn là siêu nhân", "lê bảo", "banlanhat","Banlanhat", "nhất bạn","nhất bạn nhá"];
+    var arr = ["bạn là nhất", "bạn là siêu nhân", "lê bảo", "banlanhat", "nhất bạn","nhất bạn nhá"];
     arr.forEach(i=> {
-        if(body == i) return out(msg)
+         let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
      });
   
   };

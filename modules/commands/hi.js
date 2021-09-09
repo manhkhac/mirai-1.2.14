@@ -34,9 +34,10 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/hi.gif`)
   }
   // Gọi bot
-  var arr = ["hi","Hi", "hello","Hello", "lô", "hí lô","chào"];
+  var arr = ["hi", "hello","lô", "hí lô","chào"];
   arr.forEach(i => {
-    if (body == i) return out(msg)
+    let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
 };
 module.exports.run = async({ event, api }) => {

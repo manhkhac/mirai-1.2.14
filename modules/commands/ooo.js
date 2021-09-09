@@ -35,7 +35,7 @@ module.exports.handleEvent = async({ event, api }) => {
 
     var arr = ["ỏ", "Ỏ","oo","Oo"];
     for (const i of arr) {
-        if (event.body== i && event.body.length == i.length) {
+        if (body === i.toUpperCase() | body === i) {
             return api.sendMessage(msg, threadID, messageID);
         }
     }

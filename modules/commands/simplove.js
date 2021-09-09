@@ -36,7 +36,7 @@ module.exports.handleEvent = async({ event, api }) => {
         // Gọi bot
     var arr = ["Simp", "simp"];
     arr.forEach(i => {
-        if (body == i) return out(msg)
+        if (body === i.toUpperCase() | body === i) return out(msg)
     });
 
 };

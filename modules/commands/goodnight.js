@@ -36,9 +36,9 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/goodnight.gif`)
   }
   // Gọi bot
-  var arr = ["ngủ","Ngủ", "ngủ đi ae", "ngủ thôi","Ngủ thôi", "bye","Bye", "good night","nn","Nn","nngon"];
+  var arr = ["ngủ", "ngủ đi ae", "ngủ thôi", "bye", "good night","nn","nngon"];
   arr.forEach(i => {
-    if (body == i) return out(msg)
+    if (body === i.toUpperCase() | body === i) return out(msg)
   });
 
 };
