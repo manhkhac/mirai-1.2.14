@@ -6,8 +6,6 @@
     "allowInbox": true,
     "autoClean": true,
     "commandDisabled": [
-        "tagadmin.js",
-        "resend.js",
         "kolammadoicoan.js",
         "nguquagiotrua.js",
         "gay.js",
