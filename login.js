@@ -1,5 +1,5 @@
 const fs = require("fs-extra");
-const login = require("@maihuybao/fca-unofficial");
+const login = require("facebook-chat-api-v2");
 const readline = require("readline");
 const totp = require("totp-generator");
 
