@@ -5,13 +5,7 @@
     "autoCreateDB": true,
     "allowInbox": true,
     "autoClean": true,
-    "commandDisabled": [
-        "kolammadoicoan.js",
-        "nguquagiotrua.js",
-        "gay.js",
-        "chuibot.js",
-        "phongvan.js"
-    ],
+    "commandDisabled": [],
     "eventDisabled": [
         "adminUpdate.js"
     ],
