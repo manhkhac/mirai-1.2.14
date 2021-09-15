@@ -1,6 +1,6 @@
 module.exports.config = {
   name: "listban",
-  version: "1.0.3",
+  version: "1.0.0",
   hasPermssion: 2,
   credits: "ManhG",
   description: "Xem danh sách ban của nhóm hoặc của người dùng",

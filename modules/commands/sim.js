@@ -23,7 +23,7 @@
 async function simsimi(a, b, c) {
     const axios = global.nodemodule.axios, { APIKEY } = global.configModule.sim, g = (a) => encodeURIComponent(a);
     try {
-        var { data: j } = await axios({ url: `https://api.simsimi.net/v1/?text=${g(a)}&lang=vn&key=${APIKEY}`, method: "GET" });
+        var { data: j } = await axios({ url: `https://api.simsimi.net/v2/?text=${g(a)}&lc=vn&key=${APIKEY}`, method: "GET" });
         return { error: !1, data: j }
         //console.log();
     } catch (p) {

@@ -1,9 +1,9 @@
 module.exports.config = {
   name: 'listbox',
   version: '1.0.0',
-  credits: 'CatalizCS, ManhG MoD',
+  credits: 'ManhG',
   hasPermssion: 2,
-  description: '[Ban/Unban/Del/Remove] List thread bot đã tham gia',
+  description: '[Ban/Unban/Remove] List thread bot đã tham gia',
   commandCategory: 'Admin',
   usages: '[số trang/all]',
   cooldowns: 5

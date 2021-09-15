@@ -1,6 +1,6 @@
 module.exports.config = {
     name: "goibot",
-    version: "1.1.0",
+    version: "1.0.0",
     hasPermssion: 0,
     credits: "ManhG",
     description: "Gọi Bot Version 3",
