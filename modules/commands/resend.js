@@ -26,14 +26,14 @@ module.exports.handleEvent = async function ({ event, api, client, Users }) {
 
   const thread = global.data.threadData.get(threadID) || {};
 
-  if (typeof thread["resend"] != "undefined" && thread["resend"] == false) return;
+  if (typeof thread["resend"] != "undefined" && thread["resend"] == true) return;
   if (senderID == global.data.botID) return;
 
   if (event.type != "message_unsend") global.logMessage.set(messageID, {
     msgBody: content,
     attachment: event.attachments
   })
-  if (event.type == "message_unsend") {
+  if (typeof thread["resend"] != "undefined" && thread["resend"] == true | event.type == "message_unsend") {
     var getMsg = global.logMessage.get(messageID);
     if (!getMsg) return;
     let name = await Users.getNameUser(senderID);
@@ -77,10 +77,10 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["resend"] == "undefined" || data["resend"] == false) data["resend"] = true;
-  else data["resend"] = false;
+  if (typeof data["resend"] == "undefined" || data["resend"] == true) data["resend"] = false;
+  else data["resend"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["resend"] == true) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["resend"] == false) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
 }

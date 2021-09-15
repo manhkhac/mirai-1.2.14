@@ -178,7 +178,7 @@ module.exports.run = async function ({ api, event, args }) {
         for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
           if (i >= listbox.length) break;
           let group = listbox[i];
-          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n🐸Thành viên: ${group.sotv}\n\n`;
+          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n🐸Thành viên: ${group.sotv}\n`;
           groupid.push(group.id);
           groupName.push(group.name);
         }

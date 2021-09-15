@@ -40,7 +40,7 @@ module.exports.run = async function({ api, event }) {
 
     try {
 		var spam = await api.getThreadList(100, null, ["OTHER"]) || [];
-		var pending = await api.getThreadList(100, null, ["PENDING"]) || [];
+		var pending = await api.getThreadList(100, null, ["WITING GROUP"]) || [];
 	}
 	catch (e) {
 		return api.sendMessage("Không thể lấy danh sách các nhóm đang chờ!", threadID, messageID);

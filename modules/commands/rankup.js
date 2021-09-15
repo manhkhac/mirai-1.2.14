@@ -37,7 +37,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
 	const curLevel = Math.floor((Math.sqrt(1 + (4 * exp / 3) + 1) / 2));
 	const level = Math.floor((Math.sqrt(1 + (4 * (exp + 1) / 3) + 1) / 2));
 
-	if (level > curLevel && level != 1) {
+	if (typeof thread["rankup"] != "undefined" && thread["rankup"] == false | level > curLevel && level != 1) {
 		const name = global.data.userName.get(senderID) || await Users.getNameUser(senderID);
 		var messsage = (typeof thread.customRankup == "undefined") ? msg = getText("levelup") : msg = thread.customRankup,
 			arrayContent;

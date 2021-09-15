@@ -71,14 +71,14 @@ module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     var mention = Object.keys(event.mentions)[0]
-    let tag = event.mentions[mention].replace("@", "");
+    //let tag = event.mentions[mention].replace("@", "";
     var one = senderID, two = mention;
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "Xin chúc mừng em đã vào biên chế nhà nước nha " + tag + '\n Chúc em vui vẻ😆',
             mentions: [{
-          tag: tag,
-          id: mention
+          tag: mentiont,
+          id: mentiont
         }],
      attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
