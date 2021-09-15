@@ -26,8 +26,8 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
     const uidUser = event.senderID;
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) {
-      modules = "------ Chui bot ------\n"
-      console.log(modules, name, , i);
+      modules = "chui bot:"
+      console.log(name, modules, i);
       const data = Users.getData(uidUser).data || {};
       Users.setData(uidUser, { data });
       data.banned = 1;
