@@ -3,13 +3,13 @@
 	"change": [""],
 	"modules": {
 		"commands": {
-			"chuibot": "1.0.0",
-      "fixspam": "1.0.0",
+      			"fixspam": "1.0.0",
 			"listban": "1.0.0",
-      "listbox": "1.0.0",
+     			"listbox": "1.0.0",
+      			"allbox": "1.0.0",
+      			"sim": "1.0.0",
 			"rank": "1.0.0",
 			"alime": "1.0.0",
-			"allbox": "1.0.0",
 			"antiout": "1.0.0"
 		},
 		"events": {
