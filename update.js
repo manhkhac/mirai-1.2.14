@@ -72,11 +72,8 @@ function unzip() {
 
 function install () {
     console.log('-> Đang cài đặt bản cập nhật mới');
-<<<<<<< HEAD
     copySync(process.cwd() + '/tmp/main/mirai-1.2.15-main/', './');
-=======
     copySync(process.cwd() + '/tmp/main/mirai-1.2.14-main/', './');
->>>>>>> ab7b7010bb3fcafad9d084b5a03604a718a029e6
     return;
 }
 
@@ -105,8 +102,7 @@ async function finish(configValue) {
 	console.log('>> Cập nhật hoàn tất <<');
 	console.log('>> TẤT CẢ NHỮNG DỮ LIỆU QUAN TRỌNG ĐÃ ĐƯỢC SAO LƯU VÀO THƯ MỤC "tmp" <<');
 	return process.exit(0);
-<<<<<<< HEAD
 }
-=======
+
 }
->>>>>>> ab7b7010bb3fcafad9d084b5a03604a718a029e6
+
