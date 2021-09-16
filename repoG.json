@@ -3,6 +3,7 @@
 	"change": [""],
 	"modules": {
 		"commands": {
+			"manhg": "1.0.1",
       			"fixspam": "1.0.0",
 			"goibot": "1.0.0",
 			"listban": "1.0.0",
