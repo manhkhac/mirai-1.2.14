@@ -4,6 +4,7 @@
 	"modules": {
 		"commands": {
       			"fixspam": "1.0.0",
+			"goibot": "1.0.0",
 			"listban": "1.0.0",
      			"listbox": "1.0.0",
       			"allbox": "1.0.0",
