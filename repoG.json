@@ -1,19 +1,16 @@
 {
 	"version": "1.0.0",
-	"change": [""],
+	"change": [],
 	"modules": {
 		"commands": {
-			"manhg": "1.0.1",
-      			"fixspam": "1.0.0",
-			"goibot": "1.0.0",
-			"listban": "1.0.0",
-     			"listbox": "1.0.0",
-      			"allbox": "1.0.0",
-      			"sim": "1.0.0",
-			"rank": "1.0.0",
-			"alime": "1.0.0"
+			"img": "1.0.0",
+			"linkword": "1.0.0",
+			"meewmeew": "1.0.0",
+			"sortword": "1.0.0",
+			"teach": "1.0.0"
 		},
 		"events": {
+			"antiout": "1.0.0"
 		}
 	}
 }
