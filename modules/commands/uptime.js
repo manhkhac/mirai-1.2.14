@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "uptime",
+	name: "upt",
 	version: "1.0.2",
 	hasPermssion: 0,
 	credits: "Mirai Team",
@@ -20,10 +20,10 @@ function byte2mb(bytes) {
 
 module.exports.languages = {
 	"vi": {
-		"returnResult": "⁂➻❥ Bot đã hoạt động được %1 giờ %2 phút %3 giây.\n\n❯ Tổng người dùng: %4\n❯ Tổng Nhóm: %5\n❯ Cpu đang sử dụng: %6%\n❯ Ram đang sử dụng: %7\n❯ Ping: %8ms"
+		"returnResult": "🍄➻❥ Bot của MạnhG đã hoạt động được %1 giờ %2 phút %3 giây.\n\n❯ Tổng người dùng: %4\n❯ Tổng Nhóm: %5\n❯ Cpu đang sử dụng: %6%\n❯ Ram đang sử dụng: %7\n❯ Ping: %8ms\n❯ Version: 1.2.15"
 	},
 	"en": {
-		"returnResult": "⁂➻❥ Bot has been working for %1 hour(s) %2 minute(s) %3 second(s).\n\n❯ Total users: %4\n❯ Total Threads: %5\n❯ Cpu usage: %6%\n❯ RAM usage: %7\n❯ Ping: %8ms"
+		"returnResult": "⁂➻❥ Bot has been working for %1 hour(s) %2 minute(s) %3 second(s).\n\n❯ Total users: %4\n❯ Total Threads: %5\n❯ Cpu usage: %6%\n❯ RAM usage: %7\n❯ Ping: %8ms\n❯ Version: 1.2.15"
 	}
 }
 

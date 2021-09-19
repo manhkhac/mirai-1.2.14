@@ -4,12 +4,12 @@
 */
 
 module.exports.config = {
-    name: "gáy",
+    name: "namtay",
     version: "2.0.0",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "DinhPhuc",
     description: "",
-    commandCategory: "game",
+    commandCategory: "general",
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {
@@ -25,9 +25,9 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'gay.png');
+    const path = resolve(__dirname, 'cache/canvas', 'namtay.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("http://imgur.com/a/EPH2Yq8.png", path);
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/svN1mgV.png", path);
 }
 
 async function makeImage({ one, two }) {
@@ -37,8 +37,8 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let gay_img = await jimp.read(__root + "/gay.png");
-    let pathImg = __root + `/gay_${one}_${two}.png`;
+    let namtay_img = await jimp.read(__root + "/namtay.png");
+    let pathImg = __root + `/namtay_${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
     
@@ -50,9 +50,9 @@ async function makeImage({ one, two }) {
     
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    gay_img.resize(540, 320).composite(circleOne.resize(80, 80), 161, 87).composite(circleTwo.resize(80, 80), 286, 113);
+    namtay_img.resize(700, 440).composite(circleOne.resize(50, 50), 287, 97).composite(circleTwo.resize(40, 40), 50, 137);
     
-    let raw = await gay_img.getBufferAsync("image/png");
+    let raw = await namtay_img.getBufferAsync("image/png");
     
     fs.writeFileSync(pathImg, raw);
     fs.unlinkSync(avatarOne);
@@ -70,12 +70,11 @@ async function circle(image) {
 module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions)[0];
-    let tag = event.mentions[mention].replace("@", "");
-    var one = senderID, two = mention;
+    var mention = Object.keys(event.mentions);
+    var one = senderID,two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Dậy gáy đi em " + tag + '\n sao không gáy nữa😆',
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Nắm tay anh, đi cùng anh nha " + tag + ' Nguyện 1 đời yêu em ❤',
             mentions: [{
           tag: tag,
           id: mention

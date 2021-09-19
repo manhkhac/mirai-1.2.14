@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 1,
   credits: "Mod Syn Credit(lụm)",
   description: "Tỏ tình theo cách đáng iu :3 <3",
-  commandCategory: "group",
+  commandCategory: "love",
   usages: "@mention",
   cooldowns: 10,
   dependencies: {

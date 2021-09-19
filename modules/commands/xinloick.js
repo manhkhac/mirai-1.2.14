@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "NTKhang mod ManhG",
     description: "Xin lỗi ck yêu 😢🥺",
-    commandCategory: "group",
+    commandCategory: "love",
     usages: " @tag hoặc noprefix: xin lỗi ck iu @tag",
     cooldowns: 5,
     dependencies: {"fs-extra": "","axios": ""}

@@ -23,6 +23,9 @@ module.exports.handleEvent = async ({ event, api }) => {
   const fs = global.nodemodule["fs-extra"];
 
   var { threadID, messageID, body, senderID } = event;
+  const thread = global.data.threadData.get(threadID) || {};
+  if (typeof thread["ngudot"] !== "undefined" && thread["ngudot"] == false) return;
+
   if (senderID == api.getCurrentUserID()) return;
 
   function out(data) {
@@ -41,6 +44,27 @@ module.exports.handleEvent = async ({ event, api }) => {
   });
 
 };
-module.exports.run = async ({ event, api }) => {
-  return api.sendMessage("( \\_/)                                                                            ( •_•)                                                                            // >🧠                                                            Đưa não cho bạn lắp vào đầu nè.\nCó biết là lệnh Noprefix hay không?", event.threadID)
+module.exports.languages = {
+  "vi": {
+    "on": "Bật",
+    "off": "Tắt",
+    "successText": "ngudot thành công",
+  },
+  "en": {
+    "on": "on",
+    "off": "off",
+    "successText": "ngudot success!",
+  }
+}
+
+module.exports.run = async function ({ api, event, Threads, getText }) {
+  const { threadID, messageID } = event;
+  let data = (await Threads.getData(threadID)).data;
+
+  if (typeof data["ngudot"] == "undefined" || data["ngudot"] == true) data["ngudot"] = false;
+  else data["ngudot"] = true;
+
+  await Threads.setData(threadID, { data });
+  global.data.threadData.set(threadID, data);
+  return api.sendMessage(`${(data["ngudot"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

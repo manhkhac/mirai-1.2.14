@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "antiout",
-    version: "1.0.0",
+    version: "1.1.2",
     hasPermssion: 1,
     credits: "ProCoderMew",
     description: "Tự động add lại thành viên out chùa | Không chắc chắn là add lại được tất cả.",
@@ -22,7 +22,7 @@ module.exports.onLoad = function() {
     const { writeFileSync, existsSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
     const log = require(process.cwd() + '/utils/log');
-    const path = resolve(__dirname, 'cache', 'meewmeew.json');
+    const path = resolve(__dirname, 'cache', 'manhG.json');
     if (!existsSync(path)) {
         const obj = {
             antiout: {}
@@ -44,7 +44,7 @@ module.exports.onLoad = function() {
 module.exports.run = async function({ api, event }) {
     const { writeFileSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
-    const path = resolve(__dirname, 'cache', 'meewmeew.json');
+    const path = resolve(__dirname, 'cache', 'manhG.json');
     const { threadID, messageID } = event;
     const database = require(path);
     const { antiout } = database;

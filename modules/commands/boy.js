@@ -13,7 +13,7 @@ module.exports.run = async({ api, event }) => {
     const axios = global.nodemodule["axios"];
     const request = global.nodemodule["request"];
     const fs = global.nodemodule["fs-extra"];
-    axios.get('https://api.vodaybubuoi.tk/uploads/uptrai.php').then(res => {
+    axios.get('https://api.vinhbeat.ga/trai.php').then(res => {
         let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
         let callback = function() {
             api.sendMessage({

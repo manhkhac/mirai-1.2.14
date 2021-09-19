@@ -8,14 +8,14 @@ module.exports.config = {
   usages: "",
   cooldowns: 1,
   dependencies: {
-    "fb-tools":""
+    "fb-downloads":""
   }
 }
 
 
 module.exports.run = async ({ api, event, args }) => {
   var { threadID, messageID } = event;
-  var tool = global.nodemodule["fb-tools"];
+  var tool = global.nodemodule["fb-downloads"];
   try {
     var id = await tool.findUid(args[0] || event.messageReply.body);
     api.sendMessage(id, event.threadID, event.messageID)

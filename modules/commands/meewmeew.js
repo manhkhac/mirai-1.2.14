@@ -71,9 +71,9 @@ module.exports.onLoad = async function () {
         b.hasOwnProperty('version') || (b.version = '1.0.0'),
         e(g, JSON.stringify(b, null, 4))
     }
-    f.version != a && (c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]'),
-    c(`Phiên bản ${f.version}`, '[ MeewMeew ]'),
-    c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]'))
+    //f.version != a && (c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]'),
+    //c(`Phiên bản ${f.version}`, '[ MeewMeew ]'),
+    //c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]'))
 };
 module.exports.getAll = async function () {
     const axios = global.nodemodule.axios;

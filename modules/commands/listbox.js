@@ -36,7 +36,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             var typef = await Threads.setData(idgr, { data });
             global.data.threadBanned.set(idgr, { dateAdded: data.dateAdded });
             msg += typef + ' ' + groupName + '\n🔰TID: ' + idgr + "\n";
-            console.log(modules, idgr, groupName)
+            console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\n Nhóm Bạn Đã Bị Ban, cấm dùng bot.`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
@@ -61,7 +61,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             var typef = await Threads.setData(idgr, { data });
             global.data.threadBanned.delete(idgr, 1);
             msg += typef + ' ' + groupName + '\n🔰TID: ' + idgr + "\n";
-            console.log(modules, idgr, groupName)
+            console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\n Nhóm Bạn Đã Được Gỡ Ban`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
@@ -81,7 +81,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             var groupName = handleReply.groupName[num - 1];
             var typef = api.removeUserFromGroup(`${api.getCurrentUserID()}`, idgr);
             msg += typef + ' ' + groupName + '\n🔰TID: ' + idgr + "\n";
-            console.log(modules, idgr, groupName)
+            console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\nTạm biệt nhé\nTớ out đây😢`, idgr, () =>
             api.sendMessage(`${api.getCurrentUserID()}`, () =>

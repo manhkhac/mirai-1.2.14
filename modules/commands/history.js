@@ -56,8 +56,6 @@ var history2 = hist.sort((a, b) => b.datenow - a.datenow);
   
 }
 
-
-
 module.exports.event = async function({ api, event, Threads, args, Users }) {
 	if(!event.body) return;
 	var prefix = global.config.PREFIX;

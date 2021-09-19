@@ -62,10 +62,10 @@ module.exports.run = async function({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);
-    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+    var one = senderID,two = mention[0];
+    if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        var one = senderID,
-            two = mention[0];
+        var one = senderID,two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "M coi chừng t xích m lại nhé sủa cl! 😈😈 ",
          attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }

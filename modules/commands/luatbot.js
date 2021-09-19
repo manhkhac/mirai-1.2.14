@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "Bảo",
   description: "Laws of bots",
-  commandCategory: "Luật [Bot/Box]",
+  commandCategory: "box - chat",
   usages: "[Bot/Box]",
   cooldowns: 5,
 };

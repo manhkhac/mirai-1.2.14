@@ -1,4 +1,4 @@
-const assets = require('@miraipr0ject/assets');
+const assets = require('manhg-assets');
 const crypto = require('crypto');
 const os = require("os");
 

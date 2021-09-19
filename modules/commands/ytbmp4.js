@@ -2,10 +2,10 @@ module.exports.config = {
 	name: "ytbmp4",
 	version: "1.0.0",
 	hasPermssion: 0,
-	credits: "CatalizCS mod video by Đăng",
+	credits: "ManhG",
 	description: "Phát video thông qua link YouTube hoặc từ khoá tìm kiếm",
 	commandCategory: "media",
-	usages: "video [Text]",
+	usages: "[Text]",
 	cooldowns: 10,
 	dependencies: {
 		"ytdl-core": "",
@@ -14,7 +14,7 @@ module.exports.config = {
 		"axios": ""
 	},
 	envConfig: {
-		"YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+		"YOUTUBE_API": "AIzaSyD2KpeD-N2CbW0fhv35aYhIJA9SkpsL1L0"
 	}	
 };
 
@@ -36,6 +36,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 				else return api.sendMessage({body : `${body}`, attachment: createReadStream(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp4`)}, event.threadID, () => unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.mp4`), event.messageID)
 			})
 			.on("error", (error) => api.sendMessage(`Đã xảy ra vấn đề khi đang xử lý request, lỗi: \n${error}`, event.threadID, event.messageID));
+			for(let i = 1; i < 7 ; i++) { unlinkSync(__dirname + `/cache/${i}.png`) }
 	});
 	}
 	catch {
@@ -160,10 +161,4 @@ return api.sendMessage({attachment: imgthumnail, body: body}, event.threadID,(er
   event.messageID);
 		}
 	}
-  for(let ii = 1; ii < 7 ; ii++) {
-  unlinkSync(__dirname + `/cache/${ii}.png`)}
-
-
-
-
 }

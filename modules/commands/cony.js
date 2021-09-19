@@ -10,6 +10,7 @@ module.exports.config = {
   cooldowns: 0,
   dependencies: []
 };
+
 module.exports.onLoad = () => {
   const fs = global.nodemodule["fs-extra"];
   const request = global.nodemodule["request"];
@@ -21,9 +22,6 @@ module.exports.onLoad = () => {
 module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
   var tl = ['21%', '67%', '19%', '37%', '17%', '96%', '52%', '62%', '76%', '83%', '100%', '99%', "0%", "48%", `1%`, `10%`, `99,9%`];
   var tle = tl[Math.floor(Math.random() * tl.length)];
-  //let data = await api.getUserInfo(event.senderID);
-  //let name = await data[event.senderID].name;
-
   let name = await Users.getNameUser(event.senderID);
 
   var msg = {

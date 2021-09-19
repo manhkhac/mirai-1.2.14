@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "BerVer",
   description: "Xem toạ độ mà tàu vũ trụ đang lưu lạc",
-  commandCategory: "space",
+  commandCategory: "other",
   usages: "iss",
   cooldowns: 5,
   dependencies: {"request":""}

@@ -44,7 +44,7 @@ module.exports.handleEvent = async function ({ api, event }) {
 }
 module.exports.run = async function ({ api, event, args}) {
     const { threadID, messageID} = event, body = (args) => api.sendMessage(args, threadID, messageID);
-    if (0 == args.length) return f("Bạn chưa nhập tin nhắn");
+    if (0 == args.length) return body("Bạn chưa nhập tin nhắn");
     switch (args[0]) {
         case "on":
             return global.manhG.simsimi.has(threadID) ? body("Bạn chưa bật sim.") : (global.manhG.simsimi.set(threadID, messageID), body("Bật sim thành công."));

@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "MewMew mod by VanHung, DinhPhuc, Vietdz, VĐT&NTH, Thỏadz",
     description: "",
-    commandCategory: "general",
+    commandCategory: "love",
     usages: "[tag]",
     cooldowns: 5
 };

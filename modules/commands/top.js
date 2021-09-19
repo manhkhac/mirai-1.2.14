@@ -2,7 +2,7 @@ module.exports.config = {
     name: "top",
     version: "1.0.8",
     hasPermssion: 0,
-    credits: "CatalizCS fix by ManhG",
+    credits: "CatalizCS,ManhGfix",
     description: "Xem những đứa lắm mồm nhất quả đất",
     commandCategory: "info",
     usages: "[thread/user/money]",

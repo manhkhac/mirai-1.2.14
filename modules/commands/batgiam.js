@@ -1,8 +1,3 @@
-/**
-* @author ProCoderMew
-* @warn Do not edit code or edit credits
-*/
-
 module.exports.config = {
     name: "batgiam",
     version: "2.0.0",
@@ -20,14 +15,12 @@ module.exports.config = {
     }
 };
 
-module.exports.onLoad = async() => {
-    const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { downloadFile } = global.utils;
+module.exports.onLoad = () => {
+    const fs = global.nodemodule["fs-extra"];
+    const request = global.nodemodule["request"];
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'batgiam.png');
-    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.imgur.com/ep1gG3r.png", path);
+    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
+    if (!fs.existsSync(dirMaterial + "batgiam.png")) request("https://i.imgur.com/ep1gG3r.png").pipe(fs.createWriteStream(dirMaterial + "batgiam.png"));
 }
 
 async function makeImage({ one, two }) {
@@ -42,10 +35,10 @@ async function makeImage({ one, two }) {
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
     
-    let getAvatarOne = (await axios.get(`https://4boxvn.com/api/avt?s=${one}`, { responseType: 'arraybuffer' })).data;
+    let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
     fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
-    
-    let getAvatarTwo = (await axios.get(`https://4boxvn.com/api/avt?s=${two}`, { responseType: 'arraybuffer' })).data;
+
+    let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
     fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
     
     let circleOne = await jimp.read(await circle(avatarOne));
@@ -61,25 +54,21 @@ async function makeImage({ one, two }) {
     return pathImg;
 }
 async function circle(image) {
-    const jimp = require("jimp");
+    const jimp = global.nodemodule["jimp"];
     image = await jimp.read(image);
     image.circle();
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args }) {
+module.exports.run = async function({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions)[0]
-    //let tag = event.mentions[mention].replace("@", "";
-    var one = senderID, two = mention;
-    if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+    const mention = Object.keys(event.mentions);
+    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Xin chúc mừng em đã vào biên chế nhà nước nha " + tag + '\n Chúc em vui vẻ😆',
-            mentions: [{
-          tag: mentiont,
-          id: mentiont
-        }],
-     attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        var one = senderID,
+            two = mention[0];
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Xin chúc mừng em đã vào biên chế nhà nước nha\n Chúc em vui vẻ😆",
+         attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

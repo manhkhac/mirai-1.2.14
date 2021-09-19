@@ -74,12 +74,12 @@ module.exports.run = function ({ event, args, api, getText }) {
     var moduleList = args.splice(1, args.length);
 
     switch (args[0]) {
-        case "load": {
+        case "load": 
           case "l": {
             if (moduleList.length == 0) return api.sendMessage(getText("missingInput"), threadID, messageID);
             else return this.loadCommand({ moduleList, threadID, messageID, getText });
         }
-        case "unload": {
+        case "unload": 
           case "ul": {
             if (moduleList.length == 0) return api.sendMessage(getText("missingInput"), threadID, messageID);
             else return this.unloadModule({ moduleList, threadID, messageID, getText });

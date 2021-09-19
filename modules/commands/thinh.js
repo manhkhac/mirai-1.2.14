@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "VĐT&NTH",
 	description: "Thả thính",
-	commandCategory: "other",
+	commandCategory: "love",
 	usages: "thính",
 	cooldowns: 5
 };
