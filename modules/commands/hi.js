@@ -21,7 +21,8 @@ module.exports.onLoad = () => {
 }
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
-  var { threadID, messageID, body, senderID } = event; const thread = global.data.threadData.get(threadID) || {};
+  var { threadID, messageID, body, senderID } = event; 
+  const thread = global.data.threadData.get(threadID) || {};
   if (typeof thread["hi"] !== "undefined" && thread["hi"] == false) return;
 
   let name = await Users.getNameUser(event.senderID);
@@ -54,7 +55,8 @@ module.exports.languages = {
     "successText": "hi success!",
   }
 }
-
+const thread = global.data.threadData.get(threadID) || {};
+  if (typeof thread["hi"] !== "undefined" && thread["hi"] == false) return;
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;

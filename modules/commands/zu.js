@@ -5,7 +5,7 @@
 module.exports.config = {
   name: "dú",
   version: "1.0.0",
-  hasPermssion: 1,
+  hasPermssion: 0,
   credits: "CallmeSun",
   description: "Random Ảnh Dú Gái Cực Bổ Mắt ( Lưu Ý Đây Là Lệnh Ảnh 18+ Cân Nhắc Trước Khi Sử Dụng)",
   commandCategory: "Random-img",

@@ -22,5 +22,5 @@ module.exports.run = async ({ api, event, args, Users, __GLOBAL, Currencies }) =
   api.sendMessage(`Đây Là Thử Thách Của :`
     + " [ {name} ] "
       .replace(/\{name}/g, nameUser)
-    + `: ${random_emoji}\n[ ! ] => Hãy Làm Theo Trước Khi Bấm Lại nhé !\n[ H ] Đóng góp thử thách thông qua \'/callad\' nhé !`, event.threadID, event.messageID);
+    + `: ${random_emoji}\n[ ! ] => Hãy Làm Theo Trước Khi Bấm Lại nhé !\n[ H ] Đóng góp thử thách thông qua \'callad\' nhé !`, event.threadID, event.messageID);
 } 

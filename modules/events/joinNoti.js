@@ -9,12 +9,21 @@ module.exports.config = {
 	}
 };
 
+module.exports.onLoad = async function () {
+  const { resolve } = global.nodemodule["path"];
+  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+  const { downloadFile } = global.utils;
+  const path = resolve(__dirname, "cache/joinNoti");
+  if (!existsSync(path)) mkdirSync(path, { recursive: true });
+  if (!existsSync(resolve(__dirname, 'cache/joinNoti', 'join.mp4'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/join.mp4", resolve(__dirname, 'cache/joinNoti', 'join.mp4'));
+}
+
 module.exports.run = async function({ api, event, Users }) {
 	const { join } = global.nodemodule["path"];
 	const { threadID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
 		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n https://www.facebook.com/manhict`, threadID);
+		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n https://www.facebook.com/100038379006171`, threadID);
 	}
 	else {
 		try {
@@ -22,8 +31,8 @@ module.exports.run = async function({ api, event, Users }) {
 			let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
 			const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-			const path = join(__dirname, "cache", "joinGif");
-			const pathGif = join(path, `${threadID}.gif`);
+			const path = join(__dirname, "cache", "joinNoti");
+			const pathGif = join(path, `join.mp4`);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;
 			

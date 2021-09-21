@@ -2,7 +2,7 @@ module.exports.config = {
   name: "adbot",
   version: "1.0.3",
   hasPermssion: 0,
-  credits: "manhNK",
+  credits: "manhG",
   description: "Kiểm tra thông tin ngơời dùng.",
   commandCategory: "information",
   usages: "",

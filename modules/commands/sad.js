@@ -1,9 +1,9 @@
 module.exports.config = {
-  name: "aothatday",
-  version: "1.0.2",
+  name: "sad",
+  version: "1.0.0",
   hasPermssion: 0,
   credits: "manhG",
-  description: "Ảo thật đấy",
+  description: "Buồn chán",
   commandCategory: "noprefix",
   usages: "",
   cooldowns: 5,
@@ -17,13 +17,13 @@ module.exports.onLoad = () => {
   const request = global.nodemodule["request"];
   const dirMaterial = __dirname + `/Noprefix/`;
   if (!fs.existsSync(dirMaterial + "Noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "aothatday.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/aothatday.mp3").pipe(fs.createWriteStream(dirMaterial + "aothatday.mp3"));
+  if (!fs.existsSync(dirMaterial + "chan.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/chan.mp4").pipe(fs.createWriteStream(dirMaterial + "chan.mp4"));
 }
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
   const thread = global.data.threadData.get(threadID) || {};
-  if (typeof thread["aothatday"] !== "undefined" && thread["aothatday"] == false) return;
+  if (typeof thread["chan"] !== "undefined" && thread["chan"] == false) return;
 
   if (senderID == api.getCurrentUserID()) return;
   function out(data) {
@@ -31,11 +31,11 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   }
   //trả lời
   var msg = {
-    body: `dmm, ảo thật đấy`,
-    attachment: fs.createReadStream(__dirname + `/Noprefix/aothatday.mp3`)
+    body: `Chán quá đi, huhu`,
+    attachment: fs.createReadStream(__dirname + `/Noprefix/chan.mp4`)
   }
   // Gọi bot
-  var arr = ["ảo", "ảo ma", "ảo ma canada", "ảo thật", "ảo thật đấy", "dmm", "aothatday"];
+  var arr = ["chán", "chán vãi", "chán quá", "chán v", "buồn", "buồn v", "buồn quá","sad","khóc"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) return out(msg)
@@ -44,18 +44,18 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
 };
 
 module.exports.languages = {
-  "vi": {"on": "Bật","off": "Tắt","successText": "aothatday thành công",},
-  "en": {"on": "on","off": "off","successText": "aothatday success!",}
+  "vi": {"on": "Bật","off": "Tắt","successText": "buồn chán thành công",},
+  "en": {"on": "on","off": "off","successText": "sad success!",}
 }
 
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["aothatday"] == "undefined" || data["aothatday"] == true) data["aothatday"] = false;
-  else data["aothatday"] = true;
+  if (typeof data["chan"] == "undefined" || data["chan"] == true) data["chan"] = false;
+  else data["chan"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["aothatday"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["chan"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

@@ -32,9 +32,9 @@ module.exports.run = function({ api, event, args }) {
                         tag: tag,
                         id: Object.keys(event.mentions)[0]
                     }],
-                    attachment: fs.createReadStream(__dirname + `/cache/1.${ext}`)
-                }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/1.${ext}`), event.messageID);
+                    attachment: fs.createReadStream(__dirname + `/cache/tat.${ext}`)
+                }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/tat.${ext}`), event.messageID);
             };
-            request(getURL).pipe(fs.createWriteStream(__dirname + `/cache/1.${ext}`)).on("close", callback);
+            request(getURL).pipe(fs.createWriteStream(__dirname + `/cache/tat.${ext}`)).on("close", callback);
         });
 }

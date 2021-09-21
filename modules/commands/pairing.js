@@ -6,7 +6,7 @@ module.exports.config = {
   description: "Tìm Kiếm Nửa Kia Của Bạn",
   commandCategory: "Roleplay",
   usages: "[pairing/boy/girl]",
-  cooldowns: 300
+  cooldowns: 5
 }
 module.exports.run = async ({ api, event, args, Users, Threads }) => {
   const axios = global.nodemodule["axios"];

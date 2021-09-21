@@ -16,6 +16,9 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
   if (typeof thread["goibot"] !== "undefined" && thread["goibot"] == false) return;
 
   if (senderID == api.getCurrentUserID()) return;
+   function out(data){
+  	api.sendMessage(data, threadID, messageID)
+  }
   let name = await Users.getNameUser(event.senderID);
   let dataThread = await Threads.getData(event.threadID);
   let threadInfo = dataThread.threadInfo;
@@ -43,31 +46,21 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
           let nameT = threadInfo.threadName;
           modules = "------ Gọi bot ------\n";
           console.log(modules, value + "|", nameT);
-          api.sendMessage(rand, threadID);
+          return out(rand)
       }
   });
 }
 
 module.exports.languages = {
-  "vi": {
-    "on": "Bật",
-    "off": "Tắt",
-    "successText": "goibot thành công",
-  },
-  "en": {
-    "on": "on",
-    "off": "off",
-    "successText": "goibot success!",
-  }
+  "vi": {"on": "Bật","off": "Tắt", "successText": "goibot thành công",},
+  "en": {"on": "on","off": "off","successText": "goibot success!",}
 }
 
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
-
   if (typeof data["goibot"] == "undefined" || data["goibot"] == true) data["goibot"] = false;
   else data["goibot"] = true;
-
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
   return api.sendMessage(`${(data["goibot"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);

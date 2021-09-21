@@ -77,20 +77,14 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
         "https://i.imgur.com/dTsmNI6.jpg",
     ];
 
-    var max = Math.floor(Math.random() * 6);
-    var min = Math.floor(Math.random() * 2);
-    var data = await Currencies.getData(event.senderID);
-    //var exp = data.exp;
-    var money = data.money
-    if (money < 5000) api.sendMessage("Bạn cần 5000 đô để xem sex ?", event.threadID, event.messageID)
-    else {
-        Currencies.setData(event.senderID, options = { money: money - 5000 })
-        var callback = () => api.sendMessage({ body: `Ảnh sex\nSố Ảnh: ${link.length}\n-5000 đô !`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID);
-        return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
-    }
-
-    /*
-  var callback = () => api.sendMessage({body:`Ảnh 18+\nSố ảnh: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
-  */
+  var max = Math.floor(Math.random() * 6);
+  var min = Math.floor(Math.random() * 2);
+  var data = await Currencies.getData(event.senderID);
+  var money = data.money
+  if (money < 500000) api.sendMessage("Bạn cần 500000 đô để xem ảnh sex?", event.threadID, event.messageID)
+  else {
+    Currencies.setData(event.senderID, options = { money: money - 500000 })
+    var callback = () => api.sendMessage({ body: `Suốt ngày sex😼\n» Số dư: -500000 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
+    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
+  }
 };

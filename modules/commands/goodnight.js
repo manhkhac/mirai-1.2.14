@@ -46,16 +46,8 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
 };
 
 module.exports.languages = {
-  "vi": {
-    "on": "Bật",
-    "off": "Tắt",
-    "successText": "goodnight thành công",
-  },
-  "en": {
-    "on": "on",
-    "off": "off",
-    "successText": "goodnight success!",
-  }
+  "vi": {"on": "Bật","off": "Tắt","successText": "goodnight thành công",},
+  "en": {"on": "on","off": "off", "successText": "goodnight success!",}
 }
 
 module.exports.run = async function ({ api, event, Threads, getText }) {
@@ -63,9 +55,9 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   let data = (await Threads.getData(threadID)).data;
 
   if (typeof data["goodnight"] == "undefined" || data["goodnight"] == true) data["goodnight"] = false;
-  else data["aothatday"] = true;
+  else data["goodnight"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["aothatday"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["goodnight"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }
