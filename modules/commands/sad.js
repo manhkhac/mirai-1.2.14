@@ -17,13 +17,13 @@ module.exports.onLoad = () => {
   const request = global.nodemodule["request"];
   const dirMaterial = __dirname + `/Noprefix/`;
   if (!fs.existsSync(dirMaterial + "Noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "chan.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/chan.mp4").pipe(fs.createWriteStream(dirMaterial + "chan.mp4"));
+  if (!fs.existsSync(dirMaterial + "sad.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/sad.mp4").pipe(fs.createWriteStream(dirMaterial + "sad.mp4"));
 }
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
   const thread = global.data.threadData.get(threadID) || {};
-  if (typeof thread["chan"] !== "undefined" && thread["chan"] == false) return;
+  if (typeof thread["sad"] !== "undefined" && thread["sad"] == false) return;
 
   if (senderID == api.getCurrentUserID()) return;
   function out(data) {
@@ -32,15 +32,14 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   //trả lời
   var msg = {
     body: `Chán quá đi, huhu`,
-    attachment: fs.createReadStream(__dirname + `/Noprefix/chan.mp4`)
+    attachment: fs.createReadStream(__dirname + `/Noprefix/sad.mp4`)
   }
   // Gọi bot
-  var arr = ["chán", "chán vãi", "chán quá", "chán v", "buồn", "buồn v", "buồn quá","sad","khóc"];
+  var arr = ["chán", "chán vãi", "chán quá", "chán v","chán vl", "buồn", "buồn vl", "buồn quá","sad","khóc"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
-
 };
 
 module.exports.languages = {
@@ -52,10 +51,10 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["chan"] == "undefined" || data["chan"] == true) data["chan"] = false;
-  else data["chan"] = true;
+  if (typeof data["sad"] == "undefined" || data["sad"] == true) data["sad"] = false;
+  else data["sad"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["chan"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["sad"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

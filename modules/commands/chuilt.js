@@ -1,12 +1,12 @@
 module.exports.config = {
     name: "chuilt",
     version: "1.0.3",
-    hasPermssion: 1,
+    hasPermssion: 0,
     credits: "ManhG demo NTKhang",
     description: "Tag liên tục người bạn tag trong nhiều lần\nCó thể gọi là gọi hồn người đó",
     commandCategory: "system",
     usages: "@mention",
-    cooldowns: 60,
+    cooldowns: 10,
     dependencies: {
         "fs-extra": "",
         "axios": ""
@@ -15,9 +15,9 @@ module.exports.config = {
 
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
-    if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn chửi", event.threadID);
-    let data = await api.getUserInfo(mention);
-    let name = data[parseInt(mention)].name;
+    if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
+    var name = (await Users.getData(mention)).name;
+    console.log("Chuiglientuc: ",name)
     var arraytag = [];
     arraytag.push({ id: mention, tag: name });
     var a = function(a) { api.sendMessage(a, event.threadID); }

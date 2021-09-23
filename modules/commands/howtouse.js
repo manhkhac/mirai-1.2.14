@@ -83,7 +83,7 @@ module.exports.run = function({ api, event, args, permssion, utils }) {
 			return api.sendMessage(`Đã xóa thành công mục có id là: ${content}`, event.threadID, event.messageID);
 		}
 		default:
-			api.sendMessage("Bấm /howtouse list nha <3", event.threadID,event.messageID);
+			api.sendMessage("Bấm howtouse list nha <3", event.threadID,event.messageID);
 		break;
 	}
 }

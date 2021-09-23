@@ -59,13 +59,14 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
             api.sendMessage(`${api.getCurrentUserID()}`, () =>
               api.sendMessage(`★★UnBanSuccess★★\n\n🔷${nameU} \n🔰TID:${uidUser} `, threadID)));
         } else {
-          api.sendMessage({ body: `Admin ❤ ${name} thông tin đến bạn:\n\n${event.body}\n\n»»💬Reply tin nhắn này gửi lời cảm ơn của bạn tới admin`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
+          api.sendMessage({ body: `Admin ❤ ${name} thông tin đến bạn:\n\n${event.body}\n\n»»💬Reply tin nhắn này để gửi trả lời của bạn`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
             name: this.config.name,
             author: event.senderID,
             messageID: data.messageID,
             type: "reply"
           }), handleReply.messID);
           break;
+          
         }
       }
 

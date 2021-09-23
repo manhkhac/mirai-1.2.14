@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "12 cung hoàng đạo",
+  name: "12cunghoangdao",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "Long LTD",

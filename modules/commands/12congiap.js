@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "12 con giáp",
+  name: "12congiap",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "Long LTD",

@@ -1,9 +1,9 @@
 module.exports.config = {
-  name: "ỏ",
+  name: "o",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "ManhG",
-  description: "Ỏ  Ỏ Ỏ Ỏ",
+  description: "o  o o o",
   commandCategory: "noprefix",
   usages: "",
   cooldowns: 5,
@@ -23,8 +23,8 @@ module.exports.handleEvent = async ({ event, api }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
   const thread = global.data.threadData.get(threadID) || {};
-  if (typeof thread["ỏ"] !== "undefined" && thread["ỏ"] == false) return;
-  
+  if (typeof thread["o"] !== "undefined" && thread["o"] == false) return;
+
   var { threadID, messageID, body, senderID } = event;
   if (senderID == api.getCurrentUserID()) return;
 
@@ -33,40 +33,32 @@ module.exports.handleEvent = async ({ event, api }) => {
   }
 
   var msg = {
-    body: `Hôm nay trời đẹp thế nhờ... \nỎ Ỏ Ỏ Ỏ`,
+    body: `Hôm nay trời đẹp thế nhờ... \no o o o`,
     attachment: fs.createReadStream(__dirname + `/Noprefix/ooo.mp4`)
   }
 
-  var arr = ["ỏ", "Ỏ", "oo", "Oo"];
+  var arr = ["o", "oo", "ỏ"];
   for (const i of arr) {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) {
-      return api.sendMessage(msg, threadID, messageID);
+      return out(msg)
     }
   }
 
 };
 module.exports.languages = {
-  "vi": {
-    "on": "Bật",
-    "off": "Tắt",
-    "successText": "ỏ thành công",
-  },
-  "en": {
-    "on": "on",
-    "off": "off",
-    "successText": "ỏ success!",
-  }
+  "vi": {"on": "Bật","off": "Tắt","successText": "ỏ thành công",},
+  "en": {"on": "on","off": "off","successText": "ỏ success!",}
 }
 
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["ỏ"] == "undefined" || data["ỏ"] == true) data["ỏ"] = false;
-  else data["ỏ"] = true;
+  if (typeof data["o"] == "undefined" || data["o"] == true) data["o"] = false;
+  else data["o"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["ỏ"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["o"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

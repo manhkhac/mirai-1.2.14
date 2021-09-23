@@ -98,7 +98,8 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
           //let threadInfo = dataThread.threadInfo;
           const data = (await api.getThreadInfo(singleThread));
           const nameT = data.name;
-          console.log(nameT)
+           var modules = "ThreadBan: "
+          console.log(modules,nameT)
           listBanned.push(`${i++}. ${nameT}\n🔰TID: ${singleThread}`)
         };
 
@@ -122,7 +123,7 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
       {
         const userBanned = global.data.userBanned.keys();
         //console.log(userBanned)
-        var modules = " UserBan: "
+        var modules = "UserBan: "
         for (const singleUser of userBanned) {
           const name = global.data.userName.get(singleUser) || await Users.getNameUser(singleUser);
           listBanned.push(`${i++}. ${name} \n🔰UID: ${singleUser}`);
