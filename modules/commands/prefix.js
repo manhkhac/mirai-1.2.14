@@ -17,7 +17,7 @@ module.exports.handleEvent = async ({ event, api, Threads }) => {
     api.sendMessage(data, threadID, messageID)
   }
   var dataThread = (await Threads.getData(threadID));
-  var data = dataThread.data;
+  var data = dataThread.data; 
 
   var arr = ["mpre","mprefix","prefix", "dấu lệnh", "prefix của bot là gì","daulenh"];
   arr.forEach(i => {

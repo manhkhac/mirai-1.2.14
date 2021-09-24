@@ -44,7 +44,6 @@ module.exports.run = async ({ api, event, args }) => {
           if (!imgg) api.sendMessage(`👀 Tên nhóm: ${threadInfo.threadName}\n🐧 TID: ${args[1]}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n☺️ Thông tin: \n» ${threadInfo.participantIDs.length} thành viên và ${threadInfo.adminIDs.length} quản trị viên.\n» Gồm ${nam} nam và ${nu} nữ.\n» Tổng số tin nhắn: ${threadInfo.messageCount}.`, event.threadID, event.messageID);
           else var callback = () => api.sendMessage({ body: `👀 Tên nhóm: ${threadInfo.threadName}\n🐧 TID: ${args[1]}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n☺️ Thông tin: \n» ${threadInfo.participantIDs.length} thành viên và ${threadInfo.adminIDs.length} quản trị viên.\n» Gồm ${nam} nam và ${nu} nữ.\n» Tổng số tin nhắn: ${threadInfo.messageCount}.`, attachment: fs.createReadStream(__dirname + "/cache/1.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID);
           return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
-
         }
 
         let threadInfo = await api.getThreadInfo(event.threadID);
@@ -112,7 +111,6 @@ case "u":
 
         }
       }
-
 
     default:
       {

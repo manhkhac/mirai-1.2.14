@@ -28,7 +28,7 @@ module.exports.run = async({ api, event }) => {
     const pidusage = await global.nodemodule["pidusage"](process.pid);
     const timeStart = Date.now();
     var upt = {
-      body: `Thời gian hoạt động: ${hours} : ${minutes} : ${seconds}\n❯ Tổng người dùng: ${global.data.allUserID.length}\n❯ Tổng Nhóm: ${global.data.allThreadID.length}\n❯ Cpu đang sử dụng: ${pidusage.cpu.toFixed(1)}%\n❯ Ram đang sử dụng: ${byte2mb(pidusage.memory)}\n❯ Ping: ${Date.now() - timeStart}ms\n❯ Version: 1.2.15`,
+      body: `Thời gian hoạt động: ${hours}:${minutes}:${seconds}\n❯ Tổng người dùng: ${global.data.allUserID.length}\n❯ Tổng Nhóm: ${global.data.allThreadID.length}\n❯ Cpu đang sử dụng: ${pidusage.cpu.toFixed(1)}%\n❯ Ram đang sử dụng: ${byte2mb(pidusage.memory)}\n❯ Ping: ${Date.now() - timeStart}ms\n❯ Version: 1.2.15`,
         attachment: (await global.nodemodule["axios"]({
             url: (await global.nodemodule["axios"]('https://girl.demngayyeu.repl.co')).data.data,
             method: "GET",

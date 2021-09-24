@@ -1,11 +1,11 @@
 module.exports.config = {
     name: "bans",
-    version: "1.0.5",
+    version: "1.0.0",
     hasPermssion: 1,
-    credits: "Mirai Team",
+    credits: "ManhG",
     description: "Cấm người dùng dành riêng cho QTV BOX chat",
     commandCategory: "group",
-    usages: "[ID or text]",
+    usages: "[ID or text] hoặc tag@",
     cooldowns: 5
 };
 

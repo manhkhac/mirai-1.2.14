@@ -1,20 +1,20 @@
 module.exports.config = {
   name: "ghep",
-  version: "1.0.1", 
+  version: "1.0.0", 
   hasPermssion: 0,
   credits: "Hungcho", //del get by D-Jukie
   description: "Ghép đôi",
   commandCategory: "roleplay", 
-  usages: "ghép", 
-  cooldowns: 10,
-  dependencies: [] 
+  usages: "", 
+  cooldowns: 5,
+  dependencies: {}
 };
 module.exports.run = async function({ api, event, Users, Currencies }) {
         const axios = global.nodemodule["axios"];
         const fs = global.nodemodule["fs-extra"];
         var data = await Currencies.getData(event.senderID);
         var money = data.money
-        if( money > 500) api.sendMessage("⚡️Nghèo quá nên tôi không biết ghép cho ai nhé!") //thay số tiền cần trừ vào 0, xóa money = 0
+        if( money < 500) api.sendMessage("⚡️Nghèo quá nên tôi không biết ghép cho ai nhé!", event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
 

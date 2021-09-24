@@ -16,7 +16,7 @@ module.exports.run = async({api,event,args,Users,Currencies}) => {
     const request = require('request');
     const fs = global.nodemodule["fs-extra"]
     var callback = () => api.sendMessage(
-    {body:`梁ADMIN BOT梁\n\n👀 Tên: MạnhNK (ManhICT)\n🔰 STK: 1. ACB: 1819957 NGUYENKHACMANH\n🔰 STK: 2. MOMO: 0865983826 NGUYENKHACMANH\n❎ Tuổi: ...\n👤 😶 Giới tính: Nam\n💫 Chiều cao cân nặng: 1m72 45kg\n💘 Mối quan hệ: Cu đơn\n😎 Quê quán: ...\n🤔 Nơi ở: ...\n👫 Gu: Ni :<\n🌸 Tính cách: Bồ là nhất\n👉 Profile: https://www.facebook.com/manhict/`,
+    {body:`梁ADMIN BOT梁\n\n👀 Tên: MạnhG (ManhICT)\n🔰 STK: 1. ACB:\n1819957 NGUYEN KHACMANH\n🔰 STK: 2. MOMO:\n0865983826 NGUYENKHACMANH\n❎ Tuổi: ...\n👤 😶 Giới tính: Nam\n💫 Chiều cao cân nặng: 1m72 45kg\n💘 Mối quan hệ: Cu đơn\n😎 Quê quán: ...\n🤔 Nơi ở: ...\n👫 Gu: Ni :<\n🌸 Tính cách: Bồ là nhất\n👉 Profile: https://www.facebook.com/manhict/`,
         attachment: fs.createReadStream(__dirname + "/cache/ADMINBOT.png")}, event.threadID, () => 
         fs.unlinkSync(__dirname + "/cache/ADMINBOT.png"));  
         return request(

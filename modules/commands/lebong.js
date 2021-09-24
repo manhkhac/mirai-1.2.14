@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "bống",
+  name: "lebong",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Jubgon", //Giữ Credit tôn trọng thằng làm ra

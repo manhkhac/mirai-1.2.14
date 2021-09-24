@@ -194,6 +194,4 @@ module.exports.run = function ({ event, api, args }) {
             }, messageID);
         }
     }
-
-    
 }

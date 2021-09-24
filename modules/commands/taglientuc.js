@@ -13,14 +13,14 @@ module.exports.config = {
     }
 }
 
-module.exports.run = async function({ api, args, Users, event}) {
+module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     var name = (await Users.getData(mention)).name;
     console.log("Taglientuc: ",name)
     var arraytag = [];
-        arraytag.push({id: mention, tag: name});
-    var a = function (a) { api.sendMessage(a, event.threadID); }
+        arraytag.push({ id: mention, tag: name });
+    var a = function(a) { api.sendMessage(a, event.threadID) }
 a("Bắt đầu gọi hồn!");
 setTimeout(() => {a({body: "Alo con lợn" + " " + name, mentions: arraytag})} , 3000);
 setTimeout(() => {a({body: "Có người cần gặp mày kìa đĩ ơi" + " " + name, mentions: arraytag})} , 7000);

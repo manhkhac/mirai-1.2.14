@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "ManhG demo NTKhang",
     description: "Tag liên tục người bạn tag trong nhiều lần\nCó thể gọi là gọi hồn người đó",
-    commandCategory: "system",
+    commandCategory: "general ",
     usages: "@mention",
     cooldowns: 10,
     dependencies: {
@@ -17,10 +17,10 @@ module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     var name = (await Users.getData(mention)).name;
-    console.log("Chuiglientuc: ",name)
+    console.log("Chuilt: ",name)
     var arraytag = [];
     arraytag.push({ id: mention, tag: name });
-    var a = function(a) { api.sendMessage(a, event.threadID); }
+    var a = function(a) { api.sendMessage(a, event.threadID) }
     a("Bắt đầu chửi !");
     setTimeout(() => { a({ body: "Chóa" + " " + name, mentions: arraytag }) }, 3000);
     setTimeout(() => { a({ body: "Chóa" + " " + name, mentions: arraytag }) }, 5000);
