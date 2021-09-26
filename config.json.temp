@@ -6,9 +6,7 @@
     "allowInbox": true,
     "autoClean": true,
     "commandDisabled": [],
-    "eventDisabled": [
-        "adminUpdate.js"
-    ],
+    "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
