@@ -6,16 +6,14 @@
     "allowInbox": true,
     "autoClean": true,
     "commandDisabled": [],
-    "eventDisabled": [
-        "adminUpdate.js"
-    ],
+    "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
     "BOTNAME": "",
     "PREFIX": "!",
     "ADMINBOT": [
-        "ID-ADMIN"
+        "100038379006171"
     ],
     "DATABASE": {
         "sqlite": {
