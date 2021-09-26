@@ -41,7 +41,7 @@
 		"eval": "",
 		"extract-zip": "",
 		"facebook-chat-api-v2": "^1.3.16",
-		"fb-downloads": "",
+		"fb-downloads": "^1.0.4",
 		"flag": "",
 		"fs-extra": "",
 		"jimp": "",
