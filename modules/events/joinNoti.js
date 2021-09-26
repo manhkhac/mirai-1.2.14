@@ -22,7 +22,7 @@ module.exports.run = async function({ api, event, Users }) {
 	const { join } = global.nodemodule["path"];
 	const { threadID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ BoT  MạnhG ♡" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
 		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n https://www.facebook.com/100038379006171`, threadID);
 	}
 	else {
