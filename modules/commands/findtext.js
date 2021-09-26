@@ -29,7 +29,7 @@ module.exports.onLoad = async function() {
     const path = resolve(__dirname, 'cache', 'meewmeew.json');
 
     try {
-        var AllLang = (await axios.get("https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/data/lang.json")).data;
+        var AllLang = (await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/lang.json")).data;
     }
     catch {
         var AllLang = [];

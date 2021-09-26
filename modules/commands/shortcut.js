@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "CatalizCS",
 	description: "Phiên bản xịn hơn của short",
-	commandCategory: "system",
+	commandCategory: "General",
     usages: "[all/delete/empty]",
 	cooldowns: 5,
 	dependencies: {

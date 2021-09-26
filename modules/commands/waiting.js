@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "wait",
+	name: "waiting",
 	version: "1.0.5",
 	credits: "Mirai Team",
 	hasPermssion: 2,

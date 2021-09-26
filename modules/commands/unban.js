@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 2,
   credits: "ManhG",
-  description: "uban nhanh lẹ",
+  description: "Gỡ ban nhóm và người dùng trong 1 nốt nhạc",
   commandCategory: "admin",
   usages: "",
   cooldowns: 2,
@@ -50,6 +50,20 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
         break;
       }
 
+    case 'box':
+    case 'thread':
+      {
+        var idbox = event.threadID;
+        const data = (await Threads.getData(idbox)).data || {};
+        data.banned = 0;
+        data.reason = null;
+        data.dateAdded = null;
+        await Threads.setData(idbox, { data });
+        global.data.userBanned.delete(idbox, 1);
+        api.sendMessage("Đã gỡ ban cho nhóm này!", threadID, messageID)
+        break;
+      }
+
     case 'allmember':
     case 'alluser':
       {
@@ -93,8 +107,8 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
     case 'qtv':
     case 'Qtv':
       {
-        var threadInfo = await api.getThreadInfo(event.threadID);
-        //var threadInfo = (await Threads.getData(event.threadID)).threadInfo;
+        //var threadInfo = await api.getThreadInfo(event.threadID);
+        var threadInfo = (await Threads.getData(event.threadID)).threadInfo;
         var listQTV = threadInfo.adminIDs;
         for (let i = 0; i < listQTV.length; i++) {
           const idQtv = listQTV[i].id;
@@ -132,7 +146,7 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
           var mentions = Object.keys(event.mentions)
           var userID = (await Users.getData(mentions)).userID;
           var nameUser = (await Users.getData(mentions)).name;
-          let data = (await Users.getData(userID)).data || {};
+          const data = (await Users.getData(userID)).data || {};
           data.banned = 0;
           data.reason = null;
           data.dateAdded = null;
@@ -144,7 +158,7 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
       }
 
     default:
-      api.sendMessage(`Bạn có thể dùng:\n\n${prefix}${this.config.name} admin => gỡ ban cho toàn bộ admin bot\n\n${prefix}${this.config.name} allbox => gỡ ban cho toàn bộ nhóm trên sever\n\n${prefix}${this.config.name} alluser => gỡ ban cho toàn bộ người dùng trên sever\n\n${prefix}${this.config.name} allqtv => gỡ ban cho toàn bộ QTV Box trên sever\n\n${prefix}${this.config.name} qtv => gỡ ban cho toàn bộ QTV Box [1 box ]\n\n${prefix}${this.config.name} member => gỡ ban cho toàn bộ thành viên trong nhóm [1 nhóm ]\n\n${prefix}${this.config.name} member @[tag] => gỡ ban cho người được tag`, threadID, messageID);
+      api.sendMessage(`Bạn có thể dùng:\n\n${prefix}${this.config.name} admin => gỡ ban cho toàn bộ admin bot\n\n${prefix}${this.config.name} allbox => gỡ ban cho toàn bộ nhóm trên sever\n\n${prefix}${this.config.name} box => gỡ ban cho nhóm hiện tại [1 nhóm ]\n\n${prefix}${this.config.name} alluser => gỡ ban cho toàn bộ người dùng trên sever\n\n${prefix}${this.config.name} allqtv => gỡ ban cho toàn bộ QTV Box trên sever\n\n${prefix}${this.config.name} qtv => gỡ ban cho toàn bộ QTV Box [1 box ]\n\n${prefix}${this.config.name} member => gỡ ban cho toàn bộ thành viên trong nhóm [1 nhóm ]\n\n${prefix}${this.config.name} member @[tag] => gỡ ban cho người được tag`, threadID, messageID);
       break;
   }
 }

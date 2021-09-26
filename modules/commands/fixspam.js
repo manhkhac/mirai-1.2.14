@@ -83,16 +83,17 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
   }
 };
 
-module.exports.handleEvent = async ({ event, api, Users }) => {
+module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var { threadID, messageID, body, senderID, reason } = event;
   const moment = require("moment-timezone");
   const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
   if (senderID == api.getCurrentUserID()) return;
   let name = await Users.getNameUser(event.senderID);
   var idbox = event.threadID;
+  var threadInfo = (await Threads.getData(threadID)).threadInfo;
   //trả lời
   var msg = {
-    body: `»Thông báo từ Admin«\n\n${name}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\n💌Liên hệ Admin:\nhttps://facebook.com/100038379006171 \nđể được gỡ ban bạn nhé \n\n🎭Thả tym cho bạn nè <3`
+    body: `»Thông báo từ Admin«\n\n${name}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\nQTV callad để gỡ ban(kèm uid)\n💌Liên hệ Admin:\n1.https://fb.com/100038379006171\n2.https://fb.com/maithanh.dora.7545`
   }
   // Gọi bot
   const arr = ["botngu", "bot ngu", "bot gà", "con bot lol", "bot ngu lol", "bot chó", "dm bot", "đm bot", "dmm bot", "dmm bot", "đmm bot", "đb bot", "bot điên", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "bot sida", "bot fake", "mạnh ngu", "bot shoppee", "bot đểu", "bot dỡm"];
@@ -113,7 +114,8 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
       api.sendMessage(msg, threadID, () => {
         var listAdmin = global.config.ADMINBOT;
         for (var idad of listAdmin) {
-          api.sendMessage(`=== Bot Notification ===\n\n🆘Tội nhân: ${name}\n🔰Uid: ${uidUser}\n😥Chửi bot: ${i}\n\nĐã bị ban khỏi hệ thống`, idad, (error, info) =>
+          let namethread = threadInfo.threadName;
+          api.sendMessage(`=== Bot Notification ===\n\n🆘Tội nhân: ${name}\n🔰Uid: ${uidUser}\n🤷‍♂️Box: ${namethread}\n😥Chửi bot: ${i}\n\nĐã bị ban khỏi hệ thống`, idad, (error, info) =>
               global.client.handleReply.push({
                 name: this.config.name,
                 author: senderID,

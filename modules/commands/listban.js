@@ -84,8 +84,8 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
   const { threadID, messageID } = event;
   var listBanned = [],
     i = 1;
-  //var dataThread = [];
-
+  var dataThread = [];
+  //var nameThread = [];
   switch (args[0]) {
     case "thread":
     case "t":
@@ -94,10 +94,9 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
         const threadBanned = global.data.threadBanned.keys();
         //console.log(threadBanned)
         for (const singleThread of threadBanned) {
-          //dataThread = await Threads.getData(singleThread);
-          //let threadInfo = dataThread.threadInfo;
-          const data = (await api.getThreadInfo(singleThread));
-          const nameT = data.name;
+          nameT = (await Threads.getData(singleThread)).threadInfo.threadName || "Tên không tồn tại";
+          //const data = (await api.getThreadInfo(singleThread));
+          //const nameT = data.name;
            var modules = "ThreadBan: "
           console.log(modules,nameT)
           listBanned.push(`${i++}. ${nameT}\n🔰TID: ${singleThread}`)

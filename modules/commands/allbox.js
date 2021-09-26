@@ -1,9 +1,9 @@
 module.exports.config = {
     name: 'allbox',
     version: '1.0.0',
-    credits: 'ManhG',
+    credits: 'CatalizCS, ManhG MoD',
     hasPermssion: 2,
-    description: '[Ban/Unban/Remove] List[Data] thread bot đã tham gia',
+    description: '[Ban/Unban/Del/Remove] List[Data] thread bot đã tham gia',
     commandCategory: 'Admin',
     usages: '[số trang/all]',
     cooldowns: 5
@@ -64,51 +64,59 @@ module.exports.handleReply = async function({ api, event, args, Threads, handleR
     }
 };
 module.exports.run = async function({ api, event, args }) {
+    switch (args[0]) {
+        case "all":
+            {
+                var threadList = [];
+                var data, msg = "";
+                /////////
+                try {
+                    data = await api.getThreadList(1000, null, ["INBOX"]);
+                } catch (e) {
+                    console.log(e);
+                }
+                for (const thread of data) {
+                    if (thread.isGroup == true) threadList.push({ threadName: thread.name, threadID: thread.threadID, messageCount: thread.messageCount });
+                }
+                /////////////////////////////////////////////////////
+                //===== sắp xếp từ cao đến thấp cho từng nhóm =====//
+                threadList.sort((a, b) => {
+                    if (a.messageCount > b.messageCount) return -1;
+                    if (a.messageCount < b.messageCount) return 1;
+                })
 
-    var threadList = [];
-    var data, msg = "";
-    /////////
-    try {
-        data = await api.getThreadList(1000, null, ["INBOX"]);
-    } catch (e) {
-        console.log(e);
+                var groupid = [];
+                var groupName = [];
+                var page = 1;
+                page = parseInt(args[0]) || 1;
+                page < -1 ? page = 1 : "";
+                var limit = 1000;
+                var msg = "🎭DS NHÓM [Data]🎭\n\n";
+                var numPage = Math.ceil(threadList.length / limit);
+
+                for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
+                    if (i >= threadList.length) break;
+                    let group = threadList[i];
+                    msg += `${i+1}. ${group.threadName}\n🔰TID: ${group.threadID}\n💌MessageCount: ${group.messageCount}\n\n`;
+                    groupid.push(group.threadID);
+                    groupName.push(group.threadName);
+                }
+                msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}allbox + số trang/all\n\n`
+
+                api.sendMessage(msg + '🎭Reply Out, Ban, Unban, Del[data] + số thứ tự để Out, Ban, Unban, Del[data] tới thread đó!', event.threadID, (e, data) =>
+                    global.client.handleReply.push({
+                        name: this.config.name,
+                        author: event.senderID,
+                        messageID: data.messageID,
+                        groupid,
+                        groupName,
+                        type: 'reply'
+                    })
+                )
+            }
+            break;
+
+        default:
+            
     }
-    for (const thread of data) {
-        if (thread.isGroup == true) threadList.push({ threadName: thread.name, threadID: thread.threadID, messageCount: thread.messageCount });
-    }
-    /////////////////////////////////////////////////////
-    //===== sắp xếp từ cao đến thấp cho từng nhóm =====//
-    threadList.sort((a, b) => {
-        if (a.messageCount > b.messageCount) return -1;
-        if (a.messageCount < b.messageCount) return 1;
-    })
-
-    var groupid = [];
-    var groupName = [];
-    var page = 1;
-    page = parseInt(args[0]) || 1;
-    page < -1 ? page = 1 : "";
-    var limit = 1000;
-    var msg = "🎭DS NHÓM [Data]🎭\n\n";
-    var numPage = Math.ceil(threadList.length / limit);
-
-    for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
-        if (i >= threadList.length) break;
-        let group = threadList[i];
-        msg += `${i+1}. ${group.threadName}\n🔰TID: ${group.threadID}\n💌MessageCount: ${group.messageCount}\n`;
-        groupid.push(group.threadID);
-        groupName.push(group.threadName);
-    }
-    msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}allbox + số trang/all\n\n`
-
-    api.sendMessage(msg + '🎭Reply Out, Ban, Unban, Del[data] + số thứ tự để Out, Ban, Unban, Del[data] thread đó!', event.threadID, (e, data) =>
-        global.client.handleReply.push({
-            name: this.config.name,
-            author: event.senderID,
-            messageID: data.messageID,
-            groupid,
-            groupName,
-            type: 'reply'
-        })
-    );
 };

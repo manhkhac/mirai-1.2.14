@@ -1,10 +1,10 @@
 module.exports.config = {
 	name: "baicao",
-	version: "2.0.1",
+	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Hàng đi xin",
+	credits: "CatalizCS //fix bug tiền by Jukie",
 	description: "Game bài cào dành cho nhóm có đặt cược",
-	commandCategory: "game-mp",
+	commandCategory: "Giải trí",
 	usages: "[create/start/join/info/leave]",
 	cooldowns: 1
 };

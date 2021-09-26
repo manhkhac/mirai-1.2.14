@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "thính",
+	name: "hearing",
 	version: "1.0.0",
 	hasPermssion: 0,
 	credits: "VĐT&NTH",
 	description: "Thả thính",
 	commandCategory: "love",
-	usages: "thính",
+	usages: "",
 	cooldowns: 5
 };
 

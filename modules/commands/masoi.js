@@ -56,8 +56,8 @@ module.exports.run = async ({ api, event, args }) => {
 
 	else if (args[0] == "start" && values.author == senderID) {
 		if (!values) return api.sendMessage("Hiện tại chưa có game ma sói nào, bạn có thể tạo bằng cách sử dụng masoi create", threadID, messageID);
-		if (values.player.length <= 1) return api.sendMessage("Hiện tại bàn của bạn không có người chơi nào tham gia, bạn có thể mời người đấy tham gia bằng cách yêu cầu người chơi khác nhập masoi join", threadID, messageID);
-		if (values.start == 1) return api.sendMessage("Hiện tại bàn đã được bắt đầu bởi chủ bàn", threadID, messageID);
+		if (values.player.length <= 1) return api.sendMessage("Hiện tại không có người chơi nào tham gia, bạn có thể mời người đấy tham gia bằng cách yêu cầu người chơi khác nhập masoi join", threadID, messageID);
+		if (values.start == 1) return api.sendMessage("Hiện tại game đã được bắt đầu bởi chủ bàn", threadID, messageID);
 		values.start = 1;
 		return api.sendMessage("game ma sói của bạn được bắt đầu", threadID, messageID);
 	}

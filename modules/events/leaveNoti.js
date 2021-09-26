@@ -16,7 +16,7 @@ module.exports.onLoad = async function () {
   const { downloadFile } = global.utils;
   const path = resolve(__dirname, "cache/leaveNoti");
   if (!existsSync(path)) mkdirSync(path, { recursive: true });
-  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/byebye.gif", resolve(__dirname, 'cache/leaveNoti', 'leave.gif'));
+  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/leave.gif", resolve(__dirname, 'cache/leaveNoti', 'leave.gif'));
 }
 
 module.exports.run = async function({ api, event, Users, Threads }) {

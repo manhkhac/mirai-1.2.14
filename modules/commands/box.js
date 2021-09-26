@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "HungCho (Khánh Milo Fix)",
   description: "Các cài đặt của nhóm chat.",
   commandCategory: "group",
-  usages: "[id/name/emoji/admin/image/info]",
+  usages: "[id/name/setname/emoji/admin/image/info]",
   cooldowns: 1,
   dependencies: {
     "request": "",

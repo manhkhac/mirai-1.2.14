@@ -1,72 +1,49 @@
 module.exports.config = {
-    name: "iloveyou",
-    version: "1.0.0",
-    hasPermssion: 0,
-    credits: "MewMew mod by VanHung, DinhPhuc, Vietdz, VĐT&NTH, Thỏadz",
-    description: "",
-    commandCategory: "love",
-    usages: "[tag]",
-    cooldowns: 5
-};
-
-module.exports.onLoad = () => {
-    const fs = require("fs-extra");
-    const request = require("request");
-    const dirMaterial = __dirname + `/cache/canvas/`;
-    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "totinh.png")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/img/totinh.png").pipe(fs.createWriteStream(dirMaterial + "totinh.png"));
+  name: "totinh",
+  version: "1.0.0",
+  hasPermssion: 1,
+  credits: "Mod Syn Credit(lụm)",
+  description: "Tỏ tình theo cách đáng iu :3 <3",
+  commandCategory: "love",
+  usages: "@mention",
+  cooldowns: 10,
+  dependencies: {
+    "fs-extra": "",
+    "axios": ""
+  }
 }
 
-async function makeImage({ one, two }) {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const path = require("path");
-    const jimp = require("jimp");
-    const __root = path.resolve(__dirname, "cache", "canvas");
-    let totinh_img = await jimp.read(__root + "/totinh.png");
-    let pathImg = __root + `/totinh_${one}_${two}.png`;
-    let avatarOne = __root + `/avt_${one}.png`;
-    let avatarTwo = __root + `/avt_${two}.png`;
-    
-    let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
-    
-    let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?height=720&width=720&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
-    
-    let circleOne = await jimp.read(await circle(avatarOne));
-    let circleTwo = await jimp.read(await circle(avatarTwo));
-   totinh_img.resize(500, 500).composite(circleOne.resize(65, 65), 142, 86).composite(circleTwo.resize(65, 65), 293, 119);
-    
-    let raw = await totinh_img.getBufferAsync("image/png");
-    
-    fs.writeFileSync(pathImg, raw);
-    fs.unlinkSync(avatarOne);
-    fs.unlinkSync(avatarTwo);
-    
-    return pathImg;
-}
-async function circle(image) {
-    const jimp = require("jimp");
-    image = await jimp.read(image);
-    image.circle();
-    return await image.getBufferAsync("image/png");
-}
-
-
-module.exports.run = async function ({ event, api, args, client }) {
-    const fs = require("fs-extra");
-    let { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions)[0]
-    let tag = event.mentions[mention].replace("@", "");
-    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
-    else {
-        var one = senderID, two = mention;
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Tớ thích cậu❤ " + tag + '\nLàm ny tớ nha UwU',
-            mentions: [{
-          tag: tag,
-          id: mention
-        }],
-     attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
-    }
+module.exports.run = async function ({ api, args, Users, event }) {
+  var mention = Object.keys(event.mentions)[0];
+  if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn tỏ tình", event.threadID);
+  let name = event.mentions[mention];
+  var arraytag = [];
+  arraytag.push({ id: mention, tag: name });
+  var a = function (a) { api.sendMessage(a, event.threadID); }
+  a("Em à!");
+  setTimeout(() => { a({ body: "Chào iem anh đứng đây từ sáng đến tối" + " " + name, mentions: arraytag }) }, 3000);
+  setTimeout(() => { a({ body: "Tự dưng anh gặp được em :3" + " " + name, mentions: arraytag }) }, 5000);
+  setTimeout(() => { a({ body: "Em đẹp quá, em xinh quá anh muốn được làm quen :3" + " " + name, mentions: arraytag }) }, 7000);
+  setTimeout(() => { a({ body: "Anh đã iu ebe từ cái nhìn đầu tiên :<" + " " + name, mentions: arraytag }) }, 9000);
+  setTimeout(() => { a({ body: "Tiếng sét ái tình đã xiên qua anh làm trái tim anh khét lẹt :v" + " " + name, mentions: arraytag }) }, 12000);
+  setTimeout(() => { a({ body: "Nhưng mà không sao" + " " + name, mentions: arraytag }) }, 15000);
+  setTimeout(() => { a({ body: "Vì yêu em, anh bất tử" + " " + name, mentions: arraytag }) }, 17000);
+  setTimeout(() => { a({ body: "Anh sẽ gọi em là em bé" + " " + name, mentions: arraytag }) }, 20000);
+  setTimeout(() => { a({ body: "Anh sẽ chiều chuộng em bé, cho em bé ăn cho em bé ngủ :3" + " " + name, mentions: arraytag }) }, 23000);
+  setTimeout(() => { a({ body: "Anh sẽ hôn lên trán em và bảo rằng anh yêu bae của anh rất nhiều" + " " + name, mentions: arraytag }) }, 25000);
+  setTimeout(() => { a({ body: "Bae ở chung với anh, anh sẽ yêu chiều em rất nhiều" + " " + name, mentions: arraytag }) }, 28500);
+  setTimeout(() => { a({ body: "Thực sự anh rất yêu em <3" + " " + name, mentions: arraytag }) }, 31000);
+  setTimeout(() => { a({ body: "Bae làm anh thao thức nao nức đến nỗi ăn không ngon ngủ không yên" + " " + name, mentions: arraytag }) }, 36000);
+  setTimeout(() => { a({ body: "Anh sẽ làm osin cho công chúa của anh suốt cuộc đời" + " " + name, mentions: arraytag }) }, 39000);
+  setTimeout(() => { a({ body: "Chờ anh một chút nhé bae :3, anh nhớ em rồi lấy ảnh em ra ngắm cái" + " " + name, mentions: arraytag }) }, 40000);
+  setTimeout(() => { a({ body: "Oce rồi vợ anh vẫn rất xinh tươi :3" + " " + name, mentions: arraytag }) }, 65000);
+  setTimeout(() => { a({ body: "Anh yêu em rất nhiều <3" + " " + name, mentions: arraytag }) }, 70000);
+  setTimeout(() => { a({ body: "Bây giờ anh chỉ yêu mình em thôi :3" + " " + name, mentions: arraytag }) }, 75000);
+  setTimeout(() => { a({ body: "Tương lai không biết được nhưng bây giờ anh chỉ có mình em bé mà thôi ^^" + " " + name, mentions: arraytag }) }, 80000);
+  setTimeout(() => { a({ body: "Anh muốn tương lai của anh với em ở bên nhau" + " " + name, mentions: arraytag }) }, 85000);
+  setTimeout(() => { a("Nói nhiều anh cũng hơi mệt chút xíu rùi") }, 90000);
+  setTimeout(() => { a({ body: "Chốt lại nhẹ nhàng thôi :3" + " " + name, mentions: arraytag }) }, 95000);
+  setTimeout(() => { a({ body: "Anh yêu em bé rất nhiều moaaaa :3" + " " + name, mentions: arraytag }) }, 100000);
+  setTimeout(() => { a({ body: "Bae làm người yêu anh nhé <3" + " " + name, mentions: arraytag }) }, 105000);
+  setTimeout(() => { a("=)) anh trap em đấy lewlew ") }, 110000);
 }

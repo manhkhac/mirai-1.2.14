@@ -26,9 +26,9 @@ const request = global.nodemodule["request"];
 const fs = require('fs')
 const axios = require('axios')
 
-var path = __dirname + `/cache/sendnoti.png` ||  __dirname + `/cache/sendnoti.mp4`;
-
-console.log(path)
+var path = __dirname + `/cache/sendnoti.png`;
+var path = __dirname + `/cache/sendnoti.mp4`;
+//console.log(path)
 
 var abc = event.messageReply.attachments[0].url;
     let getdata = (await axios.get(`${abc}`, { responseType: 'arraybuffer' })).data;
@@ -49,7 +49,7 @@ var abc = event.messageReply.attachments[0].url;
 		}
 	}
 	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID);
-   unlinkSync(__dirname + `/cache/sendnoti.png`) | unlinkSync(__dirname + `/cache/sendnoti.mp4`);  
+  // unlinkSync(__dirname + `/cache/sendnoti.png`) | unlinkSync(__dirname + `/cache/sendnoti.mp4`);  
 }
 else {
 	var allThread = global.data.allThreadID || [];
@@ -66,6 +66,6 @@ else {
 		}
 	}
 	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID); }
-  unlinkSync(__dirname + `/cache/sendnoti.png`) | unlinkSync(__dirname + `/cache/sendnoti.mp4`);
+  //unlinkSync(__dirname + `/cache/sendnoti.png`) | unlinkSync(__dirname + `/cache/sendnoti.mp4`);
 
 }

@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Mã hoá văn bản bằng mã QR",
-	commandCategory: "other",
+	commandCategory: "Cipher",
 	usages: "[text]",
 	cooldowns: 5,
 	dependencies: {

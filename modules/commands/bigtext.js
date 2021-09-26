@@ -4,8 +4,8 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "NTKhang",
     description: "ghép ký tự thành chữ siêu to khổng lồ",
-    commandCategory: "game",
-    usages: "bigtext <nội dung>",
+    commandCategory: "random-text",
+    usages: "<nội dung>",
     cooldowns: 5
 };
 

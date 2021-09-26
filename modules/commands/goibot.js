@@ -22,6 +22,7 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
   let name = await Users.getNameUser(event.senderID);
   let dataThread = await Threads.getData(event.threadID);
   let threadInfo = dataThread.threadInfo;
+  var idbox = event.threadID;
 
   var tl = [
       "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?",
@@ -45,7 +46,7 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
   if (body === value.toUpperCase() | body === value | str === body) {
           let nameT = threadInfo.threadName;
           modules = "------ Gọi bot ------\n";
-          console.log(modules, value + "|", nameT);
+          console.log(modules, value + "|", nameT, idbox);
           return out(rand)
       }
   });

@@ -14,7 +14,7 @@ const axios = require('axios');
 const res = await axios.get(`https://le31.glitch.me/poem`);
 var poem =       res.data.data;
 
-console.log(poem)
+//console.log(poem)
 
 return api.sendMessage(` ★ == Bài thơ == ★ \n\n${poem}  `, event.threadID, event.messageID)
 }

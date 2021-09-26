@@ -32,10 +32,14 @@ module.exports.config = {
     imglove.push(fs.createReadStream(__dirname + "/cache/avt.png"));
     imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
     
-    let dt = await api.getUserInfo(event.senderID);
-    let data = await api.getUserInfo(mention);
-    let name_1 = dt[event.senderID].name;
-    let name_2 = data[parseInt(mention)].name;
+    //let dt = await api.getUserInfo(event.senderID);
+    //let data = await api.getUserInfo(mention);
+    //let name_1 = dt[event.senderID].name;
+    //let name_2 = data[parseInt(mention)].name;
+    ////////////////////////////ManhG start
+    let name_1 = await Users.getNameUser(event.senderID);
+    let name_2 = await Users.getNameUser(mention);
+    //////////////////////////ManhG end
     
     api.changeNickname( `Vợ yêu của ${name_2} ${random_emoji}`, event.threadID, parseInt(event.senderID) );
     api.changeNickname( `Ck yêu của ${name_1} ${random_emoji}`, event.threadID, parseInt(mention) );
@@ -88,11 +92,14 @@ module.exports.config = {
     imglove.push(fs.createReadStream(__dirname + "/cache/avt.png"));
     imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
     
-    let dt = await api.getUserInfo(event.senderID);
-    let data = await api.getUserInfo(mention);
-    let name_1 = dt[event.senderID].name;
-    let name_2 = data[parseInt(mention)].name;
-    
+    //let dt = await api.getUserInfo(event.senderID);
+    //let name_1 = dt[event.senderID].name;
+    //let data = await api.getUserInfo(mention);
+    //let name_2 = data[parseInt(mention)].name;
+    ////////////////////////////ManhG start
+    let name_1 = await Users.getNameUser(event.senderID);
+    let name_2 = await Users.getNameUser(mention);
+    //////////////////////////ManhG end
     api.changeNickname( `Vợ yêu của ${name_2} ${random_emoji}`, event.threadID, parseInt(event.senderID) );
     api.changeNickname( `Ck yêu của ${name_1} ${random_emoji}`, event.threadID, parseInt(mention) );
     

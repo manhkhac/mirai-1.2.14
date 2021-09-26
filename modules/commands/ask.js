@@ -15,9 +15,9 @@ module.exports.handleEvent = function({ api, event }) {
 
     const { threadID, messageID, body } = event;
 
-    if (body.indexOf("help") != 0) return;
+    if (body.indexOf("ask") != 0) return;
 
-    const splitBody = body.slice(body.indexOf("help")).trim().split(/\s+/);
+    const splitBody = body.slice(body.indexOf("ask")).trim().split(/\s+/);
 
 
     if (splitBody.length == 1 || !commands.has(splitBody[1].toLowerCase())) return;

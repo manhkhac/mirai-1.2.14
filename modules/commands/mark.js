@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "HĐGN",
 	description: "Viết chữ lên bảngʕっ•ᴥ•ʔっ",
-	commandCategory: "game",
+	commandCategory: "edit-img",
 	usages: "markzuckerberg [text]",
 	cooldowns: 10,
 	dependencies: {

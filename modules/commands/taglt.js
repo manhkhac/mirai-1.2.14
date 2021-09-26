@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "taglt",
     version: "1.0.0",
-    hasPermssion: 0,
+    hasPermssion: 1,
     credits: "ManhG",
     description: "Tag liên tục người bạn tag trong nhiều lần\nCó thể gọi là gọi hồn người đó",
     commandCategory: "general",
@@ -16,7 +16,8 @@ module.exports.config = {
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
-    var name = (await Users.getData(mention)).name;
+    //let name = (await Users.getData(mention)).name;
+    let name = event.mentions[mention];
     console.log("Taglt: ",name)
     var arraytag = [];
     arraytag.push({ id: mention, tag: name });

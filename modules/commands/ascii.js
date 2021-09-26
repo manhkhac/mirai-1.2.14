@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 2,
   credits: "NTKhang",
   description: "Create Text",
-  commandCategory: "game",
+  commandCategory: "random-text",
   dependencies: { "figlet": "" },
   usages: "ascii <text>",
   cooldowns: 5

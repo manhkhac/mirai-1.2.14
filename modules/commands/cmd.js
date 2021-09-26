@@ -6,7 +6,7 @@ module.exports.config = {
 	description: "Quản lý/Kiểm soát toàn bộ module của bot",
 	commandCategory: "config",
 	usages: "[load/unload/loadAll/unloadAll/info] [tên module]",
-	cooldowns: 5,
+	cooldowns: 2,
     dependencies: {
         "fs-extra": "",
         "child_process": "",

@@ -19,5 +19,5 @@ var image =       tarot.image;
 var description = tarot.description;
 var interpretation = tarot.interpretation;
 
-return api.sendMessage(` ★ == Tarot == ★ \n\n⁂➻❥Name: ${name}  \n⁂➻❥Suite: ${suite} \n⁂➻❥Description: ${description} \n⁂➻❥Interpretation ${interpretation} \n⁂➻❥Image ${image} \n\n⁂➻❥ Reply tin nhắn này với Trans để dịch qua tiếng việt `, event.threadID, event.messageID)
+return api.sendMessage(` ★ == Tarot == ★ \n\n⁂➻❥ Name: ${name}  \n⁂➻❥ Suite: ${suite} \n⁂➻❥ Description: ${description} \n⁂➻❥ Interpretation ${interpretation} \n⁂➻❥ Image ${image} \n\n⁂➻❥ Reply tin nhắn này với Trans để dịch qua tiếng việt `, event.threadID, event.messageID)
 }

@@ -4,7 +4,7 @@
 */
 
 module.exports.config = {
-    name: "chén",
+    name: "leuleu",
     version: "2.0.0",
     hasPermssion: 0,
     credits: "DinhPhuc",
@@ -25,7 +25,7 @@ module.exports.onLoad = async() => {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'chén.png');
+    const path = resolve(__dirname, 'cache/canvas', 'leuleu.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(path)) await downloadFile("https://i.imgur.com/3qMhKq3.jpg", path);
 }
@@ -37,8 +37,8 @@ async function makeImage({ one, two }) {
     const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
-    let chén_img = await jimp.read(__root + "/chén.png");
-    let pathImg = __root + `/chén_${one}_${two}.png`;
+    let leuleu_img = await jimp.read(__root + "/leuleu.png");
+    let pathImg = __root + `/leuleu_${one}_${two}.png`;
     let avatarOne = __root + `/avt_${one}.png`;
     let avatarTwo = __root + `/avt_${two}.png`;
     
@@ -50,9 +50,9 @@ async function makeImage({ one, two }) {
     
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    chén_img.resize(500, 500).composite(circleOne.resize(45, 45), 374, 165).composite(circleTwo.resize(85, 85), 158, 127);
+    leuleu_img.resize(500, 500).composite(circleOne.resize(45, 45), 374, 165).composite(circleTwo.resize(85, 85), 158, 127);
     
-    let raw = await chén_img.getBufferAsync("image/png");
+    let raw = await leuleu_img.getBufferAsync("image/png");
     
     fs.writeFileSync(pathImg, raw);
     fs.unlinkSync(avatarOne);
