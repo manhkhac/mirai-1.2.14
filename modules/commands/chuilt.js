@@ -16,7 +16,7 @@ module.exports.config = {
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
-    //var name = (await Users.getData(mention)).name;
+    //let name = (await Users.getData(mention)).name;
     let name = event.mentions[mention];
     console.log("Chuilt: ",name)
     var arraytag = [];

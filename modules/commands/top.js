@@ -47,7 +47,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
             var i = 0;
             for (const dataThread of threadList) {
                 if (i == option) break;
-                msg += `${i + 1}/ ${(dataThread.threadName) || "Không tên"}[${dataThread.threadID}] với ${dataThread.messageCount} tin nhắn\n`;
+                msg += `${i + 1}. ${(dataThread.threadName) || "Không tên"}[${dataThread.threadID}] với ${dataThread.messageCount} tin nhắn\n`;
                 i += 1;
             }
 
@@ -85,11 +85,11 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
             //===== Bắt đầu lấy danh sách push vào khuôn mẫu trả về =====//
             for (const dataUser of data) {
                 if (i == option) break;
-                var nameUser = global.data.userName.get(parseInt(dataUser.userID));
+                //var nameUser = global.data.userName.get(parseInt(dataUser.userID));
                 //if (nameUser) nameUser = await Users.getNameUser(dataUser.userID);
-                let name = await Users.getNameUserData(dataUser.userID);
+                var nameUser = (await Users.getData(dataUser.userID)).name;
 
-                msg += `${i + 1}/ ${name} với ${dataUser.exp} tin nhắn\n`;
+                msg += `${i + 1}. ${nameUser} với ${dataUser.exp} tin nhắn\n`;
                 i += 1;
             }
 
@@ -126,10 +126,11 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
             //===== Bắt đầu lấy danh sách push vào khuôn mẫu trả về =====//
             for (const dataUser of data) {
                 if (i == option) break;
-                var nameUser = global.data.userName.get(parseInt(dataUser.userID));
+                //var nameUser = global.data.userName.get(parseInt(dataUser.userID));
                 //if (nameUser) nameUser = await Users.getNameUser(dataUser.userID);
-                let name = await Users.getNameUserData(dataUser.userID);
-                msg += `${i + 1}/ ${name} với ${dataUser.money} đô\n`;
+                var nameUser = (await Users.getData(dataUser.userID)).name;
+
+                msg += `${i + 1}. ${nameUser} với ${dataUser.money} đô\n`;
                 i += 1;
             }
 

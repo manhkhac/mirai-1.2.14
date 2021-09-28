@@ -110,8 +110,11 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
   //else prefix = `${data.PREFIX}`;
   //////////////////////////  manhG end
   //console.log(prefix);
+  //if (typeof(prefix) == 'undefined') {
+    //var prefix = data.PREFIX || prefixDefaut;
+    //console.log(prefix);
   if (!event.body || event.body.indexOf(prefix) != 0) return;
-
+  //}
   if ((global.client.autoban[senderID].timeStart + 60000) <= Date.now()) {
     global.client.autoban[senderID] = {
       timeStart: Date.now(),

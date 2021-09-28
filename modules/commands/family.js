@@ -66,7 +66,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
         };
         const background = await Canvas.loadImage("https://i.ibb.co/xqrFW4N/Pics-Art-06-26-12-07-26.jpg");
 
-        var idtv = threadInfo.participantIDs;
+        var idtv = event.participantIDs;
 
         var xbground = background.width,
             ybground = background.height;

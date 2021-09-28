@@ -13,81 +13,103 @@ module.exports.config = {
 
 module.exports.languages = {
     "vi": {
-        "cooldown": "Bạn đã làm công việc hôm nay, để tránh kiệt sức hãy quay lại sau: %1 phút %2 giây.",
-        "rewarded": "Bạn đã làm công việc %1 và kiếm ra được %2$",
-        "job1": "bán vé số",
-        "job2": "sửa xe",
-        "job3": "lập trình",
-        "job4": "hack facebook",
-        "job5": "đầu bếp",
-        "job6": "thợ hồ",
-        "job7": "fake taxi",
-        "job8": "gangbang người nào đó",
-        "job9": "thợ sửa ống nước may mắn  ( ͡° ͜ʖ ͡°)",
-        "job10": "streamer",
-        "job11": "bán hàng trực tuyến",
-        "job12": "nội trợ",
-        "job13": 'bán "hoa"',
-        "job14": "tìm jav/hentai code cho SpermLord",
-        "job15": "chơi Yasuo và gánh đội của bạn"
+        "cooldown": "⚡️Bạn đã làm việc rồi, quay lại sau: %1 phút %2 giây."      
     },
     "en": {
-        "cooldown": "You have worked today, to avoid exhaustion please come back after: %1 minute(s) %2 second(s).",
-        "rewarded": "You did the job: %1 and received: %2$.",
-        "job1": "sell lottery tickets",
-        "job2": "repair car",
-        "job3": "programming",
-        "job4": "hack Facebook",
-        "job5": "chef",
-        "job6": "mason",
-        "job7": "fake taxi",
-        "job8": "gangbang someone",
-        "job9": "plumber ( ͡° ͜ʖ ͡°)",
-        "job10": "streamer",
-        "job11": "online seller",
-        "job12": "housewife",
-        "job13": 'sell "flower"',
-        "job14": "find jav/hentai code for SpermLord",
-        "job15": "play Yasuo and carry your team"
+        "cooldown": "⚡️You're done, come back later: %1 minute(s) %2 second(s)."
     }
 }
-
-module.exports.run = async ({ event, api, Currencies, getText }) => {
+module.exports.handleReply = async ({ event, api, handleReply, Currencies, getText }) => {
     const { threadID, messageID, senderID } = event;
-    
+    let data = (await Currencies.getData(senderID)).data || {};
+//random coins nhận được khi làm việc ít nhất 200
+var coinscn = Math.floor(Math.random() * 401) + 200; //random coins khi làm ở khu công nghiệp
+var coinsdv = Math.floor(Math.random() * 801) + 200; //random coins khi làm ở khu dịch vụ
+var coinsmd = Math.floor(Math.random() * 401) + 200; //random coins khi làm ở mỏ dầu
+var coinsq = Math.floor(Math.random() * 601) + 200; //random coins khi khai thác quặng
+var coinsdd = Math.floor(Math.random() * 201) + 200; //random coins khi đào đá
+var coinsdd1 = Math.floor(Math.random() * 801) + 200; //random coins khi đào đá
+
+//random công việc cần làm
+var rdcn = ['tuyển dụng nhân viên', 'quản trị khách sạn', 'tại nhà máy điện', 'đầu bếp trong nhà hàng', 'công nhân']; //random công việc khi làm ở khu công nghiệp
+var work1 = rdcn[Math.floor(Math.random() * rdcn.length)];   
+
+var rddv = ['sửa ống nước', 'sửa điều hòa cho hàng xóm', 'bán hàng đa cấp', 'phát tờ rơi', 'shipper', 'sửa máy vi tính', 'hướng dẫn viên du lịch', 'cho con bú']; //random công việc khi làm ở khu dịch vụ
+var work2 = rddv[Math.floor(Math.random() * rddv.length)]; 
+
+var rdmd = ['kiếm được 13 thùng dầu', 'kiếm được 8 thùng', 'kiếm được 9 thùng dầu', 'kiếm được 8 thùng dầu', 'ăn cướp dầu ', 'lấy nước đổ vô dầu rồi bán']; //random công việc khi làm ở mỏ dầu
+var work3 = rdmd[Math.floor(Math.random() * rdmd.length)]; 
+
+var rdq = ['quặng sắt', 'quặng vàng', 'quặng than', 'quặng chì', 'quặng đồng ', 'quặng dầu']; //random công việc khi khai thác quặng
+var work4 = rdq[Math.floor(Math.random() * rdq.length)]; 
+
+var rddd = ['kim cương', 'vàng', 'than', 'ngọc lục bảo', 'sắt ', 'đá bình thường', 'lưu ly', 'đá xanh']; //random công việc khi đào đá
+var work5 = rddd[Math.floor(Math.random() * rddd.length)]; 
+
+var rddd1 = ['khách vip', 'khách quen', 'người lạ', 'thằng ngu tầm 23 tuổi', 'anh lạ mặt', 'khách quen', 'đại gia 92 tuổi', 'thằng nhóc 12 tuổi']; //random công việc khi đào đá
+var work6 = rddd1[Math.floor(Math.random() * rddd1.length)];
+
+
+var msg = "";
+    switch(handleReply.type) {
+        case "choosee": {
+            
+            switch(event.body) {
+                case "1": msg = `⚡️Bạn đang làm việc ${work1} ở khu công nghiệp và kiếm được ${coinscn}$` ; Currencies.increaseMoney(event.senderID, coinscn); break;             
+                case "2": msg = `⚡️Bạn đang làm việc ${work2} ở khu dịch vụ và kiếm được ${coinsdv}$`; Currencies.increaseMoney(event.senderID, coinsdv); break;
+                case "3": msg = `⚡️Bạn ${work3} tại khu mở dầu và bán được ${coinsmd}$`; Currencies.increaseMoney(event.senderID, coinsmd); break;
+                case "4": msg = `⚡️Bạn đang khai thác ${work4} và kiếm được ${coinsq}$`; Currencies.increaseMoney(event.senderID, coinsq); break;
+                case "5": msg = `⚡️Bạn đào được ${work5} và kiếm được ${coinsdd}$` ; Currencies.increaseMoney(event.senderID, coinsdd); break;
+                case "6": msg = `⚡️Bạn được ${work6} cho ${coinsdd1}$ nếu xxx 1 đêm, thế là bạn đồng ý ngay :)))`; Currencies.increaseMoney(event.senderID, coinsdd1); break;
+                case "7": msg = "⚡️Chưa update..."; break; //thêm case nếu muốn 
+                default: break;
+            };
+            const choose = parseInt(event.body);
+            if (isNaN(event.body)) return api.sendMessage("⚡️Vui lòng nhập 1 con số", event.threadID, event.messageID);
+            if (choose > 7 || choose < 1) return api.sendMessage("⚡️Lựa chọn không nằm trong danh sách.", event.threadID, event.messageID); //thay số case vào số 7
+            api.unsendMessage(handleReply.messageID);
+            if (msg == "⚡️Chưa update...") {
+                msg = "⚡️Update soon...";
+            };
+            return api.sendMessage(`${msg}`, threadID, async () => {
+            data.work2Time = Date.now();
+            await Currencies.setData(senderID, { data });
+            
+        });
+
+    };
+}
+}
+module.exports.run = async ({  event, api, handleReply, Currencies, getText }) => {
+    const { threadID, messageID, senderID } = event;
     const cooldown = global.configModule[this.config.name].cooldownTime;
     let data = (await Currencies.getData(senderID)).data || {};
-    if (typeof data !== "undefined" && cooldown - (Date.now() - data.workTime) > 0) {
-        var time = cooldown - (Date.now() - data.workTime),
+    //cooldownTime cho mỗi lần nhận 
+    if (typeof data !== "undefined" && cooldown - (Date.now() - data.work2Time) > 0) {
+
+        var time = cooldown - (Date.now() - data.work2Time),
             minutes = Math.floor(time / 60000),
-            seconds = ((time % 60000) / 1000).toFixed(0);
-        
-		return api.sendMessage(getText("cooldown", minutes, (seconds < 10 ? "0" + seconds : seconds)), event.threadID, event.messageID);
+            seconds = ((time % 60000) / 1000).toFixed(0); 
+        return api.sendMessage(getText("cooldown", minutes, (seconds < 10 ? "0" + seconds : seconds)), event.threadID, event.messageID);
     }
-    else {
-        const job = [
-            getText("job1"),
-            getText("job2"),
-            getText("job3"),
-            getText("job4"),
-            getText("job5"),
-            getText("job6"),
-            getText("job7"),
-            getText("job8"),
-            getText("job9"),
-            getText("job10"),
-            getText("job11"),
-            getText("job12"),
-            getText("job13"),
-            getText("job14"),
-            getText("job15")
-        ];
-        const amount = Math.floor(Math.random() * 600);
-        return api.sendMessage(getText("rewarded", job[Math.floor(Math.random() * job.length)], amount), threadID, async () => {
-            await Currencies.increaseMoney(senderID, parseInt(amount));
-            data.workTime = Date.now();
-            await Currencies.setData(event.senderID, { data });
-            return;
-        }, messageID);
-    }     
+    else {    
+    return api.sendMessage("=== KIẾM TIỀN MỖI NGÀY ===" +
+                "\n\n1. Khu công nghiệp." +
+                "\n2. Khu dịch vụ." +
+                "\n3. Khu mỏ dầu." +
+                "\n4. Khai thác quặng." +
+                "\n5. Đào đá" +
+                "\n6. Đứng đường :)))" +
+                "\n7. Update soon..." +
+                "\n\n⚡️Hãy reply tin nhắn và chọn theo số" //thêm hiển thị case tại đây ||  \n[number]. [Ngành nghề]" +
+            , event.threadID, (error, info) => {
+                data.work2Time = Date.now();
+        global.client.handleReply.push({
+            type: "choosee",
+            name: this.config.name,
+            author: event.senderID,
+            messageID: info.messageID
+          })  
+        })
+    }
 }

@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "sao",
+  name: "hemattroi",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "HTHB",
@@ -66,7 +66,7 @@ module.exports.handleEvent = function ({ api, event }) {
   var { threadID, messageID, body, senderID } = event;
   if (senderID == api.getCurrentUserID()) return;
 
-  var arr = ["hệ nặt trời", "chòm sao", "chomsao", "hemattroi"];
+  var arr = ["hệ mặt trời", "chòm sao", "chomsao", "hemattroi"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) {

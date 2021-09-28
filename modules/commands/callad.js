@@ -16,7 +16,7 @@ module.exports.handleReply = async function ({ api, args, event, Users, handleRe
         var idad = global.config.ADMINBOT;
         for (let ad of idad) {
           api.sendMessage({
-            body: "📄Phản hồi từ " + name + ":\n" + event.body,
+            body: "Phản hồi từ " + name + ":\n" + event.body,
             mentions: [{
               id: event.senderID,
               tag: name
@@ -34,7 +34,7 @@ module.exports.handleReply = async function ({ api, args, event, Users, handleRe
       }
     case "calladmin":
       {
-        api.sendMessage({ body: `📌Phản hồi từ admin ${name} đến bạn:\n--------\n${event.body}\n--------\n»💬Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
+        api.sendMessage({ body: `📌Phản hồi từ admin đến bạn:\n--------\n${event.body}\n--------\n»💬Phản hồi tin nhắn này để tiếp tục gửi báo cáo về admin`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
           name: this.config.name,
           author: event.senderID,
           messageID: data.messageID,

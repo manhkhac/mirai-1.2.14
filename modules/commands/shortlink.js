@@ -23,5 +23,5 @@ module.exports.run = async ({ api, event, args }) => {
 	if (!regex.test(args[0])) return api.sendMessage("Phải là một url cần rút gọn!", event.threadID);
 	if (args[0].indexOf("http" || "https") === -1) args[0] = "https://" + args[0];
 	const res = await bitly.shorten(args[0]);
-	return api.sendMessage("Link đã rút gọn: " + res.id, event.threadID, event.messageID);
+	return api.sendMessage("" + res.id, event.threadID, event.messageID);
 }

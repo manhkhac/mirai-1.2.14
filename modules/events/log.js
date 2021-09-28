@@ -14,7 +14,7 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
   if (!global.configModule[this.config.name].enable) return;
   const moment = require("moment-timezone");
   const time = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");
-  let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
+  //let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
 
   //nameThread = event.logMessageData.name || "Tên không tồn tại";
   //let threadInfo = await api.getThreadInfo(event.threadID);
@@ -25,8 +25,8 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
   //console.log(nameThread)
 
   var formReport = "=== Bot Notification ===" +
-    "\n\n👨‍👩‍👧‍👧Box: " + nameThread +
-    "\n🔰Thread ID: " + event.threadID +
+    //"\n\n👨‍👩‍👧‍👧Box: " + nameThread +
+    "\n\n🔰Thread ID: " + event.threadID +
     "\n🤷‍♀️Hành động: {task}" +
     "\n🍳Tên người dùng: " + nameUser +
     "\n⚡UserID: " + event.author +

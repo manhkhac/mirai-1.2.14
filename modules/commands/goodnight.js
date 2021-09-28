@@ -40,7 +40,8 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   // Gọi bot
   var arr = ["ngủ", "ngủ đi ae", "ngủ thôi", "bye", "good night","nn","nngon"];
   arr.forEach(i => {
-    if (body === i.toUpperCase() | body === i) return out(msg)
+     let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
 
 };

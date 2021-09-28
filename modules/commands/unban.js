@@ -54,7 +54,7 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
     case 'thread':
       {
         var idbox = event.threadID;
-        const data = (await Threads.getData(idbox)).data || {};
+        var data = (await Threads.getData(idbox)).data || {};
         data.banned = 0;
         data.reason = null;
         data.dateAdded = null;
@@ -128,9 +128,9 @@ module.exports.run = async ({ event, api, Users, Threads, args }) => {
     case 'user':
       {
         if (!args[1]) {
-          var threadInfo = await api.getThreadInfo(event.threadID);
+         // var threadInfo = await api.getThreadInfo(event.threadID);
           //var threadInfo = (await Threads.getData(event.threadID)).threadInfo;
-          var listMember = threadInfo.participantIDs;
+          var listMember = event.participantIDs;
           for (let i = 0; i < listMember.length; i++) {
             const idMember = listMember[i];
             const data = (await Users.getData(idMember)).data || {};

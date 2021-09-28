@@ -13,23 +13,23 @@ let {messageID, threadID, senderID} = event;
 	var info = await api.getThreadInfo(threadID);
 	var fs = require("fs-extra");
 	
-	if (!fs.existsSync(__dirname + `/cache/bans.json`)) {
+	if (!fs.existsSync(__dirname + `/cache/datawarn.json`)) {
 			const dataaa = {warns: {}, banned: {}};
-			fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(dataaa));
+			fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(dataaa));
 					}
-  var bans = JSON.parse(fs.readFileSync(__dirname + `/cache/bans.json`)); //đọc nội dung file
+  var bans = JSON.parse(fs.readFileSync(__dirname + `/cache/datawarn.json`)); //đọc nội dung file
   /*
   {warns: {}, banned: {tid: []}};
   */
   if(!bans.warns.hasOwnProperty(threadID)) {
 			bans.warns[threadID] = {}; 
-			fs.writeFileSync(__dirname + `/cache/bans.json`, JSON.stringify(bans, null, 2));
+			fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(bans, null, 2));
   	
   }
 	var dtwbox = bans.warns[threadID];
   		var allwarn = "";
   		for(let idtvw in dtwbox) {
-  			var name = (await api.getUserInfo(idtvw))[idtvw].name, msg = "", solan = 1;
+  			var name = await Users.getNameUser(idtvw), msg = "", solan = 1;
   			for(let reasonwtv1 of dtwbox[idtvw]) {
   				if (reasonwtv1 == "Không có lý do nào được đưa ra") var reasonwtv = ".";
   				else var reasonwtv = reasonwtv1;

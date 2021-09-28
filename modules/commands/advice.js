@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "NTKhang",
 	description: "Đưa ra ngẫu nhiên cho bạn 1 lời khuyên",
-	commandCategory: "game",
+	commandCategory: "game-mp",
 	usages: "advice",
 	cooldowns: 5,
 	dependencies: {"srod-v2": "","request": ""}

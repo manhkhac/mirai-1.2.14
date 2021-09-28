@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "Lazic Team",
   description: "là trò chơi bốc thăm câu hỏi",
-  commandCategory: "random-text",
+  commandCategory: "game-sp",
   cooldowns: 1
 };
 

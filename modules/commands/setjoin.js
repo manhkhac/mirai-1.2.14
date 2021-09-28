@@ -17,7 +17,7 @@ module.exports.onLoad = function () {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
 
-    const path = join(__dirname, "..", "events", "cache", "joinGif");
+    const path = join(__dirname, "..", "events", "cache", "joinNoti");
     if (!existsSync(path)) mkdirSync(path, { recursive: true });
 
     return;
@@ -73,7 +73,7 @@ module.exports.run = async function ({ args, event, api, Threads, getText }) {
                 });
             }
             case "gif": {
-                const path = join(__dirname, "..", "events", "cache", "joinGif");
+                const path = join(__dirname, "..", "events", "cache", "joinNoti");
                 const pathGif = join(path, `${threadID}.gif`);
                 if (msg == "remove") {
                     if (!existsSync(pathGif)) return api.sendMessage(getText("gifPathNotExist"), threadID, messageID);

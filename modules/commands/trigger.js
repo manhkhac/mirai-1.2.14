@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "NTKhang",
 	description: "trigger",
-	commandCategory: "game",
+	commandCategory: "image",
 	usages: "@tag",
 	cooldowns: 10,
 	dependencies: {"fs-extra": "","discord.js": "","discord-image-generation" :"","node-superfetch": ""}

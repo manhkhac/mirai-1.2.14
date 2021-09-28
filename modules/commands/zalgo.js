@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "NTKhang",
   description: "Converts your text to Zalgo",
-  commandCategory: "game",
+  commandCategory: "random-text",
   depndencies: {
     "to-zalgo": ""
   },

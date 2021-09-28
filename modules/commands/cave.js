@@ -7,7 +7,7 @@ module.exports.config = {
 	commandCategory: "Economy",
     cooldowns: 5,
     envConfig: {
-        cooldownTime: 1000000
+        cooldownTime: 2000000
     }
 };
 

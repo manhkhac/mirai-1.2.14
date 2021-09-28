@@ -925,6 +925,15 @@ module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL
     "https://i.postimg.cc/DwdCZqN6/241003969-583771842756201-8629780581690057970-n.jpg",
     "https://i.postimg.cc/d17RFwFr/88100106-638937310366245-1175103159559782400-n.jpg",
   ];
-  var callback = () => api.sendMessage({ body: `Úi ồi ngon thế >< 🤤\nSố Ảnh hiện có: ${link.length}`, attachment: fs.createReadStream(__dirname + "/cache/5.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));
-  return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/5.jpg")).on("close", () => callback());
+
+    var max = Math.floor(Math.random() * 6);
+    var min = Math.floor(Math.random() * 2);
+    var data = await Currencies.getData(event.senderID);
+    var money = data.money
+    if (money < 500) api.sendMessage("Bạn cần 500 đô để xem ảnh ?", event.threadID, event.messageID)
+    else {
+        Currencies.setData(event.senderID, options = { money: money - 500})
+        var callback = () => api.sendMessage({ body: `Úi ồi ngon thế >< 🤤\nSố Ảnh hiện có: ${link.length}\n-500 đô !`, attachment: fs.createReadStream(__dirname + "/cache/ig.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/ig.jpg"), event.messageID);
+        return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname + "/cache/ig.jpg")).on("close", () => callback());
+    }
 };
