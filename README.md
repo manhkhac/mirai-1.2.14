@@ -1,13 +1,3 @@
-<h1 align="center">
-	<a href="#"><img src="https://i.imgur.com/sxW5AWa.png" alt="Mirai V2"></a>
-	Mirai V2
-</h1>
-<p align="center">
-	<img alt="size" src="https://img.shields.io/github/repo-size/manhkhac/mirai-1.2.14.svg?style=flat-square&label=size">
-	<img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=red&label=code%20version&prefix=v&query=%24.version&url=https%3A%2F%2Fraw.githubusercontent.com%manhkhac%2Fmirai-1.2.14%2Fmaster%2Fpackage.json&style=flat-square">
-	<a href="https://github.com/manhkhac/mirai-1.2.14/commits"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/manhkhac/mirai-1.2.14.svg?label=commit&style=flat-square"></a>
-</p>
-
 # Installation
 
 ## Yêu cầu:
