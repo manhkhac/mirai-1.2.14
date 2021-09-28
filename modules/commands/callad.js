@@ -56,7 +56,6 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
   var idUser = event.senderID;
   var idbox = event.threadID;
   let dataThread = await Threads.getData(event.threadID);
-  let nameT = (dataThread.threadInfo).threadName;
   const moment = require("moment-timezone");
   var gio = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");
   api.sendMessage(
@@ -65,6 +64,7 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
     () => {
       var idad = global.config.ADMINBOT;
       for (let ad of idad) {
+        let nameT = (dataThread.threadInfo).threadName;
         api.sendMessage(`👤Báo cáo từ: ${name}\n👨‍👩‍👧‍👧Box: ${nameT}\n🔰ID box: ${idbox}\n😜ID Use: ${idUser}\n-----------------------------------\n⚠️Lỗi: ${args.join(
           " "
         )}\n-----------------------------------\nTime: ${gio}`,

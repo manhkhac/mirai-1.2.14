@@ -9,7 +9,7 @@ module.exports.config = {
   cooldowns: 5,
   dependencies: { "fs-extra": "", "axios": "" }
 }
-module.exports.run = async function ({ api, args, event, client }) {
+module.exports.run = async function ({ api, args, event, client, Users }) {
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   };

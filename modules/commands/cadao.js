@@ -14,12 +14,12 @@ const axios = require('axios');
 const request = require('request');
 const fs = require("fs");
 const res = await axios.get(`http://le31.glitch.me/poem`);
-const anh = await axios.get(`https://Misthy.hungdz30cm.repl.co/`);
+const anh = await axios.get(`https://girl.demngayyeu.repl.co`);
 var gai = anh.data.data.substring(anh.data.data.lastIndexOf(".") + 1);
 var cadao = res.data.data
 let callback = function () {
     api.sendMessage({
-    body: `★ Ca Dao Việt Nam ★\n⁂➻❥ ${cadao} `,
+    body: `★ Ca Dao Việt Nam ★\n\n${cadao} `,
     attachment: fs.createReadStream(__dirname + `/cache/gaicadao.${gai}`)
    }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/gaicadao.${gai}`), event.messageID);
    };

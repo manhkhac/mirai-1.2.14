@@ -9,7 +9,7 @@ module.exports.config = {
     cooldowns: 5,
     dependencies: {"fs-extra": "","axios": ""}
   }
-    module.exports.run = async function ({ api, args, event, client }) {
+    module.exports.run = async function ({ api, args, event, client, Users }) {
       function delay(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));};
       const fs = global.nodemodule["fs-extra"];
@@ -37,7 +37,7 @@ module.exports.config = {
     //let name_1 = dt[event.senderID].name;
     //let name_2 = data[parseInt(mention)].name;
     ////////////////////////////ManhG start
-    let name_1 = await Users.getNameUser(event.senderID);
+    let name_1 = (await Users.getData(event.senderID)).name;
     let name_2 = await Users.getNameUser(mention);
     //////////////////////////ManhG end
     

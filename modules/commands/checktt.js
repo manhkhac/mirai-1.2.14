@@ -25,14 +25,18 @@ module.exports.languages = {
   }
 }
 
-module.exports.run = async function ({ args, api, event, Currencies, getText }) {
+module.exports.run = async function ({ args, api, event, Currencies, getText, Users, Threads }) {
   var mention = Object.keys(event.mentions);
   try {
-    const data = await api.getThreadInfo(event.threadID);
+    //const data = await api.getThreadInfo(event.threadID);
+    var { participantIDs } = (await Threads.getData(event.threadID)).threadInfo;
+    const listUserID = event.participantIDs;
+    var id = listUserID;
+
     switch (args[0]) {
       case "all": {
         var number = 1, msg = "", storage = [], exp = [];
-        for (const value of data.userInfo) storage.push({ "id": value.id, "name": value.name });
+        for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
         for (const user of storage) {
           const countMess = await Currencies.getData(user.id);
           exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp });
@@ -47,7 +51,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText }) 
         if (mention[0]) {
           var storage = [],
             exp = [];
-          for (const value of data.userInfo) storage.push({ "id": value.id, "name": value.name });
+          for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
 
           for (const user of storage) {
             const countMess = await Currencies.getData(user.id);
@@ -62,7 +66,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText }) 
           var number = 0,
             storage = [],
             exp = [];
-          for (const value of data.userInfo) storage.push({ "id": value.id, "name": value.name });
+          for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
           for (const user of storage) {
             const countMess = await Currencies.getData(user.id);
             exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp });
@@ -82,13 +86,13 @@ module.exports.run = async function ({ args, api, event, Currencies, getText }) 
             msg += `${i + 1}. ${infoUser.name}: ${infoUser.exp} tin nhắn\n`
           }
 
-          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt  số trang`
+          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt số trang/all`
           return api.sendMessage(msg, event.threadID);
         }
         else {
           var storage = [],
             exp = [];
-          for (const value of data.userInfo) storage.push({ "id": value.id, "name": value.name });
+          for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
           for (const user of storage) {
             const countMess = await Currencies.getData(user.id);
             exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp, "uid": user.id });

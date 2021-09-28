@@ -35,6 +35,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     var red = chalk.red("|");
 
     console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
+    //console.log(chalk.green("User: ") + names + red + body)
   }
 };
 

@@ -16,7 +16,8 @@ module.exports.onLoad = async function () {
   const { downloadFile } = global.utils;
   const path = resolve(__dirname, "cache/leaveNoti");
   if (!existsSync(path)) mkdirSync(path, { recursive: true });
-  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/leave.gif", resolve(__dirname, 'cache/leaveNoti', 'leave.gif'));
+  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/leave.gif", resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'));
+  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/byebye.gif", resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'));
 }
 
 module.exports.run = async function({ api, event, Users, Threads }) {
@@ -28,7 +29,13 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
 	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
 	const path = join(__dirname, "cache", "leaveNoti");
-	const gifPath = join(path, `leave.gif`);
+  //random 
+  let random = Math.floor(Math.random() *2) + 1;
+  var dirNoti = path + "/leave" + random + ".gif";
+  var rdNoti = dirNoti.slice(-10);
+  console.log(rdNoti)
+
+	const gifPath = join(path, rdNoti);
 	var msg, formPush
 
 	if (existsSync(path)) mkdirSync(path, { recursive: true });

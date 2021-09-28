@@ -1,7 +1,7 @@
 {
     "language": "vi",
     "keyActive": "",
-    "DeveloperMode": true,
+    "DeveloperMode": false,
     "autoCreateDB": true,
     "allowInbox": true,
     "autoClean": true,
@@ -10,7 +10,7 @@
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "",
+    "BOTNAME": "♡ BoT  MạnhG ♡",
     "PREFIX": "!",
     "ADMINBOT": [
         "100038379006171"

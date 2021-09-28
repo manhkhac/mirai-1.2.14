@@ -1,7 +1,7 @@
 {
     "language": "vi",
     "keyActive": "",
-    "DeveloperMode": true,
+    "DeveloperMode": false,
     "autoCreateDB": true,
     "allowInbox": true,
     "autoClean": true,
@@ -10,10 +10,10 @@
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "",
+    "BOTNAME": "♡ BoT  MạnhG ♡",
     "PREFIX": "!",
     "ADMINBOT": [
-        "ID-ADMIN"
+        "100038379006171"
     ],
     "DATABASE": {
         "sqlite": {

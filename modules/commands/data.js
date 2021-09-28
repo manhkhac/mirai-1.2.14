@@ -12,32 +12,37 @@ module.exports.config = {
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
 
-module.exports.run = async ({ event, api, args, Currencies, Users, reminder }) => {
+module.exports.run = async ({ event, api, args, Currencies, Users, Threads }) => {
   switch (args[0]) {
     case "thread":
     case "-t":
     case "box":
       {
-        var box = args[0];
-        var id = args[1];
-        let threadInfo = await api.getThreadInfo(id)
+        let threadInfo = await api.getThreadInfo(args[1]);
+        var dataThread = (await Threads.getData(args[1])).threadInfo;
+        var nameThread = dataThread.threadName || "Tên không tồn tại";
+        let imgg = threadInfo.imageSrc;
+        var gendernam = [];
+        var gendernu = [];
+        for (let z in threadInfo.userInfo) {
+          var gioitinhone = threadInfo.userInfo[z].gender;
+          if (gioitinhone == "MALE") {
+            gendernam.push(gioitinhone)
+          } else {
+            gendernu.push(gioitinhone)
+          }
+        };
+        var nam = gendernam.length;
+        var nu = gendernu.length;
         let sex = threadInfo.approvalMode;
-        var pd = sex == false ? "Đang tắt" : sex == true ? "Đang bật" : "Không phải Thread";
-        var name = threadInfo.name;
-        let countMess = threadInfo.messageCount;
-        var emoji = threadInfo.emoji;
-        let num = threadInfo.adminIDs.length;
-        var boy = [];
-        var nu = [];
-
-        for (let i in threadInfo.userInfo) {
-          var gei = threadInfo.userInfo[i].gender;
-          if (gei == "MALE") { boy.push(i) } else if (gei == "FEMALE") { nu.push(i) }
-        }
-        var callback = () => api.sendMessage({ body: `Tên box: ${name} \nTID: ${id}\nEmoji: ${emoji}\nSố tin nhắn: ${countMess}\nAdmin: ${num}\n Số thành viên: ${threadInfo.participantIDs.length}\nNam: ${boy.length}\nNữ: ${nu.length}\nPhê duyệt nhóm: ${pd}`, attachment: fs.createReadStream(__dirname + "/cache/2.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2.png"));
-        return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/2.png')).on('close', () => callback());
+        var pd = sex == false ? "tắt" : sex == true ? "bật" : "Kh";
+        if (imgg) {
+          var callback = () => api.sendMessage({ body: `👀 Tên nhóm: ${nameThread}\n🧩 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n👻 ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, attachment: fs.createReadStream(__dirname + "/cache/1.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID);
+          return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
+        } else { api.sendMessage(`👀 Tên nhóm: ${nameThread}\n🐧 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n💸 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n🤨 Có ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, event.threadID, event.messageID) }
+        break;
       }
-      break;
+
 
     case "-u":
     case "user":
@@ -54,12 +59,9 @@ module.exports.run = async ({ event, api, args, Currencies, Users, reminder }) =
         let url = data[idd].profileUrl;
         var callback = () => api.sendMessage({ body: `Tên: ${name} \nUID: ${idd}\nGiới tính: ${gender}\nTình trạng: ${isFriend}\nUrl: ${vanity}\nLink FB: ${url}`, attachment: fs.createReadStream(__dirname + "/cache/2.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2.png"));
         return request(encodeURI(`https://graph.facebook.com/${idd}/picture?width=512&height=512&access_token=170440784240186|bc82258eaaf93ee5b9f577a8d401bfc9`)).pipe(fs.createWriteStream(__dirname + '/cache/2.png')).on('close', () => callback());
-
       }
-      break;
 
     default:
       return api.sendMessage("Syntax error, use : data user/thread [ID]", event.threadID);
-      break;
   }
 }

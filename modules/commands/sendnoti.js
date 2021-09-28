@@ -1,9 +1,9 @@
 module.exports.config = {
 	name: "sendnoti",
-	version: "1.0.2",
+	version: "1.0.1",
 	hasPermssion: 2,
-	credits: "Mirai mod by HĐGN",
-	description: "Gửi tin nhắn tới các nhóm(reply vào ảnh/video cần gửi kèm)!\nPhiên bản xịn hơn của sendnotiUwU",
+	credits: "Mirai Team",
+	description: "Gửi tin nhắn tới các nhóm!",
 	commandCategory: "system",
 	usages: "[Text]",
 	cooldowns: 5
@@ -22,12 +22,19 @@ module.exports.languages = {
 
 module.exports.run = async ({ api, event, args, getText }) => {
 if (event.type == "message_reply") {
-	const request = global.nodemodule["request"];
-	const fs = global.nodemodule['fs-extra'];
-	const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = require('fs')
+const axios = require('axios')
 
-	var path = __dirname + `/cache/sendnoti.png`;
-	var path = __dirname + `/cache/sendnoti.mp4`;
+
+var getURL = await request.get(event.messageReply.attachments[0].url);
+
+        var pathname = getURL.uri.pathname;
+
+        var ext = pathname.substring(pathname.lastIndexOf(".") + 1);
+
+        var path = __dirname + `/cache/snoti`+`.${ext}`;
+
 
 
 var abc = event.messageReply.attachments[0].url;
@@ -42,7 +49,7 @@ var abc = event.messageReply.attachments[0].url;
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage({body:"» THÔNG BÁO TỪ ADMIN BOT «\n\n" + args.join(` `), attachment: fs.createReadStream(path) }, idThread, (error, info) => {
+			api.sendMessage({body:"» THÔNG BÁO TỪ ADMIN «\n\n" + args.join(` `),attachment: fs.createReadStream(path) }, idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;
@@ -59,13 +66,12 @@ else {
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage("» THÔNG BÁO TỪ ADMIN BOT «\n\n" + args.join(` `), idThread, (error, info) => {
+			api.sendMessage("» THÔNG BÁO TỪ ADMIN «\n\n" + args.join(` `), idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;
 			await new Promise(resolve => setTimeout(resolve, 500));
 		}
 	}
-	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID); 
-  }
+	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID); }
 }
