@@ -53,7 +53,7 @@ module.exports.makeRankCard = async (data) => {
   //random rankcard by Siêu Đáng Yêu(xin vui lòng giữ credit)
   const pathCustom = path.resolve(__dirname, "cache/rankcard", "customrank");
   var customDir = fs.readdirSync(pathCustom);
-  let random = Math.floor(Math.random() * 22) + 1;
+  let random = Math.floor(Math.random() * 24) + 1;
   var dirImage = __root + "/rankcard" + random + ".png";
 
 
@@ -169,7 +169,7 @@ module.exports.onLoad = async function () {
   //hàm dowload file có sẵn bao gồm font chữ hoặc pang rankcard (có thể thay)
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'regular-font.ttf'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/font/regular-font.ttf", resolve(__dirname, 'cache/rankcard', 'regular-font.ttf'));
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'bold-font.ttf'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/font/bold-font.ttf", resolve(__dirname, 'cache/rankcard', 'bold-font.ttf'));
-  if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard.png", resolve(__dirname, 'cache/rankcard', 'rankcard.png'));
+  
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard1.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard1.png", resolve(__dirname, 'cache/rankcard', 'rankcard1.png'));
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard2.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard2.png", resolve(__dirname, 'cache/rankcard', 'rankcard2.png'));
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard3.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard3.png", resolve(__dirname, 'cache/rankcard', 'rankcard3.png'));
@@ -193,6 +193,7 @@ module.exports.onLoad = async function () {
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard21.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard21.png", resolve(__dirname, 'cache/rankcard', 'rankcard21.png'));
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard22.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard22.png", resolve(__dirname, 'cache/rankcard', 'rankcard22.png'));
   if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard23.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard23.png", resolve(__dirname, 'cache/rankcard', 'rankcard23.png'));
+  if (!existsSync(resolve(__dirname, 'cache/rankcard', 'rankcard24.png'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/cache/rankcard/rankcard.png", resolve(__dirname, 'cache/rankcard', 'rankcard24.png'));
 }
 
 module.exports.run = async ({ event, api, args, Currencies, Users }) => {

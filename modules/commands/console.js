@@ -35,8 +35,8 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
     var red = chalk.red("|");
 
-    //console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
-    console.log(chalk.green("Người dùng: ") + names + red + body)
+    console.log(chalk.green("BOX: ") + "" + chalk.magenta(event.threadID) + red + names + red + body)
+    //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };
 

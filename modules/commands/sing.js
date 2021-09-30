@@ -46,6 +46,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 	setTimeout(() => {api.unsendMessage(info.messageID) } , 100000));
     });
 	try {
+     
 		ytdl.getInfo(handleReply.link[event.body - 1]).then(res => {
 		let body = res.videoDetails.title;
 		ytdl(handleReply.link[event.body - 1])
@@ -69,6 +70,9 @@ module.exports.run = async function({ api, event, args }) {
 	const scdl = global.nodemodule["soundcloud-downloader"].default;
 	const axios = global.nodemodule["axios"];
 	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
+  
+  if (global.client.sing == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+  global.client.sing == true;
 	
 	const youtube = new YouTubeAPI(global.configModule[this.config.name].YOUTUBE_API);
 	const keyapi = global.configModule[this.config.name].YOUTUBE_API

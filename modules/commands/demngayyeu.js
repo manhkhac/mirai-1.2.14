@@ -7,12 +7,13 @@ module.exports.config = {
   commandCategory: "countdown",
   cooldowns: 5
 }
+
 module.exports.onLoad = () => {
   const fs = global.nodemodule["fs-extra"];
   const request = global.nodemodule["request"];
   const dirMaterial = __dirname + `/Noprefix/`;
-  if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "demngayyeu.jpg")) request("https://img.thuthuattinhoc.vn/uploads/2019/01/24/hinh-nen-cute-love_115832772.jpg").pipe(fs.createWriteStream(dirMaterial + "demngayyeu.jpg"));
+  if (!fs.existsSync(dirMaterial + "Noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
+  if (!fs.existsSync(dirMaterial + "demngayyeu.jpg")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/img/demngayyeu.jpg").pipe(fs.createWriteStream(dirMaterial + "demngayyeu.jpg"));
 }
 
 module.exports.handleEvent = async ({ event, api, Users }) => {
