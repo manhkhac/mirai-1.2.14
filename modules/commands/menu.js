@@ -13,7 +13,7 @@ module.exports.config = {
 	}
 };
 
-module.exports.handleEvent = function ({ api, event }) {
+/*module.exports.handleEvent = function ({ api, event }) {
 	const { commands } = global.client;
 	if (!event.body) return;
 	const { threadID, messageID, body } = event;
@@ -28,7 +28,7 @@ module.exports.handleEvent = function ({ api, event }) {
 
 	return api.sendMessage(`「 ${command.config.name} 」\n${command.config.description}\n\n❯ Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯ Thuộc nhóm: ${command.config.commandCategory}\n❯ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯ Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n\n» Module code by ${command.config.credits} «`, threadID, messageID);
 }
-
+*/
 module.exports.run = function({ api, event, args }) {
 	const { commands } = global.client;
 	const { threadID, messageID } = event;
@@ -56,7 +56,8 @@ module.exports.run = function({ api, event, args }) {
 
 	}
 
-	const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
+	/*const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 
 	return api.sendMessage(`🍄➻❥ ${command.config.name} \n${command.config.description}\n\n❯ Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯ Thuộc nhóm: ${command.config.commandCategory}\n❯ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯ Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n\n» Module code by ${command.config.credits} «`, threadID, messageID);
+  */
 }

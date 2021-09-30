@@ -1,10 +1,10 @@
 module.exports.config = {
     name: "badword",
-    version: "1.0.5",
-    hasPermssion: 0,
-    credits: "Zyros + HelyT - Đông Fix",
+    version: "1.0.0",
+    hasPermssion: 1,
+    credits: "Zyros",
     description: "",
-    commandCategory: "system",
+    commandCategory: "Box - chat",
     usages: "add [từ ngữ]",
     cooldowns: 5,
     dependencies: {
@@ -18,37 +18,31 @@ module.exports.onLoad = function () {
     !fs.existsSync(path.join(__dirname, "./cache/badwords.json")) ? fs.writeFileSync(path.join(__dirname, `./cache/badwords.json`), JSON.stringify({}, null, 4), {mode: 0o666}) : "";
 }
 
-module.exports.handleEvent = async ({api, event}) => {
+module.exports.handleEvent = async ({api, event, Users}) => {
     const request = global.nodemodule["request"]
     const fs = global.nodemodule["fs-extra"]
     const path = global.nodemodule["path"]
     var data = JSON.parse(fs.readFileSync(path.join(__dirname, "./cache/badwords.json"), {encoding: "utf8"}))
     //Lấy tên nhóm (threadName) và tên người nhắn (name)
-     //let dataThread = await Threads.getData(event.threadID);
-    let thread = (dataThread.threadInfo).threadName;
-    let name = await Users.getNameUser(event.senderID);
-
-    //let user = await api.getUserInfo(event.senderID);
-    //let thread = await api.getThreadInfo(event.threadID);
-    let name = user[event.senderID].name;
-
+    let thread = await api.getThreadInfo(event.threadID);
+    var name = (await Users.getData(event.senderID)).name
       //Khai báo admin bot
-    var admin = "" //Thay uid adminbot :> ????
-    if(event.senderID == api.getCurrentUserID()) return;
+    var admin = global.config.ADMINBOT; //Thay uid adminbot :> ????
+    if(event.senderID == global.data.botID) return;
     if (data[event.body]) {
       return api.sendMessage({
-        body: ` ${name} vi phạm từ ${event.body}?\n Chửi bot j vậy bạn`,
+        body: ` ${name} vi phạm từ ${event.body}?\n Chửi bot `,
         mentions:[{
                 tag:name, 
                 id:event.senderID
             }]
       },event.threadID,() => {
-            var idad = global.config.ADMINBOT
+            var idad = global.config.ADMINBOT;
             api.removeUserFromGroup(api.getCurrentUserID(),event.threadID)
             for(let ad of idad){
                 setTimeout(()=>{
                     var callback = () => api.sendMessage({
-                        body:`[SYSTEM] Bot vừa out ${thread.name} - ${event.threadID}\n Lý do: \n${name} - ${event.senderID} : ${event.body}`,
+                        body:`[SYSTEM] Bot vừa out ${thread.name} - ${event.threadID}\n Lý do: Chửi Bot \n${name} - ${event.senderID} : ${event.body}`,
                         attachment: fs.createReadStream(__dirname + "/cache/avatar_thread_badword.jpg")
                     }, ad, () => fs.unlinkSync(__dirname + "/cache/avatar_thread_badword.jpg"))
                     request(encodeURI(`${thread.imageSrc}`)).pipe(fs.createWriteStream(__dirname+'/cache/avatar_thread_badword.jpg')).on('close',() => callback())
@@ -63,7 +57,7 @@ module.exports.run = async function({api, args, event}) {
     var content = args.splice(1, args.length)
     if (!content) return api.sendMessage(`Thiếu du kien!`,event.threadID, event.messageID)
     var data = JSON.parse(fs.readFileSync(path.join(__dirname, "./cache/badwords.json"), {encoding: "utf8"}))
-    if (!args[0])return api.sendMessage(`Dùng: \nbadword add [từ ngữ]\n\nAuthor: Zyros + HelyT!`,event.threadID,event.messageID)
+    if (!args[0])return api.sendMessage(`Dùng: \nbadword add [từ ngữ]`,event.threadID,event.messageID)
     if (args[0] == `add`){
       if (!content) return api.sendMessage(`Thiếu từ cần thêm!`,event.threadID, event.messageID)
       if (data[content]) return api.sendMessage(`Đã có sẵn từ ${content}`,event.threadID, event.messageID)
