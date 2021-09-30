@@ -9,7 +9,8 @@ module.exports.config = {
 	}
 };
 
-module.exports.onLoad = async function () {
+module.exports.onLoad = async function ({ api }) {
+	if (!global.data.botID) global.data.botID = api.getCurrentUserID();
   const { resolve } = global.nodemodule["path"];
   const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
   const { downloadFile } = global.utils;
@@ -21,9 +22,8 @@ module.exports.onLoad = async function () {
 }
 
 module.exports.run = async function({ api, event, Users }) {
-  const fs = global.nodemodule["fs-extra"];
 	const { join, path } = global.nodemodule["path"];
-	const { threadID } = event;
+	const { threadID, senderID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) {
 		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ BoT  MạnhG ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
 		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n https://www.facebook.com/100038379006171`, threadID);
@@ -39,8 +39,8 @@ module.exports.run = async function({ api, event, Users }) {
       let random = Math.floor(Math.random() *2) + 1;
       var dirMp4 = path + "/join" + random + ".mp4";
       var rdMp4 = dirMp4.slice(-9);
+      if (senderID == global.data.botID) return;
       console.log(rdMp4)
-
 			const pathNoti = join(path, rdMp4);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;

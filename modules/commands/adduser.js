@@ -21,7 +21,7 @@ async function getUID(url, api) {
 module.exports.run = async function ({ api, event, args, Threads, Users }) {
 	const join = require("../events/joinNoti").run;
 	const { threadID, messageID } = event;
-	const botID = api.getCurrentUserID();
+	const botID = global.data.botID;
 	const out = msg => api.sendMessage(msg, threadID, messageID);
 	var { participantIDs, approvalMode, adminIDs } = await api.getThreadInfo(threadID);
 	var participantIDs = participantIDs.map(e => parseInt(e));
@@ -48,7 +48,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 			threadID: threadID,
 			logMessageType: 'log:subscribe',
 			logMessageData: { addedParticipants: [{ userFbId: id, fullName: name || "người dùng Facebook" }] },
-			author: api.getCurrentUserID()
+			author: global.data.botID
 		};
 		if (participantIDs.includes(id)) return out(`${name ? name : "Thành viên"} đã có mặt trong nhóm.`);
 		else {

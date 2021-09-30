@@ -24,7 +24,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	if (event.logMessageData.leftParticipantFbId == global.data.botID) return;
 	const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
 	const { join } =  global.nodemodule["path"];
-	const { threadID } = event;
+	const { threadID,senderID } = event;
 	const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
 	const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
 	const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
@@ -33,8 +33,8 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   let random = Math.floor(Math.random() *2) + 1;
   var dirNoti = path + "/leave" + random + ".gif";
   var rdNoti = dirNoti.slice(-10);
+  if (senderID == global.data.botID) return;
   console.log(rdNoti)
-
 	const gifPath = join(path, rdNoti);
 	var msg, formPush
 

@@ -25,7 +25,7 @@ module.exports.run = async ({ api, event, args }) => {
 	else if (args[0] == "join") {
 		if (!values) return api.sendMessage("Hiện tại chưa có game ma sói nào, bạn có thể tạo bằng cách sử dụng masoi create", threadID, messageID);
 		if (values.start == 1) return api.sendMessage("Hiện tại game ma sói đã được bắt đầu", threadID, messageID);
-		//if (values.player.find(item => item.id == senderID)) return api.sendMessage("Bạn đã tham gia vào game ma sói này!", threadID, messageID);
+		if (values.player.find(item => item.id == senderID)) return api.sendMessage("Bạn đã tham gia vào game ma sói này!", threadID, messageID);
 		global.moduleData.masoi.set(threadID, values);
 		return api.sendMessage("Bạn đã tham gia thành công!", threadID, messageID);
 	}

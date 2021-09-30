@@ -20,7 +20,7 @@ module.exports.run = async function ({ api, event, Users }) {
     const { antiout } = require(path);
     const { logMessageData, author, threadID } = event;
     const id = logMessageData.leftParticipantFbId;
-    if (id == global.data.botID) return;
+    if (id == api.getCurrentUserID()) return;
     if (author == id) {
         const name = await Users.getNameUser(id) || "Người dùng Facebook";
         if (antiout.hasOwnProperty(threadID) && antiout[threadID] == true) {
