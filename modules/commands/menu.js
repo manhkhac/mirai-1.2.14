@@ -48,7 +48,7 @@ module.exports.run = function({ api, event, args }) {
 		return api.sendMessage(msg + `🍄➻❥ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}menu từng lệnh ở trên" để xem chi tiết cách sử dụng! | \n🔱🎭🪂Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này\n👮Admin điều hành BOT:\n https://facebook.com/100038379006171\n🍓Menu sẽ tự động gỡ sau 55 giây!`, threadID,
     async function (error, info){
 			if (global.configModule[moduleName].autoUnsend) {
-				console.log(global.configModule[moduleName].autoUnsend);
+				//console.log(global.configModule[moduleName].autoUnsend);
 				await new Promise(resolve => setTimeout(resolve, global.configModule[moduleName].delayUnsend * 1000));
 				return api.unsendMessage(info.messageID);
 			} else return;

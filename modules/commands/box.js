@@ -76,33 +76,32 @@ module.exports.run = async ({ api, event, args, Threads }) => {
     var callback = () => api.changeGroupImage(fs.createReadStream(__dirname + "/cache/1.png"), event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"));
     return request(encodeURI(event.messageReply.attachments[0].url)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
   };
-  
+
   if (args[0] == "info") {
     let threadInfo = await api.getThreadInfo(event.threadID);
-        var dataThread = (await Threads.getData(event.threadID)).threadInfo;
-        var nameThread = dataThread.threadName || "Tên không tồn tại";
-        //console.log(dataThread)
-        let img = threadInfo.imageSrc;
-        var gendernam = [];
-        var gendernu = [];
-        for (let z in threadInfo.userInfo) {
-            var gioitinhone = threadInfo.userInfo[z].gender;
-            if (gioitinhone == "MALE") {
-                gendernam.push(gioitinhone)
-            } else {
-                gendernu.push(gioitinhone)
-            }
-        };
+    var dataThread = (await Threads.getData(event.threadID)).threadInfo;
+    var nameThread = dataThread.threadName || "Tên không tồn tại";
+    //console.log(dataThread)
+    let img = threadInfo.imageSrc;
+    var gendernam = [];
+    var gendernu = [];
+    for (let z in threadInfo.userInfo) {
+      var gioitinhone = threadInfo.userInfo[z].gender;
+      if (gioitinhone == "MALE") {
+        gendernam.push(gioitinhone)
+      } else {
+        gendernu.push(gioitinhone)
+      }
+    };
 
-        var nam = gendernam.length;
-        var nu = gendernu.length;
-        let sex = threadInfo.approvalMode;
-        var pd = sex == false ? "tắt" : sex == true ? "bật" : "Kh";
-        if (img) {
-            var callback = () => api.sendMessage({ body: `👀 Tên nhóm: ${nameThread}\n🧩 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n👻 ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, attachment: fs.createReadStream(__dirname + "/cache/1.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID);
-            return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
-        } else { api.sendMessage(`👀 Tên nhóm: ${nameThread}\n🐧 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n💸 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n🤨 Có ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, event.threadID, event.messageID) }
-        break;
+    var nam = gendernam.length;
+    var nu = gendernu.length;
+    let sex = threadInfo.approvalMode;
+    var pd = sex == false ? "tắt" : sex == true ? "bật" : "Kh";
+    if (img) {
+      var callback = () => api.sendMessage({ body: `👀 Tên nhóm: ${nameThread}\n🧩 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n👻 ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, attachment: fs.createReadStream(__dirname + "/cache/1.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID);
+      return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
+    } else { api.sendMessage(`👀 Tên nhóm: ${nameThread}\n🐧 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n💸 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n🤨 Có ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, event.threadID, event.messageID) }
 
   }
 }
