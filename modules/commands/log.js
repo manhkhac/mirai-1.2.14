@@ -24,6 +24,7 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   var resend = data.resend;
   var log = data.log;
 
+  var roleplay = data.roleplay;
   var ngudot = data.ngudot;
   var aothatday = data.aothatday;
   var goibot = data.goibot;
@@ -46,6 +47,7 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   rankup == null ? rankup = `false` : rankup = `${rankup}`;
   resend == null ? resend = `false` : resend = `${resend}`;
 
+  roleplay == null ? roleplay = `true` : roleplay = `${roleplay}`;
   ngudot == null ? ngudot = `true` : ngudot = `${ngudot}`;
   thamlam == null ? thamlam = `true` : thamlam = `${thamlam}`;
   aothatday == null ? aothatday = `true` : aothatday = `${aothatday}`;
@@ -63,5 +65,5 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   huan == null ? huan = `true` : huan = `${huan}`;
   nguquahtrua == null ? nguquahtrua = `true` : nguquahtrua = `${nguquahtrua}`;
 
-  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}`, threadID, messageID);
+  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}`, threadID, messageID);
 }
