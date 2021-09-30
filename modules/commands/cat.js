@@ -13,7 +13,7 @@ module.exports.config = {
 module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
 	const request = require('request');
-	const fs = require("fs");
+	const fs = require("fs-extra");
 	axios.get('https://nekos.life/api/v2/img/meow').then(res => {
 	let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
 	

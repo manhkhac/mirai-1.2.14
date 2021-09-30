@@ -10,14 +10,15 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, Currencies }) => {
-    const data = await api.getThreadInfo(event.threadID);
-    for (const user of data.userInfo) {
-        var currenciesData = await Currencies.getData(user.id)
+    const data = event.participantIDs;
+    //console.log(data)
+    for (const userID of data) {
+        var currenciesData = await Currencies.getData(userID)
         if (currenciesData != false) {
             var money = currenciesData.money;
             if (typeof money != "undefined") {
                 money -= money;
-                await Currencies.setData(user.id, { money });
+                await Currencies.setData(userID, { money });
             }
         }
     }

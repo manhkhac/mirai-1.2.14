@@ -22,7 +22,7 @@ module.exports.onLoad = () => {
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
   function out(data) {
     api.sendMessage(data, threadID, messageID)
   }

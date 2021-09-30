@@ -39,7 +39,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\n Nhóm Bạn Đã Bị Ban, cấm dùng bot.`, idgr, () =>
-            api.sendMessage(`${api.getCurrentUserID()}`, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★Thực thi Ban(true/false)★★\n\n${msg}`, threadID, () =>
                 api.unsendMessage(handleReply.messageID))));
           break;
@@ -64,7 +64,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\n Nhóm Bạn Đã Được Gỡ Ban`, idgr, () =>
-            api.sendMessage(`${api.getCurrentUserID()}`, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★Thực thi Unban(true/false)\n\n${msg}`, threadID, () =>
                 api.unsendMessage(handleReply.messageID))));
           break;
@@ -84,7 +84,7 @@ module.exports.handleReply = async function ({ api, event, args, Threads, handle
             console.log(modules, msg)
           }
           api.sendMessage(`»Thông báo từ Admin«\n\nTạm biệt nhé\nTớ out đây😢`, idgr, () =>
-            api.sendMessage(`${api.getCurrentUserID()}`, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★Thực thi Out(true/false)★★\n\n${msg} `, threadID, () =>
                 api.unsendMessage(handleReply.messageID))));
           break;

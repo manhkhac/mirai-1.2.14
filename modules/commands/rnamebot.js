@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async ({ event, api, args, Threads }) => {
     const custom = args.join(" "),
             allThread = await Threads.getAll(["threadID"]),
-            idBot = api.getCurrentUserID();
+            idBot = global.data.botID;
     var threadError = [],
         count = 0;
     if (custom.length != 0) {

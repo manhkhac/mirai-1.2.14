@@ -25,7 +25,7 @@ module.exports.handleEvent = async ({ event, api }) => {
   const thread = global.data.threadData.get(threadID) || {};
   if (typeof thread["oidoioi"] !== "undefined" && thread["oidoioi"] == false) return;
 
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
   function out(data) {
     api.sendMessage(data, threadID, messageID)
   }

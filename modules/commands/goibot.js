@@ -15,7 +15,7 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
   const thread = global.data.threadData.get(threadID) || {};
   if (typeof thread["goibot"] !== "undefined" && thread["goibot"] == false) return;
 
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
    function out(data){
   	api.sendMessage(data, threadID, messageID)
   }

@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "csluser",
+  name: "console",
   version: "1.0.0",
   hasPermssion: 1,
   credits: "ManhG",
@@ -27,15 +27,16 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
       return threadName;
     }
     var nameT = await nameThread.threadName || "Tên không tồn tại";*/
-    //var nameT = dataThread.threadName || "Tên không tồn tại";
-    //var nameBox = chalk.magenta(nameT);
+    //const nameThread = global.data.threadInfo.get(event.threadID).threadName;
+    var nameT = dataThread.threadName || "Tên không tồn tại";
+    var nameBox = chalk.magenta(nameT);
     var name = await Users.getNameUser(event.senderID);
     var names = chalk.yellow(name);
     var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
     var red = chalk.red("|");
 
-    //console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
-    console.log(chalk.green("User Name: ") + names + red + body)
+    console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
+    //console.log(chalk.green("User: ") + names + red + body)
   }
 };
 

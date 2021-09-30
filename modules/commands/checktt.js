@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "Mirai Team",
   description: "Kiểm tra lượt tương tác trong nhóm",
-  commandCategory: "system",
+  commandCategory: "general",
   usages: "[page/all/tag]",
   cooldowns: 5,
   envConfig: {

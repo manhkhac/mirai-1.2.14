@@ -50,7 +50,7 @@ module.exports.handleReply = async function({ api, args, Users, event, handleRep
 
 module.exports.handleEvent = async({ event, api, Users, Threads }) => {
     var { threadID, messageID, body, senderID } = event;
-    if (senderID == api.getCurrentUserID()) return;
+    if (senderID == global.data.botID) return;
 
     const moment = require("moment-timezone");
     var time = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");

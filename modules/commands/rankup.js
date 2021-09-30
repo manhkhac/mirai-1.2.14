@@ -23,6 +23,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
 	senderID = String(senderID);
 
 	const thread = global.data.threadData.get(threadID) || {};
+  if (senderID == global.data.botID) return;
 
 	let exp = (await Currencies.getData(senderID)).exp;
 	exp = exp += 1;

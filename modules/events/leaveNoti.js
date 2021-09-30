@@ -21,7 +21,7 @@ module.exports.onLoad = async function () {
 }
 
 module.exports.run = async function({ api, event, Users, Threads }) {
-	if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
+	if (event.logMessageData.leftParticipantFbId == global.data.botID) return;
 	const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
 	const { join } =  global.nodemodule["path"];
 	const { threadID } = event;

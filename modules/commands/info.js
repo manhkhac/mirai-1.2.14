@@ -104,7 +104,7 @@ module.exports.run = async({ api, event, args, Users, Threads }) => {
                         let url = urlfake + `${mentions}`;
                         //let b = data[id].isFriend == false ? "không !" : data[id].isFriend == true ? "có !" : "Đéo";
                         //let sn = data[id].vanity;
-                        let name = await Users.getNameUser(mentions);
+                        let name = global.data.userName.get(mentions) || await (await Users.getData(mentions)).name;
                         var sexrd = ['1', '2'];
                         var sex = sexrd[Math.floor(Math.random() * sexrd.length)];
                         //var sex = await data[id].gender;

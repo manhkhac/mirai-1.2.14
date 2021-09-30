@@ -22,7 +22,7 @@ module.exports.handleEvent = async function ({ event, api, client, Users }) {
 
   let { messageID, senderID, threadID, body: content } = event;
   if (!global.logMessage) global.logMessage = new Map();
-  if (!global.data.botID) global.data.botID = api.getCurrentUserID();
+  if (!global.data.botID) global.data.botID = global.data.botID;
 
   const thread = global.data.threadData.get(threadID) || {};
 

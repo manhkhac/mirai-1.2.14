@@ -26,7 +26,7 @@ module.exports.run = function({ api, event, getText }) {
 	var mention = Object.keys(event.mentions);
 	return api.getThreadInfo(event.threadID, (err, info) => {
 		if (err) return api.sendMessage(getText("error"),event.threadID);
-		if (!info.adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(getText("needPermssion"), event.threadID, event.messageID);
+		if (!info.adminIDs.some(item => item.id == global.data.botID)) return api.sendMessage(getText("needPermssion"), event.threadID, event.messageID);
 		if(!mention[0]) return api.sendMessage(getText("missingTag"),event.threadID,event.threadID);
 		if (info.adminIDs.some(item => item.id == event.senderID)) {
 			for (let o in mention) {

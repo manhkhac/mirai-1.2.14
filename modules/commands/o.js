@@ -26,7 +26,7 @@ module.exports.handleEvent = async ({ event, api }) => {
   if (typeof thread["o"] !== "undefined" && thread["o"] == false) return;
 
   var { threadID, messageID, body, senderID } = event;
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
 
   function out(data) {
     api.sendMessage(data, threadID, messageID)

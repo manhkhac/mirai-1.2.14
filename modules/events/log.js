@@ -15,6 +15,7 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
   const moment = require("moment-timezone");
   const time = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");
   //let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
+  //let nameThread = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại"; 
 
   //nameThread = event.logMessageData.name || "Tên không tồn tại";
   //let threadInfo = await api.getThreadInfo(event.threadID);
@@ -40,11 +41,11 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
         break;
     }*/
     case "log:subscribe": {
-      if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) task = "Người dùng đã thêm bot vào một nhóm mới!";
+      if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) task = "Người dùng đã thêm bot vào một nhóm mới!";
       break;
     }
     case "log:unsubscribe": {
-      if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) {
+      if (event.logMessageData.leftParticipantFbId == global.data.botID) {
         const data = (await Threads.getData(event.threadID)).data || {};
         data.banned = true;
         var reason = "Kích bot tự do, không xin phép";

@@ -16,5 +16,5 @@ var poem =       res.data.data;
 
 //console.log(poem)
 
-return api.sendMessage(` ★ == Bài thơ == ★ \n\n${poem}  `, event.threadID, event.messageID)
+return api.sendMessage(` 🍄 == Bài thơ == 🍄 \n\n${poem}  `, event.threadID, event.messageID)
 }

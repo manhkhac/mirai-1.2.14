@@ -15,13 +15,13 @@ module.exports.config = {
   
     var idbox = args[0];
     var reason = args.slice(1);
-    if (!args[0]) return api.sendMessage(`${api.getCurrentUserID()}`, () =>
+    if (!args[0]) return api.sendMessage(`${global.data.botID}`, () =>
                                   api.sendMessage(`★★Tạm Biệt Nhé★★ \n\n Tớ out box đây😢 `, event.threadID , () => 
-                                          api.removeUserFromGroup(`${api.getCurrentUserID()}`, event.threadID)));
+                                          api.removeUserFromGroup(`${global.data.botID}`, event.threadID)));
   
     api.sendMessage("Đã nhận lệnh out nhóm từ admin, lý do: " + reason.join(" "), idbox, () =>
   
-      api.removeUserFromGroup(`${api.getCurrentUserID()}`, idbox, () =>
+      api.removeUserFromGroup(`${global.data.botID}`, idbox, () =>
       api.sendMessage("Đã out box có id: " + idbox + " với lý do: " + reason.join(" "), event.threadID)))
   
   }

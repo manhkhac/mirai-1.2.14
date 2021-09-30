@@ -16,7 +16,7 @@ module.exports.handleEvent = function ({ api, event }) {
 
   const listAdmin = global.config.ADMINBOT;
   const mention = Object.keys(mentions);
-  if (event.senderID !== api.getCurrentUserID()) {
+  if (event.senderID !== global.data.botID) {
     for (const id of listAdmin) {
       if (mention == id) {
         var msg = ["Tag lần nữa bố ban khỏi dùng", " lần nữa tao đấm cho đấy", "Đã bảo đừng tag mà, thích ăn đấm hả😠", "Có chuyện gì thì ib trực tiếp"];

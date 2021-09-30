@@ -1,4 +1,4 @@
-﻿module.exports.config = {
+module.exports.config = {
 	name: "anhnen",
 	version: "1.0.0",
 	hasPermssion: 0,
@@ -12,7 +12,7 @@
 module.exports.run = async ({ api, event }) => {
 	const axios = require('axios');
 	const request = require('request');
-	const fs = require("fs");
+	const fs = require("fs-extra");
 	axios.get('https://api.nekos.dev/api/v3/images/sfw/img/wallpaper/').then(res => {
 	let ext = res.data.data.response.url.substring(res.data.data.response.url.lastIndexOf(".") + 1);
 	let callback = function () {

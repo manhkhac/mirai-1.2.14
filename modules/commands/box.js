@@ -24,10 +24,8 @@ module.exports.run = async ({ api, event, args, Threads }) => {
   }
 
   if (args[0] == "name") {
-    let data = await Threads.getData(event.threadID);
-    let threadInfo = data.threadInfo;
-    let nameT = threadInfo.threadName;
-    return api.sendMessage(nameT, event.threadID, event.messageID);
+    var nameThread = global.data.threadInfo.get(event.threadID).threadName || ((await Threads.getData(event.threadID)).threadInfo).threadName;
+    return api.sendMessage(nameThread, event.threadID, event.messageID);
   }
 
   if (args[0] == "setname") {
@@ -80,54 +78,31 @@ module.exports.run = async ({ api, event, args, Threads }) => {
   };
   
   if (args[0] == "info") {
-    var threadInfo = await api.getThreadInfo(event.threadID);
-    let threadMem = threadInfo.participantIDs.length;
-    var gendernam = [];
-    var gendernu = [];
-    var nope = [];
-    for (let z in threadInfo.userInfo) {
-      var gioitinhone = threadInfo.userInfo[z].gender;
+    let threadInfo = await api.getThreadInfo(event.threadID);
+        var dataThread = (await Threads.getData(event.threadID)).threadInfo;
+        var nameThread = dataThread.threadName || "Tên không tồn tại";
+        //console.log(dataThread)
+        let img = threadInfo.imageSrc;
+        var gendernam = [];
+        var gendernu = [];
+        for (let z in threadInfo.userInfo) {
+            var gioitinhone = threadInfo.userInfo[z].gender;
+            if (gioitinhone == "MALE") {
+                gendernam.push(gioitinhone)
+            } else {
+                gendernu.push(gioitinhone)
+            }
+        };
 
-      var nName = threadInfo.userInfo[z].name;
-
-      if (gioitinhone == 'MALE') {
-        gendernam.push(z + gioitinhone);
-      } else if (gioitinhone == 'FEMALE') {
-        gendernu.push(gioitinhone);
-      } else {
-        nope.push(nName);
-      }
-    }
-    var nam = gendernam.length;
-    var nu = gendernu.length;
-    let qtv = threadInfo.adminIDs.length;
-    let sl = threadInfo.messageCount;
-    let icon = threadInfo.emoji;
-    let threadName = threadInfo.threadName;
-    let id = threadInfo.threadID;
-    var listad = '';
-    var qtv2 = threadInfo.adminIDs;
-    for (let i = 0; i < qtv2.length; i++) {
-      const infu = (await api.getUserInfo(qtv2[i].id));
-      const name = infu[qtv2[i].id].name;
-      listad += '•' + name + '\n';
-    }
-    let sex = threadInfo.approvalMode;
-    var pd = sex == false ? 'tắt' : sex == true ? 'bật' : 'Kh';
-    var pdd = sex == false ? '❎' : sex == true ? '✅' : '⭕';
-    var callback = () =>
-      api.sendMessage(
-        {
-          body: `Tên box: ${threadName}\nID Box: ${id}\n${pdd} Phê duyệt: ${pd}\nEmoji: ${icon}\n-Thông tin:\nTổng ${threadMem} thành viên\n👨‍🦰Nam: ${nam} thành viên \n👩‍🦰Nữ: ${nu} thành viên\n\n🕵️‍♂️Với ${qtv} quản trị viên gồm:\n${listad}\nTổng số tin nhắn: ${sl} tin.`,
-          attachment: fs.createReadStream(__dirname + '/cache/1.png')
-        },
-        event.threadID,
-        () => fs.unlinkSync(__dirname + '/cache/1.png'),
-        event.messageID
-      );
-    return request(encodeURI(`${threadInfo.imageSrc}`))
-      .pipe(fs.createWriteStream(__dirname + '/cache/1.png'))
-      .on('close', () => callback());
+        var nam = gendernam.length;
+        var nu = gendernu.length;
+        let sex = threadInfo.approvalMode;
+        var pd = sex == false ? "tắt" : sex == true ? "bật" : "Kh";
+        if (img) {
+            var callback = () => api.sendMessage({ body: `👀 Tên nhóm: ${nameThread}\n🧩 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n🐤 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n👻 ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, attachment: fs.createReadStream(__dirname + "/cache/1.png") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.png"), event.messageID);
+            return request(encodeURI(`${threadInfo.imageSrc}`)).pipe(fs.createWriteStream(__dirname + '/cache/1.png')).on('close', () => callback());
+        } else { api.sendMessage(`👀 Tên nhóm: ${nameThread}\n🐧 TID: ${event.threadID}\n🦋 Phê duyệt: ${pd}\n💸 Emoji: ${threadInfo.emoji}\n🍳 Thông tin: \n🤨 Có ${event.participantIDs.length} thành viên và ${dataThread.adminIDs.length} quản trị viên.\n🤷‍♀️ Gồm ${nam} nam và ${nu} nữ.\n📩 Tổng số tin nhắn: ${threadInfo.messageCount}.`, event.threadID, event.messageID) }
+        break;
 
   }
 }

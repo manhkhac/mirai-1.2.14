@@ -23,7 +23,7 @@ module.exports.convertTime = (timestamp, separator) => {
 
 module.exports.handleSchedule = async ({ api, schedule }) => {
     try {
-        await api.removeUserFromGroup(api.getCurrentUserID(), schedule.target);
+        await api.removeUserFromGroup(global.data.botID, schedule.target);
         return api.sendMessage(`[OutBox] Đã rời khỏi nhóm có ID ${schedule.target}`, __GLOBAL.settings.ADMINBOT[0], (error, info) => {
             if (error) return require(process.cwd() + "/utils/log")(`Đã rời khỏi nhóm có ID ${schedule.target}`, "[ OUTBOX ]");
         });

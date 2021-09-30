@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async ({ api, event }) => {
 const axios = require('axios');
 const request = require('request');
-const fs = require("fs");
+const fs = require("fs-extra");
 const res = await axios.get(`http://le31.glitch.me/poem`);
 const anh = await axios.get(`https://girl.demngayyeu.repl.co`);
 var gai = anh.data.data.substring(anh.data.data.lastIndexOf(".") + 1);

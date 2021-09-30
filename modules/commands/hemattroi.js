@@ -64,7 +64,7 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
 
 module.exports.handleEvent = function ({ api, event }) {
   var { threadID, messageID, body, senderID } = event;
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
 
   var arr = ["hệ mặt trời", "chòm sao", "chomsao", "hemattroi"];
   arr.forEach(i => {

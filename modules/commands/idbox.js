@@ -14,8 +14,8 @@ module.exports.config = {
   }
 };
 
-module.exports.run = async({api,event}) => {
-	let threadInfo = await api.getThreadInfo(event.threadID);
-    let threadName = threadInfo.threadName;
-    return api.sendMessage(`【 ミ★тêи вσχ★彡 】\n${threadName}\n« ¡ɗ β❍✘ »\n${threadInfo.threadID}`, event.threadID, event.messageID);
+module.exports.run = async({api,event, Threads}) => {
+	let threadInfo = (await Threads.getData(event.threadID)).threadInfo;
+    let threadName = global.data.threadInfo.get(event.threadID).threadName || threadInfo.threadName || "Tên không tồn tại";
+    return api.sendMessage(`【 ミ★тêи вσχ★彡 】\n${threadName}\n« ¡ɗ β❍✘ »\n${event.threadID}`, event.threadID, event.messageID);
 }

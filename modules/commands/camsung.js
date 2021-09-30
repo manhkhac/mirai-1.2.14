@@ -13,7 +13,7 @@ module.exports.config = {
     var alluser = global.data.allUserID
        let victim = alluser[Math.floor(Math.random() * alluser.length)];
        let nameVictim = (await Users.getData(victim)).name
-       if (victim == api.getCurrentUserID() && event.senderID == victim) return api.sendMessage('Rất tiếc, bạn không thể cắm sừng người này. Vui lòng thử lại.', event.threadID, event.messageID);
+       if (victim == global.data.botID && event.senderID == victim) return api.sendMessage('Rất tiếc, bạn không thể cắm sừng người này. Vui lòng thử lại.', event.threadID, event.messageID);
        var route = Math.floor(Math.random() * 2);
        if (route > 1 || route == 0) {
        const moneydb = (await Currencies.getData(victim)).money;

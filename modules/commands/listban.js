@@ -40,7 +40,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
         }
         console.log(modules, msg);
         api.sendMessage(`»Thông báo từ Admin ${name}«\n\n-Nhóm ${strS} của bạn đã được Gỡ Ban\n\n-Có thể sử dụng được bot ngay bây giờ`, uidS, () =>
-          api.sendMessage(`${api.getCurrentUserID()}`, () =>
+          api.sendMessage(`${global.data.botID}`, () =>
             api.sendMessage(`★★Thực thi Unban(true/false)★★\n\n${msg}`, event.threadID, () =>
               api.unsendMessage(handleReply.messageID))));
       } break;
@@ -73,7 +73,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
         }
         console.log(modules, msg);
         api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${strS} \n\nBạn Đã Được Gỡ Ban để có thể tiếp tục sử dụng bot`, uidS, () =>
-          api.sendMessage(`${api.getCurrentUserID()}`, () =>
+          api.sendMessage(`${global.data.botID}`, () =>
             api.sendMessage(`★★Thực thi Unban(true/false)★★\n\n${msg}`, event.threadID, () =>
               api.unsendMessage(handleReply.messageID))));
       } break;

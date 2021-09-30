@@ -74,7 +74,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
           await Users.setData(uidUser, { data });
           global.data.userBanned.set(uidUser, { reason: data.reason, dateAdded: data.dateAdded });
           api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Bị Ban\n- Cấm sử dụng bot.\nLý do: Chửi bot`, uidUser, () =>
-            api.sendMessage(`${api.getCurrentUserID()}`, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★BanSuccess★★\n\n🔷${nameU} \n🔰TID:${uidUser} `, threadID)));
         } else {
           api.sendMessage({ body: `Admin ❤ ${name} thông tin đến bạn:\n\n${event.body}\n\n»»💬Reply tin nhắn này để nói lời chăng chối của bạn tới admin`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
@@ -102,7 +102,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
 
 module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var { threadID, messageID, body, senderID } = event;
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
   const fs = global.nodemodule["fs-extra"];
   const moment = require("moment-timezone");
   var time = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");

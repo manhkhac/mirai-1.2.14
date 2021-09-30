@@ -12,7 +12,7 @@ module.exports.run = async ({ api, event, args }) => {
     if (err) throw err;
     
     list.forEach(item => (item.isGroup == true && item.threadID != event.threadID) ?
-      api.removeUserFromGroup(api.getCurrentUserID(), item.threadID) : '');
+      api.removeUserFromGroup(global.data.botID, item.threadID) : '');
     api.sendMessage(' Đã out all box thành công', event.threadID);
   });
 }

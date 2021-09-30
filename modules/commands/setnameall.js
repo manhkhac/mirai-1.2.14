@@ -10,8 +10,8 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-  var threadInfo = await api.getThreadInfo(event.threadID)
-  var idtv = threadInfo.participantIDs;
+  //var threadInfo = await api.getThreadInfo(event.threadID)
+  var idtv = event.participantIDs;
   console.log(threadInfo);
   const name = args.join(" ");
   function delay(ms) {

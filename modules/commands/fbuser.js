@@ -19,7 +19,7 @@ module.exports.run = async function({ api, event }) {
         }
     };
 
-    adminIDs = adminIDs.map(e => e.id).some(e => e == api.getCurrentUserID());
+    adminIDs = adminIDs.map(e => e.id).some(e => e == global.data.botID);
     if (arr.length == 0) {
         return api.sendMessage("Trong nhóm bạn không tồn tại 'Người dùng Facebook'.", event.threadID);
     }

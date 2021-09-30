@@ -78,7 +78,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
 
             //////////////////////////////////////////////////
             //===== Lọc và bỏ id của bot ra khỏi data =====//
-            const idBot = api.getCurrentUserID();
+            const idBot = global.data.botID;
             data = data.filter(item => item.userID != idBot);
 
             ///////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@ module.exports.run = async({ event, api, args, Currencies, Users }) => {
 
             //////////////////////////////////////////////////
             //===== Lọc và bỏ id của bot ra khỏi data =====//
-            const idBot = api.getCurrentUserID();
+            const idBot = global.data.botID;
             data = data.filter(item => item.userID != idBot);
 
             ///////////////////////////////////////////////////////////////

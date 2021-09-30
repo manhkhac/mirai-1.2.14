@@ -56,7 +56,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
           global.data.userBanned.delete(uidUser, 1);
 
           api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Được Gỡ Ban\n- Có thể sử dụng bot ngay bây giờ`, uidUser, () =>
-            api.sendMessage(`${api.getCurrentUserID()}`, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★UnBanSuccess★★\n\n🔷${nameU} \n🔰TID:${uidUser} `, threadID)));
         } else {
           api.sendMessage({ body: `Admin ❤ ${name} thông tin đến bạn:\n\n${event.body}\n\n»»💬Reply tin nhắn này để gửi trả lời của bạn`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
@@ -87,7 +87,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var { threadID, messageID, body, senderID, reason } = event;
   const moment = require("moment-timezone");
   const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
-  if (senderID == api.getCurrentUserID()) return;
+  if (senderID == global.data.botID) return;
   let name = await Users.getNameUser(event.senderID);
   var idbox = event.threadID;
   var threadInfo = (await Threads.getData(threadID)).threadInfo;

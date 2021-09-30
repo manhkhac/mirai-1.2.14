@@ -65,7 +65,7 @@ module.exports.run = async function ({ api, args, event, client, Users }) {
   fs.unlinkSync(__dirname + '/cache/avt2.png');
 };
 
-module.exports.handleEvent = async function ({ api, args, event, client }) {
+/*module.exports.handleEvent = async function ({ api, args, event, client }) {
   if (!event.body) return;
   const fs = global.nodemodule["fs-extra"];
   const axios = global.nodemodule["axios"];
@@ -121,4 +121,4 @@ module.exports.handleEvent = async function ({ api, args, event, client }) {
     fs.unlinkSync(__dirname + '/cache/avt.png');
     fs.unlinkSync(__dirname + '/cache/avt2.png');
   }
-}
+}*/
