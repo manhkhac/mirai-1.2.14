@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 1,
   credits: "ManhG",
-  description: "Bật tắt console",
+  description: "Bật tắt console từng nhóm",
   commandCategory: "admin",
   depndencies: { "chalk": "" },
   usages: "",
@@ -28,7 +28,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     }
     var nameT = await nameThread.threadName || "Tên không tồn tại";*/
     //const nameThread = global.data.threadInfo.get(event.threadID).threadName;
-    var nameT = dataThread.threadName || "Tên không tồn tại";
+    var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
     var nameBox = chalk.magenta(nameT);
     var name = await Users.getNameUser(event.senderID);
     var names = chalk.yellow(name);

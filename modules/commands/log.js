@@ -63,5 +63,5 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   huan == null ? huan = `true` : huan = `${huan}`;
   nguquahtrua == null ? nguquahtrua = `true` : nguquahtrua = `${nguquahtrua}`;
 
-  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}`, threadID, messageID);
+  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}`, threadID, messageID);
 }
