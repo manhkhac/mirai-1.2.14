@@ -18,24 +18,18 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   if (global.data.botID == event.body) return;
   let dataThread = (await Threads.getData(event.threadID)).threadInfo;
   // if (typeof(threadName) != 'undefined') return;
-  if (typeof(nameT) == 'undefined'){
-    /*function myFunc(threadName) {
-      if (threadName == undefined || threadName == null) {
-        return;
-        //console.log(threadName.not)
-      }
-      return threadName;
-    }
-    var nameT = await nameThread.threadName || "Tên không tồn tại";*/
-    //const nameThread = global.data.threadInfo.get(event.threadID).threadName;
-    //var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
-    //var nameBox = chalk.magenta(nameT);
+  if (typeof (nameT) == 'undefined') {
+   
     var name = await Users.getNameUser(event.senderID);
     var names = chalk.yellow(name);
     var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
     var red = chalk.red("|");
 
-    console.log(chalk.green("BOX: ") + "" + chalk.magenta(event.threadID) + red + names + red + body)
+    setTimeout(function () {
+       var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+      var nameBox = chalk.magenta(nameT);
+      console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
+    }, 30000);
     //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };
