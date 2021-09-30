@@ -28,15 +28,15 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     }
     var nameT = await nameThread.threadName || "Tên không tồn tại";*/
     //const nameThread = global.data.threadInfo.get(event.threadID).threadName;
-    var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
-    var nameBox = chalk.magenta(nameT);
+    //var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+    //var nameBox = chalk.magenta(nameT);
     var name = await Users.getNameUser(event.senderID);
     var names = chalk.yellow(name);
     var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
     var red = chalk.red("|");
 
-    console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
-    //console.log(chalk.green("User: ") + names + red + body)
+    //console.log(chalk.green("BOX: ") + "" + nameBox + red + names + red + body)
+    console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };
 
