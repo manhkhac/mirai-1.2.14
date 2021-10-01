@@ -40,7 +40,7 @@ module.exports.run = async function({ api, event, Users }) {
       var dirMp4 = path + "/join" + random + ".mp4";
       var rdMp4 = dirMp4.slice(-9);
       if (senderID == global.data.botID) return;
-      console.log(rdMp4)
+      //console.log(rdMp4)
 			const pathNoti = join(path, rdMp4);
 
 			var mentions = [], nameArray = [], memLength = [], i = 0;

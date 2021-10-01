@@ -7,7 +7,7 @@ module.exports.config = {
   commandCategory: "roleplay",
   usages: "ghepdoi",
   cooldowns: 0,
-  dependencies: []
+  dependencies: {}
 };
 
 module.exports.run = async function({ api, event, Users, Currencies }) {
@@ -15,7 +15,7 @@ module.exports.run = async function({ api, event, Users, Currencies }) {
         const fs = global.nodemodule["fs-extra"];
         var data = await Currencies.getData(event.senderID);
         var money = data.money
-        if( money < 1000) api.sendMessage("⚡️Bỏ ra 1000 đô thì mới cho ghép đôi!", event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
+        if( money < 1000) api.sendMessage("⚡️Bỏ ra đây 1000 đô thì mới cho ghép đôi!", event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
         var namee = (await Users.getData(event.senderID)).name

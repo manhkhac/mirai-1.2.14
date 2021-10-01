@@ -5,17 +5,16 @@ module.exports.config = {
   credits: "NTKhang",
   description: "tự động cấm người dùng nếu spam bot 6 lần/60s bản ko reply",
   commandCategory: "system",
-  usages: "x",
+  usages: "",
   cooldowns: 5
 };
 
 
-module.exports.run = ({ api, event, args, Users, Threads }) => {
-  return api.sendMessage("Tự động cấm người dùng nếu spam bot 6 lần/1 phút", event.threadID, event.messageID);
-};
-
 module.exports.handleEvent = async function ({ api, event, args, Users, Threads }) {
   let { senderID, messageID, threadID } = event;
+  const thread = global.data.threadData.get(threadID) || {};
+  if (typeof thread["spamban"] !== "undefined" && thread["spamban"] == false) return;
+
   if (!global.client.autoban) global.client.autoban = {};
   /////////////////////////   manhG start
   var dataThread = (await Threads.getData(threadID));
@@ -73,3 +72,28 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
     }
   }
 };
+
+module.exports.languages = {
+  "vi": {
+    "on": "Bật",
+    "off": "Tắt",
+    "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút trên nhóm này thành công",
+  },
+  "en": {
+    "on": "on",
+    "off": "off",
+    "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút",
+  }
+}
+
+module.exports.run = async function ({ api, event, Threads, getText }) {
+  const { threadID, messageID } = event;
+  let data = (await Threads.getData(threadID)).data;
+
+  if (typeof data["spamban"] == "undefined" || data["spamban"] == true) data["spamban"] = false;
+  else data["spamban"] = true;
+
+  await Threads.setData(threadID, { data });
+  global.data.threadData.set(threadID, data);
+  return api.sendMessage(`${(data["spamban"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+}

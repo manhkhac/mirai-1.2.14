@@ -17,11 +17,9 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
   //let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
   //let nameThread = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại"; 
 
-  //nameThread = event.logMessageData.name || "Tên không tồn tại";
   //let threadInfo = await api.getThreadInfo(event.threadID);
   //nameThread =threadInfo.threadName;
   const nameUser = global.data.userName.get(event.author) || await Users.getNameUser(event.author);
-  //var nameUser = (await Users.getData(event.author)).name;
 
   //console.log(nameThread)
 

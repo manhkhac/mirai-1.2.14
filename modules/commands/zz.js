@@ -12,12 +12,11 @@ module.exports.config = {
   cooldowns: 5
 };
 
-module.exports.run = ({ api, event, args }) => {
+module.exports.run = function({ api, event, args }) {
+	const { commands } = global.client;
+	const command = commands.get(("zz").toLowerCase());
+  const credit = command.config.credits;
+	
 
-  async function f3() {
-  var y = await global.data.threadInfo.get(event.threadID).threadName;
-  console.log(y); // 20
-}
-f3();
-
+	return api.sendMessage(`${credit}`, threadID, messageID);
 }

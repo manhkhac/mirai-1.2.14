@@ -41,6 +41,8 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   var huan = data.huan;
   var nguquahtrua = data.nguquahtrua;
   var thamlam = data.thamlam;
+  var fixspam = data.fixspam;
+  var spamban = data.spamban;
 
   //prefix == null ? rankup = `!` : rankup = `${prefix}`;
   log == null ? log = `true` : log = `${log}`;
@@ -64,6 +66,8 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   oidoioi == null ? oidoioi = `true` : oidoioi = `${oidoioi}`;
   huan == null ? huan = `true` : huan = `${huan}`;
   nguquahtrua == null ? nguquahtrua = `true` : nguquahtrua = `${nguquahtrua}`;
+  fixspam == null ? fixspam = `true` : fixspam = `${fixspam}`;
+  spamban == null ? spamban = `true` : spamban = `${spamban}`;
 
-  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}`, threadID, messageID);
+  return api.sendMessage(`❯ log: ${log}\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}\n❯ fixspam: ${fixspam}\n❯ spamban: ${spamban}`, threadID, messageID);
 }

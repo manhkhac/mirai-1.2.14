@@ -21,7 +21,7 @@ module.exports.onLoad = async function () {
 }
 
 module.exports.run = async function({ api, event, Users, Threads }) {
-	if (event.logMessageData.leftParticipantFbId == global.data.botID) return;
+	if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
 	const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
 	const { join } =  global.nodemodule["path"];
 	const { threadID,senderID } = event;
@@ -33,8 +33,8 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   let random = Math.floor(Math.random() *2) + 1;
   var dirNoti = path + "/leave" + random + ".gif";
   var rdNoti = dirNoti.slice(-10);
-  if (senderID == global.data.botID) return;
-  console.log(rdNoti)
+  if (senderID == api.getCurrentUserID()) return;
+  //console.log(rdNoti)
 	const gifPath = join(path, rdNoti);
 	var msg, formPush
 
