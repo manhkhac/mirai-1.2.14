@@ -3,7 +3,7 @@
 * @warn Do not edit code or edit credits
 */
 
-const url = 'https://raw.githubusercontent.com/manhkhac/mirai-1.2.14/main/repoG.json?token=AJ7TTLNYL3J2YMZE6QYBSNLBK32QK';
+const url = 'https://raw.githubusercontent.com/manhkhac/modules-v2/master/repoG.json';
 const evtUrl = 'https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/events/{name}.js';
 const cmdUrl = 'https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/modules/commands/{name}.js';
 

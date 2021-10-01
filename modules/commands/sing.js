@@ -15,7 +15,7 @@ module.exports.config = {
 		"axios": ""
 	},
 	envConfig: {
-		"YOUTUBE_API": "AIzaSyD2KpeD-N2CbW0fhv35aYhIJA9SkpsL1L0",
+		"YOUTUBE_API": "AIzaSyAoCI4L9yqaScIpRDSERSuiu_d7PTM4qT8",
 		"SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
 	}
 };
@@ -40,13 +40,15 @@ module.exports.languages = {
 module.exports.handleReply = async function({ api, event, handleReply }) {
 	const ytdl = global.nodemodule["ytdl-core"];
 	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
+
 	ytdl.getInfo(handleReply.link[event.body - 1]).then(res => {
 	let body = res.videoDetails.title;
+   if (global.client.sing == true) return;
+        global.client.sing = true;
 	api.sendMessage(`Đang xử lý audio !\n-----------\n${body}\n-----------\nXin Vui lòng Đợi !`, event.threadID, (err, info) =>
 	setTimeout(() => {api.unsendMessage(info.messageID) } , 100000));
     });
 	try {
-     
 		ytdl.getInfo(handleReply.link[event.body - 1]).then(res => {
 		let body = res.videoDetails.title;
 		ytdl(handleReply.link[event.body - 1])
@@ -70,9 +72,10 @@ module.exports.run = async function({ api, event, args }) {
 	const scdl = global.nodemodule["soundcloud-downloader"].default;
 	const axios = global.nodemodule["axios"];
 	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
-  
+
   if (global.client.sing == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
-  global.client.sing == true;
+        global.client.sing = true;
+
 	
 	const youtube = new YouTubeAPI(global.configModule[this.config.name].YOUTUBE_API);
 	const keyapi = global.configModule[this.config.name].YOUTUBE_API

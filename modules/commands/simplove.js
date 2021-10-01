@@ -35,9 +35,10 @@ module.exports.handleEvent = async ({ event, api }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/simp.mp4`)
   }
   // Gọi bot
-  var arr = ["Simp", "simp"];
+  var arr = ["simp","simplove"];
   arr.forEach(i => {
-    if (body === i.toUpperCase() | body === i) return out(msg)
+    let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) return out(msg)
   });
 
 };

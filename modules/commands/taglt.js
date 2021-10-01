@@ -15,6 +15,8 @@ module.exports.config = {
 
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
+    if (global.client.taglt == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+        global.client.taglt = true;
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     //let name = (await Users.getData(mention)).name;
     let name = event.mentions[mention];
