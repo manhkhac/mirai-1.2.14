@@ -94,7 +94,7 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
         const threadBanned = global.data.threadBanned.keys();
         //console.log(threadBanned)
         for (const singleThread of threadBanned) {
-          nameT = await global.data.threadInfo.get(thread).threadName || "Tên không tồn tại";
+          nameT = await global.data.threadInfo.get(singleThread).threadName || "Tên không tồn tại";
           //const data = (await api.getThreadInfo(singleThread));
           //const nameT = data.name;
            var modules = "ThreadBan: "
