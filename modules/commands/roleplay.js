@@ -37,7 +37,9 @@ module.exports.handleEvent = async ({ event, api }) => {
   const data = global.data.threadData.get(event.threadID) || {};
   const mention = Object.keys(event.mentions);
 
-  if (!data["roleplay"] || !data || mention.length == 0) return;
+  if (typeof data["roleplay"] !== "undefined" && data["roleplay"] == false) return;
+  if (event.senderID == global.data.botID) return;
+  //if (!data["roleplay"] || !data || mention.length == 0) return;
 
   if (event.body.indexOf("hug") == 0 || event.body.indexOf("Hug") == 0 || event.body.indexOf("ôm") == 0 || event.body.indexOf("Ôm") == 0) {
     for (const id of mention) {

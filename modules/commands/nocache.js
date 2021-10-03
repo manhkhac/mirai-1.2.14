@@ -1,6 +1,6 @@
 module.exports.config = {
   name: "nocache",
-  version: "1.0.01",
+  version: "1.0.0",
   hasPermssion: 2,
   credits: "NTKhang",
   description: "Xóa file hoặc folder trong thư mục",

@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "manhIT",
   description: "Lê Bảo (Bạn là Nhất)",
   commandCategory: "noprefix",
-  usages: "banlanhat",
+  usages: "bạn là nhất",
   cooldowns: 0,
   denpendencies: {
     "fs-extra": "",
