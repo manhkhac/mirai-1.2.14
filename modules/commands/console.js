@@ -26,7 +26,7 @@ module.exports.handleEvent = async function ({ api, event, sers,Threads, getText
     var red = chalk.red("|");
 
     //setTimeout(function () {
-      var nameT = await ata.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+      var nameT = await data.threadInfo.get(event.threadID).threadName || await dataThread.threadName || "Tên không tồn tại";
       var nameBox = chalk.magenta(nameT);
       console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
     //}, 30000);
