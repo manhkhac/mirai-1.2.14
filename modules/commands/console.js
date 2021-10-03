@@ -10,7 +10,7 @@ module.exports.config = {
   cooldowns: 2
 };
 
-module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
+module.exports.handleEvent = async function ({ api, event, sers,Threads, getText }) {
   const chalk = global.nodemodule["chalk"];
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
@@ -25,11 +25,11 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
     var red = chalk.red("|");
 
-    setTimeout(function () {
-       var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+    //setTimeout(function () {
+      var nameT = await ata.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
       var nameBox = chalk.magenta(nameT);
       console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
-    }, 30000);
+    //}, 30000);
     //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };
