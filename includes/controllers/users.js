@@ -17,27 +17,6 @@ module.exports = function ({ models, api }) {
 		catch { return "Người dùng facebook" }
 	}
 
-	async function getNameUserData(id) {
-		try {
-			if (global.data.userName.has(id)) return global.data.userName.get(id);
-
-			var data;
-			data = await api.httpGet("https://www.facebook.com/profile.php?id=" + id, {});
-			if (data.includes('for (;;);{"redirect":"')) {
-				var { x } = JSON.parse(`{"x":"${data.toString().split('":"')[1].split('"}')[0]}"}`);
-				data = await api.httpGet(`https://www.facebook.com${x.split("?")[0]}`, {});
-			}
-			var name = data.toString().split("<title>")[1].split("</title>")[0];
-
-			if (name.toLocaleLowerCase().includes("facebook")) name = (await this.getInfo(id)).name; 
-			return name;
-		}
-		catch (e) {
-			logger(e, "error");
-			return "Người dùng facebook";
-		}
-	}
-
 	async function getAll(...data) {
 		var where, attributes;
 		for (const i of data) {
@@ -108,7 +87,6 @@ module.exports = function ({ models, api }) {
 	return {
 		getInfo,
 		getNameUser,
-		getNameUserData,
 		getAll,
 		getData,
 		setData,
