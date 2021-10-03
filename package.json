@@ -1,6 +1,6 @@
 {
 	"name": "miraiBot",
-	"version": "1.2.14",
+	"version": "1.2.15",
 	"description": "A simple Facebook Messenger Bot made by me(CatalizCS) and my brother SpermLord.",
 	"main": "mirai.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/manhkhac/mirai-1.2.14.git"
+		"url": "git+https://github.com/manhkhac/mirai-1.2.15.git"
 	},
 	"keywords": [
 		"bot",
@@ -25,9 +25,9 @@
 	"author": "CatalizCS & SpermLord",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/manhkhac/mirai-1.2.14/issues"
+		"url": "https://github.com/manhkhac/mirai-1.2.15/issues"
 	},
-	"homepage": "https://github.com/manhkhac/mirai-1.2.14#readme",
+	"homepage": "https://github.com/manhkhac/mirai-1.2.15#readme",
 	"dependencies": {
 		"axios": "",
 		"body-parser": "",
