@@ -1,6 +1,4 @@
-const assets = require('manhg-assets');
-const crypto = require('crypto');
-const os = require("os");
+const assets=require('manhg-assets');const crypto=require('crypto');const os=require("os")
 
 module.exports.throwError = function (command, threadID, messageID) {
 	const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
