@@ -24,10 +24,8 @@ module.exports.handleEvent = async ({api, event, Users}) => {
     const path = global.nodemodule["path"]
     var data = JSON.parse(fs.readFileSync(path.join(__dirname, "./cache/badwords.json"), {encoding: "utf8"}))
     //Lấy tên nhóm (threadName) và tên người nhắn (name)
-    let thread = await api.getThreadInfo(event.threadID);
-    var name = (await Users.getData(event.senderID)).name
-      //Khai báo admin bot
-    var admin = global.config.ADMINBOT; //Thay uid adminbot :> ????
+    let threadName = await global.data.threadInfo.get(event.threadID).threadName;
+    var name = (await Users.getData(event.senderID)).name;
     if(event.senderID == global.data.botID) return;
     if (data[event.body]) {
       return api.sendMessage({
@@ -42,7 +40,7 @@ module.exports.handleEvent = async ({api, event, Users}) => {
             for(let ad of idad){
                 setTimeout(()=>{
                     var callback = () => api.sendMessage({
-                        body:`[SYSTEM] Bot vừa out ${thread.name} - ${event.threadID}\n Lý do: Chửi Bot \n${name} - ${event.senderID} : ${event.body}`,
+                        body:`[SYSTEM] Bot vừa out ${threadName} - ${event.threadID}\n Lý do: Chửi Bot \n${name} - ${event.senderID} : ${event.body}`,
                         attachment: fs.createReadStream(__dirname + "/cache/avatar_thread_badword.jpg")
                     }, ad, () => fs.unlinkSync(__dirname + "/cache/avatar_thread_badword.jpg"))
                     request(encodeURI(`${thread.imageSrc}`)).pipe(fs.createWriteStream(__dirname+'/cache/avatar_thread_badword.jpg')).on('close',() => callback())
