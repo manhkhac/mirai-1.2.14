@@ -1,7 +1,7 @@
 module.exports.config = {
   name: 'allbox',
   version: '1.0.0',
-  credits: 'CatalizCS, ManhG MoD',
+  credits: 'ManhG',
   hasPermssion: 2,
   description: '[Ban/Unban/Del/Remove] List[Data] thread bot đã tham gia',
   commandCategory: 'Admin',
