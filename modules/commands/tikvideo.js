@@ -25,7 +25,7 @@ module.exports.run = async function({ api, event, args,}) {
 		url: 'https://video-nwm.p.rapidapi.com/url/',
 		params: {url: `\'${uid}\'`},
 		headers: {
-		  'x-rapidapi-key': '2082412fd5msh902a44c9a8ab843p15d921jsn82bc78439711',
+		  'x-rapidapi-key': 'a012e05802msh4ce48bff26d5c0ap151d85jsn4edde7f89de0',
 		  'x-rapidapi-host': 'video-nwm.p.rapidapi.com'
 		}
 	  };
