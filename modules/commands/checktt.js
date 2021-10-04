@@ -35,16 +35,30 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
 
     switch (args[0]) {
       case "all": {
-        var number = 1, msg = "", storage = [], exp = [];
-        for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
-        for (const user of storage) {
-          const countMess = await Currencies.getData(user.id);
-          exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp });
-        }
-        exp.sort(function (a, b) { return b.exp - a.exp });
+          storage = [],
+          exp = [];
+          for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
+          for (const user of storage) {
+            const countMess = await Currencies.getData(user.id);
+            exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp });
+          }
+          exp.sort(function (a, b) { return b.exp - a.exp });
 
-        for (const lastData of exp) msg += getText("all", number++, lastData.name, lastData.exp);
-        return api.sendMessage(msg, event.threadID);
+          var page = 1;
+          page = parseInt(args[0]) || 1;
+          page < -1 ? page = 1 : "";
+          var limit = 100;
+          var msg = "🎭Độ tương tác trong box🎭\n\n";
+          var numPage = Math.ceil(exp.length / limit);
+
+          for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
+            if (i >= exp.length) break;
+            let infoUser = exp[i];
+            msg += `${i + 1}. ${infoUser.name}: ${infoUser.exp} tin nhắn\n`
+          }
+
+          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt all + số trang`
+          return api.sendMessage(msg, event.threadID);
       }
 
       default: {
