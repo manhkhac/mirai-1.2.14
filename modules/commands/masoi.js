@@ -18,14 +18,14 @@ module.exports.run = async ({ api, event, args }) => {
 
 	if (args[0] == "create") {
 		if (global.moduleData.masoi.has(threadID)) return api.sendMessage("Hiện tại nhóm này đang có game ma sói đang được mở", threadID, messageID);
-		global.moduleData.masoi.set(event.threadID, { "author": event.senderID, "start": 0, "chiabai": 0, "ready": 0, player: [ { "id": senderID, "card1": 0, "card2": 0, "card3": 0, "doibai": 2, "ready": false } ] });
+		//global.moduleData.masoi.set(event.threadID, { "author": event.senderID, "start": 0, "chiabai": 0, "ready": 0, player: [ { "id": senderID, "card1": 0, "card2": 0, "card3": 0, "doibai": 2, "ready": false } ] });
 		return api.sendMessage("Game ma sói của bạn đã được tạo thành công!, để tham gia bạn hãy nhập masoi join", threadID, messageID);
 	}
 
 	else if (args[0] == "join") {
 		if (!values) return api.sendMessage("Hiện tại chưa có game ma sói nào, bạn có thể tạo bằng cách sử dụng masoi create", threadID, messageID);
 		if (values.start == 1) return api.sendMessage("Hiện tại game ma sói đã được bắt đầu", threadID, messageID);
-		if (values.player.find(item => item.id == senderID)) return api.sendMessage("Bạn đã tham gia vào game ma sói này!", threadID, messageID);
+		//if (values.player.find(item => item.id == senderID)) return api.sendMessage("Bạn đã tham gia vào game ma sói này!", threadID, messageID);
 		global.moduleData.masoi.set(threadID, values);
 		return api.sendMessage("Bạn đã tham gia thành công!", threadID, messageID);
 	}
@@ -34,7 +34,7 @@ module.exports.run = async ({ api, event, args }) => {
 		if (typeof values.player == "undefined") return api.sendMessage("Hiện tại chưa có game ma sói nào, bạn có thể tạo bằng cách sử dụng masoi create", threadID, messageID);
 		return api.sendMessage(
 			"=== game ma sói ===" +
-			"\n Author Bàn: " + values.author +
+			"\n Author: " + values.author +
 			"\nTổng số người chơi: " + values.player.length + " Người"
 		, threadID, messageID);
 	}
