@@ -35,7 +35,7 @@ module.exports.run = async function({ api, event, args,}) {
 	  pathus = __dirname+`/cache/${event.threadID}-${event.senderID}.mp4`  
 	  var getms = (await axios.get(get,{responseType: "arraybuffer"})).data; 
 	  fs.writeFileSync(pathus, Buffer.from(getms, "utf-8"));
-	  console.log(get);
+	  //console.log(get);
 	  if (fs.statSync(__dirname + `/cache/${event.threadID}-${event.senderID}.mp4`).size > 26214400) return api.sendMessage('Không thể gửi file vì dung lượng lớn hơn 25MB.', event.threadID, () => unlinkSync(__dirname + `/cache/${event.threadID}-${event.senderID}.mp4`), event.messageID);
 	  else return api.sendMessage({body : "Loading success ✅" , attachment: fs.createReadStream(__dirname + `/cache/${event.threadID}-${event.senderID}.mp4`)}, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${event.threadID}-${event.senderID}.mp4`), event.messageID)
 	 
