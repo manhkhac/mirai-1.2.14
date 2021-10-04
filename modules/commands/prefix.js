@@ -18,13 +18,15 @@ module.exports.handleEvent = async ({ event, api, Threads }) => {
   }
   var dataThread = (await Threads.getData(threadID));
   var data = dataThread.data; 
+  const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
 
   var arr = ["mpre","mprefix","prefix", "dấu lệnh", "prefix của bot là gì","daulenh"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) {
+		const prefix = threadSetting.PREFIX || global.config.PREFIX;
       if (data.PREFIX == null) {
-        return out('Nhóm chưa xét prefix cho bot')
+        return out(`[${prefix}] Nhóm chưa xét prefix cho bot`)
       }
       else return out('🍄 prefix là: ' + data.PREFIX)
     }

@@ -100,11 +100,11 @@ module.exports.languages = {
 
 module.exports.run = async ({ event, api, Threads, getText }) => {
   let data = (await Threads.getData(event.threadID)).data || {};
-  if (typeof data["roleplay"] == "undefined" || data["roleplay"] == false) data["roleplay"] = true;
-  else data["roleplay"] = false;
+  if (typeof data["roleplay"] == "undefined" || data["roleplay"] == true) data["roleplay"] = false;
+  else data["roleplay"] = true;
 
   await Threads.setData(event.threadID, { data });
   global.data.threadData.set(event.threadID, data);
 
-  return api.sendMessage(`${(data["roleplay"] == true) ? getText("on") : getText("off")} ${getText("successText")}`, event.threadID);
+  return api.sendMessage(`${(data["roleplay"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, event.threadID);
 }

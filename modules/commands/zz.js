@@ -27,8 +27,8 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
 
     var nameThread = await global.data.threadInfo.get(thread).threadName || "Tên không tồn tại";
     var idBox = thread;
-    api.sendMessage(`🎭DS NHÓM [Data]🎭\n\n ${nameThread}\r\n: ${idBox}`, event.threadID, event.messageID)
-
+    
   }
+  api.sendMessage(`🎭DS NHÓM [Data]🎭\n\n ${nameThread}\r\n: ${idBox}`, event.threadID, event.messageID)
   
 }

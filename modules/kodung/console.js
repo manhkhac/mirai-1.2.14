@@ -10,15 +10,8 @@ module.exports.config = {
   cooldowns: 2
 };
 
-module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
+module.exports.handleEvent = async function ({ api, event, sers,Threads, getText }) {
   const chalk = global.nodemodule["chalk"];
-
-  const { commands } = global.client;
-	const command = commands.get(("console").toLowerCase());
-	const credit = command.config.credits;
-  var mangG = "ManhG";
-  if(credit != mangG) return api.sendMessage(`Thay credits cái cc, đmm`, event.threadID, event.messageID);
-
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
@@ -33,10 +26,10 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     var red = chalk.red("|");
 
     setTimeout(function () {
-       var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+      var nameT = await data.threadInfo.get(event.threadID).threadName || await dataThread.threadName || "Tên không tồn tại";
       var nameBox = chalk.magenta(nameT);
       console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
-    }, 30000);
+    }, 5000);
     //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };

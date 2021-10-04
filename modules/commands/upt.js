@@ -15,5 +15,5 @@ module.exports.run = async({ api, event }) => {
         minutes = Math.floor((time % (60 * 60)) / 60),
         seconds = Math.floor(time % 60);
 
-    return api.sendMessage(`${hours} : ${minutes} : ${seconds}`, event.threadID, event.messageID);
+    return api.sendMessage(`${hours}:${minutes}:${seconds}`, event.threadID, event.messageID);
 }
