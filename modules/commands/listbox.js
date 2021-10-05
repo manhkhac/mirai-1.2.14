@@ -103,19 +103,19 @@ module.exports.run = async function ({ api, event, args }) {
         /////////
         for (var groupInfo of list) {
           //let data = (await api.getThreadInfo(groupInfo.threadID));
-          const listUserID = event.participantIDs.filter(ID => ID);
+          //const listUserID = event.participantIDs.filter(ID => ID);
           listthread.push({
             id: groupInfo.threadID,
             name: groupInfo.name,
             sotv: listUserID.length,
           });
         }
-        /////////
+        /*
         var listbox = listthread.sort((a, b) => {
           if (a.sotv > b.sotv) return -1;
           if (a.sotv < b.sotv) return 1;
         });
-        /////////  
+        */
         var groupid = [];
         var groupName = [];
         var page = 1;
@@ -128,7 +128,7 @@ module.exports.run = async function ({ api, event, args }) {
         for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
           if (i >= listbox.length) break;
           let group = listbox[i];
-          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n🐸Thành viên: ${group.sotv}\n`;
+          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n`;
           groupid.push(group.id);
           groupName.push(group.name);
         }
@@ -149,25 +149,24 @@ module.exports.run = async function ({ api, event, args }) {
 
     default:
       try {
-        var inbox = await api.getThreadList(300, null, ['INBOX']);
+        var inbox = await api.getThreadList(150, null, ['INBOX']);
         let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
         var listthread = [];
         var listbox = [];
         /////////
         for (var groupInfo of list) {
           //let data = (await api.getThreadInfo(groupInfo.threadID));
-          const listUserID = event.participantIDs.filter(ID => ID);
+          //const listUserID = event.participantIDs.filter(ID => ID);
           listthread.push({
             id: groupInfo.threadID,
-            name: groupInfo.name,
-            sotv: listUserID.length,
+            name: groupInfo.name
           });
 
         } //for
-        var listbox = listthread.sort((a, b) => {
+        /*var listbox = listthread.sort((a, b) => {
           if (a.sotv > b.sotv) return -1;
           if (a.sotv < b.sotv) return 1;
-        });
+        });*/
         var groupid = [];
         var groupName = [];
         var page = 1;
@@ -180,7 +179,7 @@ module.exports.run = async function ({ api, event, args }) {
         for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
           if (i >= listbox.length) break;
           let group = listbox[i];
-          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n🐸Thành viên: ${group.sotv}\n`;
+          msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n`;
           groupid.push(group.id);
           groupName.push(group.name);
         }
