@@ -102,11 +102,12 @@ module.exports.run = async function ({ api, event, args }) {
         var listbox = [];
         /////////
         for (var groupInfo of list) {
-          let data = (await api.getThreadInfo(groupInfo.threadID));
+          //let data = (await api.getThreadInfo(groupInfo.threadID));
+          const listUserID = event.participantIDs.filter(ID => ID);
           listthread.push({
             id: groupInfo.threadID,
             name: groupInfo.name,
-            sotv: data.userInfo.length,
+            sotv: listUserID.length,
           });
         }
         /////////
@@ -120,7 +121,7 @@ module.exports.run = async function ({ api, event, args }) {
         var page = 1;
         page = parseInt(args[0]) || 1;
         page < -1 ? page = 1 : "";
-        var limit = 1000;
+        var limit = 50;
         var msg = "🎭DS NHÓM ĐÃ THAM GIA🎭\n\n";
         var numPage = Math.ceil(listbox.length / limit);
 
@@ -131,7 +132,7 @@ module.exports.run = async function ({ api, event, args }) {
           groupid.push(group.id);
           groupName.push(group.name);
         }
-        msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}listbox + số trang/all\n\n`
+        msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}listbox all + số trang\n\n`
 
         api.sendMessage(msg + '🎭Reply Out, Ban, Unban + số thứ tự, có thể rep nhiều số, cách nhau bằng dấu cách để Out, Ban, Unban thread đó!', event.threadID, (e, data) =>
           global.client.handleReply.push({
@@ -148,17 +149,18 @@ module.exports.run = async function ({ api, event, args }) {
 
     default:
       try {
-        var inbox = await api.getThreadList(500, null, ['INBOX']);
+        var inbox = await api.getThreadList(300, null, ['INBOX']);
         let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
         var listthread = [];
         var listbox = [];
         /////////
         for (var groupInfo of list) {
-          let data = (await api.getThreadInfo(groupInfo.threadID));
+          //let data = (await api.getThreadInfo(groupInfo.threadID));
+          const listUserID = event.participantIDs.filter(ID => ID);
           listthread.push({
             id: groupInfo.threadID,
             name: groupInfo.name,
-            sotv: data.userInfo.length,
+            sotv: listUserID.length,
           });
 
         } //for
