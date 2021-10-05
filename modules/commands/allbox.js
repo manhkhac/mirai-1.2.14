@@ -167,26 +167,28 @@ module.exports.run = async function ({ api, event, args }) {
           break;
   }*/
 
-
+      const { threadID, messageID } = event;
       var threadList = [];
       var data, msg = "";
       i = 1;
       /////////
       try {
+		  //var listUserID = event.participantIDs.filter(ID => ID);
         data = global.data.allThreadID;
+		
       } catch (e) {
         console.log(e);
       }
       for (const thread of data) {
         var nameThread = await global.data.threadInfo.get(thread).threadName || "Tên không tồn tại";
          threadList.push(`${i++}. ${nameThread} \n🔰UID: ${thread}`);
+		  //console.log(`${nameThread}`);
       }
-      threadList.sort((a, b) => {
-              if (a.nameThread > b.nameThread) return -1;
-              if (a.nameThread < b.nameThread) return 1;
-      })
-
-      return api.sendMessage(`🎭DS NHÓM [Data]🎭\n\n ${threadList.join("\n")}`, event.threadID, event.messageID)
+ 
+	   return api.sendMessage(threadList.length != 0 ? api.sendMessage(`🍄Hiện tại đang có ${threadList.length} nhóm\n\n${threadList.join("\n")}`,
+          threadID,
+          messageID
+        ) : "Hiện tại không có nhóm nào!", threadID, messageID);
       
       }
   };
