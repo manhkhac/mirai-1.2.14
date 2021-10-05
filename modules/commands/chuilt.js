@@ -15,9 +15,8 @@ module.exports.config = {
 
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
-    if (global.client.chuilt == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
-        global.client.chuilt = true;
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
+    if (global.client.chuilt == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
     //let name = (await Users.getData(mention)).name;
     let name = event.mentions[mention];
     console.log("Chuilt: ",name)
@@ -50,7 +49,5 @@ module.exports.run = async function({ api, args, Users, event }) {
     setTimeout(() => { a({ body: "Cảm ơn bạn đã nghe mình chửi nha" + " " + name, mentions: arraytag }) }, 100000);
     setTimeout(() => { a({ body: "Xin chào và hẹn gặp lại bạn ở chương trình lần sau nha" + " " + name, mentions: arraytag }) }, 105000);
     setTimeout(() => { a("Chào tạm biệt 🥺") }, 110000);
-
-
 
 }
