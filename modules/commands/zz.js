@@ -11,24 +11,28 @@ module.exports.config = {
   cooldowns: 5
 };
 
-module.exports.run = async function ({ event, api, Users, args, Threads }) {
-  var threadList = [];
-  var data, msg = "";
-  /////////
-  try {
-    //data = await api.getThreadList(1000, null, ["INBOX"]);
-    //data =  Threads.getAll(["threadID"]);
-    data = global.data.allThreadID;
-    //console.log(data);
-  } catch (e) {
-    console.log(e);
-  }
-  for (const thread of data) {
-
-    var nameThread = await global.data.threadInfo.get(thread).threadName || "Tên không tồn tại";
-    var idBox = thread;
-    
-  }
-  api.sendMessage(`🎭DS NHÓM [Data]🎭\n\n ${nameThread}\r\n: ${idBox}`, event.threadID, event.messageID)
+module.exports.run = async function ({ api, event, args }) {
+	  const { threadID, messageID } = event;
+      var threadList = [];
+      var data, msg = "";
+      i = 1;
+      /////////
+      try {
+		  //var listUserID = event.participantIDs.filter(ID => ID);
+        data = global.data.allThreadID;
+		
+      } catch (e) {
+        console.log(e);
+      }
+      for (const thread of data) {
+        var nameThread = await global.data.threadInfo.get(thread).threadName || "Tên không tồn tại";
+         threadList.push(`${i++}. ${nameThread} \n🔰UID: ${thread}`);
+		  //console.log(`${nameThread}`);
+      }
+ 
+	   return api.sendMessage(threadList.length != 0 ? api.sendMessage(`🍄Hiện tại đang có ${threadList.length} nhóm\n\n${threadList.join("\n")}`,
+          threadID,
+          messageID
+        ) : "Hiện tại không có nhóm nào!", threadID, messageID);
   
 }
