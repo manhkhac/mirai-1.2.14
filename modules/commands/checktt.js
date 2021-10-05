@@ -30,14 +30,14 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
   try {
     //const data = await api.getThreadInfo(event.threadID);
     var { participantIDs } = (await Threads.getData(event.threadID)).threadInfo;
-    const listUserID = event.participantIDs;
+    const listUserID = await event.participantIDs;
     var id = listUserID;
 
     switch (args[0]) {
       case "all": {
           storage = [],
           exp = [];
-          for (const value of listUserID) storage.push({ "id": value, "name": global.data.userName.get(value) || await Users.getNameUser(value) });
+          for (const value of listUserID) storage.push({ "id": value, "name": await global.data.userName.get(value) || await Users.getNameUser(value) });
           for (const user of storage) {
             const countMess = await Currencies.getData(user.id);
             exp.push({ "name": user.name, "exp": (typeof countMess.exp == "undefined") ? 0 : countMess.exp });
