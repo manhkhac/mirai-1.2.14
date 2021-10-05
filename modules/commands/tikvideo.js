@@ -17,6 +17,8 @@ module.exports.config = {
 module.exports.run = async function({ api, event, args,}) {
   const axios = global.nodemodule["axios"];
   const fs = global.nodemodule["fs-extra"];
+ 	if (global.client.tikvideo == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+        global.client.tikvideo = true;
   if (!args.join("") != " " ){ return api.sendMessage("Bạn phải ngập url video tiktok !!!", event.threadID, event.messageID);}
   var uid = args[0];
   try {
