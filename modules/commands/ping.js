@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "ping",
 	version: "1.0.4",
-	hasPermssion: 1,
+	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "tag toàn bộ thành viên",
 	commandCategory: "system",
