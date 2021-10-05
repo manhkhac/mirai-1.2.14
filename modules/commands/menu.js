@@ -65,7 +65,7 @@ module.exports.run = function({ api, event, args }) {
 		group.forEach(commandGroup => msg += `🍄➻❥ ${commandGroup.group.charAt(0).toUpperCase() + commandGroup.group.slice(1)} \n${commandGroup.cmds.join(', ')}\n\n`);
 
     const moduleName = this.config.name;
-		return api.sendMessage(msg + `🍄➻❥ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}menu từng lệnh ở trên" để xem chi tiết cách sử dụng! | \n🔱🎭🪂Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này\n👮Admin điều hành: ${msgAd.join(", ")}\n📩Contact: Fb.com/manhict\n🍓Menu sẽ tự động gỡ sau 55 giây!`, threadID,
+		return api.sendMessage(msg + `🍄➻❥ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}menu từng lệnh ở trên" để xem chi tiết cách sử dụng!\n🔱🎭🪂Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này\n👮Admin điều hành: ${msgAd.join(", ")}\n📩Contact: Fb.com/manhict\n🍓Menu sẽ tự động gỡ sau 55 giây!`, threadID,
     async function (error, info){
 			if (global.configModule[moduleName].autoUnsend) {
 				//console.log(global.configModule[moduleName].autoUnsend);
