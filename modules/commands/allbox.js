@@ -71,7 +71,7 @@ module.exports.run = async function ({ api, event, args }) {
         var data, msg = "";
         /////////
         try {
-          data = await api.getThreadList(1000, null, ["INBOX"]);
+          data = await api.getThreadList(500, null, ["INBOX"]);
         } catch (e) {
           console.log(e);
         }
@@ -90,14 +90,14 @@ module.exports.run = async function ({ api, event, args }) {
         var page = 1;
         page = parseInt(args[0]) || 1;
         page < -1 ? page = 1 : "";
-        var limit = 1000;
+        var limit = 100;
         var msg = "🎭DS NHÓM [Data]🎭\n\n";
         var numPage = Math.ceil(threadList.length / limit);
 
         for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
           if (i >= threadList.length) break;
           let group = threadList[i];
-          msg += `${i + 1}. ${group.threadName}\n🔰TID: ${group.threadID}\n💌MessageCount: ${group.messageCount}\n\n`;
+          msg += `${i + 1}. ${group.threadName}\n🔰TID: ${group.threadID}\n💌MessageCount: ${group.messageCount}\n`;
           groupid.push(group.threadID);
           groupName.push(group.threadName);
         }
