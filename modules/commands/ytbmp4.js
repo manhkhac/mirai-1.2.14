@@ -52,6 +52,9 @@ module.exports.run = async function({ api, event, args }) {
 
 	const youtube = new YouTubeAPI(global.configModule[this.config.name].YOUTUBE_API);
 	const keyapi = global.configModule[this.config.name].YOUTUBE_API
+	
+	 if (global.client.ytbmp4 == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+        global.client.ytbmp4 = true;
 
 	if (args.length == 0 || !args) return api.sendMessage('Phần tìm kiếm không được để trống!', event.threadID, event.messageID);
 	const keywordSearch = args.join(" ");
