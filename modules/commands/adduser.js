@@ -19,7 +19,7 @@ async function getUID(url, api) {
 }
 
 module.exports.run = async function ({ api, event, args, Threads, Users }) {
-	const join = require("../events/joinNoti").run;
+	//const join = require("../events/joinNoti").run;
 	const { threadID, messageID } = event;
 	const botID = global.data.botID;
 	const out = msg => api.sendMessage(msg, threadID, messageID);
@@ -60,7 +60,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 				return out(`Không thể thêm ${name ? name : "người dùng"} vào nhóm.`);
 			}
 			if (approvalMode === true && !admins.includes(botID)) return out(`Đã thêm ${name ? name : "thành viên"} vào danh sách phê duyệt !`);
-			else return join({ api, event: form, Threads, Users });
+			else return;// join({ api, event: form, Threads, Users });
 		}
 	}
 }
