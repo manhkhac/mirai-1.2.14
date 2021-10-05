@@ -16,7 +16,7 @@ module.exports.config = {
 
 module.exports.run = async function ({ api, event, Users }) {
     const { resolve } = global.nodemodule["path"];
-    const path = resolve(__dirname, '../commands', 'cache', 'manhG.json');
+    const path = resolve(__dirname, '../commands', 'cache', 'antiout.json');
     const { antiout } = require(path);
     const { logMessageData, author, threadID } = event;
     const id = logMessageData.leftParticipantFbId;

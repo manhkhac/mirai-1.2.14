@@ -22,7 +22,7 @@ module.exports.onLoad = function() {
     const { writeFileSync, existsSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
     const log = require(process.cwd() + '/utils/log');
-    const path = resolve(__dirname, 'cache', 'manhG.json');
+    const path = resolve(__dirname, 'cache', 'antiout.json');
     if (!existsSync(path)) {
         const obj = {
             antiout: {}
@@ -44,7 +44,7 @@ module.exports.onLoad = function() {
 module.exports.run = async function({ api, event }) {
     const { writeFileSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
-    const path = resolve(__dirname, 'cache', 'manhG.json');
+    const path = resolve(__dirname, 'cache', 'antiout.json');
     const { threadID, messageID } = event;
     const database = require(path);
     const { antiout } = database;
