@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async function({ api, event, args }) {
   //var threadInfo = await api.getThreadInfo(event.threadID)
   var idtv = event.participantIDs;
-  console.log(threadInfo);
+  console.log(idtv);
   const name = args.join(" ");
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
