@@ -36,13 +36,14 @@ module.exports.run = async function ({ api, Threads, Users, event, args, client,
     }
   }
 
+  var threadData = (await Threads.getData(event.threadID)).threadInfo;
   var out = (msg) => api.sendMessage(msg, event.threadID, event.messageID);
   var boxget = await Threads.getAll(['threadID'])
   var userget = await Users.getAll(['userID'])
   if (input == "") { out(`Bạn chưa nhập thẻ, hãy sử dụng các thẻ sau: message/admin/member/male/female/gei/allgroup/alluser`) }
   if (input == "message") { out(`Nhóm này có ${threadInfo.messageCount} tin nhắn`) }
-  if (input == "admin") { out(`Nhóm mày có ${threadInfo.adminIDs.length} quản tri viên`) }
-  if (input == "member") { out(`Nhóm này có ${threadInfo.participantIDs.length} thành viên`) }
+  if (input == "admin") { out(`Nhóm mày có ${threadData.adminIDs.length} quản tri viên`) }
+  if (input == "member") { out(`Nhóm này có ${event.participantIDs.length} thành viên`) }
   if (input == "male") { out(`Nhóm này có ${gendernam.length} thành viên là nam`) }
   if (input == "female") { out(`Nhóm này có ${gendernu.length} thành viên là nữ`) }
   if (input == "gei") { out(`Nhóm này có ${nope.length} thành viên là Gei`) }
