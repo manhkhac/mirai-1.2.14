@@ -29,11 +29,31 @@ module.exports.config = {
 	return api.sendMessage(`「 ${command.config.name} 」\n${command.config.description}\n\n❯ Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯ Thuộc nhóm: ${command.config.commandCategory}\n❯ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯ Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n\n» Module code by ${command.config.credits} «`, threadID, messageID);
 }
 */
-module.exports.run = function({ api, event, args }) {
+module.exports.run = function({ api, event, args,Users }) {
 	const { commands } = global.client;
 	const { threadID, messageID } = event;
 	const command = commands.get((args[0] || "").toLowerCase());
 	const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
+
+	/////////////////////////////////// admin tu
+	const { userName } = global.data;
+	var listAdmin = global.config.ADMINBOT;
+	var msgAd = [];
+
+	for (const idAdmin of listAdmin) {
+        if (parseInt(idAdmin)) {
+        	const fullName = global.data.userName.get(idAdmin);
+            //msgAd.push(`- ${name}(https://facebook.com/${idAdmin})`);
+			//let arrayStrig = name.split(" ");
+			var pieces = fullName.split(/[\s,]+/);
+			var name = pieces[pieces.length-1];
+
+            msgAd.push(`${name}`);
+        }
+	}
+    //console.log(msgAd.join("\n"))
+
+    ////////////////////////////////////////
 	
 	if (!command) {
 		const command = commands.values();
@@ -45,7 +65,7 @@ module.exports.run = function({ api, event, args }) {
 		group.forEach(commandGroup => msg += `🍄➻❥ ${commandGroup.group.charAt(0).toUpperCase() + commandGroup.group.slice(1)} \n${commandGroup.cmds.join(', ')}\n\n`);
 
     const moduleName = this.config.name;
-		return api.sendMessage(msg + `🍄➻❥ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}menu từng lệnh ở trên" để xem chi tiết cách sử dụng! | \n🔱🎭🪂Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này\n👮Admin điều hành BOT:\n https://facebook.com/100038379006171\n🍓Menu sẽ tự động gỡ sau 55 giây!`, threadID,
+		return api.sendMessage(msg + `🍄➻❥ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}menu từng lệnh ở trên" để xem chi tiết cách sử dụng! | \n🔱🎭🪂Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này\n👮Admin điều hành: ${msgAd.join(", ")}\n📩Contact: Fb.com/manhict\n🍓Menu sẽ tự động gỡ sau 55 giây!`, threadID,
     async function (error, info){
 			if (global.configModule[moduleName].autoUnsend) {
 				//console.log(global.configModule[moduleName].autoUnsend);
