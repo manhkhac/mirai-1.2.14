@@ -12,7 +12,7 @@ module.exports.config = {
 
 module.exports.run = async ({ event, api, Users, Threads, args }) => {
   var { threadID, messageID, senderID } = event;
-  if (senderID == global.data.botID) return;
+  //if (senderID == global.data.botID) return;
   const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
   const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 
