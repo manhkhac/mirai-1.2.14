@@ -51,17 +51,17 @@ module.exports.run = async function({ api, args, Users, event, Threads, utils, c
 	if (!info.adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage('⚡️Bot cần quyền quản trị viên nhóm để sử dụng lệnh này\nVui lòng thêm và thử lại!', threadID, messageID);
 	var fs = require("fs-extra");
 	
-	if (!fs.existsSync(__dirname + `/cache/datawarn.json`)) {
+	if (!fs.existsSync(__dirname + `/cache/listwarning.json`)) {
 			const dataaa = {warns: {}, banned: {}};
-			fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(dataaa));
+			fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(dataaa));
 					}
-  var datawarn = JSON.parse(fs.readFileSync(__dirname + `/cache/datawarn.json`)); //đọc nội dung file
+  var datawarn = JSON.parse(fs.readFileSync(__dirname + `/cache/listwarning.json`)); //đọc nội dung file
   /*
   {warns: {}, banned: {tid: []}};
   */
   if(!datawarn.warns.hasOwnProperty(threadID)) {
 			datawarn.warns[threadID] = {}; 
-			fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(datawarn, null, 2));
+			fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(datawarn, null, 2));
   	
   }
 
@@ -122,7 +122,7 @@ module.exports.run = async function({ api, args, Users, event, Threads, utils, c
 			api.sendMessage(`⚡️Đã xóa thành viên có id ${id} khỏi danh sách bị cấm vào nhóm`, threadID, messageID);
 			mybox.splice(mybox.indexOf(id), 1);
 			delete datawarn.warns[threadID][id]
-			fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(datawarn, null, 2));
+			fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(datawarn, null, 2));
   }
   
   else if(args[0] == "listban") {
@@ -140,7 +140,7 @@ module.exports.run = async function({ api, args, Users, event, Threads, utils, c
   	
   	datawarn.warns[threadID] = {};
   	datawarn.banned[threadID] = [];
-  	fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(datawarn, null, 2));
+  	fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(datawarn, null, 2));
   	api.sendMessage("⚡️Đã reset toàn bộ dữ liệu warn trong nhóm của bạn", threadID, messageID);
   }
   	 //◆━━━━━━━━━◆WARN◆━━━━━━━━━◆\\
@@ -204,13 +204,13 @@ module.exports.run = async function({ api, args, Users, event, Threads, utils, c
 				api.removeUserFromGroup(parseInt(id), threadID)
 				var banned = datawarn.banned[threadID];
 				    banned.push(parseInt(id));
-				fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(datawarn, null, 2));
+				fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(datawarn, null, 2));
 			}
 		
 		}//for
 
 		api.sendMessage({body: `⚡️Đã cảnh cáo thành viên ${arrayname.join(", ")} với lý do: ${reason}`, mentions: arraytag}, threadID, messageID);
-		fs.writeFileSync(__dirname + `/cache/datawarn.json`, JSON.stringify(datawarn, null, 2));
+		fs.writeFileSync(__dirname + `/cache/listwarning.json`, JSON.stringify(datawarn, null, 2));
   }
   
 };

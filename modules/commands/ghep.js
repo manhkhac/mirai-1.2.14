@@ -31,7 +31,6 @@ module.exports.run = async function({ api, event, Users, Currencies }) {
         /////////////////////////////////////////////
         var name = (await Users.getData(id)).name;
 
-      
         var arraytag = [];
                 arraytag.push({id: event.senderID, tag: namee});
                 arraytag.push({id: id, tag: name});

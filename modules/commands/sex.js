@@ -84,7 +84,7 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
   if (money < 50000) api.sendMessage("Bạn cần 50000 đô để xem sex?", event.threadID, event.messageID)
   else {
     Currencies.setData(event.senderID, options = { money: money - 50000 })
-    var callback = () => api.sendMessage({ body: `Suốt ngày sex😼\n» Số dư: -500000 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
+    var callback = () => api.sendMessage({ body: `Suốt ngày sex😼\n» Số dư: -50000 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 5000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
     return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
   }
 };
