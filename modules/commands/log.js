@@ -14,7 +14,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, senderID } = event;
-  if (senderID == global.data.botID) return;
+  //if (senderID == global.data.botID) return;
 
   var dataThread = (await Threads.getData(threadID));
   var data = dataThread.data;

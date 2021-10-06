@@ -22,21 +22,20 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
-  if (global.data.botID == event.body) return;
+  //if (global.data.botID == event.body) return;
   let dataThread = (await Threads.getData(event.threadID)).threadInfo;
   // if (typeof(threadName) != 'undefined') return;
   if (typeof (nameT) == 'undefined') {
-   
-    var name = await Users.getNameUser(event.senderID);
-    var names = chalk.yellow(name);
-    var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
-    var red = chalk.red("|");
-
     setTimeout(function () {
-       var nameT = global.data.threadInfo.get(event.threadID).threadName || dataThread.threadName || "Tên không tồn tại";
+      var red   =  chalk.red("|");
+      var name  =  global.data.userName.get(event.senderID);
+      var names   =  chalk.yellow(name);
+      var body  =  event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
+
+        var nameT   = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại";
       var nameBox = chalk.magenta(nameT);
-      console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
-    }, 15000);
+        console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
+    }, 20000);
     //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };

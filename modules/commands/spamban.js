@@ -15,6 +15,7 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
   const thread = global.data.threadData.get(threadID) || {};
   if (typeof thread["spamban"] !== "undefined" && thread["spamban"] == false) return;
 
+  if (senderID == global.data.botID) return;
   if (!global.client.autoban) global.client.autoban = {};
   /////////////////////////   manhG start
   var dataThread = (await Threads.getData(threadID));
@@ -30,7 +31,7 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
   const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
   const prefix = threadSetting.PREFIX || global.config.PREFIX;
   const idbox = event.threadID;
-  var threadInfo = dataThread.threadInfo;
+  var threadInfo = await dataThread.threadInfo;
   /////////////////////////   manhG start
   //var prefix = data.PREFIX;
   //prefix == null ? prefix = `${prefixDefaut}` : prefix = `${prefix}`;
@@ -68,7 +69,15 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
         number: 0
       };
       return api.sendMessage(
-        `🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng callad để gỡ ban(kèm uid)`, threadID, messageID)
+                `🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng callad để gỡ ban(kèm uid)`, threadID,
+                () => {
+                    var idad = global.config.ADMINBOT;
+                    let namethread = threadInfo.threadName;
+                    for (let ad of idad) {
+                        api.sendMessage(`=== Bot Notification ===\n\n🤷‍♀️Người vi phạm: ${dataUser.name}\n⚡ID: ${senderID}\n👨‍👩‍👧‍👧Box: ${namethread}\n🔰ID box: ${idbox}\n🤔Lý do: spam bot 6 lần/1 phút\n\n⏰Time: ${timeDate}`,ad);
+                    }
+                }
+            )
     }
   }
 };

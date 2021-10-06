@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 0,
   credits: "ManhG",
-  description: "fbget mp4 --- fbget mp3",
+  description: "fbget mp4",
   commandCategory: "media",
   usages: "[link]",
   cooldowns: 5,
