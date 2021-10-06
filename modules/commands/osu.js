@@ -4,7 +4,7 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Mirai Team",
 	description: "Lấy thông tin osu thông qua tên người dùng",
-	commandCategory: "other",
+	commandCategory: "Edit-img",
 	usages: "osu username",
 	cooldowns: 5,
     dependencies: {
