@@ -11,5 +11,5 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ event, api }) => {
-  return api.sendMessage(`\n🍄DỊCH VỤ MXH 🍄\n\n🔰TĂNG LIKE PANPAGE\n🔰TĂNG THEO DÕI\n🔰TĂNG LIKE\n🔰TĂNG COMMENT\n🔰TĂNG MẮT LIVE\n🔰TĂNG FOLLOW, TIM TIKTOK\n🔰THEO DÕI INSTAGRAM\n🛑Kiếm tiền không kiếm chuyện\n📩Contact\n☎SĐT&ZALO: 0865983826\n❄Fb: https://fb.com/100038379006171\n🌐Website:https://subvip48. online`, event.threadID, event.messageID);
+  return api.sendMessage(`\n🍄DỊCH VỤ MXH 🍄\n\n🔰TĂNG LIKE PANPAGE\n🔰TĂNG THEO DÕI\n🔰TĂNG LIKE\n🔰TĂNG COMMENT\n🔰TĂNG MẮT LIVE\n🔰TĂNG FOLLOW, TIM TIKTOK\n🔰THEO DÕI INSTAGRAM\n🛑Kiếm tiền không kiếm chuyện\n📩Contact\n☎SĐT&ZALO: 0865983826\n❄Fb: Fb.com/manhict\n🌐Website:https://subvip48. online`, event.threadID, event.messageID);
 }

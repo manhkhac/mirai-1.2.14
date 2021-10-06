@@ -8,7 +8,7 @@ module.exports.config = {
   usages: "[page/all/tag]",
   cooldowns: 5,
   envConfig: {
-    "maxColumn": 300
+    "maxColumn": 100
   }
 };
 
