@@ -34,7 +34,7 @@ module.exports.handleEvent = async ({ event, api }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/kolammadoicoan.mp4`)
   }
 
-  var arr = ["ăn cứt", "ăn cut", "huấn đạo lý", "huandaoly", "ko làm mà đòi có ăn", "ăn db", "ăn đb", "andb", "ancut", "ancut", "ănđb", "ăncut", "kolammadoicoan","huấn"];
+  var arr = ["ăn cứt", "ăn cut", "huấn đạo lý", "huandaoly", "ko làm mà đòi có ăn", "ăn db", "ăn đb", "andb", "ancut", "ancut", "ănđb", "ăncut", "kolammadoicoan","huấn","huan"];
   for (const i of arr) {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | body === i | str === body) {
