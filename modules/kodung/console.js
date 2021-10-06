@@ -29,7 +29,7 @@ module.exports.handleEvent = async function ({ api, event, sers,Threads, getText
       var nameT = await data.threadInfo.get(event.threadID).threadName || await dataThread.threadName || "Tên không tồn tại";
       var nameBox = chalk.magenta(nameT);
       console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
-    }, 5000);
+    }, 15000);
     //console.log(chalk.green("Người dùng: ") + names + red + body)
   }
 };
