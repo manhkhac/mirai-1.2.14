@@ -43,7 +43,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
           msg += i++ +'. '+ nameID + '\n🔰uid: ' + uidUser + "\n";
         }
         //console.log(modules,msg);
-            api.sendMessage(`★★Lọc mấy con lợn(true/false)★★\n\n${msg}`, event.threadID, () =>
+            api.sendMessage(`🍄 Lọc mấy con lợn(true/false) 🍄\n\n${msg}`, event.threadID, () =>
               api.unsendMessage(handleReply.messageID));
       } break;
   }
