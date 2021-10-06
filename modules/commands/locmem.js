@@ -20,9 +20,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
     case 'reply':
       {
         var arrnum = event.body.split(" ");
-        var msg = "";
-        var uidS = "";
-        var strS = "";
+        var i = 1, msg = "";
         var modules = "------- Lọc mem -------\n"
         var nums = arrnum.map(n => parseInt(n));
 
@@ -35,23 +33,18 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
         //var threadInfo = (await Threads.getData(event.threadID)).threadInfo;
         //var adminIDs = threadInfo.adminIDs;
         //var botID = global.data.botID;
+        if (!adminIDs) {return api.sendMessage("Cần cấp quyền quản trị viên cho bot thì mới lọc được.", threadID)}
         for (let num of nums) {
           var uidUser = handleReply.idLoc[num - 1];
           var nameID = handleReply.idName[num - 1];
           //console.log(uidUser, nameID);
 
-          if (!adminIDs) {api.sendMessage("Cần cấp quyền quản trị viên cho bot thì mới lọc được.", threadID)}
-          else{
-              var typef = await api.removeUserFromGroup(parseInt(uidUser), threadID);  
-              msg += uidUser + ' ' + nameID + "\n";
-              //uidS += ' ' + uid + "\n";
-              //strS += ' ' + str + "\n";
-          }
-
+          var typef = await api.removeUserFromGroup(parseInt(uidUser), threadID);  
+          msg += i++ +'. '+ nameID + '\n🔰uid: ' + uidUser + "\n";
         }
         //console.log(modules,msg);
-            //api.sendMessage(`★★Lọc mấy con lợn(true/false)★★\n\n${msg}`, event.threadID, () =>
-              //api.unsendMessage(handleReply.messageID));
+            api.sendMessage(`★★Lọc mấy con lợn(true/false)★★\n\n${msg}`, event.threadID, () =>
+              api.unsendMessage(handleReply.messageID));
       } break;
   }
 };
