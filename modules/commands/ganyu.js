@@ -214,11 +214,11 @@ const fs = global.nodemodule["fs-extra"];
   var max = Math.floor(Math.random() * 6);  
 var min = Math.floor(Math.random() * 2);
   var data = await Currencies.getData(event.senderID);
-  var exp =  data.exp;
+  //var exp =  data.exp;
   var money = data.money
       if(money < 100) api.sendMessage("Bạn cần 100 đô để xem ảnh ?",event.threadID,event.messageID)
           else {
-   Currencies.setData(event.senderID, options = {money: money - 10})
+   Currencies.setData(event.senderID, options = {money: money - 100})
    var callback = () => api.sendMessage({body:`Ảnh Ganyu genshi\nSố Ảnh: ${link.length}\n-100 đô !`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
      }

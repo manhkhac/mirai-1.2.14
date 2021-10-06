@@ -118,10 +118,10 @@ module.exports.run = async ({ api, event, args, Users, Threads, Currencies }) =>
   var min = Math.floor(Math.random() * 2);
   var data = await Currencies.getData(event.senderID);
   var money = data.money
-  if (money < 5000) api.sendMessage("Bạn cần 5000 đô để xem ảnh ?", event.threadID, event.messageID)
+  if (money < 5000) api.sendMessage("Bạn cần 5000 đô để xem nude?", event.threadID, event.messageID)
   else {
     Currencies.setData(event.senderID, options = { money: money - 5000 })
-    var callback = () => api.sendMessage({ body: `Mấy ba khoái lắm😼\n» Số dư: -5000 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
-    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
+    var callback = () => api.sendMessage({ body: `Mấy ba khoái lắm😼\n» Số dư: -5000 đô «`, attachment: fs.createReadStream(__dirname + "/cache/7.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 5000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/7.jpg"));
+    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/7.jpg")).on("close", () => callback());
   }
 };

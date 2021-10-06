@@ -18,7 +18,7 @@ module.exports.run = async function ({ event, api, args }) {
   var reply = {
     body: "",
     attachment: (await global.nodemodule["axios"]({
-      url: (await global.nodemodule["axios"]('https://trungkien.tk/apiv1/ausand.php')).data.url, //Nếu api dạng chatfuel thì là .data[0].data '-'
+      url: (await global.nodemodule["axios"]('https://ausand.demngayyeu.repl.co')).data.url, //Nếu api dạng chatfuel thì là .data[0].data '-'
       method: "GET",
       responseType: "stream"
     })).data

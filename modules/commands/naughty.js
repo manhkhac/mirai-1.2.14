@@ -2,7 +2,7 @@ module.exports.config = {
   name: "naughty",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "ManhG", //Giữ Credit tôn trọng thằng làm ra
+  credits: "ManhG", 
   description: "request ảnh",
   commandCategory: "random-img",
   usages: "",
@@ -18,7 +18,7 @@ module.exports.run = async function ({ event, api, args }) {
   var reply = {
     body: "",
     attachment: (await global.nodemodule["axios"]({
-      url: (await global.nodemodule["axios"]('https://trungkien.tk/apiv1/naughty.php')).data.data, //Nếu api dạng chatfuel thì là .data[0].data '-'
+      url: (await global.nodemodule["axios"]('https://naughty.demngayyeu.repl.co')).data.data, //Nếu api dạng chatfuel thì là .data[0].data '-'
       method: "GET",
       responseType: "stream"
     })).data
