@@ -26,7 +26,7 @@ module.exports.run = async function({ api, event, Users }) {
 	const { threadID, senderID } = event;
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) {
 		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ BoT  MạnhG ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
-		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n https://www.facebook.com/100038379006171`, threadID);
+		return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành BOT:\n Fb.com/manhict`, threadID);
 	}
 	else {
 		try {
