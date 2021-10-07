@@ -11,5 +11,8 @@ module.exports.config = {
 
 module.exports.run = async ({ api, event, args }) => {
 	const { threadID, messageID } = event;
-	return api.sendMessage(`⏳ Em đang khởi động lại...`, threadID, () => process.exit(1));
+	const time = process.uptime();
+
+	return api.sendMessage(`⏳ Em đang khởi động lại...\n${time}`, threadID, () => process.exit(1));
+	
 }

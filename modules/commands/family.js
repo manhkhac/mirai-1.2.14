@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "NTKhang",
     description: "Tạo ảnh all TV",
-    commandCategory: "Image",
+    commandCategory: "create image",
     usages: "family <size> [#mã màu] hoặc family <size>\nNhập size avatar thành viên thích hợp và mã màu cho chữ (mặc định là đen) theo cú pháp:\n$family <size> <mã màu> <title>\nTrong đó:\n•size: Size mỗi avatar thành viên\n•mã màu: mã màu dạng hex\n•title: tiêu đề ảnh, mặc định là tên box\nVí dụ: $family 200 #ffffff Anh em một nhà\nNếu chọn size = 0 thì sẽ tự chỉnh size, nếu không điền title thì title sẽ là tên box",
     cooldowns: 5,
     dependencies: {
