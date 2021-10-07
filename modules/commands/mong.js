@@ -77,7 +77,7 @@ const fs = global.nodemodule["fs-extra"];
   if (money < 500) api.sendMessage("Bạn đéo đủ tiền ?", event.threadID, event.messageID)
   else {
     Currencies.setData(event.senderID, options = { money: money - 500 })
-    var callback = () => api.sendMessage({ body: `Suốt ngày mông😼\n» Số dư: -500 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
-    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
+    var callback = () => api.sendMessage({ body: `Suốt ngày mông😼\n» Số dư: -500 đô «`, attachment: fs.createReadStream(__dirname + "/cache/mong.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/mong.jpg"));
+    return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/mong.jpg")).on("close", () => callback());
   }
 };

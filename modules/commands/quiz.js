@@ -14,10 +14,15 @@ module.exports.config = {
 module.exports.handleReaction = ({ api, event, handleReaction }) => {
 	if (!event.userID == handleReaction.author) return;
 	let response = "";
+	if (event.reaction != "👍" && event.reaction != "😢") return;
 	if (event.reaction == "👍") response = "True"
-	else response = "False";
-	if (response == handleReaction.answer) api.sendMessage("ye, bạn trả lời đúng rồi đấy xD", event.threadID);
-	else api.sendMessage("oops, bạn trả lời sai rồi :X", event.threadID);
+	else if (event.reaction == "😢") response = "False";
+	if (response == handleReaction.answer) api.sendMessage("Bạn trả lời đúng rồi đấy!!!", event.threadID, () => {
+					
+					setTimeout(function(){ api.unsendMessage(handleReaction.messageID); }, 5000);
+				});
+
+	else api.sendMessage("Bạn trả lời sai rồi!!!", event.threadID);
 	const indexOfHandle = client.handleReaction.findIndex(e => e.messageID == handleReaction.messageID);
 	global.client.handleReaction.splice(indexOfHandle, 1);
 	handleReaction.answerYet = 1;
@@ -26,12 +31,20 @@ module.exports.handleReaction = ({ api, event, handleReaction }) => {
 
 module.exports.run = async ({  api, event, args }) => {
 	const axios = global.nodemodule["axios"];
+	const request = global.nodemodule["request"];	
 	let difficulties = ["easy", "medium", "hard"];
 	let difficulty = args[0];
 	(difficulties.some(item => difficulty == item)) ? "" : difficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
 	let fetch = await axios(`https://opentdb.com/api.php?amount=1&encode=url3986&type=boolean&difficulty=${difficulty}`);
 	if (!fetch.data) return api.sendMessage("Không thể tìm thấy câu hỏi do server bận", event.threadID, event.messageID);
-	return api.sendMessage(`Đây là câu hỏi dành cho bạn:\n        ${decodeURIComponent(fetch.data.results[0].question)}\n\n   👍: True       😢: False`, event.threadID, async (err, info) => {
+	let decode = decodeURIComponent(fetch.data.results[0].question);
+	return request(encodeURI(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=vi&dt=t&q=${decode}`), (err, response, body) => {
+	if (err) return api.sendMessage("Đã có lỗi xảy ra!", event.threadID, event.messageID);
+	var retrieve = JSON.parse(body);
+	var text = '';
+	retrieve[0].forEach(item => (item[0]) ? text += item[0] : '');
+	var fromLang = (retrieve[2] === retrieve[8][0][0]) ? retrieve[2] : retrieve[8][0][0]
+	return api.sendMessage(`Đây là câu hỏi dành cho bạn:\n- ${text}\n\n   👍: True       😢: False`, event.threadID, async (err, info) => {
 		global.client.handleReaction.push({
 			name: "quiz",
 			messageID: info.messageID,
@@ -48,4 +61,5 @@ module.exports.run = async ({  api, event, args }) => {
 		}
 		else return;
 	});
+})
 }

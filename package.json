@@ -59,6 +59,7 @@
 		"sqlite3": "",
 		"string-similarity": "",
 		"to-zalgo": "",
-		"totp-generator": ""
+		"totp-generator": "",
+		"discord.js": ""
 	}
 }
