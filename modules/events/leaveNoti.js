@@ -10,15 +10,6 @@ module.exports.config = {
 	}
 };
 
-module.exports.onLoad = async function () {
-  const { resolve } = global.nodemodule["path"];
-  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-  const { downloadFile } = global.utils;
-  const path = resolve(__dirname, "cache/leaveNoti");
-  if (!existsSync(path)) mkdirSync(path, { recursive: true });
-  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/leave.gif", resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'));
-  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/byebye.gif", resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'));
-}
 
 module.exports.run = async function({ api, event, Users, Threads }) {
 	if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
@@ -48,3 +39,13 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	
 	return api.sendMessage(formPush, threadID);
 }
+
+/*module.exports.onLoad = async function () {
+  const { resolve } = global.nodemodule["path"];
+  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+  const { downloadFile } = global.utils;
+  const path = resolve(__dirname, "cache/leaveNoti");
+  if (!existsSync(path)) mkdirSync(path, { recursive: true });
+  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/gif/leave.gif", resolve(__dirname, 'cache/leaveNoti', 'leave1.gif'));
+  if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/byebye.gif", resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'));
+}*/

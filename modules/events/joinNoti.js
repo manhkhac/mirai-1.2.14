@@ -9,18 +9,6 @@ module.exports.config = {
 	}
 };
 
-module.exports.onLoad = async function ({ api }) {
-	if (!global.data.botID) global.data.botID = api.getCurrentUserID();
-  const { resolve } = global.nodemodule["path"];
-  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-  const { downloadFile } = global.utils;
-  const path = resolve(__dirname, "cache/joinNoti");
-  if (!existsSync(path)) mkdirSync(path, { recursive: true });
-  if (!existsSync(resolve(__dirname, 'cache/joinNoti', 'join2.mp4'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/join.mp4", resolve(__dirname, 'cache/joinNoti', 'join2.mp4'));
-  if (!existsSync(resolve(__dirname, 'cache/joinNoti', 'join1.mp4'))) await downloadFile("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/joinNoti.mp4", resolve(__dirname, 'cache/joinNoti', 'join1.mp4'));
-
-}
-
 module.exports.run = async function({ api, event, Users }) {
 	const { join, path } = global.nodemodule["path"];
 	const { threadID, senderID } = event;
@@ -36,7 +24,7 @@ module.exports.run = async function({ api, event, Users }) {
 			const threadData = global.data.threadData.get(parseInt(threadID)) || {};
 			const path = join(__dirname, "cache", "joinNoti");
       //random 
-      let random = Math.floor(Math.random() *2) + 1;
+      let random = Math.floor(Math.random() *3) + 1;
       var dirMp4 = path + "/join" + random + ".mp4";
       var rdMp4 = dirMp4.slice(-9);
       if (senderID == global.data.botID) return;
@@ -73,4 +61,8 @@ module.exports.run = async function({ api, event, Users }) {
 			return api.sendMessage(formPush, threadID);
 		} catch (e) { return console.log(e) };
 	}
+}
+
+module.exports.onLoad = async function ({ api }) {
+	if (!global.data.botID) global.data.botID = api.getCurrentUserID();
 }

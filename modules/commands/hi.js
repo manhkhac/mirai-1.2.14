@@ -12,13 +12,7 @@ module.exports.config = {
     "request": ""
   }
 };
-module.exports.onLoad = () => {
-  const fs = global.nodemodule["fs-extra"];
-  const request = global.nodemodule["request"];
-  const dirMaterial = __dirname + `/Noprefix/`;
-  if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
-}
+
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event; const thread = global.data.threadData.get(threadID) || {};

@@ -12,13 +12,7 @@ module.exports.config = {
     "request": ""
   }
 };
-module.exports.onLoad = () => {
-  const fs = global.nodemodule["fs-extra"];
-  const request = global.nodemodule["request"];
-  const dirMaterial = __dirname + `/Noprefix/`;
-  if (!fs.existsSync(dirMaterial + "noprefix")) fs.mkdirSync(dirMaterial, { recursive: true });
-  if (!fs.existsSync(dirMaterial + "bruh.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/bruh.mp3").pipe(fs.createWriteStream(dirMaterial + "bruh.mp3"));
-}
+
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
