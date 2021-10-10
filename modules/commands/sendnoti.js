@@ -21,11 +21,11 @@ module.exports.languages = {
 }
 
 module.exports.run = async ({ api, event, args, getText }) => {
+if (!args[0]) return api.sendMessage("Bạn chưa nhập nội dung cần gửi",event.threadID,event.messageID);
 if (event.type == "message_reply") {
 const request = global.nodemodule["request"];
 const fs = require('fs')
 const axios = require('axios')
-
 
 var getURL = await request.get(event.messageReply.attachments[0].url);
 
@@ -46,6 +46,7 @@ var abc = event.messageReply.attachments[0].url;
 	var allThread = global.data.allThreadID || [];
 	var count = 1,
 		cantSend = [];
+
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {

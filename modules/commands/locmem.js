@@ -1,10 +1,10 @@
 module.exports.config = {
   name: "locmem",
   version: "1.0.0",
-  hasPermssion: 1,
+  hasPermssion: 0,
   credits: "ManhG",
   description: "",
-  commandCategory: "group",
+  commandCategory: "try it",
   depndencies: {
   },
   usages: "",
