@@ -56,7 +56,8 @@ module.exports.run = async({ event, api, args, Threads }) => {
         /////////////////////////manhG start
         var dataT = (await Threads.getData(event.threadID)).threadInfo;
         var arrob = dataT.adminIDs;
-        var namebox = dataT.threadName;
+        //var namebox = dataT.threadName;
+        let namebox = (await Threads.getData(event.threadID)).threadInfo.threadName;
         /////////////////////////manhG end
         console.log(namebox);
 
@@ -154,10 +155,10 @@ module.exports.run = async({ event, api, args, Threads }) => {
             img.onerror = err => { throw err };
             x += parseInt(s + l);
         };
-        Canvas.registerFont(__dirname + "/cache/fontfamily.ttf", {
-            family: "Manrope"
+        Canvas.registerFont(__dirname + "/cache/Varela.ttf", {
+            family: "Varela"
         });
-        ctx.font = "100px Manrope";
+        ctx.font = "100px Varela Round";
         ctx.fillStyle = color;
         ctx.textAlign = "center";
         ctx.fillText(title, xcrop / 2, 133);

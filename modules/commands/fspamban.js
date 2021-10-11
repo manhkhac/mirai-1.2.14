@@ -68,7 +68,7 @@ module.exports.config = {
           timeStart: Date.now(),
           number: 0
         };
-        return api.sendMessage(`🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng callad để gỡ ban(kèm uid)`, threadID)
+        return api.sendMessage(`🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng !callad để trò chuyện trực tiếp với admin hoặc !yeucau add <lời nhắn> để gỡ ban`, threadID)
       }
     }
   };module.exports.config = {

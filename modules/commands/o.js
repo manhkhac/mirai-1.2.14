@@ -31,11 +31,15 @@ module.exports.handleEvent = async ({ event, api }) => {
     attachment: fs.createReadStream(__dirname + `/Noprefix/ooo.mp4`)
   }
 
-  var arr = ["o", "oo", "ỏ"];
+  /*if (event.body.indexOf("ỏ") == 0 || event.body.indexOf("Ỏ") == 0) {
+    return out(msg)
+  }*/
+  var arr = ["o","oo","ỏ"];
   for (const i of arr) {
     let str = i[0].toUpperCase() + i.slice(1);
-    if (body === i.toUpperCase() | body === i | str === body) {
-      return out(msg)
+    if (body == i.toUpperCase() || body == i || str == body) {
+      console.log(body)
+     return out(msg)
     }
   }
 

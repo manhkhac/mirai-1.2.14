@@ -25,12 +25,13 @@ module.exports.handleEvent = async({ event, api, Users, Threads }) => {
   var idbox = event.threadID;
 
   var tl = [
-      "Yêu em <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?",
+      "Yêu em <3","Em là con bot cute nhất <3", "Hi, chào con vợ bé:3", "Vợ gọi có việc gì không?",
       "Dạ, có em đây, yêu em không mà gọi <3. hmm...",
       `${name}` + ", sử dụng callad để liên lạc với admin!",
       `${name}` + ", gọi em có việc gì thế",
       `${name}` + ", yêu em ko mà gọi😢",
       `${name}` + ", tôi yêu bạn vl ❤",
+      `${name}` + ", yêu nhau không?",
       `${name}` + ", bạn có yêu tôi không ❤",
       `${name}` + ", dạ có em đây:3",
       `${name}` + ", yêu admin bot đi rồi hãy gọi",

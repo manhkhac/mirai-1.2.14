@@ -3,7 +3,7 @@ module.exports.config = {
 	eventType: [""],
 	version: "1.0.0",
 	credits: "Mirai Team",
-	description: "Thông báo bot hoặc người rời khỏi nhóm",
+	description: "setup auto random join/leave",
 	dependencies: {
 		"fs-extra": "",
 		"path": ""

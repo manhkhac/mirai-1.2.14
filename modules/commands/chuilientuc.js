@@ -17,6 +17,7 @@ module.exports.run = async function ({ api, args, Users, event }) {
   var mention = Object.keys(event.mentions)[0];
   if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
   if (global.client.chuilientuc == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+  global.client.chuilientuc = true;
   let name = event.mentions[mention];
   console.log("Chuilientuc: ",name)
   var arraytag = [];
@@ -107,5 +108,6 @@ module.exports.run = async function ({ api, args, Users, event }) {
   setTimeout(() => { a({ body: "Địt mẹ bố gọi đéo nghe à" + " " + name, mentions: arraytag }) }, 77000);
   setTimeout(() => { a({ body: "Địt mẹ m ra đọc nè" + " " + name, mentions: arraytag }) }, 78000);
   setTimeout(() => { a({ body: "đĩ lồn" + " " + name, mentions: arraytag }) }, 79000);
-  setTimeout(() => { a({ body: "ĐỊT MẸEEEEEEEEE MÀY!!!" + " " + name, mentions: arraytag }) }, 80000);
+  setTimeout(() => { a({ body: "ĐỊT MẸEEEEEEEEE MÀY!!!" + " " + name, mentions: arraytag, }); global.client.chuilientuc = false }, 80000);
+
 }

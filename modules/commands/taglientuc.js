@@ -17,6 +17,7 @@ module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
     if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     if (global.client.taglientuc == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
+    global.client.taglientuc = true;
     //let name = (await Users.getData(mention)).name;
     let name = event.mentions[mention];
     console.log("Taglientuc: ",name)
@@ -39,5 +40,6 @@ setTimeout(() => {a({body: "Đĩ mẹ mày ra đây bô xem nào" + " " + name, 
 setTimeout(() => {a({body: "Ngủ cái lồn sáng rồi dậy đi" + " " + name, mentions: arraytag})} , 52000);
 setTimeout(() => {a({body: "Địt mẹ bố gọi đéo nghe à" + " " + name, mentions: arraytag})} , 56000);
 setTimeout(() => {a({body: "Hiện ra bố mày xem nào" + " " + name, mentions: arraytag})} , 60000);
-setTimeout(() => {a({body: "Cút bố đéo gọi nữa" + " " + name, mentions: arraytag})} , 64000);
+setTimeout(() => {a({body: "Cút bố đéo gọi nữa" + " " + name, mentions: arraytag}); global.client.taglientuc = false} , 64000);
+
     }

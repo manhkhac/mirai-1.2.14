@@ -96,7 +96,7 @@ module.exports.run = async function({ api, event, args }) {
     switch (args[0]) {
         case "all":
             {
-                var inbox = await api.getThreadList(150, null, ['INBOX']);
+                var inbox = await api.getThreadList(100, null, ['INBOX']);
                 let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
                 var listthread = [];
                 var listbox = [];
@@ -149,7 +149,7 @@ module.exports.run = async function({ api, event, args }) {
 
         default:
             try {
-                var inbox = await api.getThreadList(150, null, ['INBOX']);
+                var inbox = await api.getThreadList(100, null, ['INBOX']);
                 let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
                 var listthread = [];
                 var listbox = [];

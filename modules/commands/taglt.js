@@ -15,9 +15,9 @@ module.exports.config = {
 
 module.exports.run = async function({ api, args, Users, event }) {
     var mention = Object.keys(event.mentions)[0];
+    if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     if (global.client.taglt == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
         global.client.taglt = true;
-    if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
     //let name = (await Users.getData(mention)).name;
     let name = event.mentions[mention];
     console.log("Taglt: ",name)
@@ -44,5 +44,10 @@ module.exports.run = async function({ api, args, Users, event }) {
     setTimeout(() => { a({ body: "Bạn là hàng hiệu" + " " + name, mentions: arraytag }) }, 67000);
     setTimeout(() => { a({ body: "Bạn ra đây đi nào" + " " + name, mentions: arraytag }) }, 69000);
     setTimeout(() => { a({ body: "Bạn ôi" + " " + name, mentions: arraytag }) }, 71000);
-    setTimeout(() => { a({ body: "😢Ra đây đây chơi nào bạn😢😢😢😢😢" + " " + name, mentions: arraytag }) }, 73000);
+    setTimeout(() => { 
+        a({ body: "😢Ra đây đây chơi nào bạn😢😢😢😢😢" + " " + name, mentions: arraytag });
+        global.client.taglt = false;
+     }, 73000);
+
+    
 }

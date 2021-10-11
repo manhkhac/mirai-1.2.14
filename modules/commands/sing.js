@@ -60,6 +60,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 		});
 		}
 	catch {
+		global.client.sing = false;
 		api.sendMessage("Không thể xử lý yêu cầu của bạn!", event.threadID, event.messageID);
 	}
 	return api.unsendMessage(handleReply.messageID);
@@ -73,7 +74,8 @@ module.exports.run = async function({ api, event, args }) {
 	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
 
   if (global.client.sing == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
- 
+ 	global.client.sing = true;
+
 	const youtube = new YouTubeAPI(global.configModule[this.config.name].YOUTUBE_API);
 	const keyapi = global.configModule[this.config.name].YOUTUBE_API
 	if (args.length == 0 || !args) return api.sendMessage('Phần tìm kiếm không được để trống!', event.threadID, event.messageID);
@@ -98,7 +100,8 @@ module.exports.run = async function({ api, event, args }) {
 			});
 			}
 		catch (e) {
-			console.log(e);
+			//console.log(e);
+			global.client.sing = false;
 			api.sendMessage("Không thể xử lý yêu cầu của bạn!", event.threadID, event.messageID);
 		}
 
@@ -111,6 +114,7 @@ module.exports.run = async function({ api, event, args }) {
 			body = `Tiêu đề: ${songInfo.title} | ${(timePlay - (timePlay %= 60)) / 60 + (9 < timePlay ? ':' : ':0') + timePlay}]`;
 		}
 		catch (error) {
+			global.client.sing = false;
 			if (error.statusCode == "404") return api.sendMessage("Không tìm thấy bài nhạc của bạn thông qua link trên ;w;", event.threadID, event.messageID);
 			api.sendMessage("Không thể xử lý request do dã phát sinh lỗi: " + error.message, event.threadID, event.messageID);
 		}
@@ -138,6 +142,7 @@ module.exports.run = async function({ api, event, args }) {
 			return api.sendMessage(`🎼 Có ${link.length} kết quả trùng với từ khoá tìm kiếm của bạn: \n${msg}\nHãy reply(phản hồi) chọn một trong những tìm kiếm trên\nThời Gian Bài Hát Tối Đa Là 10M!`, event.threadID,(error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, link }), event.messageID);
 		}
 		catch (error) {
+			global.client.sing = false;
 			api.sendMessage("Không thể xử lý request do dã phát sinh lỗi: " + error.message, event.threadID, event.messageID);
 		}
 	}
