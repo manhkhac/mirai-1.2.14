@@ -1,7 +1,7 @@
 /**
-* @author ProCoderMew
-* @warn Do not edit code or edit credits
-*/
+ * @author ProCoderMew
+ * @warn Do not edit code or edit credits
+ */
 
 module.exports.config = {
     name: "alime",
@@ -19,7 +19,7 @@ module.exports.config = {
     }
 }
 
-module.exports.onLoad = async function () {
+module.exports.onLoad = async function() {
     const { resolve } = global.nodemodule["path"];
     const { existsSync, readFileSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
@@ -34,14 +34,14 @@ module.exports.onLoad = async function () {
     } catch { await downloadFile(url, path) };
 };
 
-module.exports.run = async function ({ event, api, args }) {
+module.exports.run = async function({ event, api, args }) {
     const { writeFileSync, createReadStream, unlinkSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
     const axios = global.nodemodule["axios"];
     const { downloadFile } = global.utils;
     const { threadID, senderID, messageID } = event;
 
-    const out = (msg, callback = function () { }) => api.sendMessage(msg, threadID, callback, messageID);    
+    const out = (msg, callback = function() {}) => api.sendMessage(msg, threadID, callback, messageID);
     const { sfw, nsfw } = require("./cache/alime.json");
     var apiUrl;
 
@@ -56,11 +56,11 @@ module.exports.run = async function ({ event, api, args }) {
         const url = apiData.data.response.url;
         const ext = url.split(".")[url.split(".").length - 1];
         const path = resolve(__dirname, 'cache', `${args[0]}_${senderID}.${ext}`);
-        
+
         await global.utils.downloadFile(url, path);
 
         return out({
             attachment: createReadStream(path)
-        },  function () { return unlinkSync(path) });        
+        }, function() { return unlinkSync(path) });
     }
 };

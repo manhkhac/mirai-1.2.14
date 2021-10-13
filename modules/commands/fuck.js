@@ -33,7 +33,7 @@ module.exports.run = function({ api, event, args }) {
                         id: Object.keys(event.mentions)[0]
                     }],
                     attachment: fs.createReadStream(__dirname + `/cache/anime.${ext}`)
-                }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/anime.${ext}`), event.messageID);
+                }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + `/cache/anime.${ext}`), event.messageID);
             };
             request(getURL).pipe(fs.createWriteStream(__dirname + `/cache/anime.${ext}`)).on("close", callback);
         });

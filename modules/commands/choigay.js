@@ -67,6 +67,6 @@ module.exports.run = async function({ event, api, args, client }) {
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
 
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Chơi bê đê hông anhhh 😚😚\n" + event.mentions[mention[0]].replace(/@/g, "") + "\nĐâm đít cho dễ ỉa nè 💩💩", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Chơi bê đê hông anhhh 😚😚\n" + event.mentions[mention[0]].replace(/@/g, "") + "\nĐâm đít cho dễ ỉa nè 💩💩", attachment: fs.createReadStream(path) }, threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), messageID, () => fs.unlinkSync(path), messageID));
     }
 }
