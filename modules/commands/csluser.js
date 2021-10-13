@@ -1,9 +1,9 @@
 module.exports.config = {
-  name: "console",
+  name: "csluser",
   version: "1.0.0",
   hasPermssion: 1,
   credits: "ManhG",
-  description: "Bật tắt console từng nhóm",
+  description: "Bật tắt console",
   commandCategory: "admin",
   depndencies: { "chalk": "" },
   usages: "",
@@ -12,28 +12,17 @@ module.exports.config = {
 
 module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   const chalk = global.nodemodule["chalk"];
-
-  const { commands } = global.client;
-  const command = commands.get(("console").toLowerCase());
-  const credit = command.config.credits;
-  var mangG = "ManhG";
-  if(credit != mangG) return api.sendMessage(`Thay credits cái cc, đmm`, event.threadID, event.messageID);
-
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
-  // if (typeof(threadName) != 'undefined') return;
-    //setTimeout(function () {
-      var nameT   = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại";
-      if (typeof(nameT) == "undefined") return;
-      var red   =  chalk.red("|");
-      var name  =  global.data.userName.get(event.senderID);
-      var names   =  chalk.yellow(name);
-      var body  =  event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
-      var nameBox = chalk.magenta(nameT);
 
-      console.log(chalk.green("BOX:") +""+ nameBox + red + names + red + body)
-    //}, 1000);
-    //console.log(chalk.green("Người dùng: ") + names + red + body)
+    //var boxThread = event.threadID;
+    //var boxID = chalk.magenta(boxThread);
+    var nameUser = await Users.getNameUser(event.senderID);
+    var names = chalk.yellow(nameUser);
+    var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
+    var red = chalk.red("|");
+    //console.log(chalk.green("BOX: ") + "" + boxID + red + names + red + body)
+    console.log(chalk.green("Tên: ") + names + red + body)
 };
 
 module.exports.languages = {
