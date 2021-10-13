@@ -99,10 +99,10 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
     var min = Math.floor(Math.random() * 2);
     var data = await Currencies.getData(event.senderID);
     var money = data.money
-    if (money < 300) api.sendMessage("Bạn cần 300 đô để xem ảnh ?", event.threadID, event.messageID)
+    if (money < 269) api.sendMessage("Chi 269 đô để xem ?", event.threadID, event.messageID)
     else {
-        Currencies.setData(event.senderID, options = { money: money - 300 })
-        var callback = () => api.sendMessage({ body: `Suốt ngày dú😼\n» Số dư: -300 đô «`, attachment: fs.createReadStream(__dirname + "/cache/zu.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/zu.jpg"));
+        Currencies.setData(event.senderID, options = { money: money - 269 })
+        var callback = () => api.sendMessage({ body: `Suốt ngày dú😼\n» Số dư: -269 đô «`, attachment: fs.createReadStream(__dirname + "/cache/zu.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/zu.jpg"));
         return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/zu.jpg")).on("close", () => callback());
     }
 };

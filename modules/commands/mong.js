@@ -74,10 +74,10 @@
      var min = Math.floor(Math.random() * 2);
      var data = await Currencies.getData(event.senderID);
      var money = data.money
-     if (money < 300) api.sendMessage("Bạn đéo đủ tiền ?", event.threadID, event.messageID)
+     if (money < 296) api.sendMessage("Bạn đéo đủ tiền ?", event.threadID, event.messageID)
      else {
-         Currencies.setData(event.senderID, options = { money: money - 300 })
-         var callback = () => api.sendMessage({ body: `Suốt ngày mông😼\n» Số dư: -300 đô «`, attachment: fs.createReadStream(__dirname + "/cache/mong.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/mong.jpg"));
+         Currencies.setData(event.senderID, options = { money: money - 296 })
+         var callback = () => api.sendMessage({ body: `Suốt ngày mông😼\n» Số dư: -296 đô «`, attachment: fs.createReadStream(__dirname + "/cache/mong.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/mong.jpg"));
          return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/mong.jpg")).on("close", () => callback());
      }
  };
