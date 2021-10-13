@@ -17,6 +17,8 @@ module.exports.run = async({ args, api, event }) => {
     //var adsuprise = listAdmin[0];
     if (event.senderID != 100038379006171) return api.sendMessage("done -_-", event.threadID, event.messageID);
 
+    if (args.length == 0) return api.sendMessage("Thiếu dữ kiện -_-", event.threadID, event.messageID);
+
     var path = [],
         pathrn = [],
         pathrntxt = [];

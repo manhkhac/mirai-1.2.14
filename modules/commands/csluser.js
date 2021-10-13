@@ -14,7 +14,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   const chalk = global.nodemodule["chalk"];
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
-
+  if (event.senderID == global.data.botID) return;
     //var boxThread = event.threadID;
     //var boxID = chalk.magenta(boxThread);
     var nameUser = await Users.getNameUser(event.senderID);

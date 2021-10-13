@@ -33,6 +33,7 @@ module.exports.onLoad = function () {
 
 module.exports.handleEvent = async function ({ event, api, Users }) {
     const { threadID, messageID, body, senderID } = event;
+    if (senderID == global.data.botID) return;
     if (!global.moduleData.shortcut) global.moduleData.shortcut = new Map();
     if (!global.moduleData.shortcut.has(threadID)) return;
     const data = global.moduleData.shortcut.get(threadID);

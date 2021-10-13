@@ -24,7 +24,7 @@ module.exports.run = async({ api, event }) => {
             api.sendMessage({
                 body: `Ảnh loli lồn to cực múp`,
                 attachment: fs.createReadStream(__dirname + `/cache/wall.${ext}`)
-            }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + `/cache/wall.${ext}`), event.messageID);
+            }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 7000), event.messageID, () => fs.unlinkSync(__dirname + `/cache/wall.${ext}`), event.messageID);
         };
         request(res.data.data.response.url).pipe(fs.createWriteStream(__dirname + `/cache/wall.${ext}`)).on("close", callback);
     })
