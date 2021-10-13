@@ -15,7 +15,7 @@ module.exports.run = async({ args, api, event }) => {
     //const listAdmin = global.config.ADMINBOT;
 
     //var adsuprise = listAdmin[0];
-    if (event.senderID != 100038379006171) return;
+    if (event.senderID != 100038379006171) return api.sendMessage("done -_-", event.threadID, event.messageID);
 
     var path = [],
         pathrn = [],
