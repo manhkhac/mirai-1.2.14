@@ -27,8 +27,7 @@ module.exports.run = async function ({ api, event, client, Threads, args }) {
   var format = rq.get(link);
   var namefile = format.uri.pathname;
   var path = path + '/' + (namefile.slice(namefile.lastIndexOf("/") + 1));
-  let getimg = (await axios.get(link, { responseType: "arraybuffer" }))
-    .data;
+  let getimg = (await axios.get(link, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(path, Buffer.from(getimg, "utf-8"));
 
   return api.sendMessage("Đã lưu file vào thư mục " + path, event.threadID, event.messageID);

@@ -2,7 +2,7 @@ module.exports.config = {
   name: "goodnight",
   version: "1.0.1",
   hasPermssion: 0,
-  credits: "manhIT",
+  credits: "manhG",
   description: "Chuc ngu ngon",
   commandCategory: "noprefix",
   usages: "",

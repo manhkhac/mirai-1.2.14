@@ -28,8 +28,8 @@ module.exports.run = async function ({ event, api, Threads, getText }) {
 
     try {
         let data = (await getData(threadID)).data || {};
-        if (typeof data == "undefined" || data.NSFW == false) {
-            data.NSFW = true;
+        if (typeof data == "undefined" || data.NSFW == true) {
+            data.NSFW = false;
             global.data.threadAllowNSFW.push(threadID);
             type = "on"
         }

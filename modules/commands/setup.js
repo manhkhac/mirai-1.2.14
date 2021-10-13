@@ -22,7 +22,7 @@ module.exports.onLoad = () => {
   ////////////////ao that day
   if (!fs.existsSync(dirMaterial + "aothatday.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/aothatday.mp3").pipe(fs.createWriteStream(dirMaterial + "aothatday.mp3"));
   //////////////// goodnight
-  if (!fs.existsSync(dirMaterial + "goodnight.gif")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/goodnight.gif").pipe(fs.createWriteStream(dirMaterial + "goodnight.gif"));
+  if (!fs.existsSync(dirMaterial + "goodnight.gif")) request("https://i.pinimg.com/originals/dd/4c/8b/dd4c8bfb421cfc8d7289aeabbc74b966.gif").pipe(fs.createWriteStream(dirMaterial + "goodnight.gif"));
   //////////////// sad
   if (!fs.existsSync(dirMaterial + "sad.mp4")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/chan.mp4").pipe(fs.createWriteStream(dirMaterial + "sad.mp4"));
   //////////////// ỏ

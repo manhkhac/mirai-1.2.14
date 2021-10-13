@@ -2,7 +2,7 @@ module.exports.config = {
   name: "data",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "You fix by manhNK",
+  credits: "ManhG",
   description: "Tìm kiếm thông tin qua id của box hoặc người dùng",
   commandCategory: "Info",
   usages: "[box ID] [user ID]",

@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "fchuibot",
+    name: "fixspam",
     version: "1.0.0",
     hasPermssion: 2,
     credits: "ManhG",
