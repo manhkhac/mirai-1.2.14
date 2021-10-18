@@ -3,7 +3,7 @@ module.exports.config = {
     version: "1.0.0",
     hasPermssion: 2,
     credits: "NTKhang",
-    description: "tự động cấm người dùng nếu spam bot 6 lần/60s bản ko reply/send admin",
+    description: "tự động cấm người dùng nếu spam bot 10 lần/60s bản ko reply/send admin",
     commandCategory: "system",
     usages: "",
     cooldowns: 5
@@ -51,14 +51,14 @@ module.exports.config = {
       }
     } else {
       global.client.autoban[senderID].number++;
-      if (global.client.autoban[senderID].number >= 6) {
+      if (global.client.autoban[senderID].number >= 10) {
   
         const moment = require("moment-timezone");
         const timeDate = moment.tz("Asia/Ho_Chi_minh").format("DD/MM/YYYY HH:mm:ss");
         let dataUser = await Users.getData(senderID) || {};
         let data = dataUser.data || {};
         if (data && data.banned == true) return;
-        var reason = "spam bot 6 lần/1 phút";
+        var reason = "spam bot 10 lần/1 phút";
         data.banned = true;
         data.reason = reason || null;
         data.dateAdded = timeDate;
@@ -77,7 +77,7 @@ module.exports.config = {
     "vi": {
       "on": "Bật",
       "off": "Tắt",
-      "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút trên nhóm này thành công",
+      "successText": "Tự động cấm người dùng nếu spam bot 10 lần/1 phút trên nhóm này thành công",
     },
     "en": {
       "on": "on",
@@ -103,12 +103,12 @@ module.exports.config = {
     "vi": {
       "on": "Bật",
       "off": "Tắt",
-      "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút trên nhóm này thành công",
+      "successText": "Tự động cấm người dùng nếu spam bot 10 lần/1 phút trên nhóm này thành công",
     },
     "en": {
       "on": "on",
       "off": "off",
-      "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút",
+      "successText": "Tự động cấm người dùng nếu spam bot 10 lần/1 phút",
     }
   }
   
