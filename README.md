@@ -7,9 +7,9 @@
 
 ## Deployment
 Click this button:
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/manhkhac/mirai-1.2.14
+[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/manhkhac/mirai-1.2.15
 )
-[![Run on Repl.it](https://repl.it/badge/github/manhkhac/mirai-1.2.14)](https://repl.it/github/manhkhac/mirai-1.2.14)
+[![Run on Repl.it](https://repl.it/badge/github/manhkhac/mirai-1.2.15)](https://repl.it/github/manhkhac/mirai-1.2.15)
 
 # Contributing
 - Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
