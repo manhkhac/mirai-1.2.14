@@ -71,7 +71,7 @@ module.exports.run = async function ({ api, event, args }) {
         var data, msg = "";
         /////////
         try {
-          data = await api.getThreadList(500, null, ["INBOX"]);
+          data = await api.getThreadList(100, null, ["INBOX"]);
         } catch (e) {
           console.log(e);
         }

@@ -15,7 +15,7 @@ module.exports.config = {
 
 module.exports.handleEvent = async ({ event, api, Users }) => {
   const fs = global.nodemodule["fs-extra"];
-  let name = await Users.getNameUser(event.senderID);
+  //let name = await Users.getNameUser(event.senderID);
   const thread = global.data.threadData.get(threadID) || {};
   if (typeof thread["goodnight"] !== "undefined" && thread["goodnight"] == false) return;
 
@@ -26,9 +26,7 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   }
   //trả lời
   var msg = {
-    body: `${name}, cậu ngủ ngon đi nhé.
-      I miss you so much!
-      Hẹn gặp lại cậu vào sáng mai nha ❤`,
+    body: `Cậu ngủ ngon đi nhé.\nI miss you so much❤ `,
     attachment: fs.createReadStream(__dirname + `/Noprefix/goodnight.gif`)
   }
   // Gọi bot

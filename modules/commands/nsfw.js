@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "nsfw",
-	version: "1.0.0",
-	hasPermssion: 1,
-	credits: "Mirai Team",
-	description: "Bật tắt quyền sử dụng các lệnh NSFW",
-	commandCategory: "system",
-	cooldowns: 5,
+    name: "nsfw",
+    version: "1.0.0",
+    hasPermssion: 1,
+    credits: "Mirai Team",
+    description: "Bật tắt quyền sử dụng các lệnh NSFW",
+    commandCategory: "system",
+    cooldowns: 5,
 };
 
 module.exports.languages = {
@@ -28,8 +28,8 @@ module.exports.run = async function ({ event, api, Threads, getText }) {
 
     try {
         let data = (await getData(threadID)).data || {};
-        if (typeof data == "undefined" || data.NSFW == true) {
-            data.NSFW = false;
+        if (typeof data == "undefined" || data.NSFW == false) {
+            data.NSFW = true;
             global.data.threadAllowNSFW.push(threadID);
             type = "on"
         }

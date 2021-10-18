@@ -103,10 +103,10 @@ module.exports.run = async function({ api, event, args }) {
                 /////////
                 for (var groupInfo of list) {
                     //let data = (await api.getThreadInfo(groupInfo.threadID));
-                    const listUserID = event.participantIDs.filter(ID => ID);
+                    //const listUserID = event.participantIDs.filter(ID => ID);
                     listthread.push({
                         id: groupInfo.threadID,
-                        name: groupInfo.name,
+                        name: groupInfo.name || "Chưa đặt tên",
                         messageCount: groupInfo.messageCount
                     });
                 }
@@ -150,7 +150,7 @@ module.exports.run = async function({ api, event, args }) {
         default:
             try {
                 var inbox = await api.getThreadList(100, null, ['INBOX']);
-                let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
+                let list = [...inbox].filter(group =>  group.isSubscribed && group.isGroup);
                 var listthread = [];
                 var listbox = [];
                 /////////
@@ -159,7 +159,7 @@ module.exports.run = async function({ api, event, args }) {
                     //const listUserID = event.participantIDs.filter(ID => ID);
                     listthread.push({
                         id: groupInfo.threadID,
-                        name: groupInfo.name,
+                        name: groupInfo.name || "Chưa đặt tên",
                         messageCount: groupInfo.messageCount
                     });
 
@@ -173,14 +173,14 @@ module.exports.run = async function({ api, event, args }) {
                 var page = 1;
                 page = parseInt(args[0]) || 1;
                 page < -1 ? page = 1 : "";
-                var limit = 10;
+                var limit = 15;
                 var msg = "🎭DS NHÓM ĐÃ THAM GIA🎭\n\n";
                 var numPage = Math.ceil(listbox.length / limit);
 
                 for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
                     if (i >= listbox.length) break;
                     let group = listbox[i];
-                    msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n📩messageCount: ${group.messageCount}\n\n`;
+                    msg += `${i + 1}. ${group.name}\n🔰TID: ${group.id}\n📩messageCount: ${group.messageCount}\n`;
                     groupid.push(group.id);
                     groupName.push(group.name);
                 }
