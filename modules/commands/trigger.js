@@ -7,7 +7,7 @@ module.exports.config = {
 	commandCategory: "create image",
 	usages: "@tag",
 	cooldowns: 10,
-	dependencies: {"fs-extra": "","discord-image-generation" :"","node-superfetch": ""}
+	dependencies: {"fs-extra": "","discord.js":"","discord-image-generation" :"","node-superfetch": ""}
 };
 
 module.exports.run = async ({ event, api, args, Users }) => {
