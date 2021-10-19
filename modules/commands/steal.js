@@ -34,7 +34,7 @@ module.exports.run = async function({ api, event, Users, Currencies }) {
             if (moneyuser <= 0) return api.sendMessage("Bạn không có tiền, HÃY LÀM VIỆC ĐỂ CÓ ĐƯỢC MỘT SỐ TIỀN LÀM VỐN.", event.threadID, event.messageID);
             else if (moneyuser > 0) return api.sendMessage(`Bạn đã bị bắt và mất ${moneyuser} đô.`, event.threadID, () => api.sendMessage({ body: `Xin chúc mừng  ${nameVictim}! Bạn đã bắt được ${name} và nhận được ${Math.floor(moneyuser / 2)} đô làm phần thưởng!`, mentions: [{ tag: nameVictim, id: victim }, { tag: name, id: event.senderID }] }, event.threadID, async () => {
                 await Currencies.increaseMoney(event.senderID, parseInt("-"+ moneyuser)) 
-                await Currencies.increaseMoney(victim, parseInt(Math.floor(moneyuser / 2))) 
+                //await Currencies.increaseMoney(victim, parseInt(Math.floor(moneyuser / 2))) 
             }), event.messageID);
         
     }

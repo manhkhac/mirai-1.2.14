@@ -19,10 +19,12 @@ module.exports.run = async function ({ api, args, event, client, Users }) {
   if (!mention) return api.sendMessage("Tag người bạn muốn xin lỗi", event.threadID);
   var emoji = ["♥️", "❤️", "💛", "💚", "💙", "💜", "🖤", "💖", "💝", "💓", "💘", "💍", "🎁", "💋", "💎", "💠", "🌈", "🌍", "🌕", "☀️", "💑", "💞", "💗"];
   var random_emoji = emoji[Math.floor(Math.random() * emoji.length)];
+  /////////////////////
   var love = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/xinloivk.json")).data).love;
   var linklove = love[Math.floor(Math.random() * love.length)];
   var getlove = (await axios.get(linklove, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(__dirname + "/cache/love.gif", Buffer.from(getlove, "utf-8"));
+  ////////////////////
   let Avatar = (await axios.get(`https://graph.facebook.com/${mention}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
   fs.writeFileSync(__dirname + "/cache/avt.png", Buffer.from(Avatar, "utf-8"));
   let Avatar2 = (await axios.get(`https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;

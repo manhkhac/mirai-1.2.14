@@ -34,7 +34,8 @@ module.exports.config = {
                if (moneyuser <= 0) return api.sendMessage("Vì Bạn Xấu Nên Không Thể Gạ Gẫm Được Ai Hãy Đi Phẫu Thuật Thẩm Mỹ Để Gạ Và Cắm Sừng Nhé", event.threadID, event.messageID);
                else if (moneyuser > 0) return api.sendMessage(`Bạn Vừa Bị Xe Tông Vì Tội Cắm Sừng Bạn Mất ${moneyuser} VND Để Nằm Viện .`, event.threadID, () => 
                api.sendMessage({ body: `Xin Chia Buồn Cùng ${nameVictim} Vợ Bạn Vừa Đánh Ghen ${name} Khiến Cái Quần Người Ấy Dính Lên Cây Ổi`, mentions: [{ tag: nameVictim, id: victim }, { tag: name, id: event.senderID }] }, event.threadID, async () => {
-                   await Currencies.increaseMoney(event.senderID, parseInt("-"+ moneyuser)) | await Currencies.increaseMoney(victim, parseInt(Math.floor(moneyuser / 2))) 
+                   await Currencies.increaseMoney(event.senderID, parseInt("-"+ moneyuser)) 
+                   //await Currencies.increaseMoney(victim, parseInt(Math.floor(moneyuser / 2))) 
                }), event.messageID);
            
        }
