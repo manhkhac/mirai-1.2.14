@@ -32,6 +32,8 @@ module.exports.onLoad = async function() {
     if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/byebye.gif", resolve(__dirname, 'cache/leaveNoti', 'leave2.gif'));
     if (!existsSync(resolve(__dirname, 'cache/leaveNoti', 'leave3.gif'))) await downloadFile("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/gif/leave3.gif", resolve(__dirname, 'cache/leaveNoti', 'leave3.gif'));
     ///////////////leave Noti end
+
+    return;
 }
 
 module.exports.run = async function({}) {}
