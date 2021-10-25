@@ -8,7 +8,7 @@
      hasPermssion: 0,
      credits: "OreoZera",
      description: "Random Ảnh Mông Gái Cực Bổ Mắt ( Lưu Ý Đây Là Lệnh Ảnh 18+ Cân Nhắc Trước Khi Sử Dụng)",
-     commandCategory: "Random-img",
+     commandCategory: "18+",
      usages: "mông",
      cooldowns: 5,
      dependencies: {

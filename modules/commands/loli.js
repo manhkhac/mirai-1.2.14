@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Bố Thịnh",
     description: "Ảnh Loli cho mấy thằng ấu dâm",
-    commandCategory: "random-img",
+    commandCategory: "18+",
     usages: "loli",
     cooldowns: 5,
     dependencies: {
@@ -18,6 +18,10 @@ module.exports.run = async({ api, event }) => {
     const axios = global.nodemodule["axios"];
     const request = global.nodemodule["request"];
     const fs = global.nodemodule["fs-extra"];
+
+    const mention = Object.keys(event.mentions);
+    if (!mention[0]) return api.sendMessage("Vui lòng tag 1 người.", event.threadID, event.messageID);
+    
     axios.get('https://api.nekos.dev/api/v3/images/nsfw/img/smallboobs_lewd/').then(res => {
         let ext = res.data.data.response.url.substring(res.data.data.response.url.lastIndexOf(".") + 1);
         let callback = function() {

@@ -8,7 +8,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "CallmeSun",
     description: "Random Ảnh Nude Gái Xinh Cực Bổ Mắt ( Lưu Ý Đây Là Lệnh Ảnh 18+ Cân Nhắc Trước Khi Sử Dụng)",
-    commandCategory: "random-img",
+    commandCategory: "18+",
     usages: "",
     cooldowns: 5,
     dependencies: {
@@ -118,10 +118,10 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
     var min = Math.floor(Math.random() * 2);
     var data = await Currencies.getData(event.senderID);
     var money = data.money
-    if (money < 499) api.sendMessage("Bạn cần 499 đô để xem nude?", event.threadID, event.messageID)
+    if (money < 496) api.sendMessage("Bạn cần 496 đô để xem nude?", event.threadID, event.messageID)
     else {
-        Currencies.setData(event.senderID, options = { money: money - 499 })
-        var callback = () => api.sendMessage({ body: `Mấy ba khoái lắm😼\n» Số dư: -499 đô «`, attachment: fs.createReadStream(__dirname + "/cache/7.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 5000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/7.jpg"));
+        Currencies.setData(event.senderID, options = { money: money - 496 })
+        var callback = () => api.sendMessage({ body: `Mấy ba khoái lắm😼\n» Số dư: -496 đô «`, attachment: fs.createReadStream(__dirname + "/cache/7.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 7000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/7.jpg"));
         return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/7.jpg")).on("close", () => callback());
     }
 };

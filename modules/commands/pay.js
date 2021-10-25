@@ -12,6 +12,7 @@ module.exports.config = {
 module.exports.languages = {
     "vi": {
         "missingTag": "[ PAY ] Bạn phải tag người cần chuyển tiền",
+        "missingTagFix": "[ Sai cú pháp ] pay + tag + số tiền",
         "overTagLength": "[ PAY ] Vui lòng chỉ tag một người duy nhất",
         "userNotExist": "[ PAY ] Người dùng bạn cần chuyển không tồn tại trong hệ thống!",
         "invalidInput": "[ PAY ] Số tiền bạn nhập không phù hợp để chuyển",
@@ -22,6 +23,7 @@ module.exports.languages = {
     },
     "en": {
         "missingTag": "[ PAY ] No recipient tagged.",
+        "missingTagFix": "[ Erorr ] pay + tag + numberMoney",
         "overTagLength": "[ PAY ] You have to tag at no more than one recipient.",
         "userNotExist": "[ PAY ] Invalid recipient(s).",
         "invalidInput": "[ PAY ] Invailid amount.",

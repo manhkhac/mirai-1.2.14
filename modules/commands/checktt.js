@@ -90,7 +90,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
           var page = 1;
           page = parseInt(args[0]) || 1;
           page < -1 ? page = 1 : "";
-          var limit = 10;
+          var limit = 15;
           var msg = "🎭Độ tương tác trong box🎭\n\n";
           var numPage = Math.ceil(exp.length / limit);
 
@@ -100,7 +100,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
             msg += `${i + 1}. ${infoUser.name}: ${infoUser.exp} tin nhắn\n`
           }
 
-          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt số trang/all`
+          msg += `--Trang ${page}/${numPage}--\nDùng ${global.config.PREFIX}checktt + số trang/all`
           return api.sendMessage(msg, event.threadID);
         }
         else {

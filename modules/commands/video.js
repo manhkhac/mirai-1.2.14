@@ -23,7 +23,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 	const { createReadStream, createWriteStream, unlinkSync, statSync } = global.nodemodule["fs-extra"];
 	ytdl.getInfo(handleReply.link[event.body - 1]).then(res => {
 	let body = res.videoDetails.title;
-	api.sendMessage(`Đang xử lý video !\n-----------\n${body}\n-----------\nXin Vui lòng Đợi !`, event.threadID, (err, info) =>
+	api.sendMessage(`Đang xử lý video !\n\n${body}\n\nXin Vui lòng Đợi !`, event.threadID, (err, info) =>
 	setTimeout(() => {api.unsendMessage(info.messageID) } , 100000));
     });
 	try {
@@ -105,15 +105,11 @@ let linkthumnail = `https://img.youtube.com/vi/${value.id}/maxresdefault.jpg`;
 
 let getthumnail = (await axios.get(`${linkthumnail}`, { responseType: 'arraybuffer' })).data;
 
-
-
-
-
   fs.writeFileSync(folderthumnail, Buffer.from(getthumnail, 'utf-8'));
 
   imgthumnail.push(fs.createReadStream(__dirname + `/cache/${numb}.png`));
         /////=//////////////
-				msg += (`${num+=1}. ${value.title}\nTime: ${time}\nKênh: ${channel}\n-----------------------\n`);
+				msg += (`${num+=1}. ${value.title}\nTime: ${time}\nKênh: ${channel}\n\n`);
       }
 
       var body = `🎼 Có ${link.length} kết quả trùng với từ khoá tìm kiếm của bạn:\n👇👇👇👇👇\n${msg}\nHãy reply(phản hồi) chọn một trong những tìm kiếm trên`
@@ -158,7 +154,7 @@ let datab = (await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=
 
   imgthumnail.push(fs.createReadStream(__dirname + `/cache/${numb}.png`));
         /////=//////////////
-				msg += (`${num+=1}. ${value.title}\nTime: ${time}\nKênh: ${channel}\n-----------------------\n`);
+				msg += (`${num+=1}. ${value.title}\nTime: ${time}\nKênh: ${channel}\n\n`);
       }
 
       var body = `🎼 Có ${link.length} kết quả trùng với từ khoá tìm kiếm của bạn:\n👇👇👇👇👇\n${msg}\nHãy reply(phản hồi) chọn một trong những tìm kiếm trên`

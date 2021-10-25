@@ -9,7 +9,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "DinhPhuc",
     description: "líu lều ai đó",
-    commandCategory: "game",
+    commandCategory: "18+",
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {

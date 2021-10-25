@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Dunguwu fix by ManhG",
     description: "Chơi gay với 1 ai đó",
-    commandCategory: "Game",
+    commandCategory: "18+",
     usages: "[tag]",
     dependencies: {
         "path": "",

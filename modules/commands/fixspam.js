@@ -13,7 +13,7 @@ module.exports.config = {
   module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
     var { threadID, messageID, body, senderID, reason } = event;
     const moment = require("moment-timezone");
-    const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
+    const time = moment.tz("Asia/Ho_Chi_minh").format("HH:mm:ss D/MM/YYYY");
     
       var { threadID, messageID, body, senderID } = event; const thread = global.data.threadData.get(threadID) || {};
       if (typeof thread["fixspam"] !== "undefined" && thread["fixspam"] == false) return;

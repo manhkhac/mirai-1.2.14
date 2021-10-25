@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "MiraiTeam fix by ManhNK",
     description: "",
-    commandCategory: "game",
+    commandCategory: "18+",
     usages: "[@tag]",
     cooldowns: 10,
     dependencies: {

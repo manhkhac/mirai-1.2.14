@@ -3,7 +3,7 @@ module.exports.config = {
   name: "prefix",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "manhG",
+  credits: "ManhG",
   description: "Xem prefix của BOT",
   commandCategory: "Noprefix",
   usages: "",
@@ -13,6 +13,7 @@ module.exports.config = {
 module.exports.handleEvent = async ({ event, api, Threads }) => {
   var { threadID, messageID, body, senderID } = event;
   //if (senderID == global.data.botID) return;
+  if ((this.config.credits) != "ManhG") { return api.sendMessage(`Sai credits!`, threadID, messageID)}
   function out(data) {
     api.sendMessage(data, threadID, messageID)
   }
@@ -26,7 +27,7 @@ module.exports.handleEvent = async ({ event, api, Threads }) => {
     if (body === i.toUpperCase() | body === i | str === body) {
 		const prefix = threadSetting.PREFIX || global.config.PREFIX;
       if (data.PREFIX == null) {
-        return out(`[ ${prefix} ] Nhóm chưa xét prefix cho bot`)
+        return out(`[ ${prefix} ] Nhóm chưa xét prefix mới cho bot`)
       }
       else return out('🍄 prefix là: ' + data.PREFIX)
     }

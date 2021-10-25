@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "VanHung (ManhG fix)",
     description: "",
-    commandCategory: "Game",
+    commandCategory: "18+",
     usages: "[tag]",
     dependencies: {
         "path": "",

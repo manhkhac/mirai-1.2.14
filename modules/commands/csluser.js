@@ -5,21 +5,22 @@ module.exports.config = {
   credits: "ManhG",
   description: "Bật tắt console",
   commandCategory: "admin",
-  depndencies: { "chalk": "" },
+  depndencies: {  },
   usages: "",
   cooldowns: 2
 };
 
 module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
-  const chalk = global.nodemodule["chalk"];
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
-    var nameUser = await Users.getNameUser(event.senderID);
-    var names = chalk.yellow(nameUser);
-    var body = event.body || "Là ảnh, video hoặc ký tự đặc biệt nào đó";
-    var red = chalk.red("|");
-    console.log(chalk.green("Tên: ") + names + red + body)
+  var nameUser = await Users.getNameUser(event.senderID);
+  var body = event.body || "Ảnh, video hoặc ký tự đặc biệt";
+  ////////////////////////////////
+  var color = ["\x1b[33m", "\x1b[34m", "\x1b[35m", '\x1b[36m','\x1b[31m','\x1b[1m'];
+  var more = color[Math.floor(Math.random() * color.length)];
+  ///////////////////////////////
+ console.log('\x1b[32m'+'Tên:'+'\x1b[37m \x1b[' + more + '' + nameUser + '\x1b[37m -> \x1b[0m' + body);
 };
 
 module.exports.languages = {

@@ -9,7 +9,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "DinhPhuc",
     description: "",
-    commandCategory: "game",
+    commandCategory: "love",
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {
@@ -70,15 +70,10 @@ async function circle(image) {
 module.exports.run = async function ({ event, api, args }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions);
-    var one = senderID,two = mention[0];
+    const mention = Object.keys(event.mentions);
+    var one = senderID, two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Nắm tay anh, đi cùng anh nha " + tag + ' Nguyện 1 đời yêu em ❤',
-            mentions: [{
-          tag: tag,
-          id: mention
-        }],
-     attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Nắm tay anh, đi cùng anh nha\nNguyện 1 đời yêu em ❤", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

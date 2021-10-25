@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "Siêu Đáng Yêu",
     description: "Projec M4a.",
-    commandCategory: "random-img",
+    commandCategory: "18+",
     usages: "",
     cooldowns: 3,
     dependencies: {

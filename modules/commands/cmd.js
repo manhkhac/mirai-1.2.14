@@ -70,6 +70,11 @@ module.exports.run = function ({ event, args, api }) {
             moduleList = moduleList.map(item => item.replace(/\.js/g, ""));
             return unloadModule({ moduleList, threadID, messageID });
         }
+        case "count":
+            case "c": {
+                moduleList = moduleList.map(item => item.replace(/\.js/g, ""));
+                return api.sendMessage(`Hiện tại có ${moduleList.length} modules`, threadID, messageID);
+            }
         case "info":
         case "-i": {
             const command = global.client.commands.get(moduleList.join("") || "");

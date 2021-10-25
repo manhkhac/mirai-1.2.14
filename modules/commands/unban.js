@@ -12,7 +12,13 @@ module.exports.config = {
 
 module.exports.run = async ({ event, api, Users, Threads, args }) => {
   var { threadID, messageID, senderID } = event;
-  //if (senderID == global.data.botID) return;
+  
+  const { commands } = global.client;
+  const command = commands.get(("unban").toLowerCase());
+  const credit = command.config.credits;
+  var mangG = "ManhG";
+  if(credit != mangG) return api.sendMessage(`Sai credit!`, event.threadID, event.messageID);
+  
   const threadSetting = global.data.threadData.get(parseInt(event.threadID)) || {};
   const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 

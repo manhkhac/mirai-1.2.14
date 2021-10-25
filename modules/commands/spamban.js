@@ -54,7 +54,7 @@ module.exports.config = {
       if (global.client.autoban[senderID].number >= 10) {
   
         const moment = require("moment-timezone");
-        const timeDate = moment.tz("Asia/Ho_Chi_minh").format("DD/MM/YYYY HH:mm:ss");
+        const timeDate = moment.tz("Asia/Ho_Chi_minh").format("HH:mm:ss D/MM/YYYY");
         let dataUser = await Users.getData(senderID) || {};
         let data = dataUser.data || {};
         if (data && data.banned == true) return;

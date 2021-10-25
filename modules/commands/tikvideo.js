@@ -50,6 +50,6 @@ module.exports.run = async function({ api, event, args,}) {
 	 
 		}catch {
 			global.client.tikvideo = false;
-			return api.sendMessage('Không thể xử lý yêu cầu của bạn!', event.threadID, event.messageID);
+			return api.sendMessage('Không thể gửi file vì dung lượng lớn hơn 25MB!', event.threadID, event.messageID);
 		};
  }

@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "HungCho",
     description: "Random ảnh girl",
-    commandCategory: "random-img",
+    commandCategory: "18+",
     usages: "sex",
     cooldowns: 5,
     dependencies: {

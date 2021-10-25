@@ -8,7 +8,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "CallmeSun",
     description: "Random Ảnh Dú Gái Cực Bổ Mắt ( Lưu Ý Đây Là Lệnh Ảnh 18+ Cân Nhắc Trước Khi Sử Dụng)",
-    commandCategory: "Random-img",
+    commandCategory: "18+",
     usages: "dú",
     cooldowns: 5,
     dependencies: {

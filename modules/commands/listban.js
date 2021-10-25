@@ -105,7 +105,7 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
           //console.log(modules, nameT)
           listBanned.push(`${i++}. ${nameT}\n🔰TID: ${singleThread}`);
           
-          listbanViews.push(`${j++}. ${nameT}\n🔰TID: ${singleThread}\n🤷‍♀️Lý do: ${reason}\n😒Time: {date}`);
+          listbanViews.push(`${j++}. ${nameT}\n🔰TID: ${singleThread}\n🤷‍♀️Lý do: ${reason}\n😒Time: ${date}`);
           
         };
 
