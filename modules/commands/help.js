@@ -22,7 +22,7 @@ module.exports.handleEvent = function({ api, event }) {
 
     const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
 
-    return api.sendMessage(`🍄➻❥ ${command.config.name}\n${command.config.description}\n\n❯ Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯ Thuộc nhóm: ${command.config.commandCategory}\n❯ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯ Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n❯ Prefix: ${prefix}\n\n» Điều  hành  bởi  MạnhG «`, threadID, messageID);
+    return api.sendMessage(`╭───╮\n   ${command.config.name}\n╰───╯\n📜Mô tả: ${command.config.description}\n\n❯📄 Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯🌟 Thuộc nhóm: ${command.config.commandCategory}\n❯⏱ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯👥 Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n❯ Prefix: ${prefix}\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏\n\n💥Điều hành bởi MạnhG💥`, threadID, messageID);
 };
 
 module.exports.run = async function({ api, args, Users, event, Threads, utils, client }) {
@@ -36,5 +36,5 @@ module.exports.run = async function({ api, args, Users, event, Threads, utils, c
         return api.sendMessage(vip + "\n\n🎭Sử dụng !menu để xem toàn bộ lệnh trên bot này", event.threadID, event.messageID);
     }
     const prefix = (threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX;
-    return api.sendMessage(`🍄➻❥ ${command.config.name} \n${command.config.description}\n\n❯ Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯ Thuộc nhóm: ${command.config.commandCategory}\n❯ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯ Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n❯ Prefix: ${prefix}\n\n» Điều  hành  bởi  MạnhG «`, threadID, messageID);
+    return api.sendMessage(`╭───╮\n   ${command.config.name}\n╰───╯\n📜Mô tả: ${command.config.description}\n\n❯📄 Cách sử dụng: ${prefix}${command.config.name} ${(command.config.usages) ? command.config.usages : ""}\n❯🌟 Thuộc nhóm: ${command.config.commandCategory}\n❯⏱ Thời gian chờ: ${command.config.cooldowns} giây(s)\n❯👥 Quyền hạn: ${((command.config.hasPermssion == 0) ? "Người dùng" : (command.config.hasPermssion == 1) ? "Quản trị viên" : "Người vận hành bot" )}\n❯ Prefix: ${prefix}\n✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏\n\n💥Điều hành bởi MạnhG💥`, threadID, messageID);
 };

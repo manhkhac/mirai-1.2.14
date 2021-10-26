@@ -62,6 +62,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
       }
 
       default: {
+        if(event.type == "message_reply") { mention[0] = event.messageReply.senderID }
         if (mention[0]) {
           var storage = [],
             exp = [];

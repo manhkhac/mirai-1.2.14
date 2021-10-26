@@ -4,8 +4,8 @@ module.exports.config = {
 	hasPermssion: 2,
 	credits: "Mirai Team",
 	description: "Cấm hoặc gỡ cấm người dùng",
-	commandCategory: "system",
-	usages: "[unban/ban/search] [ID or text] | [-b/-ub/-bc/-ubc/-s/-l/-i]",
+	commandCategory: "Admin",
+	usages: "[unban/ban/search] [ID or text]",
 	cooldowns: 5
 };
 
@@ -76,6 +76,7 @@ module.exports.handleReaction = async ({ event, api, Users, handleReaction, getT
 	switch (type) {
 		case "ban": {
 			try {
+				if(event.type == "message_reply") { targetID = event.messageReply.senderID }
 				let data = (await Users.getData(targetID)).data || {};
 				data.banned = true;
 				data.reason = reason || null;
@@ -90,6 +91,7 @@ module.exports.handleReaction = async ({ event, api, Users, handleReaction, getT
 
 		case "unban": {
 			try {
+				if(event.type == "message_reply") { targetID = event.messageReply.senderID }
 				let data = (await Users.getData(targetID)).data || {};
 				data.banned = false;
 				data.reason = null;
@@ -134,7 +136,6 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 	const type = args[0];
 	var targetID = String(args[1]);
 	var reason = (args.slice(2, args.length)).join(" ") || null;
-  let content = args.slice(1, args.length);
 
 	if (isNaN(targetID)) {
 		const mention = Object.keys(event.mentions);
@@ -146,6 +147,7 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 	switch (type) {
 		case "ban":
 		case "-b": {
+			if(event.type == "message_reply") { targetID = event.messageReply.senderID }
 			if (!global.data.allUserID.includes(targetID)) return api.sendMessage(getText("IDNotFound", "[ Ban User ]"), threadID, messageID);
 			if (global.data.userBanned.has(targetID)) {
 				const { reason, dateAdded } = global.data.userBanned.get(targetID) || {};
@@ -168,6 +170,7 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 
 		case "unban":
 		case "-ub": {
+			if(event.type == "message_reply") { targetID = event.messageReply.senderID }
 			if (!global.data.allUserID.includes(targetID)) return api.sendMessage(getText("IDNotFound", "[ Unban User ]"), threadID, messageID);
 			if (!global.data.userBanned.has(targetID)) return api.sendMessage(getText("notExistBan"), threadID, messageID);
 			const nameTarget = global.data.userName.get(targetID) || await Users.getNameUser(targetID);
@@ -186,8 +189,8 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 
 		case "search":
 		case "-s": {
-			const contentJoin = content.join(" ");
-			const getUsers = (await Users.getAllData(['userID', 'name'])).filter(item => !!item.name);
+			const contentJoin = reason || "";
+			const getUsers = (await Users.getAll(['userID', 'name'])).filter(item => !!item.name);
 			var matchUsers = [], a = '', b = 0;
 			getUsers.forEach(i => {
 				if (i.name.toLowerCase().includes(contentJoin.toLowerCase())) {
@@ -269,6 +272,7 @@ module.exports.run = async ({ event, api, args, Users, getText }) => {
 
 		case "info":
 		case "-i": {
+			if(event.type == "message_reply") { targetID = event.messageReply.senderID }
 			if (!global.data.allUserID.includes(targetID)) return api.sendMessage(getText("IDNotFound", "[ Info User ]"), threadID, messageID);
 			if (global.data.commandBanned.has(targetID)) { var commandBanned = global.data.commandBanned.get(targetID) || [] };
 			if (global.data.userBanned.has(targetID)) { var { reason, dateAdded } = global.data.userBanned.get(targetID) || {} };

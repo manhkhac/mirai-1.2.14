@@ -26,7 +26,7 @@ module.exports.run = async function({ api, event, Users }) {
             //random 
             if (senderID == global.data.botID) return;
             var randomNoti = `${pathRandom[Math.floor(Math.random() * pathRandom.length)]}`;
-            console.log(randomNoti);
+            //console.log(randomNoti);
 
             ///////////////////////////////
             const pathNoti = join(path, randomNoti);

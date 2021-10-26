@@ -51,6 +51,7 @@ module.exports.handleReply = async function ({ api, args, Users, handleReply, ev
 
 module.exports.run = async function ({ api, event, args, Users, Threads, Currencies }) {
     const { threadID, messageID } = event;
+    if ((this.config.credits) != "ManhG") { return api.sendMessage(`⚡️Phát hiện credits đã bị thay đổi`, event.threadID, event.messageID)}
     var allMem, die=[], userLoc=[],idLoc=[],idName=[];
     i=1,j=1;
     ///////// ///////// ///////// /////////

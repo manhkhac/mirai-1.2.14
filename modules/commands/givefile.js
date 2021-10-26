@@ -39,7 +39,7 @@ module.exports.run = async ({ args, api, event }) => {
 		msg +=
 			'Vì fb cấm gửi file .js nên đã đổi các file có đuôi .js thành đuôi .txt';
 	api.sendMessage({ body: msg+"\n"+notfound, attachment: mainpath }, event.threadID);
-	/*ach(file => {
+	ach(file => {
 		setTimeout(function(){fs.unlinkSync(__dirname + '/' + file); }, 5000);
-	});*/
+	});
 };
