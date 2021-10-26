@@ -50,14 +50,14 @@ module.exports.run = async({ event, api, args, Threads }) => {
         const chalk = global.nodemodule["chalk"];
         const Canvas = global.nodemodule["canvas"];
 
-        var threadInfo = await api.getThreadInfo(threadID);
+        let namebox = (await api.getThreadInfo(threadID)).threadName;
         //var arrob = threadInfo.adminIDs;
 
         /////////////////////////manhG start
         var dataT = (await Threads.getData(event.threadID)).threadInfo;
         var arrob = dataT.adminIDs;
         //var namebox = dataT.threadName;
-        let namebox = (await Threads.getData(event.threadID)).threadInfo.threadName;
+        //let namebox = (await Threads.getData(event.threadID)).threadInfo.threadName;
         /////////////////////////manhG end
         console.log(namebox);
 
