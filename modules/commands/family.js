@@ -97,7 +97,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
 
         var color = args[1];
         if (!color || !color.includes("#")) {
-            color = "#000000";
+            color = "#33ffff";
             autocolor = true;
         };
         if (s > ybground || s > xbground) {
