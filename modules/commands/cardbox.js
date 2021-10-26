@@ -10,7 +10,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "D-Jukie",
   description: "Xem thông tin box của bạn",
-  commandCategory: "Nhóm",
+  commandCategory: "group",
   usages: "",
   cooldowns: 10,
   dependencies: {
