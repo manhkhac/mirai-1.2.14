@@ -3,7 +3,7 @@ module.exports.config = {
     version: "1.0.0",
     hasPermssion: 0,
     credits: "ManhG",
-    description: "Bật tắt rời nhóm cho hiện tại",
+    description: "Bật tắt thông báo rời nhóm cho nhóm hiện tại",
     commandCategory: "config",
     usages: "",
     cooldowns: 2
