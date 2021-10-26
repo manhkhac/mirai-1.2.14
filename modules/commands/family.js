@@ -65,22 +65,16 @@ module.exports.run = async({ event, api, args, Threads }) => {
         for (let qtv of arrob) {
             arrad.push(qtv.id)
         };
-<<<<<<< HEAD
-
-        var bgImages = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/randomFamily.json")).data).bg;
-        var rdbBgroud = bgImages[Math.floor(Math.random() * bgImages.length)];
-
-        const background = await Canvas.loadImage(rdbBgroud);
-=======
->>>>>>> 1493e51997cdc640b4de8e63ec6c3bdcb5d17342
-
+        
         var bgImages = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/randomFamily.json")).data).bg;
         var rdbBgroud = bgImages[Math.floor(Math.random() * bgImages.length)];
         const background = await Canvas.loadImage(rdbBgroud);
 
         var idtv = event.participantIDs;
+
         var xbground = background.width,
             ybground = background.height;
+
 
         var dem = 1;
         var tds = 200,
@@ -105,7 +99,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
 
         var color = args[1];
         if (!color || !color.includes("#")) {
-            color = "#33ffff";
+            color = "#ffffff";
             autocolor = true;
         };
         if (s > ybground || s > xbground) {
@@ -114,7 +108,6 @@ module.exports.run = async({ event, api, args, Threads }) => {
         }
         api.sendMessage(`🔢Số ảnh dự tính: ${idtv.length}\n🆒Size background: ${xbground} x ${ybground}\n🆕Size mỗi avatar: ${s}${mode}\n#️⃣Màu: ${color}\n⏳Đang xử lý request của bạn, quá trình này có thể mất đến 5p để hoàn tất...`, threadID, messageID);
         var loadkhung = await Canvas.loadImage("https://i.ibb.co/H41cdDM/1624768781720.png"); //("https://s1.uphinh.org/2021/06/24/1624551553171.png");
-
         var title = args.slice(2).join(" ") || namebox;
         var path_alltv = __dirname + `/cache/alltv${threadID}${Date.now()}.png`;
 
@@ -168,7 +161,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
         Canvas.registerFont(__dirname + "/cache/fontfamily.ttf", {
             family: "Lobster"
         });
-        ctx.font = "110px Lobster";
+        ctx.font = "115px Lobster";
         ctx.fillStyle = color;
         ctx.textAlign = "center";
         ctx.fillText(title, xcrop / 2, 133);

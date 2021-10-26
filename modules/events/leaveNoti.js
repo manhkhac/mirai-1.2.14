@@ -16,7 +16,10 @@ module.exports.run = async function({ api, event, Users, Threads }) {
     const { createReadStream, existsSync, mkdirSync, readdirSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
     const { threadID, senderID } = event;
-    const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
+    ////////////////////////////////////////////////////////
+    const thread = global.data.threadData.get(threadID) || {};
+    if (typeof thread["leaveNoti"] != "undefined" && thread["leaveNoti"] == false) return;
+    ///////////////////////////////////////////////////////
     const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
     const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
     const path = join(__dirname, "cache", "leaveNoti");

@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "join",
+    name: "joinNoti",
     eventType: ["log:subscribe"],
     version: "1.0.4",
     credits: "Mirai Team",
@@ -13,14 +13,15 @@ module.exports.run = async function({ api, event, Users }) {
     const { join } = global.nodemodule["path"];
     const { threadID, senderID } = event;
     if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) {
-        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ SuperTeam ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
-        return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭SuperTeam`, threadID);
+        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ BoT  MạnhG ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
+        return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành bot:\n Fb.com/ manhict`, threadID);
     } else {
         try {
             const { createReadStream, existsSync, mkdirSync, readdirSync } = global.nodemodule["fs-extra"];
             let { threadName, participantIDs } = await api.getThreadInfo(threadID);
+            const thread = global.data.threadData.get(threadID) || {};
+            if (typeof thread["joinNoti"] != "undefined" && thread["joinNoti"] == false) return;
 
-            const threadData = global.data.threadData.get(parseInt(threadID)) || {};
             const path = join(__dirname, "cache", "joinNoti");
             const pathRandom = readdirSync(join(__dirname, "cache", "joinNoti"));
             //random 
@@ -35,8 +36,14 @@ module.exports.run = async function({ api, event, Users }) {
                 nameArray = [],
                 memLength = [],
                 i = 0;
-            for (id in event.logMessageData.addedParticipants) {
-                const userName = event.logMessageData.addedParticipants[id].fullName;
+                ///////////////////////////////////
+                let type = false;
+                const dataAddedParticipants = event.logMessageData.addedParticipants;
+                if (dataAddedParticipants.length > 1) type = true;
+                //////////////////////////////////
+
+            for (id in dataAddedParticipants) {
+                const userName = dataAddedParticipants[id].fullName;
                 nameArray.push(userName);
                 mentions.push({ tag: userName, id });
                 memLength.push(participantIDs.length - i++);
@@ -49,7 +56,7 @@ module.exports.run = async function({ api, event, Users }) {
             }
             memLength.sort((a, b) => a - b);
 
-            (typeof threadData.customJoin == "undefined") ? msg = "Welcome aboard {name}.\nChào mừng đã đến với {threadName}.\n{type} là thành viên thứ {soThanhVien} của nhóm 🥳": msg = threadData.customJoin;
+            (thread) ? msg = "Welcome aboard {name}.\nChào mừng đã đến với {threadName}.\n{type} là thành viên thứ {soThanhVien} của nhóm 🥳": msg = thread;
             msg = msg
                 .replace(/\{name}/g, nameArray.join(', '))
                 .replace(/\{type}/g, (memLength.length > 1) ? 'các bạn' : 'bạn')
