@@ -22,10 +22,10 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var body = event.body || "Ảnh, video, ký tự đặc biệt";
   /////////////
   var color1 = ["\x1b[33m", "\x1b[34m", "\x1b[35m", '\x1b[36m', '\x1b[31m', '\x1b[1m'];
-  var more1 = color1[Math.floor(Math.random() * color.length)];
+  var more1 = color1[Math.floor(Math.random() * color1.length)];
   //////////////
   var color2 = ["\x1b[34m", "\x1b[33m", "\x1b[31m", '\x1b[1m', '\x1b[34m', '\x1b[36m'];
-  var more2 = color2[Math.floor(Math.random() * color.length)];
+  var more2 = color2[Math.floor(Math.random() * color2.length)];
   ///////////
   console.log('\x1b[32m' + 'Box:' + '\x1b[37m \x1b[' + more1 + '' + nameBox + '\x1b[37m ->\x1b[0m' + '' + '\x1b[37m \x1b[' + more2 + '' + nameUser + '\x1b[37m -> \x1b[0m' + body);
 };
