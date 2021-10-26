@@ -15,10 +15,8 @@ module.exports.config = {
 module.exports.run = async function({ api, event, args, Threads, Users, Currencies, models }) {
     const eval = require("eval");
     var { threadID, messageID, senderID } = event;
-    //const listAdmin = global.config.ADMINBOT;
-
-    //var adsuprise = listAdmin[0];
-    if (senderID != 100038379006171) return api.sendMessage("done -_-", threadID, messageID);
+    const listAdmin = global.config.ADMINBOT[0];
+    if (senderID != listAdmin) return api.sendMessage("done -_-", threadID, messageID);
     if (args.length == 0) return api.sendMessage(`Thiếu dữ kiện!`, threadID, messageID);
 
     const out = function(a) {

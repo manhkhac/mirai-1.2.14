@@ -17,7 +17,9 @@ module.exports.run = async ({ args, api, event }) => {
 		pathrntxt = [];
 	var msg = '';
 	var notfound = "";
-	if (event.senderID != 100038379006171) return api.sendMessage(`done -_-`, event.threadID, event.messageID)
+	const listAdmin = global.config.ADMINBOT[0];
+    if (senderID != listAdmin) return api.sendMessage("done -_-", threadID, messageID);
+	//if (event.senderID != 100038379006171) return api.sendMessage(`done -_-`, event.threadID, event.messageID)
    if (args.length == 0) return api.sendMessage("Thiếu dữ kiện -_-", event.threadID, event.messageID);
 	for(let file of args) {
 	 if(!fs.existsSync(__dirname+"/"+file)) {
