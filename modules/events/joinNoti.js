@@ -13,8 +13,8 @@ module.exports.run = async function({ api, event, Users }) {
     const { join } = global.nodemodule["path"];
     const { threadID, senderID } = event;
     if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) {
-        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ BoT  MạnhG ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
-        return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭Admin điều hành bot:\n Fb.com/ manhict`, threadID);
+        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "♡ SuperTeam ♡" : global.config.BOTNAME}`, threadID, global.data.botID);
+        return api.sendMessage(`🔱🪂Kết nối thành công! \n\n🍓Sử dụng !menu để biết toàn bộ lệnh có mặt trên bot này\n\n🔷🎭SuperTeam`, threadID);
     } else {
         try {
             const { createReadStream, existsSync, mkdirSync, readdirSync } = global.nodemodule["fs-extra"];
