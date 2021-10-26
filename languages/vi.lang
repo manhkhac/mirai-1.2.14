@@ -58,8 +58,8 @@ users.needObject=Phải là một Object
 
 # includes/handle/handleCommand.js
 
-handleCommand.userBanned=Hiện tại bạn đang bị cấm sử dụng bot!\n%1\n%2\n\nLiên hệ Admin: https://facebook.com/manhict\nđể được mở ban nhé bạn
-handleCommand.threadBanned=Hiện tại nhóm của bạn đang bị cấm sử dụng bot!\n%1\n%2\n\nLiên hệ Admin: https://facebook.com/manhict\nđể được mở ban nhé bạn
+handleCommand.userBanned=Hiện tại bạn đang bị cấm sử dụng bot!\n%1\n%2\n\nLiên hệ SuperTeam\nđể được mở ban nhé bạn
+handleCommand.threadBanned=Hiện tại nhóm của bạn đang bị cấm sử dụng bot!\n%1\n%2\n\nLiên hệ SuperTeam\nđể được mở ban nhé bạn
 handleCommand.commandNotExist=(\ __/)                                                                                                                                                ( •_•  )                                                                                                                                               (   >🧠U là trời.. Làm rơi nè!                                                                                                                          Sai định dạng, có phải là lệnh "%1" hay không?
 
 # Lệnh bạn sử dụng không tồn tại, có phải là lệnh "%1" hay không?
