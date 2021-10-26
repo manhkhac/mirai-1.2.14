@@ -65,13 +65,14 @@ module.exports.run = async({ event, api, args, Threads }) => {
         for (let qtv of arrob) {
             arrad.push(qtv.id)
         };
-        const background = await Canvas.loadImage("https://i.ibb.co/xqrFW4N/Pics-Art-06-26-12-07-26.jpg");
+
+        var bgImages = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/randomFamily.json")).data).bg;
+        var rdbBgroud = bgImages[Math.floor(Math.random() * bgImages.length)];
+        const background = await Canvas.loadImage(rdbBgroud);
 
         var idtv = event.participantIDs;
-
         var xbground = background.width,
             ybground = background.height;
-
 
         var dem = 1;
         var tds = 200,
@@ -105,6 +106,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
         }
         api.sendMessage(`🔢Số ảnh dự tính: ${idtv.length}\n🆒Size background: ${xbground} x ${ybground}\n🆕Size mỗi avatar: ${s}${mode}\n#️⃣Màu: ${color}\n⏳Đang xử lý request của bạn, quá trình này có thể mất đến 5p để hoàn tất...`, threadID, messageID);
         var loadkhung = await Canvas.loadImage("https://i.ibb.co/H41cdDM/1624768781720.png"); //("https://s1.uphinh.org/2021/06/24/1624551553171.png");
+
         var title = args.slice(2).join(" ") || namebox;
         var path_alltv = __dirname + `/cache/alltv${threadID}${Date.now()}.png`;
 
@@ -155,10 +157,10 @@ module.exports.run = async({ event, api, args, Threads }) => {
             img.onerror = err => { throw err };
             x += parseInt(s + l);
         };
-        Canvas.registerFont(__dirname + "/cache/Varela.ttf", {
-            family: "Varela"
+        Canvas.registerFont(__dirname + "/cache/fontfamily.ttf", {
+            family: "Lobster"
         });
-        ctx.font = "100px Varela Round";
+        ctx.font = "110px Lobster";
         ctx.fillStyle = color;
         ctx.textAlign = "center";
         ctx.fillText(title, xcrop / 2, 133);
