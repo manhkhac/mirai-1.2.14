@@ -65,17 +65,22 @@ module.exports.run = async({ event, api, args, Threads }) => {
         for (let qtv of arrob) {
             arrad.push(qtv.id)
         };
+<<<<<<< HEAD
 
         var bgImages = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/randomFamily.json")).data).bg;
         var rdbBgroud = bgImages[Math.floor(Math.random() * bgImages.length)];
 
         const background = await Canvas.loadImage(rdbBgroud);
+=======
+>>>>>>> 1493e51997cdc640b4de8e63ec6c3bdcb5d17342
+
+        var bgImages = ((await axios.get("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/randomFamily.json")).data).bg;
+        var rdbBgroud = bgImages[Math.floor(Math.random() * bgImages.length)];
+        const background = await Canvas.loadImage(rdbBgroud);
 
         var idtv = event.participantIDs;
-
         var xbground = background.width,
             ybground = background.height;
-
 
         var dem = 1;
         var tds = 200,
@@ -100,7 +105,7 @@ module.exports.run = async({ event, api, args, Threads }) => {
 
         var color = args[1];
         if (!color || !color.includes("#")) {
-            color = "#000000";
+            color = "#33ffff";
             autocolor = true;
         };
         if (s > ybground || s > xbground) {
