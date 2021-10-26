@@ -67,7 +67,7 @@ module.exports.run = async function({ api, event, args }) {
 		fontSize--;
 		ctx.font = `400 ${fontSize}px Arial, Regular`;
 	}
-	const lines = await this.wrapText(ctx, text, 185);
+	const lines = await this.wrapText(ctx, text, 185); 
 	ctx.fillText(lines.join('\n'), 40, 90);//comment
 	ctx.beginPath();
 	const imageBuffer = canvas.toBuffer();
