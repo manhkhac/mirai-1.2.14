@@ -4,7 +4,7 @@ const{spawn}=require("child_process");const{readFileSync}=require("fs-extra");co
 //========= Check node.js version =========//
 /////////////////////////////////////////////
 
-const nodeVersion=semver.parse(process.version);if(nodeVersion.major<12){logger(`Your Node.js ${process.version} is not supported, it required Node.js 12 to run bot!`,"error");return process.exit(0)}
+//const nodeVersion=semver.parse(process.version);if(nodeVersion.major<12){logger(`Your Node.js ${process.version} is not supported, it required Node.js 12 to run bot!`,"error");return process.exit(0)}
 
 ///////////////////////////////////////////////////////////
 //========= Create website for dashboard/uptime =========//
