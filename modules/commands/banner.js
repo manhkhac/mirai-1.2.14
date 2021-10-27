@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "D-Jukie convert từ Goat",
     description: "Tạo banner",
-    commandCategory: "Tiện ích",
+    commandCategory: "create image",
     usages: "<facebook> | <zalo> | <phone> | <momo> | <title> | <subtitle> | <titlefacebook> | <info> | [<link ảnh/reply>",
     cooldowns: 5,
     envConfig: {
