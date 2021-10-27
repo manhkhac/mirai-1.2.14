@@ -12,7 +12,7 @@ module.exports.config = {
         "simple-youtube-api": ""
     },
     envConfig: {
-        "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+        "YOUTUBE_API": "AIzaSyAoCI4L9yqaScIpRDSERSuiu_d7PTM4qT8"
     }
 };
 
@@ -42,7 +42,7 @@ module.exports.handleReply = async function ({
             },
             headers: {
                 'x-rapidapi-host': 'youtube-mp36.p.rapidapi.com',
-                'x-rapidapi-key': `${randomAPIKEY.API_KEY}`
+                'x-rapidapi-key': `81b0466275mshb5265735e50299cp1b01c5jsn3e7f93112fd3`
             }
         };
         const data = await axios.request(options);
@@ -97,7 +97,7 @@ module.exports.run = async function ({
             },
             headers: {
                 'x-rapidapi-host': 'youtube-mp36.p.rapidapi.com',
-                'x-rapidapi-key': `${randomAPIKEY.API_KEY}`
+                'x-rapidapi-key': `81b0466275mshb5265735e50299cp1b01c5jsn3e7f93112fd3`
             }
         };
         const data = await axios.request(options);
