@@ -58,6 +58,7 @@
         "sequelize": "",
         "sqlite3": "",
         "string-similarity": "",
-        "to-zalgo": ""
+        "to-zalgo": "",
+        "express": ""
     }
 }
