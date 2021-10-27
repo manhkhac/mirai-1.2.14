@@ -22,7 +22,6 @@ var dashboard = express();
 //========= Create website for dashboard/uptime =========//
 ///////////////////////////////////////////////////////////
 
-/*
 const dashboard = http.createServer(function(_req, res) {
 	res.writeHead(200, "OK", {
 		"Content-Type": "text/plain"
@@ -32,10 +31,10 @@ const dashboard = http.createServer(function(_req, res) {
 });
 dashboard.listen(process.env.port || 3000);
 logger("Opened server site...", "[ Starting ]")
-*/
+
 
 ///////////////////////////////////////////////////////////
-dashboard.set('port', (process.env.PORT || 5000));
+/*dashboard.set('port', (process.env.PORT || 5000));
 
 //For avoidong Heroku $PORT error
 dashboard.get('/', function(request, response) {
@@ -44,7 +43,7 @@ dashboard.get('/', function(request, response) {
 }).listen(dashboard.get('port'), function() {
     console.log('App is running, server is listening on port ', dashboard.get('port'));
 });
-
+*/
 /////////////////////////////////////////////////////////
 //========= Create start bot and make it loop =========//
 /////////////////////////////////////////////////////////
