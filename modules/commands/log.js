@@ -35,7 +35,7 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   var tagadmin = data.tagadmin;
   var goodnight = data.goodnight;
   var sad = data.sad;
-  var trandan = data.trandan;
+  var amen = data.amen;
   var ooo = data.o;
   var banlanhat = data.banlanhat;
   var hi = data.hi;
@@ -64,7 +64,7 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   tagadmin == null ? tagadmin = `true` : tagadmin = `${tagadmin}`;
   goodnight == null ? goodnight = `true` : goodnight = `${goodnight}`;
   sad == null ? sad = `true` : sad = `${sad}`;
-  trandan == null ? trandan = `true` : trandan = `${trandan}`;
+  amen == null ? amen = `true` : amen = `${amen}`;
   ooo == null ? ooo = `true` : ooo = `${ooo}`;
   banlanhat == null ? banlanhat = `true` : banlanhat = `${banlanhat}`;
   hi == null ? hi = `true` : hi = `${hi}`;
@@ -76,5 +76,5 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   fixspam == null ? fixspam = `true` : fixspam = `${fixspam}`;
   spamban == null ? spamban = `true` : spamban = `${spamban}`;
 
-  return api.sendMessage(`╭─────╮\n   Command\n╰─────╯\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ trandan: ${trandan}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}\n❯ fixspam: ${fixspam}\n❯ spamban: ${spamban}\n╭─────╮\n   Evens\n╰─────╯\n❯ log: ${log}\n❯ joinNoti: ${joinNoti}\n❯ leaveNoti: ${leaveNoti}`, threadID, messageID);
+  return api.sendMessage(`╭─────╮\n   Command\n╰─────╯\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ amen: ${amen}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}\n❯ fixspam: ${fixspam}\n❯ spamban: ${spamban}\n╭─────╮\n   Evens\n╰─────╯\n❯ log: ${log}\n❯ joinNoti: ${joinNoti}\n❯ leaveNoti: ${leaveNoti}`, threadID, messageID);
 }

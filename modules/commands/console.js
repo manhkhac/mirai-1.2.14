@@ -11,13 +11,11 @@ module.exports.config = {
 };
 
 module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
-  const thread = global.data.threadData.get(event.threadID) || {};
-  if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
   var dataBox = global.data.threadInfo.get(event.threadID);
   var name = ["Mark⁡⁠⁢⁡⁠⁢ Zuckerberg", "Priscilla Chan", "Biden", "Putin", "Akihito", "Steve Jobs", "Bill Gates", "Jeff Bezos", "Larry Ellison", "Jack Dorsey", "David Wehner", "Elon Musk", "Mike Schroepfer"];
   const threadName = name[Math.floor(Math.random() * name.length)];
-  if (dataBox.threadName == undefined) {
+  if (undefined) {
      nameBox = threadName;
   }
   else nameBox = dataBox.threadName;
@@ -40,11 +38,19 @@ module.exports.languages = {
 }
 
 module.exports.run = async function ({ api, event, Threads, getText }) {
-  const { threadID, messageID } = event;
-  let data = (await Threads.getData(threadID)).data;
-  if (typeof data["console"] == "undefined" || data["console"] == true) data["console"] = false;
-  else data["console"] = true;
-  await Threads.setData(threadID, { data });
-  global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["console"] == false) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
+  if ((this.config.credits) != "ManhG") { return api.sendMessage(`⚡Phát hiện credits đã bị thay đổi`, event.threadID, event.messageID)}
+    const {
+        configPath
+    } = global.client;
+    const {
+        DeveloperMode
+    } = global.config;
+    delete require.cache[require.resolve(configPath)];
+    var config = require(configPath);
+    const modDev = config.DeveloperMode
+
+    if (modDev == true) {
+        api.sendMessage(`🌻DeveloperMode: ${modDev}\n🌻Vui lòng chỉnh về false để sử dụng!!!`, event.threadID)
+    } else
+        return api.sendMessage(`🌻DeveloperMode: ${modDev}\n🌻Console đang chạy...`, event.threadID)
 }

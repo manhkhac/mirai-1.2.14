@@ -105,7 +105,7 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
           //console.log(modules, nameT)
           listBanned.push(`${i++}. ${nameT}\n🔰TID: ${singleThread}`);
           
-          listbanViews.push(`${j++}. ${nameT}\n🔰TID: ${singleThread}\n🤷‍♀️Lý do: ${reason}\n😒Time: ${date}`);
+          listbanViews.push(`${j++}. ${nameT}\n🔰TID: ${singleThread}\n🤷‍♀️Lý do: ${reason}\n_Time: ${date}`);
           
         };
 
@@ -136,7 +136,7 @@ module.exports.run = async function ({ event, api, Users, args, Threads }) {
           const reason = await global.data.userBanned.get(singleUser).reason;
           const date = await global.data.userBanned.get(singleUser).dateAdded;
 
-          listbanViews.push(`${i++}. ${name} \n🔰UID: ${singleUser}\n🤷‍♀️Lý do: ${reason}\n😒Time: ${date}`);
+          listbanViews.push(`${i++}. ${name} \n🔰UID: ${singleUser}\n🤷‍♀️Lý do: ${reason}\n_Time: ${date}`);
 
           listBanned.push(`${j++}. ${name} \n🔰UID: ${singleUser}`);
           

@@ -15,14 +15,9 @@ module.exports.run = async function ({ api, event, args }) {
   const axios = global.nodemodule["axios"];
   const { threadID, messageID, senderID } = event;
 
-  
-  
-  
- id = event.senderID;
-  let data = await api.getUserInfo(id);
-let sn = data[id].vanity;
-  
-  console.log(data, sn);
+  var a =global.config.ADMINBOT[0];
+  console.log(a);
+
   //////////////////////////////////
   /*
   const res = await axios.get(`https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/cadaovn.json`);

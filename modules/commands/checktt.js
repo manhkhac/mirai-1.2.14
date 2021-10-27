@@ -8,7 +8,7 @@ module.exports.config = {
   usages: "[page/all/tag]",
   cooldowns: 5,
   envConfig: {
-    "maxColumn": 100
+    "maxColumn": 300
   }
 };
 
@@ -47,7 +47,7 @@ module.exports.run = async function ({ args, api, event, Currencies, getText, Us
           var page = 1;
           page = parseInt(args[0]) || 1;
           page < -1 ? page = 1 : "";
-          var limit = 100;
+          var limit = 300;
           var msg = "🎭Độ tương tác trong box🎭\n\n";
           var numPage = Math.ceil(exp.length / limit);
 

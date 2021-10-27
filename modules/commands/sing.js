@@ -24,7 +24,7 @@ module.exports.handleReply = async function ({
     const axios = global.nodemodule['axios'];
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const res = await axios.get(`https://raw.githubusercontent.com/D-Jukiee/data/main/sing.json`);
+    const res = await axios.get(`https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/sing.json`);
     const length_KEY = res.data.keySing.length
     const randomAPIKEY = res.data.keySing[Math.floor(Math.random() * length_KEY)]
     const {
@@ -70,7 +70,7 @@ module.exports.run = async function ({
     const axios = global.nodemodule['axios'];
     const fs = global.nodemodule["fs-extra"];
     const request = global.nodemodule["request"];
-    const res = await axios.get(`https://raw.githubusercontent.com/D-Jukiee/data/main/sing.json`);
+    const res = await axios.get(`https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/sing.json`);
     const length_KEY = res.data.keySing.length
     const randomAPIKEY = res.data.keySing[Math.floor(Math.random() * length_KEY)]
     const ytdl = global.nodemodule["ytdl-core"];

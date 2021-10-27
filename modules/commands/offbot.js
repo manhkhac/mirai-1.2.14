@@ -10,6 +10,7 @@ module.exports.config = {
 };
 
 module.exports.run = async({ api, event, args }) => {
+  const time = process.uptime();
     switch (args[0]) {
         case "fix":
         case "fixdup":
@@ -18,7 +19,7 @@ module.exports.run = async({ api, event, args }) => {
         case "restart":
         case "r":
         case "-r":
-            return api.sendMessage(`⏳ Em đang khởi động lại...`, event.threadID, () => process.exit(1));
+            return api.sendMessage(`⏳ Em đang khởi động lại...\n${time}`, event.threadID, () => process.exit(1));
 
         case "stop":
         case "off":

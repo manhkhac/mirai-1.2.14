@@ -46,7 +46,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
 
     case "banU":
       {
-        if (arg[0] == "unban" || arg[0] == "Unban") {
+        if (arg[0] == "unban" || arg[0] == "Unban" || arg[0] == "gỡ ban" || arg[0] == "Gỡ ban" || arg[0] == "Đã gỡ ban" || arg[0] == "đã gỡ ban") {
 
           let data = (await Users.getData(uidUser)).data || {};
           data.banned = 0;
@@ -55,8 +55,8 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
           await Users.setData(uidUser, { data });
           global.data.userBanned.delete(uidUser, 1);
 
-          //api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Được Gỡ Ban\n- Có thể sử dụng bot ngay bây giờ`, uidUser, () =>
-           //api.sendMessage(`${global.data.botID}`, () =>
+          api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Được Gỡ Ban\n- Có thể sử dụng bot ngay bây giờ`, uidUser, () =>
+            api.sendMessage(`${global.data.botID}`, () =>
               api.sendMessage(`★★UnBanSuccess★★\n\n🔷${nameU} \n🔰TID:${uidUser} `, threadID)));
         } else {
           api.sendMessage({ body: `Admin thông tin đến bạn:\n\n${event.body}\n\n»»💬Reply tin nhắn này để gửi trả lời của bạn`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
@@ -97,7 +97,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var threadInfo = (await Threads.getData(threadID)).threadInfo;
   //trả lời
   var msg = {
-    body: `» Thông báo từ Admin «\n\n${name}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\n💌Sử dụng !callad để trò chuyện trực tiếp với admin hoặc !yeucau add <lời nhắn> để gỡ ban`
+    body: `» Thông báo từ Admin «\n\n${name}, Bạn thật ngu ngok khi chửi bot vì vậy bot đã tự động ban bạn khỏi hệ thống\n\n💌Sử dụng callad để gỡ ban(kèm uid)`
   }
   // Gọi bot
   const arr = ["botngu", "bot ngu", "bot gà", "con bot lol", "bot ngu lol", "bot chó", "dm bot", "đm bot", "dmm bot", "dmm bot", "đmm bot", "đb bot", "bot điên", "bot dở", "bot khùng", "đĩ bot", "bot paylac rồi", "con bot lòn", "cmm bot", "clap bot", "bot ncc", "bot oc", "bot óc", "bot óc chó", "cc bot", "bot tiki", "lozz bottt", "lol bot", "loz bot", "lồn bot", "bot lồn", "bot lon", "bot cac", "bot nhu lon", "bot như cc", "bot như bìu", "bot sida", "bot fake", "mạnh ngu", "bot shoppee", "bot đểu", "bot dỡm"];
@@ -118,7 +118,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
       api.sendMessage(msg, threadID, () => {
         var listAdmin = global.config.ADMINBOT;
         for (var idad of listAdmin) {
-          let namethread = threadInfo.threadName || "Tên không tồn tại";
+          let namethread = threadInfo.threadName;
           api.sendMessage(`=== Bot Notification ===\n\n🆘Tội nhân: ${name}\n🔰Uid: ${uidUser}\n🤷‍♂️Box: ${namethread}\n😥Chửi bot: ${i}\n\nĐã bị ban khỏi hệ thống`, idad, (error, info) =>
               global.client.handleReply.push({
                 name: this.config.name,

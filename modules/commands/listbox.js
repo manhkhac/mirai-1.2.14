@@ -121,7 +121,7 @@ module.exports.run = async function({ api, event, args }) {
                 var page = 1;
                 page = parseInt(args[0]) || 1;
                 page < -1 ? page = 1 : "";
-                var limit = 50;
+                var limit = 100;
                 var msg = "🎭DS NHÓM ĐÃ THAM GIA🎭\n\n";
                 var numPage = Math.ceil(listbox.length / limit);
 

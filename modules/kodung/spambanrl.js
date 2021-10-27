@@ -1,11 +1,11 @@
 module.exports.config = {
-    name: "spamban",
+    name: "spambanrl",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "NTKhang",
-    description: "tự động cấm người dùng nếu spam bot 10 lần/60s",
+    description: "tự động cấm người dùng nếu spam bot 6 lần/60s",
     commandCategory: "system",
-    usages: "",
+    usages: "x",
     cooldowns: 5
 };
 
@@ -45,7 +45,7 @@ module.exports.handleReply = async function({ api, args, Users, event, handleRep
 
         case "banU":
             {
-                if (arg[0] == "unban" || arg[0] == "Unban") {
+                if (arg[0] == "unban" || arg[0] == "Unban" || arg[0] == "gỡ ban" || arg[0] == "Gỡ ban" || arg[0] == "Đã gỡ ban" || arg[0] == "đã gỡ ban") {
 
                     let data = (await Users.getData(uidUser)).data || {};
                     data.banned = 0;
@@ -54,8 +54,8 @@ module.exports.handleReply = async function({ api, args, Users, event, handleRep
                     await Users.setData(uidUser, { data });
                     global.data.userBanned.delete(uidUser, 1);
 
-                    //api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Được Gỡ Ban\n- Có thể sử dụng bot ngay bây giờ`, uidUser, () =>
-                        //api.sendMessage(`${api.getCurrentUserID()}`, () =>
+                    api.sendMessage(`»Thông báo từ Admin ${name}«\n\n ${nameU}\n- Bạn Đã Được Gỡ Ban\n- Có thể sử dụng bot ngay bây giờ`, uidUser, () =>
+                        api.sendMessage(`${api.getCurrentUserID()}`, () =>
                             api.sendMessage(`★★UnBanSuccess★★\n\n🔷${nameU} \n🔰TID:${uidUser} `, threadID)));
                 } else {
                     api.sendMessage({ body: `🍄Phản hồi từ admin ${name}🍄\n\n${event.body}\n\n»»💬Reply tin nhắn này để trả lời tới admin`, mentions: [{ tag: name, id: event.senderID }] }, handleReply.id, (e, data) => global.client.handleReply.push({
@@ -117,14 +117,14 @@ module.exports.handleEvent = async function({ api, event, args, Users, Threads }
         }
     } else {
         global.client.autoban[senderID].number++;
-        if (global.client.autoban[senderID].number >= 10) {
+        if (global.client.autoban[senderID].number >= 6) {
 
             const moment = require("moment-timezone");
-            const timeDate = moment.tz("Asia/Ho_Chi_minh").format("HH:mm:ss D/MM/YYYY");
+            const timeDate = moment.tz("Asia/Ho_Chi_minh").format("DD/MM/YYYY HH:mm:ss");
             let dataUser = await Users.getData(senderID) || {};
             let data = dataUser.data || {};
             if (data && data.banned == true) return;
-            var reason = "spam bot 10 lần/1 phút";
+            var reason = "spam bot 6 lần/1 phút";
             data.banned = true;
             data.reason = reason || null;
             data.dateAdded = timeDate;
@@ -161,12 +161,12 @@ module.exports.languages = {
     "vi": {
         "on": "Bật",
         "off": "Tắt",
-        "successText": "Tự động cấm người dùng nếu spam bot 10 lần/1 phút trên nhóm này thành công",
+        "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút trên nhóm này thành công",
     },
     "en": {
         "on": "on",
         "off": "off",
-        "successText": "Tự động cấm người dùng nếu spam bot 10 lần/1 phút",
+        "successText": "Tự động cấm người dùng nếu spam bot 6 lần/1 phút",
     }
 }
 
