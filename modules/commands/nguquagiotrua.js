@@ -25,7 +25,11 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   //trả lời
   var msg = {
     body: `cái loại ngủ quá giờ trưa đéo bao giờ khá lên được`,
-    attachment: fs.createReadStream(__dirname + `/Noprefix/nguquagiotrua.mp3`)
+    attachment: (await global.nodemodule["axios"]({
+      url: (await global.nodemodule["axios"]('https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/dataCmd.json')).data.nguquagiotrua,
+      method: "GET",
+      responseType: "stream"
+    })).data
   }
   // Gọi bot
   var arr = ["huấn rose", "ngủ quá giờ trưa", "nguquagiotrua", "nguquahtruarose", "nguquahtrua", "nguquagiotrua", "nguquahtrua"];

@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 1,
   credits: "ManhG",
-  description: "Bật tắt console user",
+  description: "Bật tắt console",
   commandCategory: "admin",
   depndencies: {},
   usages: "",
@@ -14,10 +14,14 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   const thread = global.data.threadData.get(event.threadID) || {};
   if (typeof thread["console"] !== "undefined" && thread["console"] == true) return;
   if (event.senderID == global.data.botID) return;
-  var nameBox = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại";
+  var dataBox = global.data.threadInfo.get(event.threadID);
   var name = ["Mark⁡⁠⁢⁡⁠⁢ Zuckerberg", "Priscilla Chan", "Biden", "Putin", "Akihito", "Steve Jobs", "Bill Gates", "Jeff Bezos", "Larry Ellison", "Jack Dorsey", "David Wehner", "Elon Musk", "Mike Schroepfer"];
-  const rdName = name[Math.floor(Math.random() * name.length)];
-  if (nameBox == undefined) nameBox = rdName;
+  const threadName = name[Math.floor(Math.random() * name.length)];
+  if (threadName == undefined) {
+     nameBox = threadName;
+  }
+  else nameBox = dataBox.threadName;
+
   var nameUser = await Users.getNameUser(event.senderID);
   var body = event.body || "Ảnh, video, ký tự đặc biệt";
   /////////////

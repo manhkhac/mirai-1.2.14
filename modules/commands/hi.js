@@ -26,7 +26,11 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   //trả lời
   var msg = {
     body: `Chào , ${name} chúc bạn một ngày mới tốt lành ❤️`,
-    attachment: fs.createReadStream(__dirname + `/Noprefix/hi.gif`)
+    attachment: (await global.nodemodule["axios"]({
+      url: (await global.nodemodule["axios"]('https://apikanna.change-itit.repl.co')).data.data,
+      method: "GET",
+      responseType: "stream"
+    })).data
   }
   // Gọi bot
   var arr = ["hi", "hello", "lô", "hí lô", "chào"];

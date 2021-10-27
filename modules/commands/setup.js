@@ -32,7 +32,7 @@ module.exports.onLoad = () => {
   //////////////// ban la nhat
   if (!fs.existsSync(dirMaterial + "banlanhat.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/banlanhat.mp4").pipe(fs.createWriteStream(dirMaterial + "banlanhat.mp4"));
   //////////////// hi
-  if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
+  //if (!fs.existsSync(dirMaterial + "hi.gif")) request("https://media.discordapp.net/attachments/849164098024374283/859645612097798184/received_373965544066156.gif").pipe(fs.createWriteStream(dirMaterial + "hi.gif"));
   //////////////// simp
   if (!fs.existsSync(dirMaterial + "simp.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/simp.mp4").pipe(fs.createWriteStream(dirMaterial + "simp.mp4"));
   //////////////// oidoioi
@@ -42,7 +42,7 @@ module.exports.onLoad = () => {
   //////////////// kolm 
   if (!fs.existsSync(dirMaterial + "kolammadoicoan.mp4")) request("https://github.com/manhkhac/mirai-1.2.8/raw/data/mp4/kolammadoicoan.mp4").pipe(fs.createWriteStream(dirMaterial + "kolammadoicoan.mp4"));
   //////////////// nguquah
-  if (!fs.existsSync(dirMaterial + "nguquagiotrua.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/nguquagiotrua.mp3").pipe(fs.createWriteStream(dirMaterial + "nguquagiotrua.mp3"));
+  //if (!fs.existsSync(dirMaterial + "nguquagiotrua.mp3")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp3/nguquagiotrua.mp3").pipe(fs.createWriteStream(dirMaterial + "nguquagiotrua.mp3"));
   //////////////// thamlam
   if (!fs.existsSync(dirMaterial + "thamlam.mp4")) request("https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/mp4/thamlam.mp4").pipe(fs.createWriteStream(dirMaterial + "thamlam.mp4"));
   ////////////////
