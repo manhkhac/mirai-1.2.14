@@ -10,7 +10,7 @@ const{spawn}=require("child_process");const{readFileSync}=require("fs-extra");co
 //========= Create website for dashboard/uptime =========//
 ///////////////////////////////////////////////////////////
 
-const dashboard=http.createServer(function(_req,res){res.writeHead(200,"OK",{"Content-Type":"text/plain"});res.write("HI! THIS BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯");res.end()});dashboard.listen(process.env.port||0);logger("Opened server site...","[ Starting ]")
+const dashboard=http.createServer(function(_req,res){res.writeHead(200,"OK",{"Content-Type":"text/plain"});res.write("HI! THIS BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯");res.end()});dashboard.listen(process.env.port||3000);logger("Opened server site...","[ Starting ]")
 
 /////////////////////////////////////////////////////////
 //========= Create start bot and make it loop =========//
