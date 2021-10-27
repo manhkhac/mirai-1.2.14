@@ -7,7 +7,6 @@ const {
 const http = require("http");
 const axios = require("axios");
 const semver = require("semver");
-const dashboard = express();
 const logger = require("./utils/log")
 
 /////////////////////////////////////////////
