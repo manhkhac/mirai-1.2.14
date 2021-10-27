@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 0,
     credits: "HĐGN convert từ Goat",
     description: "<name> | <facebook> | <phone> | <mail> | <location> | [<link ảnh/reply>",
-    commandCategory: "Tiện ích",
+    commandCategory: "create image",
     usages: "",
     cooldowns: 5,
     envConfig: {
