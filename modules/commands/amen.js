@@ -40,7 +40,7 @@ module.exports.handleEvent = function ({ api, event }) {
   }
   
   // Gọi bot
-  var arr = ["amen","trần dần","tran dan","amen"];
+  var arr = ["amen","trần dần","tran dan"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | str === body | body === i  ) return out(msg)
