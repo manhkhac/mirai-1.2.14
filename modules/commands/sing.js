@@ -42,7 +42,7 @@ module.exports.handleReply = async function ({
             },
             headers: {
                 'x-rapidapi-host': 'youtube-mp36.p.rapidapi.com',
-                'x-rapidapi-key': `81b0466275mshb5265735e50299cp1b01c5jsn3e7f93112fd3`
+                'x-rapidapi-key': `${randomAPIKEY.API_KEY}`
             }
         };
         const data = await axios.request(options);
@@ -58,7 +58,7 @@ module.exports.handleReply = async function ({
             attachment: fs.createReadStream(__dirname + `/cache/${event.senderID}.m4a`)
         }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${event.senderID}.m4a`), event.messageID)
     } catch {
-        return api.sendMessage('Không thể xử lý yêu cầu của bạn!', event.threadID, event.messageID);
+         api.sendMessage('Không thể xử lý yêu cầu của bạn!', event.threadID, event.messageID);
     }
     return api.unsendMessage(handleReply.messageID);
 }
@@ -97,7 +97,7 @@ module.exports.run = async function ({
             },
             headers: {
                 'x-rapidapi-host': 'youtube-mp36.p.rapidapi.com',
-                'x-rapidapi-key': `81b0466275mshb5265735e50299cp1b01c5jsn3e7f93112fd3`
+                'x-rapidapi-key': `${randomAPIKEY.API_KEY}`
             }
         };
         const data = await axios.request(options);
@@ -200,7 +200,7 @@ module.exports.run = async function ({
                 msg += (`${num1} 《${time}》 ${value.title}\n\n`);
             }
             var body = `»🔎 Có ${link.length} kết quả trùng với từ khoá tìm kiếm của bạn:\n\n${msg}» Hãy reply(phản hồi) chọn một trong những tìm kiếm trên`
-            return api.sendMessage({
+             api.sendMessage({
                     attachment: imgthumnail,
                     body: body
                 }, event.threadID, (error, info) => global.client.handleReply.push({
