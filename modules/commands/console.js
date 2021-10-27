@@ -17,7 +17,7 @@ module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var dataBox = global.data.threadInfo.get(event.threadID);
   var name = ["Mark⁡⁠⁢⁡⁠⁢ Zuckerberg", "Priscilla Chan", "Biden", "Putin", "Akihito", "Steve Jobs", "Bill Gates", "Jeff Bezos", "Larry Ellison", "Jack Dorsey", "David Wehner", "Elon Musk", "Mike Schroepfer"];
   const threadName = name[Math.floor(Math.random() * name.length)];
-  if (threadName == undefined) {
+  if (dataBox.threadName == undefined) {
      nameBox = threadName;
   }
   else nameBox = dataBox.threadName;
