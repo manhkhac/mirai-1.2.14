@@ -87,7 +87,7 @@ module.exports.run = async function ({ api, event, Threads, getText, args }) {
   fixspam == null ? fixspam = `true` : fixspam = `${fixspam}`;
   spamban == null ? spamban = `true` : spamban = `${spamban}`;
 
-  return api.sendMessage(`╭─────╮\n   Command\n╰─────╯\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ amen: ${amen}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huấn: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}\n❯ fixspam: ${fixspam}\n❯ spamban: ${spamban}\n╭─────╮\n   Evens\n╰─────╯\n❯ log: ${log}\n❯ joinNoti: ${joinNoti}\n❯ leaveNoti: ${leaveNoti}`, threadID, messageID);
+  return api.sendMessage(`╭─────╮\n   Command\n╰─────╯\n❯ rankup: ${rankup}\n❯ resend: ${resend}\n❯ roleplay: ${roleplay}\n❯ goibot: ${goibot}\n❯ ngudot: ${ngudot}\n❯ aothatday: ${aothatday}\n❯ tagadmin: ${tagadmin}\n❯ goodnight: ${goodnight}\n❯ sad: ${sad}\n❯ amen: ${amen}\n❯ ỏ: ${ooo}\n❯ banlanhat: ${banlanhat}\n❯ hi: ${hi}\n❯ simplove: ${simplove}\n❯ oidoioi: ${oidoioi}\n❯ bruh: ${bruh}\n❯ huandaoly: ${huan}\n❯ nguquahtrua: ${nguquahtrua}\n❯ thamlam: ${thamlam}\n❯ fixspam: ${fixspam}\n❯ spamban: ${spamban}\n╭─────╮\n   Evens\n╰─────╯\n❯ log: ${log}\n❯ joinNoti: ${joinNoti}\n❯ leaveNoti: ${leaveNoti}`, threadID, messageID);
 }
 
 module.exports.languages = {
