@@ -69,7 +69,7 @@ module.exports.handleEvent = async function ({ api, event, args, Users, Threads 
         number: 0
       };
       return api.sendMessage(
-                `🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng !callad để trò chuyện trực tiếp với admin hoặc !yeucau add <lời nhắn> để gỡ ban`, threadID,
+                `🍄 Người dùng đã bị ban 🍄\n\n🍳Tên: ${dataUser.name}\n🔰ID: ${senderID}\n⚡Lý do: ${reason}\n\n💌Sử dụng callad để gỡ ban(kèm uid)`, threadID,
                 () => {
                     var idad = global.config.ADMINBOT;
                     let namethread = threadInfo.threadName;

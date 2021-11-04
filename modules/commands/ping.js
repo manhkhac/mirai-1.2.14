@@ -9,11 +9,12 @@ module.exports.config = {
 	cooldowns: 5
 };
 
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = async function({ api, event, args, Users }) {
+  let name = await Users.getNameUser(event.senderID);
 	try {
 		const botID = global.data.botID;
 		const listUserID = event.participantIDs.filter(ID => ID != botID && ID != event.senderID);
-		var body = (args.length != 0) ? args.join(" ") : "@everyone", mentions = [], index = 0;
+		var body = (args.length != 0) ? args.join(" ") : `Bạn đã bị ${name} đá ra khỏi nhóm`, mentions = [], index = 0;
 		
 		for(const idUser of listUserID) {
 			body = "‎" + body;

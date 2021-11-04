@@ -50,7 +50,7 @@ var abc = event.messageReply.attachments[0].url;
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage({body:"» THÔNG BÁO TỪ ADMIN «\n\n" + args.join(` `),attachment: fs.createReadStream(path) }, idThread, (error, info) => {
+			api.sendMessage({body:"»THÔNG BÁO TỪ ADMIN«\n\n" + args.join(` `),attachment: fs.createReadStream(path) }, idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;
@@ -67,7 +67,7 @@ else {
 	for (const idThread of allThread) {
 		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
 		else {
-			api.sendMessage("» THÔNG BÁO TỪ ADMIN «\n\n" + args.join(` `), idThread, (error, info) => {
+			api.sendMessage("»THÔNG BÁO TỪ ADMIN«\n\n" + args.join(` `), idThread, (error, info) => {
 				if (error) cantSend.push(idThread);
 			});
 			count++;

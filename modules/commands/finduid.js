@@ -12,19 +12,16 @@ module.exports.config = {
   }
 }
 
-
 module.exports.run = async ({ api, event, args }) => {
   var { threadID, messageID } = event;
   var tool = global.nodemodule["fb-downloads"];
+  
   try {
     var id = await tool.findUid(args[0] || event.messageReply.body);
-    api.sendMessage(id, event.threadID, event.messageID)
+    return api.sendMessage(id, event.threadID, event.messageID)
     console.log(id)
   }
-
   catch (e) {
-
-    api.sendMessage("Người dùng không tồn tại !", event.threadID, event.messageID)
+    return api.sendMessage("Người dùng không tồn tại!", event.threadID, event.messageID)
   }
-
 }

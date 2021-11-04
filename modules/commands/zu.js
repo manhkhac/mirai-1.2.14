@@ -30,7 +30,7 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
         "https://i.imgur.com/L2emsEt.jpg",
         "https://i.imgur.com/EJbGaqx.jpg",
         "https://i.imgur.com/nq2y7ym.jpg",
-        "https://i.imgur.com/yRBuo1zu.jpg",
+        "https://i.imgur.com/yRBuo11.jpg",
         "https://i.imgur.com/NlxnQ59.jpg",
         "https://i.imgur.com/epTOxm6.jpg",
         "https://i.imgur.com/XcIRZLC.jpg",
@@ -54,7 +54,7 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
         "https://i.imgur.com/rPtPNwO.jpg",
         "https://i.imgur.com/tK5LfDo.jpg",
         "https://i.imgur.com/7Gwdck8.jpg",
-        "https://i.imgur.com/shKHJAzu.jpg",
+        "https://i.imgur.com/shKHJA1.jpg",
         "https://i.imgur.com/WDkUJ3W.jpg",
         "https://i.imgur.com/qdpAz9D.jpg",
         "https://i.imgur.com/pN0MQq0.jpg",
@@ -69,7 +69,7 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
         "https://i.imgur.com/CpbKXNb.jpg",
         "https://i.imgur.com/X2BmpO3.jpg",
         "https://i.imgur.com/ENhF9SY.jpg",
-        "https://i.imgur.com/4nB8n5zu.jpg",
+        "https://i.imgur.com/4nB8n51.jpg",
         "https://i.imgur.com/m2wKvRA.jpg",
         "https://i.imgur.com/94rTn2J.jpg",
         "https://i.imgur.com/p4PFHFv.jpg",
@@ -98,11 +98,19 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
     var max = Math.floor(Math.random() * 6);
     var min = Math.floor(Math.random() * 2);
     var data = await Currencies.getData(event.senderID);
-    var money = data.money
-    if (money < 269) api.sendMessage("Chi 269 đô để xem ?", event.threadID, event.messageID)
+    var money = data.money;
+    const admin = global.config.ADMINBOT[0];
+    const mention = Object.keys(event.mentions);
+    if (event.senderID == admin) {
+        Currencies.setData(event.senderID, options = { money: money - 269 })
+        var callback = () => api.sendMessage({ body: `Suốt ngày dú😼\n» Số dư: -269 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
+        return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
+    }
+    if (money < 269) api.sendMessage("Chi 269 đô để xem ?", event.threadID, event.messageID);
+    else if (!mention[0]) return api.sendMessage("[ Tag ] Ultr.\nPhải tag 1 người xem chung mới vui chứ.", event.threadID, event.messageID);
     else {
         Currencies.setData(event.senderID, options = { money: money - 269 })
-        var callback = () => api.sendMessage({ body: `Suốt ngày dú😼\n» Số dư: -269 đô «`, attachment: fs.createReadStream(__dirname + "/cache/zu.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/zu.jpg"));
-        return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/zu.jpg")).on("close", () => callback());
+        var callback = () => api.sendMessage({ body: `Suốt ngày dú😼\n» Số dư: -269 đô «`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));
+        return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
     }
 };

@@ -11490,7 +11490,7 @@ module.exports.run = async({ api, event, args, Users, Threads, Currencies }) => 
     if (money < 296) api.sendMessage("Bạn cần 296 đô để xem ảnh ?", event.threadID, event.messageID)
     else {
         Currencies.setData(event.senderID, options = { money: money - 296 })
-        var callback = () => api.sendMessage({ body: `Ảnh Gái Xinh\nSố Ảnh: ${link.length}\n-296 đô!`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID);
+        var callback = () => api.sendMessage({ body: `-296 đô!`, attachment: fs.createReadStream(__dirname + "/cache/1.jpg") }, event.threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), event.messageID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"), event.messageID);
         return request(encodeURI(link[Math.floor(Math.random() * link.length)] + (max - min))).pipe(fs.createWriteStream(__dirname + "/cache/1.jpg")).on("close", () => callback());
     }
 };

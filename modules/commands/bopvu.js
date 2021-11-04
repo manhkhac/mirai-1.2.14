@@ -50,13 +50,17 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function({ event, api, args }) {
+module.exports.run = async function({ event, api, args, Currencies }) {
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
+    var data = await Currencies.getData(event.senderID);
+    var money = data.money;
     const mention = Object.keys(event.mentions);
     one = mention[0];
     if (!one) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+    else if (money < 499) return api.sendMessage("Bạn đéo đủ tiền.", threadID, messageID);
     else {
+        Currencies.setData(event.senderID, options = { money: money - 499 })
         return makeImage({ one }).then(path => api.sendMessage({ body: "Ôi....🥰\n\nVíu em to quóa 🤫 ", attachment: fs.createReadStream(path) }, threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), messageID, () => fs.unlinkSync(path), messageID));
     }
 }

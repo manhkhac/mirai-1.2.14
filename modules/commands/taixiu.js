@@ -27,7 +27,8 @@ module.exports.run = async function ({
         api.sendMessage("Chỉ đặt cược tài hoặc xỉu!", event.threadID, event.messageID)
     }
     const money = args[1]
-    if (money < 50 || isNaN(money)) return api.sendMessage("Mức đặt cược của bạn không phù hợp hoặc dưới 50$!!!", event.threadID, event.messageID);
+    if (money < 50 || isNaN(money)) return api.sendMessage("Mức đặt cược của bạn không phù hợp hoặc dưới 50$ !!!", event.threadID, event.messageID);
+    if (money > 1000 || isNaN(money)) return api.sendMessage("Mức đặt cược của bạn không được lớn hơn 1000$ !!!", event.threadID, event.messageID);
     if (moneyUser < money) api.sendMessage(`⚡️Số dư bạn không đủ ${money}$ để có thể chơi`, event.threadID, event.messageID);
     else {
     try {

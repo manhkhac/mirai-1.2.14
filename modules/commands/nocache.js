@@ -19,6 +19,7 @@ module.exports.handleReply = ({ api, event, args, handleReply }) => {
   for (let num of nums) {
     var target = handleReply.files[num - 1];
     msg += target + ' ' + "\n";
+    api.unsendMessage(handleReply.messageID);
     api.sendMessage("Đã xóa các file sau trong thư mục Noprefix:\n\n" + msg, event.threadID, event.messageID);
     var fileOrdir = fs.statSync(__dirname+'/Noprefix/'+target);
 
@@ -33,21 +34,14 @@ module.exports.handleReply = ({ api, event, args, handleReply }) => {
     	}
     }
     setTimeout(delNo, 1000);
-
-   
   }
-  
 }
-
 
 module.exports.run = async function ({ api, event, args, Threads }) {
 
   const fs = require("fs-extra");
   var files = fs.readdirSync(__dirname + "/Noprefix") || [];
   var msg = "", i = 1;
-
-  //
-
   if (args[0] == 'help') {
     //❎ko edit tên tác giả❎
     var msg = `

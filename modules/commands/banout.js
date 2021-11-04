@@ -19,7 +19,6 @@ module.exports.handleEvent = async ({ event, api, Threads }) => {
 		if (checkban.includes(checkban[0])) api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);      
 }
 
-
 module.exports.handleReply = async function({ api, event, Threads, handleReply }) {
 if(handleReply.author != event.senderID) return;
 const data = (await Threads.getData(handleReply.groupid[event.body - 1])).data || {};
@@ -27,10 +26,7 @@ data.banOut = handleReply.groupid[event.body - 1];
 await Threads.setData(handleReply.groupid[event.body - 1], { data });
 global['KhanhMilo']['BanOut'].set(parseInt(handleReply.groupid[event.body - 1]), data);
 api.sendMessage(`[${handleReply.groupid[event.body - 1]}] Đã ban thành công!`, event.threadID, () => api.unsendMessage(handleReply.messageID));  
-
 };
-
-
 
 module.exports.run = async function({ api, event }) {
 	var inbox = await api.getThreadList(100, null, ['INBOX']);

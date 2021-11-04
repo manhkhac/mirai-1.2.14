@@ -10,6 +10,7 @@ module.exports.config = {
 };
 
 module.exports.handleReply = ({ api, event, args, handleReply }) => {
+  var {messageID } = event;
 	if(event.senderID != handleReply.author) return; 
 	const fs = require("fs-extra");
   var arrnum = event.body.split(" ");
@@ -29,18 +30,14 @@ module.exports.handleReply = ({ api, event, args, handleReply }) => {
     	}
     	msg += typef+' '+handleReply.files[num-1]+"\n";
   }
-  api.sendMessage("Đã xóa các file sau trong thư mục cache:\n\n"+msg, event.threadID, event.messageID);
+  api.unsendMessage(handleReply.messageID);
+  return api.sendMessage("Đã xóa các file sau trong thư mục cache:\n\n"+msg, event.threadID, event.messageID);
 }
 
-
 module.exports.run = async function({ api, event, args, Threads }) {
-  
   const fs = require("fs-extra");
   var files = fs.readdirSync(__dirname+"/cache") || [];
   var msg = "", i = 1;
-  
-//
-
   if(args[0] == 'help') {
     	//❎ko edit tên tác giả❎
 	var msg = `

@@ -102,11 +102,12 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 		}, event.threadID, (error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID}), event.messageID);
 	}
 }*/
-module.exports.run = function({ api, event, client, __GLOBAL }) {
-	const fs = require("fs-extra");
-	api.sendMessage({
-		body: "==== 12 thì trong tiếng anh ====\n 1. The Present Simple (Thì Hiện Tại Đơn) \n 2. The Present Continuous(Thì Hiện Tại Tiếp Diễn)\n 3. The Present Perfect (Thì Hiện Tại Hoàn Thành)\n 4. The Present Perfect Continuous (Thì Hiện Tại Hoàn Thành Tiếp Diễn)\n 5. The Simple Past (Thì Quá Khứ Đơn)\n 6. The Past Continous (Thì  Quá Khứ Tiếp Diễn)\n 7. The Past Perfect (Thì Quá Khứ Hoàn Thành)\n 8. The Past Perfect Continous (Thì Quá Khứ Hoàn Thành Tiếp Diễn)\n 9. The Simple Future – (Thì Tương Lai Đơn)\n10. The Future Continuous (Thì Tương Lai Tiếp Diễn)\n11. The Future Perfect ( Thì Tương Lai Hoàn Thành)\n12. The Future Perfect Continuous (Thì Tương Lai Hoàn Thành Tiếp Diễn)\n\nReply tin nhắn theo số để xem thêm về từng thì nha :33",
-		attachment: fs.createReadStream(__dirname + `/noprefix/12thi/12thi.jpg`)
-	}, event.threadID, (error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID}), event.messageID);
-	
+
+module.exports.run = function ({ api, event }) {
+  const fs = global.nodemodule["fs-extra"];
+  var { threadID, messageID, senderID } = event;
+    return api.sendMessage({
+    body: "==== 12 thì trong tiếng anh ====\n 1. The Present Simple (Thì Hiện Tại Đơn) \n 2. The Present Continuous(Thì Hiện Tại Tiếp Diễn)\n 3. The Present Perfect (Thì Hiện Tại Hoàn Thành)\n 4. The Present Perfect Continuous (Thì Hiện Tại Hoàn Thành Tiếp Diễn)\n 5. The Simple Past (Thì Quá Khứ Đơn)\n 6. The Past Continous (Thì  Quá Khứ Tiếp Diễn)\n 7. The Past Perfect (Thì Quá Khứ Hoàn Thành)\n 8. The Past Perfect Continous (Thì Quá Khứ Hoàn Thành Tiếp Diễn)\n 9. The Simple Future – (Thì Tương Lai Đơn)\n10. The Future Continuous (Thì Tương Lai Tiếp Diễn)\n11. The Future Perfect ( Thì Tương Lai Hoàn Thành)\n12. The Future Perfect Continuous (Thì Tương Lai Hoàn Thành Tiếp Diễn)\n\nReply tin nhắn theo số để xem thêm về từng thì nha :33",
+    attachment: fs.createReadStream(__dirname + `/Noprefix/12thi/12thi.jpg`)
+  }, threadID, (error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID }), event.messageID);
 }

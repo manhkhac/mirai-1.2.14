@@ -46,7 +46,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
 
     case "banU":
       {
-        if (arg[0] == "unban" || arg[0] == "Unban" || arg[0] == "gỡ ban" || arg[0] == "Gỡ ban" || arg[0] == "Đã gỡ ban" || arg[0] == "đã gỡ ban") {
+        if (arg[0] == "unban" || arg[0] == "Unban") {
 
           let data = (await Users.getData(uidUser)).data || {};
           data.banned = 0;
@@ -86,7 +86,7 @@ module.exports.handleReply = async function ({ api, args, Users, event, handleRe
 module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
   var { threadID, messageID, body, senderID, reason } = event;
   const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
+  const time = moment.tz("Asia/Ho_Chi_minh").format("HH:mm:ss D/MM/YYYY");
   
     var { threadID, messageID, body, senderID } = event; const thread = global.data.threadData.get(threadID) || {};
     if (typeof thread["fixspam"] !== "undefined" && thread["fixspam"] == false) return;

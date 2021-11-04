@@ -30,7 +30,7 @@ module.exports.run = async ({ api, event, args, Threads }) => {
 
   if (args[0] == "setname") {
     var content = args.join(" ");
-    var c = content.slice(4, 99) || event.messageReply.body;
+    var c = content.slice(7, 99) || event.messageReply.body;
     api.setTitle(`${c} `, event.threadID);
   }
 
@@ -51,7 +51,6 @@ module.exports.run = async ({ api, event, args, Threads }) => {
   }
 
   if (args[0] == "admin") {
-
     if (args.join().indexOf('@') !== -1) {
       namee = Object.keys(event.mentions)
     }

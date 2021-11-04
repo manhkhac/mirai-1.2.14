@@ -48,7 +48,9 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
 
             for (const idAdmin of listAdmin) {
                 if (parseInt(idAdmin)) {
-                    const name = (await Users.getData(idAdmin)).name
+                  var nameU = ["Mark⁡ Zuckerberg", "Priscilla Chan", "Biden", "Putin", "Akihito","Steve Jobs","Bill Gates","Jeff Bezos","Larry Ellison","Jack Dorsey","David Wehner","Elon Musk","Mike Schroepfer"];
+                  const rdName = nameU[Math.floor(Math.random() * nameU.length)];
+                    const name = (await Users.getData(idAdmin)).name || rdName;
                     msg.push(`- ${name}\nLINK: https://facebook.com/${idAdmin}`);
                 }
             }

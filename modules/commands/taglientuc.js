@@ -1,45 +1,48 @@
 module.exports.config = {
-    name: "taglientuc",
-    version: "1.0.0",
-    hasPermssion: 1,
-    credits: "VanHung & Dựa trên demo của NTKhang",
-    description: "Tag liên tục người bạn tag trong 5 lần\nCó thể gọi là gọi hồn người đó",
-    commandCategory: "group",
-    usages: "taglientuc @mention",
-    cooldowns: 5,
-    dependencies: {
-        "fs-extra": "",
-        "axios": ""
-    }
-}
+  name: "taglientuc",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "NTKhang",
+  description: "tag liên tục, gọi hồn người được tag",
+  commandCategory: "group",
+  usages: "@tag <nội dung gọi hồn> <số lần tag> <thời gian giữa mỗi lần tag (giây)>\NVí dụ: taglientuc @tag dô đây tương tác bạn ey 10 2",
+  cooldowns: 5
+};
 
-module.exports.run = async function({ api, args, Users, event }) {
-    var mention = Object.keys(event.mentions)[0];
-    if (!mention) return api.sendMessage("Cần phải tag 1 người bạn muốn gọi hồn", event.threadID);
-    if (global.client.taglientuc == true) return api.sendMessage("Hệ thống đang xử lý yêu cầu từ box khác, vui lòng quay lại sau", event.threadID, event.messageID);
-    global.client.taglientuc = true;
-    //let name = (await Users.getData(mention)).name;
-    let name = event.mentions[mention];
-    console.log("Taglientuc: ",name)
-    var arraytag = [];
-        arraytag.push({ id: mention, tag: name });
-    var a = function(a) { api.sendMessage(a, event.threadID) }
-a("Bắt đầu gọi hồn!");
-setTimeout(() => {a({body: "Alo con lợn" + " " + name, mentions: arraytag})} , 3000);
-setTimeout(() => {a({body: "Có người cần gặp mày kìa đĩ ơi" + " " + name, mentions: arraytag})} , 7000);
-setTimeout(() => {a({body: "Dậy đi con lợn này" + " " + name, mentions: arraytag})} , 11000);
-setTimeout(() => {a({body: "Bạn ơi dậy thôi" + " " + name, mentions: arraytag})} , 15000);
-setTimeout(() => {a({body: "Sáng rồi kìa dậy nào" + " " + name, mentions: arraytag})} , 20000);
-setTimeout(() => {a({body: "Em yêu dậy nào" + " " + name, mentions: arraytag})} , 24000);
-setTimeout(() => {a({body: "Dậy thôi nào" + " " + name, mentions: arraytag})} , 28000);
-setTimeout(() => {a({body: "Địt mẹ mày bố nói tử tế mà đéo dậy à" + " " + name, mentions: arraytag})} , 32000);
-setTimeout(() => {a({body: "Đĩ ơi có người gặp kìa" + " " + name, mentions: arraytag})} , 36000);
-setTimeout(() => {a({body: "Con mẹ mày tỉnh đi thằng lồn" + " " + name, mentions: arraytag})} , 40000);
-setTimeout(() => {a({body: "Hiện hồn đi thằng mặt lồn" + " " + name, mentions: arraytag})} , 44000);
-setTimeout(() => {a({body: "Đĩ mẹ mày ra đây bô xem nào" + " " + name, mentions: arraytag})} , 48000);
-setTimeout(() => {a({body: "Ngủ cái lồn sáng rồi dậy đi" + " " + name, mentions: arraytag})} , 52000);
-setTimeout(() => {a({body: "Địt mẹ bố gọi đéo nghe à" + " " + name, mentions: arraytag})} , 56000);
-setTimeout(() => {a({body: "Hiện ra bố mày xem nào" + " " + name, mentions: arraytag})} , 60000);
-setTimeout(() => {a({body: "Cút bố đéo gọi nữa" + " " + name, mentions: arraytag}); global.client.taglientuc = false} , 64000);
-
-    }
+module.exports. run = async function({ api, args, Users, event }) {
+  function delay(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+  };
+  const { mentions, threadID, messageID } = event;
+  function reply(body) {
+    api.sendMessage(body, threadID, messageID);
+  }
+  
+	let solantag = args[args.length - 2];
+  let time = args[args.length - 1]; // khoảng cách mỗi lần tag
+	
+                // Check syntax
+  if (Object.keys(mentions) == 0) return reply("Vui lòng tag người bạn muốn gọi hồn");
+  if (!solantag || !time) return global.utils.throwError(this.config.name, threadID, messageID);
+  if (isNaN(solantag)) return reply("Số lần tag phải là một con số");
+  if (isNaN(time)) return reply("Thời gian giữa mỗi lần tag phải là một con số");
+  time = time*1000;
+  const target = Object.keys(mentions)[0];
+  const mentionsTag = [];
+  for (let id in mentions) {
+    mentionsTag.push({
+      id,
+      tag: mentions[id].replace("@", "")
+    })
+  }
+  reply(`Chuẩn bị gọi hồn...`);
+  const noidungtag = args.slice(0, args.length - 2).join(" ").replace(/@/g, "");
+  let i = 0;
+  for (let i = 0; i < solantag; i++) {
+    await delay(time);
+    api.sendMessage({
+      body: `${noidungtag}`,
+      mentions
+    }, threadID);
+  }
+};

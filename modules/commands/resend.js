@@ -3,7 +3,7 @@ module.exports.config = {
   version: "2.0.0",
   hasPermssion: 1,
   credits: "Thọ, ManhG Fix Ver > 1.2.13",
-  description: "Là resend thôi",
+  description: "Xem lại tin nhắn bị gỡ",
   commandCategory: "general",
   usages: "",
   cooldowns: 0,
@@ -77,10 +77,10 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["resend"] == "undefined" || data["resend"] == true) data["resend"] = false;
-  else data["resend"] = true;
+  if (typeof data["resend"] == "undefined" || data["resend"] == false) data["resend"] = true;
+  else data["resend"] = false;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["resend"] == false) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["resend"] == true) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

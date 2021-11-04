@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "spambanrl",
+    name: "spamban",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "NTKhang",
@@ -14,7 +14,7 @@ module.exports.handleReply = async function({ api, args, Users, event, handleRep
     const { reason } = handleReply;
     var name = await Users.getNameUser(event.senderID);
     const moment = require("moment-timezone");
-    const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss L");
+    const time = moment.tz("Asia/Ho_Chi_minh").format("HH:mm:ss D/MM/YYYY");
     var arg = event.body.split(" ");
     var uidUser = handleReply.author;
     var nameU = handleReply.nameU;

@@ -1,12 +1,12 @@
 
 module.exports.config = {
-  name: "trandan",
+  name: "amen",
   version: "1.0.2",
   hasPermssion: 0,
   credits: "manhG",
   description: "Đạo phật của Trần dần",
   commandCategory: "Noprefix",
-  usages: "[trandan/amen]",
+  usages: "[amen/amen]",
   cooldowns: 5,
 };
 /*module.exports.onLoad = () => {
@@ -20,7 +20,7 @@ module.exports.handleEvent = function ({ api, event }) {
   const fs = global.nodemodule["fs-extra"];
   var { threadID, messageID, body, senderID } = event;
   const thread = global.data.threadData.get(threadID) || {};
-  if (typeof thread["trandan"] !== "undefined" && thread["trandan"] == false) return;
+  if (typeof thread["amen"] !== "undefined" && thread["amen"] == false) return;
   if (senderID == global.data.botID) return;
 
   function out(data) {
@@ -40,7 +40,7 @@ module.exports.handleEvent = function ({ api, event }) {
   }
   
   // Gọi bot
-  var arr = ["trandan","trần dần","tran dan","amen"];
+  var arr = ["amen","trần dần","tran dan"];
   arr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
     if (body === i.toUpperCase() | str === body | body === i  ) return out(msg)
@@ -51,22 +51,22 @@ module.exports.languages = {
   "vi": {
     "on": "Bật",
     "off": "Tắt",
-    "successText": "trandan thành công",
+    "successText": "amen thành công",
   },
   "en": {
     "on": "on",
     "off": "off",
-    "successText": "trandan success!",
+    "successText": "amen success!",
   }
 }
 module.exports.run = async function ({ api, event, Threads, getText }) {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
 
-  if (typeof data["trandan"] == "undefined" || data["trandan"] == true) data["trandan"] = false;
-  else data["trandan"] = true;
+  if (typeof data["amen"] == "undefined" || data["amen"] == true) data["amen"] = false;
+  else data["amen"] = true;
 
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  return api.sendMessage(`${(data["trandan"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  return api.sendMessage(`${(data["amen"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }

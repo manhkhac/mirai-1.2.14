@@ -43,7 +43,6 @@ module.exports.run = async ({ args, api, event }) => {
 	api.sendMessage({ body: msg+"\n"+notfound, attachment: mainpath }, event.threadID);
 	pathrntxt.forEach(file => {
 		setTimeout(function(){fs.unlinkSync(__dirname + '/' + file); }, 5000);
-		
 	});
 	return;
 };

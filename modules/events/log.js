@@ -12,8 +12,14 @@ module.exports.config = {
 module.exports.run = async function ({ api, event, Users, Threads }) {
   const logger = require("../../utils/log");
   if (!global.configModule[this.config.name].enable) return;
+  /*var allThreadID = global.data.allThreadID;
+  for (const singleThread of allThreadID) {
+    const thread = global.data.threadData.get(singleThread) || {};
+    if (typeof thread["log"] != "undefined" && thread["log"] == false) return;
+  }*/
+  
   const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss D/MM/YYYY");
+  const time = moment.tz("Asia/Ho_Chi_Minh").format("D/MM/YYYY HH:mm:ss");
   //let nameThread = (await Threads.getData(event.threadID)).threadInfo.threadName || "Tên không tồn tại";
   //let nameThread = global.data.threadInfo.get(event.threadID).threadName || "Tên không tồn tại"; 
 
@@ -29,7 +35,7 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
     "\n🤷‍♀️Hành động: {task}" +
     "\n🍳Tên người dùng: " + nameUser +
     "\n⚡UserID: " + event.author +
-    "\n\n» " + time + " «",
+    "\n\n⏰Time: " + time + "",
     task = "";
   switch (event.logMessageType) {
     /*case "log:thread-name": {

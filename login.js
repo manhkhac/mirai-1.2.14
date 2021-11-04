@@ -16,7 +16,7 @@ var rl = readline.createInterface({
 const option = {
 	logLevel: "silent",
 	forceLogin: true,
-	userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36"
+	userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 15_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Mobile/15E148 Safari/604.1"
 };
 
 const config = require(`./${configPath}`);

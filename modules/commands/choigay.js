@@ -58,15 +58,16 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function({ event, api, args, client }) {
+module.exports.run = async function ({ event, api, args, Currencies }) {
     const fs = global.nodemodule["fs-extra"];
-    let { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions);
-    var one = senderID,
-        two = mention[0];
+    const { threadID, messageID, senderID } = event;
+    const mention = Object.keys(event.mentions);
+    var money = (await Currencies.getData(senderID)).money;
+    var one = senderID, two = mention[0];
     if (!two) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
+    else if (money < 969) return api.sendMessage("Bạn cần 969 để sử dụng!", threadID, messageID);
     else {
-
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Chơi bê đê hông anhhh 😚😚\n" + event.mentions[mention[0]].replace(/@/g, "") + "\nĐâm đít cho dễ ỉa nè 💩💩", attachment: fs.createReadStream(path) }, threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), messageID, () => fs.unlinkSync(path), messageID));
+        Currencies.setData(event.senderID, options = { money: money - 969 })
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Chơi bê đê hông anhhh 😚😚\nĐâm đít cho dễ ỉa nè 💩💩", attachment: fs.createReadStream(path) }, threadID, (err, info) => setTimeout(() => api.unsendMessage(info.messageID), 15000), messageID,() => fs.unlinkSync(path), messageID));
     }
 }

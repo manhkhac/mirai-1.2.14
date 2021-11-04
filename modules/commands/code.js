@@ -8,7 +8,6 @@ module.exports.config = {
     usages: "",
     cooldowns: 5,
     dependencies: {
-
     }
 };
 
@@ -18,10 +17,10 @@ module.exports.run = async({ api, event, args }) => {
     const cheerio = global.nodemodule["cheerio"];
 
     if (args.length == 0) return api.sendMessage("Lỗi cú pháp", event.threadID);
-
+    var path = __dirname + '/';
     if (args[0] == "edit") {
         var newCode = event.body.slice(
-            2 + args[1].length + args[0].length,
+            8 + args[1].length + args[0].length,
             event.body.length
         );
         console.log(newCode);
@@ -42,6 +41,21 @@ module.exports.run = async({ api, event, args }) => {
             }
         );
     } else if (args[0] == "read") {
+        var data = await fs.readFile(
+            `${__dirname}/${args[1]}.js`,
+            "utf-8",
+            (err, data) => {
+                if (err)
+                    return api.sendMessage(
+                        `Đã xảy ra lỗi khi đọc lệnh "${args[1]}.js".`,
+                        event.threadID,
+                        event.messageID
+                    );
+                api.sendMessage(data, event.threadID, event.messageID);
+            }
+        );
+    }
+    else if (args[0] == "-r") {
         var data = await fs.readFile(
             `${__dirname}/${args[1]}.js`,
             "utf-8",

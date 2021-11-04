@@ -25,7 +25,7 @@ module.exports.handleEvent = async ({ event, api, Users }) => {
   }
   //trả lời
   var msg = {
-    body: `Chào , ${name} chúc bạn một ngày mới tốt lành ❤️`,
+    body: `Chào ${name}, chúc bạn một ngày tốt lành ❤️`,
     attachment: (await global.nodemodule["axios"]({
       url: (await global.nodemodule["axios"]('https://apikanna.change-itit.repl.co')).data.data,
       method: "GET",
