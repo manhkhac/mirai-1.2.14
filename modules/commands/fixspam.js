@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "fixspam",
   version: "1.0.0",
-  hasPermssion: 0,
+  hasPermssion: 2,
   credits: "ManhG",
   description: "Người chửi bot sẽ tự động bị ban khỏi hệ thống <3 bản ko reply",
   commandCategory: "noprefix",
