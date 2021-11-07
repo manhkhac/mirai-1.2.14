@@ -78,3 +78,4 @@ module.exports.run = async function ({ api, event, Threads, getText }) {
   global.data.threadData.set(threadID, data);
   return api.sendMessage(`${(data["fixspam"] == false) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 }
+ 
