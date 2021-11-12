@@ -1,57 +1,15 @@
 module.exports.config = {
     name: "yaytext",
-    version: "1.0.0",
+    version: "1.0.1",
     hasPermssion: 0,
-    credits: "SEN",//đổi cl
-    description: "yaytext",
-    commandCategory: "Random-text",
-    usages: "yaytext <nội dung>",
-    cooldowns: 5
+    credits: "DuyVuongUwU",
+    description: "tạo ra 1 text hay nèk",
+    commandCategory: "Công cụ",
+    cooldowns: 0
 };
-
-module.exports.run = async ({ event, api, args }) => {
-   var text = args.join("").toLowerCase();
-       text = text.toLowerCase();
-         text = text.replace(/\./g, ``)
-  .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|a/g, `𝑎`)
-  .replace(/b/g, `𝑏`)
-  .replace(/c/g, `𝑐`)
-  .replace(/d|đ/g, `𝑑`)
-  .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|e/g, `𝑒`)
-  .replace(/f/g, `𝑓`)
-  .replace(/g/g, `𝑔`)
-  .replace(/h/g, `ℎ`)
-  .replace(/i/g, `𝑖`)
-  .replace(/ì|í|ị|ỉ|ĩ|i/g, `𝑗`)
-  .replace(/k/g, `𝑘`)
-  .replace(/l/g, `𝑙`)
-  .replace(/m/g, `𝑚`)
-  .replace(/n/g, `𝑛`)
-  .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|o/g, `𝑜`)
-  .replace(/p/g, `𝑝`)
-  .replace(/q/g, `𝑞`)
-  .replace(/r/g, `𝑟`)
-  .replace(/s/g, `𝑠`)
-  .replace(/t/g, `𝑡`)
-  .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|u/g, `𝑢`)
-  .replace(/v/g, `𝑣`)
-  .replace(/x/g, `𝑥` )
-  .replace(/ỳ|ý|ỵ|ỷ|ỹ|y/g, `𝑦`)
-  .replace(/w/g, `𝑤`)
-  .replace(/z/g, `𝑧`)
-  .replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, "");
-  var arr = text.replace("\n", "").split("\n").filter(item => item.length != 0);
-  var num = (arr.length/6)-1;
-  var main = arr.slice(0,6);
-  var extra = arr.splice(6);
-  var msg = "";
-  var mainlength = main.length;
-  for(let i = 0; i < mainlength; i++) {
-    var txt = main[i];
-    for(let o = 0; o < num; o++) {
-      txt += extra[i+(o*6)];
-    }
-    msg += txt+"\n";
-  }
-  return api.sendMessage(msg+"", event.threadID, event.messageID);
+module.exports.run = async function({ api, event, args }) {
+    const { threadID, messageID, senderID, body } = event;
+    var content = args.join(" ").toLowerCase();;
+    let msgtext = content.replace(/a/g, "𝒂").replace(/ạ/g, "𝒂̣").replace(/à/g, "𝒂̀").replace(/ả/g, "𝒂̉").replace(/á/g,"𝒂́").replace(/ắ/g, "𝒂̆́").replace(/ằ/g, "𝒂̆̀").replace(/ă/g, "𝒂̆").replace(/q/g, "𝒒").replace(/w/g, "𝒘").replace(/e/g, "𝒆").replace(/ể/g, "𝒆̂̉").replace(/ế/g, "𝒆̂́").replace(/ẹ/g, "𝒆̣").replace(/ê/g, "𝒆̂").replace(/ề/g, "𝒆̂̀").replace(/r/g, "𝒓").replace(/t/g, "𝒕").replace(/ỵ/g, "𝒚̣").replace(/y/g, "𝒚").replace(/ỷ/g, "𝒚̉").replace(/ỳ/g, "𝒚̀").replace(/u/g, "𝒖").replace(/ủ/g, "𝒖̉").replace(/ù/g, "𝒖̀").replace(/ú/g, "𝒖́").replace(/ụ/g, "𝒖̣").replace(/i/g, "𝒊").replace(/í/g, "𝒊́").replace(/ì/g, "𝒊̀").replace(/ị/g, "𝒊̣").replace(/o/g, "𝒐").replace(/ỏ/g, "𝒐̉").replace(/ò/g, "𝒐̀").replace(/ó/g, "𝒐́").replace(/ô/g, "𝒐̂").replace(/ồ/g, "𝒐̂̀").replace(/ố/g, "𝒐̂́").replace(/ổ/g, "𝒐̂̉").replace(/ố/g, "𝒐̂́").replace(/p/g, "𝒑").replace(/s/g, "𝒔").replace(/d/g, "𝒅").replace(/đ/g, "đ").replace(/f/g, "𝒇").replace(/g/g, "𝒈").replace(/h/g, "𝒉").replace(/j/g, "𝒋").replace(/k/g, "𝒌").replace(/l/g, "𝒍").replace(/z/g, "𝒛").replace(/x/g, "𝒙").replace(/c/g, "𝒄").replace(/v/g, "𝒗").replace(/b/g, "𝒃").replace(/n/g, "𝒏").replace(/m/g, "𝒎");
+    return api.sendMessage(msgtext, threadID,messageID);
 }
