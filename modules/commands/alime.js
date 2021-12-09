@@ -24,7 +24,7 @@ module.exports.onLoad = async function() {
     const { existsSync, readFileSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const path = resolve(__dirname, 'cache', 'alime.json');
-    const url = "https://raw.githubusercontent.com/manhkhac/mirai-1.2.8/data/json/alime.json";
+    const url = "https://manhkhac.github.io/data/json/alime.json";
 
     try {
         if (!existsSync(path)) await downloadFile(url, path);
