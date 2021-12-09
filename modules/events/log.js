@@ -12,6 +12,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event, Users, Threads }) {
   const logger = require("../../utils/log");
   if (!global.configModule[this.config.name].enable) return;
+  let botID = api.getCurrentUserID();
   /*var allThreadID = global.data.allThreadID;
   for (const singleThread of allThreadID) {
     const thread = global.data.threadData.get(singleThread) || {};
@@ -38,18 +39,19 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
     "\n\n⏰Time: " + time + "",
     task = "";
   switch (event.logMessageType) {
-    /*case "log:thread-name": {
+    case "log:thread-name": {
         newName = event.logMessageData.name || "Tên không tồn tại";
-        task = "Người dùng thay đổi tên nhóm thành " + newName + "";
+        //task = "Người dùng thay đổi tên nhóm thành " + newName + "";
         await Threads.setData(event.threadID, {name: newName});
         break;
-    }*/
+    }
     case "log:subscribe": {
-      if (event.logMessageData.addedParticipants.some(i => i.userFbId == global.data.botID)) task = "Người dùng đã thêm bot vào một nhóm mới!";
+      if (event.logMessageData.addedParticipants.some(i => i.userFbId == botID)) task = "Người dùng đã thêm bot vào một nhóm mới!";
       break;
     }
     case "log:unsubscribe": {
-      if (event.logMessageData.leftParticipantFbId == global.data.botID) {
+      if (event.logMessageData.leftParticipantFbId == botID) {
+        if(event.senderID == botID) return;
         const data = (await Threads.getData(event.threadID)).data || {};
         data.banned = true;
         var reason = "Kích bot tự do, không xin phép";
