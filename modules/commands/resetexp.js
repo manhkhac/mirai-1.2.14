@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "manhG",
   description: "Reset số exp của cả nhóm/all nhóm về 0",
   commandCategory: "group",
-  usages: "[cc], [del], [all]",
+  usages: "[all]",
   cooldowns: 5
 };
 
@@ -18,13 +18,13 @@ module.exports.run = async ({ api, event, Currencies }) => {
           var currenciesData = await Currencies.getData(singleUser)
           if (currenciesData != false) {
             var exp = currenciesData.exp;
-            if (typeof money != "undefined") {
-              money -= money;
-              await Currencies.setData(singleUser, { money });
+            if (typeof exp != "undefined") {
+              exp -= exp;
+              await Currencies.setData(singleUser, { exp });
             }
           }
         }
-        api.sendMessage("Số money của toàn bộ người dùng trên server đã được reset về mức 0 !", event.threadID)
+        api.sendMessage("Số exp của toàn bộ người dùng trên server đã được reset về mức 0 !", event.threadID)
       }
       break;
     default:
